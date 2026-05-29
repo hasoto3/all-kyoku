@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一本道 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #d8d6da;
+    --ink-soft: #a3a1a8;
+    --ink-faint: #6a6770;
+    --path: #c9b6d4;        /* 道の淡い光 */
+    --lavender: #b7a3c9;    /* ラベンダー */
+    --lavender-soft: #8d7aa0;
+    --dawn: #5a4a6a;        /* 藍に滲む夜明け */
+    --bg-top: #0b0b12;      /* 一番暗い空 */
+    --bg-mid: #14121c;
+    --bg-low: #1c1826;
+    --line: rgba(183,163,201,0.18);
+    --en: #8a8690;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* 暗闇に続く一本道（固定背景） */
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky-grad{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-low) 68%, #241d30 100%);
+  }
+  /* 地平の藍色のにじみ */
+  .horizon-glow{
+    position:absolute; left:0; right:0; bottom:38%; height:24vh;
+    background: radial-gradient(ellipse 80% 100% at 50% 100%,
+      rgba(146,122,160,0.28) 0%, rgba(90,74,106,0.10) 45%, transparent 72%);
+  }
+  /* 一本道：消失点へ続く台形 */
+  .path{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:60vw; height:40vh;
+    background: linear-gradient(180deg,
+      rgba(201,182,212,0.02) 0%, rgba(201,182,212,0.10) 60%, rgba(201,182,212,0.18) 100%);
+    clip-path: polygon(48.5% 0%, 51.5% 0%, 78% 100%, 22% 100%);
+  }
+  .path-line{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:2px; height:40vh;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,182,212,0.5) 100%);
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:#cfc8d6; opacity:0.45; animation: tw 6s infinite ease-in-out;
+  }
+  @keyframes tw{ 0%,100%{opacity:0.1;} 50%{opacity:0.5;} }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 660px; margin: 0 auto; padding: 16vh 26px 18vh;
+  }
+
+  /* タイトル */
+  .title{ text-align:center; margin-bottom: 8vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(2.2rem, 7vw, 3.2rem);
+    letter-spacing: 0.5em; color: var(--path); text-indent:0.5em;
+    text-shadow: 0 0 30px rgba(201,182,212,0.25); line-height:1.4;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1rem; letter-spacing:0.2em; color: var(--lavender-soft);
+    display:block; margin-top: 1.4em;
+  }
+  .title .by{
+    margin-top:1.6em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+
+  /* 導入：誰のための道か */
+  .gate{
+    text-align:center; margin: 0 auto 13vh; max-width: 30em;
+  }
+  .gate .calls{ color: var(--ink-soft); font-size: 1.05rem; line-height: 2.5; }
+  .gate .calls span{ display:block; }
+  .gate .leave{
+    margin-top: 3em; color: var(--lavender); font-size: 1.0rem; line-height: 2.3;
+  }
+  .gate .en{
+    display:block; margin-top: 3em;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color: var(--en); font-size: 0.9rem; line-height: 2.1; letter-spacing:0.02em;
+  }
+
+  /* 章番号と曲 */
+  .song{ margin-bottom: 13vh; }
+  .song-head{ text-align:center; margin-bottom: 6vh; }
+  .song-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-style:italic; color: var(--lavender-soft);
+    display:block; line-height:1; margin-bottom:0.6em; opacity:0.85;
+    letter-spacing:0.1em;
+  }
+  .song-for{
+    font-size:0.8rem; letter-spacing:0.25em; color: var(--ink-faint);
+    display:block; margin-bottom:0.4em;
+  }
+  .song-title{
+    font-size: 1.1rem; letter-spacing:0.1em; color:var(--path); font-weight:500;
+  }
+
+  /* 歌詞 */
+  .lyric{ font-size: 1.04rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.76rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  .lyric .en{
+    color: var(--en); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.96rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+
+  .ornament{
+    text-align:center; color:var(--lavender-soft); opacity:0.45;
+    font-size:0.85rem; letter-spacing:0.6em; margin: 4vh 0;
+  }
+
+  /* 13曲目・追悼は、ほんの少し明るく */
+  .final-song .song-num{ color: var(--lavender); opacity:1; }
+  .final-song .song-title{ color: var(--lavender); }
+
+  /* ラベンダー畑の着地 */
+  .lavender-field{
+    position:relative; text-align:center;
+    margin-top: 6vh; padding: 10vh 0 4vh;
+  }
+  .field-glow{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:120%; height:100%;
+    background: radial-gradient(ellipse 70% 80% at 50% 60%,
+      rgba(183,163,201,0.22) 0%, rgba(146,122,160,0.10) 45%, transparent 72%);
+    pointer-events:none; z-index:-1;
+  }
+  .closing{
+    color: var(--lavender); font-size: 1.15rem; line-height:2.1;
+    letter-spacing:0.08em;
+    text-shadow: 0 0 26px rgba(183,163,201,0.3);
+  }
+  .closing-en{
+    display:block; margin-top:1.4em;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color: var(--lavender-soft); font-size:0.95rem; letter-spacing:0.04em;
+  }
+
+  /* 次の曲への控えめな案内（型の確認用） */
+  .pending{
+    text-align:center; color:var(--ink-faint); font-size:0.85rem;
+    margin-top: 6vh; padding-top: 5vh; border-top:1px solid var(--line);
+    line-height:2; font-style:italic;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 12vh 20px 14vh; }
+    .path{ width:80vw; }
+    .title h1{ letter-spacing:0.35em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky-grad"></div>
+  <div class="horizon-glow"></div>
+  <div class="path"></div>
+  <div class="path-line"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>一本道</h1>
+    <span class="en">The Single Path</span>
+    <div class="by">大森 カエ</div>
+  </div>
+
+  <div class="gate">
+    <div class="calls">
+      <span>自死で愛する人を失った人へ。</span>
+      <span>死の文字が横切った人へ。</span>
+      <span>生と死の境を彷徨っているかもしれない人へ。</span>
+    </div>
+    <div class="leave">
+      私自身の記録と、多くの方の記録を遺したいと思います。<br>
+      必要な時だけ、覗いてください。
+    </div>
+    <span class="en">For those who have lost someone they loved to suicide.
+For those whom the word "death" has passed by.
+For those who may be wandering the border between life and death.
+
+I want to leave behind my own record, and the records of many others.
+Please look in only when you need to.</span>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 1曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">I</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">優しい子だった</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>小さい頃から
+些細な事で
+思い悩む　優しい子だった
+先生から
+任された仕事
+真剣に　そつなくやり遂げ
+愚痴ひとつ　こぼさない
+<span class="en">A sincere and kind child</span>
+そんな娘だった</p>
+<span class="sec">Verse 2</span><p>笑顔よりも
+泣きそうな
+顔が記憶に残る
+誰よりも
+真面目で優しい娘
+真夜中　一人涙ぐみ
+隣に座り
+話をした日々
+今も　思い出す</p>
+<span class="sec">Pre-chorus</span><p>朝　いつも通り
+学校に行くと言い
+出かけた　娘
+その後ろ姿に　なぜか
+心ざわついた
+理由は　分からなかった
+<span class="en">Why was there such a commotion?</span></p>
+<span class="sec">Chorus</span><p>次に　娘と会ったのは
+警察署の安置所だった
+息を止めた姿での
+無言の再会
+泣き叫ぶ　私を支える夫は
+涙も声も　見せなかった
+遺言書も　相談も
+何もない
+平穏だった日々
+なのに　なぜ
+<span class="en">Why did this happen?</span></p>
+<span class="sec">Verse 3</span><p>娘が　この世を去った
+その理由は
+月日経ても　憶測でしかない
+何も気づけなかった自分
+自戒の念で　後を追いたくなる
+遺された者達の
+苦しみ考え
+踏み切れないけど
+<span class="en">I could follow at any time</span></p>
+<span class="sec">Bridge 1</span><p>突然の別れに
+心が追いつかず
+墓前　仏壇の前で
+号泣する日々</p>
+<span class="sec">Chorus 2</span><p>走馬灯のように
+思い起こされる
+娘と過ごした
+懐かしい日々
+いつもの会話で
+ふと話していた
+友達との　喧嘩
+原因は　それなの？
+なぜ　娘の心の変化を
+見逃したのだろう
+後悔だけが　繰り返される
+後悔　先に立たず
+言葉が
+頭の中　駆け巡る</p>
+<span class="sec">Bridge 2</span><p>季節が変わっても
+食事の味も
+景色の移ろいも
+全てが
+灰色の世界
+<span class="en">A world dyed in gray</span></p>
+<span class="sec">Outro</span><p>空は　灰色に染まり
+娘と同じ年頃の子
+今は　見たくない
+声すら　耳を塞ぐ
+外に出たくない
+娘の仏壇の前
+何度も　泣き崩れる
+風はないのに
+揺れる　蝋燭の灯
+いないはずの娘がいる
+幻想に縋る　私
+<span class="en">I want to see you even if it's just for a moment</span>
+ただ　そう願った</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 2曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">II</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">灰色の世界</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>テレビには
+誰かが笑う声
+こんなにも
+苦しいのに
+ブラウン管の中では
+くだらない事で
+笑う人達
+2秒経たず　消した
+仏壇の前で
+泣き崩れた
+<span class="en">My daughter can't laugh anymore</span></p>
+<span class="sec">Verse 2</span><p>理由が
+分からない日々
+時間だけが
+ゆっくり過ぎる
+同じ速度のはずなのに
+1日が
+異様に　長い
+朝　起きて
+掃除や　洗濯
+合間縫って
+仏壇へ
+<span class="en">My daughter should be here</span></p>
+<span class="sec">Pre-chorus</span><p>娘が今いる場所
+その地へ
+行きたい衝動に
+ふと　駆られる
+娘が生を終えた
+その地で
+<span class="en">I might follow you anytime</span></p>
+<span class="sec">Chorus 1</span><p>遺された私は
+自分を責め続ける
+何もしてあげられなかった
+娘を見送った　あの瞬間
+ざわついた胸
+なぜ　引き止めなかったの？
+もっと　声をかけていたら
+今も　ここにいたのに
+学校で　何もない？
+何か　悩みはある？
+頭の中で　駆け巡る質問
+言葉　投げかけず
+穏やかに見えた日々に埋もれ
+気付こうとしなかった自分
+母親失格　だった
+<span class="en">I regret the person I was back then</span></p>
+<span class="sec">Verse 3</span><p>心の奥で
+答えを探す
+自分の不甲斐なさ
+気づけなかった
+自分を責め　泣く日々
+朝　経典を読み
+天国に　行けるよう
+願いをこめる
+<span class="en">I hope my daughter goes to heaven</span></p>
+<span class="sec">Chorus 2</span><p>娘の死を
+世間では　罪と言う
+でも　違うと言いたい
+苦しんだ娘より
+助けなかった
+私が　悪いのだから
+娘を　悪く言わないで
+娘は　悪くない
+悪いのは　私
+生まれてから　ずっと
+大切にしてきたつもり
+でも　本当は
+違ったのかも知れない
+母親失格　だった
+<span class="en">I'm a failed mother</span></p>
+<span class="sec">Bridge 1</span><p>四十九日が過ぎ
+娘がいなくなった
+現実を　思い知る
+空の本当の色は
+何色だっただろうか
+どうでも良い</p>
+<span class="sec">Outro</span><p>心が　ざわつく
+泣かない日はない
+ご飯は　無味
+生きるために
+吐きそうでも
+息子と夫が
+悲しむから
+胃に　流し込む
+私は悪くないと
+慰める　家族
+それは違うと
+心で叫ぶ
+<span class="en">It's my fault</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 3曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">III</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">この社会の歪み</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>仕事に行けば
+聞かれる
+子供達のこと
+今も　生きている
+息子の事も
+今は亡き
+娘の事も
+話したくない
+<span class="en">I don't want to talk about anything</span></p>
+<span class="sec">Verse 2</span><p>聞かれれば
+軽く答えて
+別の話題へ
+誰にも伝えられない
+世間では
+娘は　悪者と言う
+これ以上　傷つけないで
+<span class="en">Don't say anything</span></p>
+<span class="sec">Pre-chorus</span><p>毎日　旅立つ人達がいる
+なのに　なぜ
+ネット　テレビでは
+娘と同じく旅立った人を分析し
+どこかで責め
+悪者と言いたい
+素振り見せる
+<span class="en">Who's really to blame?</span></p>
+<span class="sec">Chorus 1</span><p>精一杯　笑い
+日々が　辛くても
+娘は　生き続けていた
+友達と　喧嘩し
+私に　声を荒げ
+泣きながら
+どうすれば　良いのかと
+体を　震わせた
+娘を　抱きしめ
+宥め　落ちつかせたけれど
+娘は　私を気遣い
+わざと　泣き止んだのかも
+<span class="en">I was blind to it all</span></p>
+<span class="sec">Verse 3</span><p>娘の　部屋
+見送った日から
+時間を　止め
+娘の　帰りを待つ
+ネットには
+若者の　悲しい
+娘と　同じ
+生命のニュース
+<span class="en">Sad news</span></p>
+<span class="sec">Bridge 1</span><p>会社では
+娘のような人を
+責める言い方で
+語る　上司
+誰にも語れない
+娘の　旅立ちの理由
+<span class="en">No one understands</span></p>
+<span class="sec">Chorus 2</span><p>病気　事故
+旅立ちの　理由は
+色々なのに　なぜ
+娘も　私達も
+こんなにも
+悪者扱いされ
+声押し殺し
+泣かなければ
+いけないの？
+病気だから
+事故だから
+可哀想と言うけれど
+娘も　懸命に生きた
+それすらも
+認めてくれないの？</p>
+<span class="sec">Bridge 2</span><p>有名人でも
+娘と同じように
+悲報が流れれば
+無言の偏見向けられる</p>
+<span class="sec">Outro</span><p>理由も知らず
+ただ　悪者扱いの社会
+娘は　真面目に生きていた
+犯罪とは無縁の人生
+なのに　なぜ
+責められなければ
+いけないのだろう
+この国は
+こんな社会だったのか
+<span class="en">Is this the society we live in?</span>
+娘は　気付いていたのだろうか
+ごめんね
+不甲斐ない　母親で
+私が　初めて
+この社会の歪みを　知ったのは
+娘が教えてくれたから</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 4曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">IV</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">ごめんね</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>娘が好きだった
+すき焼き
+息子が食べたいと言い
+夫が　買い出しに行く
+なぜ？
+娘は　もう
+食べられないのに
+<span class="en">We can't be the only ones who eat.</span>
+私が
+「要らない」と言えば
+息子と夫は
+無言になるから
+言葉は噤む
+胸やけがする
+<span class="en">Forcefully swallow</span></p>
+<span class="sec">Verse 2</span><p>娘と出かけた
+場所を
+紹介する映像が
+涙で滲み
+仏壇前に駆け込む
+家族がいない
+この時間だけは
+声上げて
+「ごめんね」
+何度でも　謝れる
+<span class="en">Apologize loudly</span></p>
+<span class="sec">Pre-chorus</span><p>息子と夫は
+泣く私の側で
+立ち尽くし　無言になる
+ごめんね
+今だけ　許して</p>
+<span class="sec">Chorus 1</span><p>夫は
+冷たい人だったのかも
+知れないと
+頭よぎる
+警察署の安置所
+娘の前で
+泣き喚いた私
+夫は　涙一つ
+流さなかった
+娘を可愛いがっていたのは
+嘘だったの？
+<span class="en">Why didn't you cry?</span></p>
+<span class="sec">Verse 3</span><p>つい　この間
+桜が綺麗ねと
+娘と二人で
+テレビ見ながら
+話した場所
+甲高い声で
+紅葉が綺麗と
+タレントの声
+テレビなんて
+壊れれば良い
+<span class="en">I don't want to see it</span>
+一人　クッション被り
+「ごめんね」
+謝るのが口癖に</p>
+<span class="sec">Bridge 1</span><p>娘は　優しい子だった
+生まれたばかりの
+弟のオムツも
+ミルクも
+手伝ってくれた</p>
+<span class="sec">Chorus 2</span><p>ネットで
+検索し教えてくれた
+夫と息子
+気にかけて
+くれた事は嬉しい
+だけど　娘と
+生きていた頃に
+もう少し　話をしてくれたら
+娘は　まだここにいたかも
+もう　あの子はいないのよ
+<span class="en">Too late</span></p>
+<span class="sec">Bridge 2</span><p>亡くしてから
+色々語るのは　やめて
+聞きたくない
+生きている時に
+話もせず
+今　話しても
+戻らないのよ
+<span class="en">My daughter will never come back.</span></p>
+<span class="sec">Outro</span><p>心配する相手は
+娘のはずだったのに
+遅いのよ
+どのくらい流せば
+涙は　枯れるの？
+目のむくみ
+いつになれば
+なくなるの？
+毎日が辛い
+<span class="en">Every day is painful</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 5曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">V</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">遺族の会へ</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>父と母に
+娘の死を　伝えた
+四十九日が過ぎるまで
+そっとしてあげたかった
+母は　声上げて泣き
+父は　目頭を押さえた
+娘の誕生を喜び
+よく遊んでくれた　父と母
+こんなにも
+娘は　愛されていた
+<span class="en">And yet, why</span>
+娘は　見ているだろうか</p>
+<span class="sec">Verse 2</span><p>父と母は　私の肩を抱き
+辛いねと　言ってくれた
+娘が　お腹にいた時
+酷いつわりで　苦しみ
+夫のご飯も作れず
+実家で 過ごした事もあった
+生まれた時
+夫と皆で
+手を挙げて　抱きあったと聞いた
+<span class="en">She was so loved</span></p>
+<span class="sec">Pre-chorus</span><p>骨壺は　居間に
+まだ　墓に入れられない
+まだ　側にいさせてあげたい
+そう伝えた</p>
+<span class="sec">Chorus 1</span><p>繰り返す
+長い  1日の始まり
+朝は　なぜ来るのだろう
+人は　なぜ生きるのだろう
+娘がいなくなって
+世界は　時間を止め
+なのに　１日は過ぎる
+霞んだ　灰色の空
+人の声も顔も
+全ては　別次元のもの
+<span class="en">Gray world</span></p>
+<span class="sec">Verse 3</span><p>仕事と家
+行き交う　人の中
+娘と 同じ年の子
+見る度
+娘は  亡くなったのに
+あの子はなぜ　生きているの？
+どうにも出来ない
+怒りと　悲しみが
+心を  鷲掴みにし
+やり場のない  矛先を探す</p>
+<span class="sec">Bridge 1</span><p>頑張って生きろ
+ラジオから
+響く　歌声
+何が分かるの？
+<span class="en">You pretend to know nothing</span></p>
+<span class="sec">Chorus 2</span><p>亡くなった人は
+愚者だと　悪者だと
+言いたいの？
+綺麗な言葉で
+人生を語る
+その人の方が余程
+愚かでしょ？
+娘は　優し過ぎた
+何でも  話してと
+いつも　伝えていた
+<span class="en">But you didn't tell me.</span></p>
+<span class="sec">Bridge 2</span><p>夫と息子が
+探してくれた
+遺族の会
+行くのが　怖い
+どういう   場所なのか
+同じ人達が　本当にいるのか
+<span class="en">I become anxious</span></p>
+<span class="sec">Outro</span><p>塞ぎこむ　私
+このままで
+良いとは　思わない
+心配かけたら
+娘が悪い事をしたと
+思われそう
+だから　遺族の会に
+一度だけ　行こう
+<span class="en">Just once</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 6曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">VI</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">Stop time</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>駅から離れた
+路地裏のビル
+一室に向かい歩く
+ごく普通の女性達
+ドアを開ければ
+受付の年配女性
+「大変でしたね」
+かけられた言葉に
+何かが　こみ上げ
+胸が苦しくなった
+<span class="en">Nothing was there</span></p>
+<span class="sec">Verse 2</span><p>集まる人達
+最近の事を
+和やかに話す
+会が始まり
+空気が変わる
+真剣な顔つき
+発する言葉に
+誰もが頷く
+言葉にならない
+想いを　誰もが
+抱えている
+<span class="en">I can't put it into words</span></p>
+<span class="sec">Pre-chorus</span><p>同じ　気持ち
+共感してもらえる
+その場に
+一時の　安堵を覚える</p>
+<span class="sec">Chorus 1</span><p>踏み出した　今日
+月1回の
+大切な時間
+誰にも言えない
+苦しみを
+悲しみを
+共に泣いて　励まし
+次に会う日まで
+心の支えにする
+<span class="en">To live today</span></p>
+<span class="sec">Verse 3</span><p>仏壇に供えた
+ご飯と菓子
+そして　お花
+娘が好きだった
+ピンクのバラ
+天国に行けますように
+仏様に願う
+<span class="en">Please Buddha</span></p>
+<span class="sec">Bridge 1</span><p>罪人ではない
+きっと　あの子は
+悩みを打ち明ければ
+私に迷惑をかけると
+思ったのだろう</p>
+<span class="sec">Chorus 2</span><p>突然の　別れ
+どんな思いで
+時間を止めたの？
+苦しみも
+辛さも
+気づけず
+私はただ　働き
+あの子がいる
+日常に甘えていた
+<span class="en">I was a stupid mother</span></p>
+<span class="sec">Bridge 2</span><p>最後に見た
+後ろ姿
+警察署の片隅
+眠っていた
+娘の姿</p>
+<span class="sec">Outro</span><p>今も　鮮やかに
+微塵も取り零さず
+脳裏に焼きつく
+戻らない時間
+せめて　進まないで
+娘が　一人で泣いているから
+<span class="en">Stop time</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 7曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">VII</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">初盆</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>初めての盆は　お寺で
+経を上げてもらった
+天国に行けるように
+少しでも
+楽になれるように
+今まで
+苦しんだのだから
+今度は　楽になってほしい
+<span class="en">May you rest in peace</span></p>
+<span class="sec">Verse 2</span><p>今はもう　笑っていて
+そう　願った
+経の中
+誰かが　肩に触れた
+驚き　目を開けるけど
+誰もいない　不思議な出来事
+<span class="en">What was it?</span></p>
+<span class="sec">Pre-chorus</span><p>月1回
+遺族の会に行く
+それが　心の支え
+日々を　どうにか過ごすため</p>
+<span class="sec">Chorus 1</span><p>仕事の帰り道
+橋の上から　見下ろした川
+流れに身を委ね
+今すぐ　空気になりたい
+そんな夢想が広がった
+食事も
+風呂も
+買い物も
+仕事も
+娘が経験できていない
+なのに
+私は　経験している
+「ごめんね」
+川に向かって　つぶやく</p>
+<span class="sec">Verse 3</span><p>誰も　分からない
+この苦しみ
+私だけが経験する
+罪悪感
+突然　襲いかかる
+息苦しさ
+心療内科　の先生
+遺族の会
+心が　悲鳴を上げる日々
+<span class="en">Sadness with nowhere to go</span></p>
+<span class="sec">Bridge 1</span><p>一人では　抱えきれない
+この苦しみは
+いつ　解放されるの？
+娘に会いたい
+謝りたい
+<span class="en">That's all I wish for</span></p>
+<span class="sec">Chorus 2</span><p>1周忌
+娘を　墓に納骨した
+娘を大切にしていた　祖父
+どうか　守ってあげて
+手を合わせ
+背後に感じた　気配
+不思議な感覚
+誰もいないのに
+息子もいる
+仕事もこなさなければ
+生きていけない　現実
+それでも
+1日は　長い</p>
+<span class="sec">Bridge 2</span><p>生きている者の側より
+先に旅立った
+祖父達のそばなら
+娘のためには
+幸せな場所
+そう思った</p>
+<span class="sec">Outro</span><p>息子の誕生日
+何を用意しようか
+娘なら　どうする？
+前に娘が
+お祝いをした時の事を
+思い出し　なぞる
+娘から息子への
+大切なお祝いを
+<span class="en">I want to cherish my daughter's kind feelings</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 8曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">VIII</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">娘の動機を探して</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>娘が
+生きる事をやめた日
+何が　そうさせたのか
+何度も考え
+私の至らなさが
+娘を追い込んだと
+思っていた
+遺族の会で
+誰もが
+涙流しながら　語る様子
+娘の　気持ちを
+知りたいと思った
+<span class="en">What was she thinking?</span></p>
+<span class="sec">Verse 2</span><p>叶わない願い
+それでも　知りたいと思う
+娘の動機
+あらゆる所に行き
+答えを　探し求め続けた
+遺族の会
+心療内科
+寺院
+神社
+思いつく限り
+どこかに
+答えがあると　信じて
+<span class="en">I've been to many places</span></p>
+<span class="sec">Pre-chorus</span><p>遺書もなく
+家族にも　言わず
+友人にも　内緒で
+娘は　一人旅立った</p>
+<span class="sec">Chorus 1</span><p>姉ちゃんが
+一人で考えて　出した答えを
+「無理矢理
+こじ開けるなよ」
+息子が　言った
+理由を　知りたい
+ただ　それだけ
+そう言うと
+息子は
+「俺なら　抵抗する」
+真顔で言った
+<span class="en">Is that wrong?</span></p>
+<span class="sec">Verse 3</span><p>娘が　旅立ち
+3回忌
+長かった　<span class="en">year and month</span>
+早く　1日が終わって
+そればかりを　願った
+少しだけ
+喫茶店に　入りたくなった
+娘には　申し訳ないけど
+今日だけは　許して
+<span class="en">Because it's just today</span></p>
+<span class="sec">Bridge 1</span><p>同じ境遇の人と　語らう
+遺族会が支え
+今日を　明日を
+どうにか　生きるため
+月1回　通い続ける</p>
+<span class="sec">Chorus 2</span><p>新しい仲間が　増える
+悲しみの　渦中から
+助けを求める　人
+同じ母親
+同じ女性だから
+分かり合える
+夫は息子と同じ
+男性の意見で　気付いた
+夫達も　娘を愛していた事
+<span class="en">They all loved her</span></p>
+<span class="sec">Bridge 2</span><p>不器用な　娘
+言葉足らずな　私
+悩みを聞き
+共に　解決してあげたかった
+力不足な　自分を
+責めるけど
+娘の人生を　背負う事は
+出来ないと　気付いた</p>
+<span class="sec">Outro</span><p>娘が　選んだ道
+苦しかっただろうか
+今は　楽になっただろうか
+それだけが毎日
+脳裏をよぎる
+<span class="en">But still say sorry</span></p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 9曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">IX</span>
+      <span class="song-for">― 母 ―</span>
+      <span class="song-title">一本道</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>お金がなくて
+死を考えた時
+見えたのは
+一本の道だけだった
+<span class="en">Nothing else in sight</span>
+誰の声も　姿も
+全てがなかった
+そう語った　母
+人の生死の境
+<span class="en">Between life and death</span>
+進むだけの道</p>
+<span class="sec">Verse 2</span><p>生きる事は
+仕事に就き
+耐え凌ぐ事
+厳しい人間関係
+頭さげて
+悪くなくても　謝り
+生きるために
+歯を食いしばる
+<span class="en">In order to make a living</span></p>
+<span class="sec">Pre-chorus</span><p>娘もまた
+耐えていたのだろうか
+私には　分からない
+何があったのかも
+娘だけが知る　事実</p>
+<span class="sec">Chorus 1</span><p>生死を彷徨った人達
+花畑も三途の川もない
+暗闇の中
+一本道だけ見た
+声も姿も
+誰もいない
+進むだけの道
+その先にあるのは
+冥府への扉か
+行った者にしか
+分からない世界
+でも怖くはない
+そんな道</p>
+<span class="sec">Verse 3</span><p>苦しみは
+束の間
+迎えの準備なく
+冥府を目指せば
+苦しむだけの　道
+許された　者だけが
+天国に招かれる
+限界まで　生きた者だけに
+与えられる　ご褒美
+<span class="en">Heaven's reward</span></p>
+<span class="sec">Bridge 1</span><p>いつか　もう一度
+出会えたなら
+謝りたい
+「ごめんね」
+だから　待っていて</p>
+<span class="sec">Chorus 2</span><p>「姉ちゃんは　精一杯生きた」
+仏壇の前で　息子が言った
+優しすぎた　娘
+世の中で　うまく
+呼吸が　出来ず
+一本道　しか見えず
+助けを呼ぶ事　も忘れ
+気付いたら
+天に　昇っていた
+そんな　夢を見た
+<span class="en">Warm dream</span>
+娘からのメッセージ</p>
+<span class="sec">Bridge 2</span><p>風のない　午後
+穏やかな日差し
+雨上がりの熱を
+数年ぶりに　暑いと思えた
+灰色の空に　藍色が
+少し混ざり見える</p>
+<span class="sec">Outro</span><p>月1回　同じ境遇の人に会う
+喫茶店は　また今度
+行こう
+今日は　帰り道に
+美味しい　菓子があったら買い
+仏壇に　供えよう
+娘にも
+匂いや生気を　あげたいから
+お金は　こうやって使うのよ
+娘に教えてあげる
+生まれ変わっても
+困らないように
+<span class="en">I'll share this life with you</span>
+後悔しても　時は戻らない
+だから　娘に胸張れるよう
+歯を食いしばり　生きる
+いつか　会えるまで</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 10曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">X</span>
+      <span class="song-for">― 弟 ―</span>
+      <span class="song-title">大好きだよ</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Intro</span><p>「人は、何で生きるのかな」
+姉ちゃんが　リビングで
+少し俯き　苦笑いして言った
+あの顔を
+僕は　一生忘れられない
+そう思う</p>
+<span class="sec">Verse 1</span><p>優しい姉ちゃん
+物心ついた時には
+いつも一緒にいた
+遊びに行く時　テスト前
+宿題も一緒に考えてくれた</p>
+<span class="sec">Verse 2</span><p>怒る事もあったけど
+記憶の姉ちゃんは
+いつも　物静かで
+ちょっと　神経質
+音や匂いに過敏で
+僕はそれが嫌だった</p>
+<span class="sec">Pre-chorus</span><p>でも　だからって
+姉ちゃんが
+いなくなるなんて
+思いもしなかった
+ごめんね　と謝りたいのに
+もう　言えないのが辛い</p>
+<span class="sec">Chorus 1</span><p>大好きだよ
+今なら　そう言える
+生きていて　欲しかった
+早く言えば　良かった
+後悔は　後になって
+襲ってくる
+そう思い知った　12歳の春
+気だるく暑い季節が
+始まりを告げようとしていた
+あの日　学校に
+父さんが迎えに来た
+辛そうで　病気かと思った
+警察署には
+母さんがいて　泣いていた</p>
+<span class="sec">Verse 3</span><p>夜　リビングで2人
+テレビ見て
+好きな人の事や
+将来の夢を　話していたのに
+姉ちゃんは
+眠っているみたいで
+声かけたら
+起きてきそうなのに
+返事はなかった</p>
+<span class="sec">Bridge 1</span><p>実感なんて　なかった
+家や外
+僕の世界から　消えても
+いつか　帰って来る気がしていた</p>
+<span class="sec">Chorus 2</span><p>大好きだよ
+今なら　そう言える
+生きていて欲しかった
+早く言えば良かった
+あの日から　世界が変わった
+180度　崩れた
+14歳　姉ちゃんと同じ年
+僕の見える世界は
+混沌として
+姉ちゃんの気持ちが
+少しだけ　分かってきた
+だから　言いたい
+泣いて良かったのに…と</p>
+<span class="sec">Bridge 2</span><p>姉ちゃんは　優しかった
+母さん父さんに
+世界が辛いと
+生きている意味が分からないと
+言えなかったのかな
+泣き喚いていたら
+今も　リビングにいたかもね</p>
+<span class="sec">Outro</span><p>僕は　姉ちゃんの年齢を
+もうすぐで超える
+今頃　姉ちゃんは
+大好きだった
+爺ちゃんと　会っているかな
+天国で　笑っていて
+いつか会ったら
+色んな事　話したいから</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 11曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">XI</span>
+      <span class="song-for">― 弟 ―</span>
+      <span class="song-title">今度こそ</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>姉ちゃんが言っていた
+好きな人の事
+僕は　知らなかったけど
+格好良いって
+女子が言っていた
+少し見ても　よく分からなかった</p>
+<span class="sec">Verse 2</span><p>好きな子ができた
+胸がドキドキする
+その子が好きなのは
+姉ちゃんが
+好きだった人
+女子は皆　同じなの？</p>
+<span class="sec">Pre-chorus</span><p>姉ちゃんがいなくなって
+家の中が寂しくなった
+母さんは　いつも泣き
+父さんは　更に無口になり
+僕は　姉ちゃんの部屋に
+時々行った</p>
+<span class="sec">Chorus 1</span><p>生きるって　辛いね
+でも　生きないと
+大人は駄目って言う
+だから　生きるしかない
+姉ちゃんが恋した人
+性格は難あり
+女の子は　よく変わる
+泣いた子もいたらしい
+でも格好良いから
+すぐにモテるみたい
+姉ちゃんが
+騙されたら
+僕は気が狂って
+姉ちゃんは諦めたかな</p>
+<span class="sec">Verse 3</span><p>聞きたいことは
+山ほどある
+でも　聞かない
+姉ちゃんが
+悩み抜いた
+事実がある
+それだけでいい</p>
+<span class="sec">Bridge 1</span><p>生きるって　辛いし
+楽しい事よりも
+苦しい事ばかり
+生きる事は修行だと
+住職さんの言葉
+別に　修行したくないのに</p>
+<span class="sec">Chorus 2</span><p>生きる意味は
+まだ見つからない
+まだ生きられるでしょ
+心が言うから　生きるけど
+姉ちゃんの途中下山
+人は　姉ちゃんの話
+始めると　口ごもる
+悪い事をしたの？
+何も言えなかった
+姉ちゃんの心
+誰も見ようともしない
+何が言いたいのか
+今なら　聞けるのに
+姉ちゃんは　ずっと
+耐えていたのかもね</p>
+<span class="sec">Bridge 2</span><p>姉ちゃんの年齢を
+ずっと超え
+子供も生まれた
+僕は　この子や妻を守ると
+強く決めている
+姉ちゃんがいたから
+そう思える</p>
+<span class="sec">Outro</span><p>姉ちゃんに会ったら
+あの夜から　やり直そう
+今度は幸せになって
+言いたい事は言い
+泣きたい時は　大声で泣き
+そして
+笑顔絶えない　楽しい人生を
+今度こそ　送ってほしいんだ</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 12曲目 -->
+  <div class="song">
+    <div class="song-head">
+      <span class="song-num">XII</span>
+      <span class="song-for">― 父 ―</span>
+      <span class="song-title">僕だけが家庭を守れる</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>娘が生まれた時
+本当に幸せだと思った
+こんなに幸せで良いのかと
+心底思った
+だから　守ろうと決めた
+妻と娘を</p>
+<span class="sec">Verse 2</span><p>小さい頃から
+人前に出たがらない子だった
+いつも　僕や妻の足元から
+人を見ていた
+父さんは　心配していた
+傷つきやすい子だと</p>
+<span class="sec">Pre-chorus</span><p>中学生になり
+朝の挨拶も
+お帰りの言葉も
+なくなり
+妻と息子と話すだけ
+少し寂しかった</p>
+<span class="sec">Chorus 1</span><p>最後に見た　元気な姿
+週末の夜だったね
+息子と二人
+リビングの明るい声
+ソファで僕は聞いていた
+それだけで　幸せだった
+妻との会話も弾み
+僕だけが話せなくても
+皆が幸せなら良い
+そう思っていた
+僕は　皆を守るため
+頭を下げることも
+会食で愛想笑いすることも
+厭わなかった
+皆の笑顔のためなら</p>
+<span class="sec">Verse 3</span><p>行ってきますと
+玄関ドアを開けた娘
+最後に見た　後ろ姿
+どんな表情をして
+家を後にしたのだろう
+どんな気持ちだったのか</p>
+<span class="sec">Bridge 1</span><p>妻や息子みたいに
+明るい声で
+話せなかった
+でも　娘が望んでいたなら
+そうするべきだった</p>
+<span class="sec">Chorus 2</span><p>深い眠りについた娘
+なぜ　こんな姿になったのか
+ネットでは
+衝動
+悩み　があったと言う
+病気なら仕方がないって？
+僕は…
+前夜　息子との談話
+僕だけが無視されても
+娘は幸せそうだった
+妻も息子も　悲しむ
+僕も悲しいけど
+皆を支えなければ
+家庭が壊れる
+涙はトイレで流し
+気丈に振る舞う</p>
+<span class="sec">Bridge 2</span><p>娘が亡くなり
+大学生の姿も
+社会人の姿も
+恋人を紹介される日も
+全てが　叶わなくなり
+世界は　どうでも良くなった
+でも　家庭がある
+守らないと…</p>
+<span class="sec">Outro</span><p>あと　何年経てば
+この苦しみが終わり
+天国で　人目でいい
+元気な娘に
+会えるだろうか
+ただ　それだけを願う
+息子は大人になり
+僕の　二の舞を踏ませない
+妻には言えない
+言えば　泣くから
+僕だけが　家庭を守れる
+そう信じている</p>
+    </div>
+  </div>
+
+  <div class="ornament">─────</div>
+
+  <!-- 13曲目 -->
+  <div class="song final-song">
+    <div class="song-head">
+      <span class="song-num">XIII</span>
+      <span class="song-for">― 追悼 ―</span>
+      <span class="song-title">ラベンダーの夢</span>
+    </div>
+    <div class="lyric">
+<span class="sec">Verse 1</span><p>果てなく続く
+一本道
+今はまだ
+終わりの見えない
+暗闇</p>
+<span class="sec">Verse 2</span><p>けれど少しずつ
+近づいてくる
+あなたとの
+再会の瞬間</p>
+<span class="sec">Pre-chorus</span><p>光はある
+いつでも
+私の側に
+ただ　悲しくて
+気付けないだけ</p>
+<span class="sec">Chorus</span><p>いつか　笑って
+思い出を語りたい
+あなたも
+私も　泣いたねと
+<span class="en">I will always love you</span>
+泣いた日の事
+後悔も
+辛さも
+霧に紛れ
+あなたとの思い出は
+ラベンダーが
+蕾つける花畑
+後ろ姿の
+あなたが笑う
+夢の跡</p>
+<span class="sec">Verse 3</span><p>夏の陽射し
+忘れていた
+暑い季節
+思い出すのは
+うなだれた
+あなたの顔</p>
+<span class="sec">Bridge 1</span><p>今はまだ
+涙に負けて
+笑えない私</p>
+<span class="sec">Chorus 2</span><p>本当は
+泣く日に
+サヨナラしたい
+いつでも
+<span class="en">I will always love you</span>
+かけがえのない
+大切な　あなた
+触れ合えない
+この時間がもどかしい
+咲き乱れる
+花畑に
+あなたが立つ
+蜃気楼を見た</p>
+<span class="sec">Bridge 2</span><p>いつか
+抱きしめさせて
+嫌がっても良い
+温もりを
+あなたがいる
+時間を
+感じたい</p>
+<span class="sec">Outro</span><p>泣くよりも強く
+光はいつの日か
+姿現す
+その日まで
+ラベンダーの夢
+追いかける
+<span class="en">I will always love you</span>
+忘れられない
+あなたの姿</p>
+    </div>
+  </div>
+
+  <div class="lavender-field">
+    <div class="field-glow"></div>
+    <p class="closing">いつか、笑って、思い出を語れますように。</p>
+    <span class="closing-en">Someday, may we speak of our memories — and smile.</span>
+  </div>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  for(let i=0;i<50;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = (Math.random()*60) + '%';
+    s.style.animationDelay = (Math.random()*6) + 's';
+    const sz = Math.random()*1.4 + 1;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    scene.appendChild(s);
+  }
+
+  // 道を歩くほど（下へスクロールするほど）空がほんの少し明るむ
+  const skyGrad = document.querySelector('.sky-grad');
+  const horizonGlow = document.querySelector('.horizon-glow');
+  function updateSky(){
+    const max = document.body.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    // 暗闇(0)から、藍のにじむ夜明け前(1)へ
+    const top = `rgb(${11+Math.round(p*18)}, ${11+Math.round(p*13)}, ${18+Math.round(p*22)})`;
+    skyGrad.style.background =
+      `linear-gradient(180deg, ${top} 0%, #14121c 40%, #1c1826 68%, #241d30 100%)`;
+    horizonGlow.style.opacity = 0.6 + p*0.5;
+  }
+  window.addEventListener('scroll', updateSky, {passive:true});
+  updateSky();
+</script>
+
+</body>
+</html>
