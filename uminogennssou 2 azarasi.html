@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魚シリーズ ― アザラシ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#02141f;
+    --abyss:#041d2e;
+    --mid:#063a4f;
+    --teal:#0a5566;
+    --surface:#3b8a96;
+    --light:#9fd6d4;
+    --foam:#d8f0ec;
+    --ink:#e9f4f3;
+    --ink-soft:#a3c5c8;
+    --en:#8fd0cf;
+    --pearl:#cfe7e4;
+    --line:rgba(233,244,243,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Shippori Mincho',serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,
+      var(--surface) 0%,
+      var(--teal) 16%,
+      var(--mid) 38%,
+      var(--abyss) 66%,
+      var(--deep) 100%);
+    background-attachment:fixed;
+    line-height:2.1;
+    letter-spacing:.06em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* sunlight rays filtering from the surface */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      linear-gradient(105deg, rgba(216,240,236,.10) 0%, transparent 22%),
+      linear-gradient(75deg, rgba(216,240,236,.07) 0%, transparent 30%);
+    pointer-events:none;z-index:0;
+    animation:shimmer 9s ease-in-out infinite alternate;
+  }
+  @keyframes shimmer{0%{opacity:.5;}100%{opacity:1;}}
+  /* drifting bubbles */
+  .bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .bubbles i{position:absolute;bottom:-40px;display:block;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.5), rgba(159,214,212,.08));
+    animation:bub linear infinite;}
+  .bubbles i:nth-child(1){left:8%;width:8px;height:8px;animation-duration:16s;animation-delay:0s;}
+  .bubbles i:nth-child(2){left:22%;width:5px;height:5px;animation-duration:20s;animation-delay:3s;}
+  .bubbles i:nth-child(3){left:40%;width:11px;height:11px;animation-duration:14s;animation-delay:6s;}
+  .bubbles i:nth-child(4){left:58%;width:6px;height:6px;animation-duration:22s;animation-delay:1s;}
+  .bubbles i:nth-child(5){left:73%;width:9px;height:9px;animation-duration:18s;animation-delay:5s;}
+  .bubbles i:nth-child(6){left:88%;width:4px;height:4px;animation-duration:24s;animation-delay:8s;}
+  @keyframes bub{0%{transform:translateY(0) translateX(0);opacity:0;}10%{opacity:.7;}90%{opacity:.5;}100%{transform:translateY(-105vh) translateX(20px);opacity:0;}}
+
+  .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 26px;}
+
+  header{min-height:86vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8vh 0 6vh;}
+  .series{font-size:.78rem;letter-spacing:.5em;color:var(--ink-soft);text-indent:.5em;margin-bottom:2rem;opacity:0;animation:rise 1.4s ease forwards .2s;}
+  h1{font-weight:600;font-size:clamp(2rem,8vw,3.2rem);letter-spacing:.18em;line-height:1.4;opacity:0;animation:rise 1.4s ease forwards .5s;text-shadow:0 2px 30px rgba(0,0,0,.3);}
+  .sub{display:block;font-family:'EB Garamond',serif;font-style:italic;font-size:1rem;letter-spacing:.2em;color:var(--en);margin-top:1rem;opacity:0;animation:rise 1.4s ease forwards .8s;}
+
+  .lede{max-width:540px;margin:3rem auto 0;font-size:.98rem;line-height:2.3;color:var(--pearl);opacity:0;animation:rise 1.6s ease forwards 1.1s;}
+
+  .scroll-cue{margin-top:3.5rem;font-size:.74rem;letter-spacing:.4em;color:var(--ink-soft);opacity:0;animation:rise 1.6s ease forwards 1.6s, breathe 3s ease-in-out infinite 2s;}
+
+  main{padding:4vh 0 2vh;}
+  .sec{margin:0 auto 3.4rem;text-align:center;}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.42em;color:var(--ink-soft);text-indent:.42em;
+       border:1px solid var(--line);border-radius:999px;padding:.3rem 1.1rem;margin-bottom:1.7rem;opacity:.85;}
+  .ja{font-size:1.16rem;font-weight:500;letter-spacing:.09em;margin:.15rem 0;}
+  .en{font-family:'EB Garamond',serif;font-style:italic;font-size:1.02rem;letter-spacing:.02em;
+      color:var(--en);margin:.4rem 0 1rem;line-height:1.7;}
+
+  .divider{width:1px;height:54px;margin:1rem auto 3.4rem;background:linear-gradient(var(--line),transparent);}
+
+  .closing{max-width:560px;margin:4vh auto 0;text-align:center;padding:5vh 0 3vh;border-top:1px solid var(--line);}
+  .closing p{font-size:1.06rem;line-height:2.5;margin:1rem 0;color:var(--pearl);}
+  .closing .lead{font-family:'EB Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--foam);letter-spacing:.06em;}
+
+  footer{text-align:center;padding:3.5rem 0 4rem;font-size:.74rem;letter-spacing:.3em;color:var(--ink-soft);}
+
+  @keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes breathe{0%,100%{opacity:.4;}50%{opacity:.85;}}
+
+  .sec,.closing{opacity:0;transform:translateY(20px);transition:opacity 1s ease,transform 1s ease;}
+  .sec.show,.closing.show{opacity:1;transform:translateY(0);}
+
+  @media(max-width:480px){
+    body{line-height:2;}
+    .ja{font-size:1.08rem;}
+    .en{font-size:.95rem;}
+    .lede{font-size:.92rem;}
+  }
+</style>
+</head>
+<body>
+<div class="bubbles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="wrap">
+
+  <header>
+    <div class="series">魚シリーズ　／　海の幻想 二勝</div>
+    <h1>アザラシ<span class="sub">Seal</span></h1>
+    <p class="lede">愛に生きる者と、知恵に生きる者。<br>海は、どちらをも等しく見つめている。</p>
+    <div class="scroll-cue">― 潜る ―</div>
+  </header>
+
+  <main>
+
+    <section class="sec">
+      <span class="tag">VERSE 1</span>
+      <p class="ja">進化の産物</p>
+      <p class="ja">ミオグロビン</p>
+      <p class="ja">体に備え</p>
+      <p class="ja">海中に潜水</p>
+      <p class="ja">愛溢れる</p>
+      <p class="ja">アザラシ</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">VERSE 2</span>
+      <p class="ja">一夫一妻</p>
+      <p class="ja">子供の自立</p>
+      <p class="ja">見届け</p>
+      <p class="ja">夫は新妻の元へ</p>
+      <p class="ja">生の法則</p>
+      <p class="ja">アザラシ</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">PRE-CHORUS</span>
+      <p class="ja">3か月</p>
+      <p class="ja">母は脂肪燃焼し</p>
+      <p class="ja">子育て没頭</p>
+      <p class="ja">放置される夫</p>
+      <p class="ja">愛冷める夫婦仲</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">CHORUS 1</span>
+      <p class="ja">行動心理学　網羅のシャチ</p>
+      <p class="ja">リスクリターン完璧</p>
+      <p class="en">Ferocious hunter.</p>
+      <p class="ja">短時間保育のアザラシ</p>
+      <p class="ja">愛くるしい瞳</p>
+      <p class="ja">隙つく瞬間で命繋ぐ</p>
+      <p class="en">An opponent you can't underestimate.</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">VERSE 3</span>
+      <p class="ja">子が自立したら</p>
+      <p class="ja">離婚成立</p>
+      <p class="ja">アザラシは</p>
+      <p class="ja">親子共に</p>
+      <p class="ja">節操なく</p>
+      <p class="ja">食愛豊か</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">CHORUS 2</span>
+      <p class="ja">長時間潜水</p>
+      <p class="ja">氷上休憩　命取り</p>
+      <p class="en">Targeted by orcas.</p>
+      <p class="ja">抗えない</p>
+      <p class="ja">愛情深き</p>
+      <p class="ja">ポッド組む</p>
+      <p class="ja">頭脳明晰なシャチ</p>
+      <p class="ja">長年の教育で</p>
+      <p class="ja">培われた知恵</p>
+      <p class="en">Education and love are different.</p>
+      <p class="ja">アザラシ蹴落とす</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">BRIDGE</span>
+      <p class="ja">差のない寿命</p>
+      <p class="ja">移ろう愛</p>
+      <p class="ja">浅い知恵</p>
+      <p class="ja">アザラシとシャチ</p>
+      <p class="ja">狙う獲物は</p>
+      <p class="ja">特定か否か</p>
+    </section>
+
+    <section class="sec">
+      <span class="tag">OUTRO</span>
+      <p class="ja">海の王者</p>
+      <p class="ja">分岐は教育差</p>
+      <p class="ja">確実なハンターは</p>
+      <p class="ja">キラー・ホエール</p>
+      <p class="ja">アザラシには</p>
+      <p class="ja">遠い栄光</p>
+      <p class="ja">シャチには</p>
+      <p class="ja">いつもの光景</p>
+      <p class="en">The sea watches over us equally.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="closing">
+      <p>勝つ者にも、狩られる者にも、<br>海は同じ光を降らせている。</p>
+      <p class="lead">The sea watches over us equally.</p>
+    </section>
+
+  </main>
+
+  <footer>大森カエ　／　魚シリーズ</footer>
+
+</div>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+  },{threshold:.16});
+  document.querySelectorAll('.sec,.closing').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
