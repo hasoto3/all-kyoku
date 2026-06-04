@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ep 泣いても良いですか？ 〜Questions in the Dark〜 全曲歌詞集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --abyss:#070a16;
+    --deep:#0c1226;
+    --mid:#13203f;
+    --tide:#1d3a5c;
+    --foam:#5b8bb0;
+    --star:#cfe2f2;
+    --aqua:#7fd6d0;
+    --aqua-soft:#a7e8e2;
+    --green-sea:#6fb89a;
+    --light:#eef4fb;
+    --paper:#dbe6f2;
+    --paper-dim:#9fb2c7;
+    --paper-faint:#65788e;
+    --line:rgba(127,214,208,.18);
+    --serif-jp:"Shippori Mincho",serif;
+    --serif-en:"Cormorant Garamond",serif;
+    --sans-jp:"Zen Kaku Gothic New",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--abyss);color:var(--paper);font-family:var(--serif-jp);line-height:1.9;overflow-x:hidden;position:relative}
+  /* cosmos at top, ocean at the bottom */
+  .bg-grad{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(180deg,#070a16 0%,#0a0f22 25%,#0c1430 48%,#102745 70%,#143b54 88%,#1b4f5e 100%);}
+  .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(800px 500px at 78% 6%, rgba(127,214,208,.10), transparent 60%),
+      radial-gradient(900px 600px at 50% 116%, rgba(111,184,154,.20), transparent 62%);}
+  /* starfield */
+  .stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .stars i{position:absolute;background:var(--star);border-radius:50%;opacity:.0;animation:tw 4s infinite ease-in-out}
+  @keyframes tw{0%,100%{opacity:.08}50%{opacity:.9}}
+  .grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 8s steps(6) infinite;}
+  @keyframes grain{0%{transform:translate(0,0)}50%{transform:translate(-3%,2%)}100%{transform:translate(2%,-2%)}}
+  .content{position:relative;z-index:2}
+
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6vh 6vw;position:relative}
+  .hero .eyebrow{font-family:var(--serif-en);font-style:italic;letter-spacing:.35em;text-transform:uppercase;color:var(--foam);font-size:clamp(.7rem,1.4vw,.95rem);margin-bottom:2.2rem;opacity:0;animation:rise 1.2s .2s forwards}
+  .hero h1{font-weight:800;font-size:clamp(2.4rem,7.5vw,5.6rem);line-height:1.12;letter-spacing:.05em;color:var(--light);text-shadow:0 0 60px rgba(127,214,208,.2);opacity:0;animation:rise 1.2s .45s forwards}
+  .hero .sub{font-family:var(--serif-en);font-style:italic;font-size:clamp(1.05rem,3vw,1.9rem);color:var(--aqua);margin-top:1.2rem;letter-spacing:.07em;opacity:0;animation:rise 1.2s .7s forwards}
+  .hero .rule{width:1px;height:86px;background:linear-gradient(var(--aqua),transparent);margin:2.6rem 0;opacity:0;animation:grow 1.4s 1s forwards}
+  .hero .epigraph{max-width:620px;font-size:clamp(.86rem,1.7vw,1rem);color:var(--paper-dim);line-height:2.3;opacity:0;animation:rise 1.2s 1.15s forwards}
+  .hero .epigraph .en{display:block;font-family:var(--serif-en);font-style:italic;color:var(--paper-faint);font-size:.92em;margin-top:.5rem}
+  .hero .credit{margin-top:3rem;font-family:var(--sans-jp);font-weight:300;letter-spacing:.25em;font-size:.78rem;color:var(--paper-faint);opacity:0;animation:rise 1.2s 1.4s forwards}
+  .scrolldown{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--serif-en);font-style:italic;font-size:.8rem;letter-spacing:.2em;color:var(--paper-faint);opacity:0;animation:rise 1.2s 1.7s forwards,float 2.4s 2.4s ease-in-out infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes grow{from{opacity:0;height:0}to{opacity:1;height:86px}}
+  @keyframes float{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  .preface{max-width:720px;margin:0 auto;padding:9vh 7vw}
+  .tag{font-family:var(--serif-en);font-style:italic;letter-spacing:.3em;text-transform:uppercase;color:var(--aqua);font-size:.82rem;margin-bottom:1.6rem}
+  .preface p{font-size:clamp(.92rem,1.9vw,1.05rem);color:var(--paper-dim);line-height:2.35;margin-bottom:1.3rem;letter-spacing:.015em}
+
+  .toc{max-width:760px;margin:0 auto;padding:5vh 7vw}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.7rem;margin-top:2rem}
+  .toc-grid a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:3px;padding:1rem 1.2rem;color:var(--paper-dim);transition:.4s;background:rgba(29,58,92,.2)}
+  .toc-grid a:hover{border-color:var(--aqua);background:rgba(127,214,208,.07);color:var(--light);transform:translateY(-2px)}
+  .toc-grid a .n{font-family:var(--serif-en);font-style:italic;color:var(--aqua);font-size:1.05rem;letter-spacing:.1em}
+  .toc-grid a .t{display:block;font-family:var(--serif-jp);font-size:.9rem;margin-top:.25rem;letter-spacing:.03em;font-weight:500;line-height:1.5}
+
+  .song{max-width:720px;margin:0 auto;padding:7vh 7vw}
+  .song-head{margin-bottom:3rem;border-bottom:1px solid var(--line);padding-bottom:1.8rem}
+  .song-roman{font-family:var(--serif-en);font-style:italic;font-size:clamp(2.2rem,6vw,3.2rem);color:var(--tide);line-height:.9;letter-spacing:.08em}
+  .song-roman b{color:var(--aqua);font-style:normal;font-weight:600}
+  .song-title{font-family:var(--serif-jp);font-weight:700;font-size:clamp(1.25rem,3.3vw,1.85rem);margin-top:.5rem;letter-spacing:.04em;color:var(--paper)}
+  .song-title .romaji{display:block;font-family:var(--serif-en);font-style:italic;font-weight:400;font-size:.62em;color:var(--foam);margin-top:.3rem;letter-spacing:.04em}
+  .song-theme{font-family:var(--serif-en);font-style:italic;color:var(--green-sea);margin-top:.8rem;font-size:clamp(.88rem,1.8vw,1.02rem);letter-spacing:.03em;line-height:1.7}
+
+  .section-label{font-family:var(--serif-en);font-style:italic;letter-spacing:.28em;text-transform:uppercase;color:var(--aqua-soft);font-size:.74rem;margin:2.4rem 0 1.1rem;display:flex;align-items:center;gap:1rem;opacity:.9}
+  .section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  .line{margin-bottom:1.1rem}
+  .line .jp{font-family:var(--serif-jp);font-weight:500;font-size:clamp(1.02rem,2.3vw,1.2rem);color:var(--paper);letter-spacing:.04em;line-height:1.65}
+  .line .en{font-family:var(--serif-en);font-style:italic;font-size:clamp(.84rem,1.7vw,.96rem);color:var(--paper-faint);letter-spacing:.02em;margin-top:.1rem;line-height:1.5}
+  .line.eng-only .jp{font-family:var(--serif-en);font-style:italic;color:var(--aqua);font-weight:500}
+  .line.eng-only .en{display:none}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .closing{max-width:640px;margin:0 auto;padding:11vh 7vw 6vh;text-align:center}
+  .closing .mark{font-family:var(--serif-en);font-style:italic;font-size:2.2rem;color:var(--aqua)}
+  .closing p{margin-top:1.6rem;color:var(--star);line-height:2.3;font-size:clamp(1rem,2.2vw,1.2rem);font-weight:600}
+  .closing .en{font-family:var(--serif-en);font-style:italic;color:var(--foam);display:block;margin-top:.6rem;font-weight:400}
+
+  .helpline{max-width:560px;margin:2vh auto 0;padding:1.6rem 1.8rem;border:1px solid var(--line);border-radius:4px;background:rgba(12,18,38,.55);text-align:center}
+  .helpline p{font-family:var(--sans-jp);font-weight:300;font-size:.84rem;color:var(--paper-dim);line-height:2;margin:0}
+  .helpline .hl{color:var(--aqua-soft)}
+  .helpline .en{font-family:var(--serif-en);font-style:italic;color:var(--paper-faint);display:block;margin-top:.5rem;font-size:.92em}
+
+  footer{text-align:center;padding:4vh 7vw 7vh;color:var(--foam);font-family:var(--sans-jp);font-weight:300;letter-spacing:.2em;font-size:.74rem}
+  footer .b{color:var(--aqua)}
+
+  ::selection{background:rgba(127,214,208,.25);color:#070a16}
+  @media(max-width:540px){.line .en{font-size:.82rem}}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div>
+<div class="bg-glow"></div>
+<div class="stars" id="stars"></div>
+<div class="grain"></div>
+<div class="content">
+
+  <header class="hero">
+    <div class="eyebrow">A Bilingual Song Cycle &nbsp;·&nbsp; 全5曲</div>
+    <h1>内省シリーズ</h1>
+    <div class="sub">Ep 泣いても良いですか？ 〜 Questions in the Dark 〜</div>
+    <div class="rule"></div>
+    <p class="epigraph">
+      なぜ僕は、この地球(ほし)に生まれてきたのだろう。<br>
+      眠れない夜の問いは、宇宙の果てへ、海の底へと沈んでいく——<br>
+      けれど、その問いを抱けるのは、生きている者だけの特権だ。
+      <span class="en">Why was I born onto this Earth? The sleepless questions sink toward the edge of the cosmos, to the floor of the sea — yet only the living are granted the privilege of asking them.</span>
+    </p>
+    <div class="credit">大森 カエ &nbsp;／&nbsp; OMORI KAE</div>
+    <div class="scrolldown">scroll ↓</div>
+  </header>
+
+  <section class="preface reveal">
+    <div class="tag">Preface — はじめに</div>
+    <p>これは、生きる意味を問い続けた、ひとりの「僕」の五つの夜の記録です。涙の理由が分からない夜から始まり、地球の上で、宇宙の問いの中で、幻想と現実のあいだで、何度も揺れながら——それでも最後には、生まれてきたことそのものへ還っていきます。</p>
+    <p>答えは、どこにも書かれていません。でも、「誰もが同じなんだ」と気づくこと。それだけで、夜は少しだけ、明けやすくなるのかもしれません。</p>
+  </section>
+
+  <nav class="toc reveal">
+    <div class="tag">Contents — 収録曲</div>
+    <div class="toc-grid" id="tocGrid"></div>
+  </nav>
+
+  <main id="songs"></main>
+
+  <section class="closing reveal">
+    <div class="mark">✶</div>
+    <p>大人も子供も、誰もが同じなんだ。涙はいつか、乾く。
+    <span class="en">Adults and children — we're all the same. Someday, these tears will dry.</span></p>
+    <div class="helpline">
+      <p>ひとりで抱えきれない夜は、どうか声をかけてください。<br>
+      <span class="hl">よりそいホットライン　0120-279-338（24時間・通話無料）</span><br>
+      <span class="hl">いのちの電話　0570-783-556</span>
+      <span class="en">If the night feels too heavy to carry alone, please reach out. (Japan) Yorisoi Hotline 0120-279-338, available 24 hours. Outside Japan, please contact a local support line.</span></p>
+    </div>
+  </section>
+
+  <footer>
+    Ep 泣いても良いですか？ 〜Questions in the Dark〜 &nbsp;·&nbsp; <span class="b">大森 カエ</span> &nbsp;·&nbsp; 全5曲 歌詞集
+  </footer>
+
+</div>
+
+<script>
+const L=(jp,en)=>({jp,en});
+const E=(t)=>({jp:t,en:null,eng:true});
+
+const songs=[
+  {
+    roman:"Ⅰ", title:"同じなんだ", romaji:"Someday These Tears Will Dry",
+    theme:"Waking in the night to questions no one can answer — and finding that everyone, adult and child alike, carries the same.",
+    sections:[
+      {label:"Verse", lines:[
+        L("真夜中、目が覚めて","I woke in the dead of night"),
+        L("止めどなく涙が溢れた","tears overflowed endlessly"),
+        L("僕はどこに向かうのだろう？","where am I heading?"),
+        L("このまま夢も分からずに生きるのか？","will I live without ever knowing my dreams?"),
+        L("嫌なことばかり 嫌なことしかない","only unpleasant things, nothing but unpleasant things"),
+        L("楽しい時間は一瞬で泡になって","happy moments turn to bubbles in an instant"),
+        L("跡形もなく消えていく","and vanish without a trace"),
+        L("毎日は苦痛なのに","every day is painful, and yet"),
+        L("大人は「それが普通」と言う","adults say \"that's normal\""),
+        L("僕が望んだのはこんな日々じゃなかった","these aren't the days I hoped for"),
+        L("「何で産んだの？」胸の奥で叫ぶ","\"Why did you give birth to me?\" I scream deep inside"),
+      ]},
+      {label:"Chorus", lines:[
+        E("Why am I living?"),
+        L("何のために 僕は生きている？","what am I living for?"),
+        E("Does this pain have meaning?"),
+        L("この苦しさに 意味はあると言うの？","is there meaning in this suffering?"),
+        E("I ask my parents, I ask adults"),
+        L("親や大人に聞いても","when I ask my parents and the adults"),
+        E("No one answers"),
+        L("誰も答えない","no one answers"),
+        E("Why?"),
+        L("何故？","why?"),
+      ]},
+      {label:"Verse", lines:[
+        L("「生きていれば良い事がある」","\"Good things come if you keep living\""),
+        L("「良い学校、良い会社に行けば何とかなる」","\"It'll work out if you reach a good school, a good company\""),
+        L("だけどニュースでは","but on the news"),
+        L("失意に立つ大人の姿が流れている","images of despairing adults play"),
+        L("生きる意味を聞いても","even when I ask the meaning of life"),
+        L("答えない大人達","the adults who don't answer"),
+        L("僕は知ってしまった","I found it out —"),
+        L("親が真夜中 将来の不安を語っていた","my parents, at midnight, talking of their fears for the future"),
+        L("大人もまた生きる意味を知らないのかも","maybe adults don't know the meaning either"),
+        L("いつも笑っているあの先生も","even that teacher who's always smiling"),
+        L("悩んでいるのだろうか","is probably troubled too"),
+        L("誰もが悩みながら 生きていることを僕は知った","I learned that everyone lives while struggling"),
+      ]},
+      {label:"Chorus", lines:[
+        E("Why am I living?"),
+        L("何のために 僕は生きている？","what am I living for?"),
+        E("Does this pain have meaning?"),
+        L("この苦しさに 意味はあると言うの？","is there meaning in this suffering?"),
+        E("I ask my parents, I ask adults"),
+        L("親や大人に聞いても","when I ask my parents and the adults"),
+        E("No one answers"),
+        L("誰も答えない","no one answers"),
+        E("But we're all the same"),
+        L("でも 誰もが同じなんだ","but we're all the same"),
+      ]},
+      {label:"Bridge", lines:[
+        L("くだらないテレビ番組に","Adults who lean in, listening hard"),
+        L("真剣に聞き耳を立てる大人","to some trivial TV show"),
+        L("僕は そんな未来はいらない","I don't want a future like that"),
+        L("もっと違うものであって欲しい","I want it to be something more"),
+        L("楽しい事だけ出来たら、いいのに","if only I could do only the joyful things"),
+        L("でも きっと それも誰もが思ってる","but surely, everyone thinks that too"),
+      ]},
+      {label:"Chorus", lines:[
+        E("Why are we living?"),
+        L("何のために 僕らは生きている？","what are we living for?"),
+        E("Searching for meaning in this pain"),
+        L("この苦しさに 意味を探し続ける","I keep searching for meaning in this pain"),
+        E("No one has the answer"),
+        L("答えなんて 誰も持っていない","no one holds the answer"),
+        E("Adults and children"),
+        L("大人も子供も","adults and children"),
+        E("We're all the same"),
+        L("同じなんだ","we're all the same"),
+      ]},
+      {label:"Outro", lines:[
+        L("涙に濡れた枕は 月灯で乾かし","Drying the tear-soaked pillow in the moonlight"),
+        L("僕は深い眠りにつきたい","I want to fall into a deep sleep"),
+        L("何も考えず 明日を迎えるために","to meet tomorrow without a single thought"),
+        L("また明日を 迎えるために","to meet tomorrow, once again"),
+        E("Someday these tears will dry"),
+        L("涙はいつか消える","someday these tears will disappear"),
+      ]},
+    ]
+  },
+  {
+    roman:"Ⅱ", title:"How to Dress the Monster fish", romaji:"-地球の上-",
+    theme:"Two fragile hearts hiding in the moonlight grow into adults who learn to dress the monster fish — until a wedding morning at the edge of the world.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("傷を舐め肩を寄せて","Licking our wounds, leaning shoulder to shoulder"),
+        L("指先で掌広げ","opening a palm with fingertips"),
+        L("熱をたしかめるように","as if to confirm its warmth"),
+        L("舌先でなぞった","I traced it with the tip of my tongue"),
+        L("近寄る人影から","From the silhouettes drawing near"),
+        L("月灯りを頼りに","relying on the moonlight"),
+        L("物陰に隠れた","we hid in the shadows"),
+      ]},
+      {label:"Pre-Chorus", lines:[
+        E("In those days"),
+        L("僕らは世界で2人きりだった","we were the only two in the world"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("少しの衝撃で亀裂が入る心は","A heart that cracks at the slightest shock"),
+        L("優しく息を吹きかければ","if you gently breathe on it"),
+        L("砕け散る薄い手鏡","is a thin hand mirror, shattering"),
+        L("僕らはいつも","we were always"),
+        L("息が怖くて","afraid even to breathe"),
+        L("月あかりを頼りに","relying on the moonlight"),
+        L("夜を過ごした","we passed the nights"),
+      ]},
+      {label:"Pre-Chorus", lines:[
+        E("Back then"),
+        L("誰もが僕らを見て見ぬふりした","everyone pretended not to see us"),
+      ]},
+      {label:"Bridge", lines:[
+        L("壊れる心を","Our breaking hearts —"),
+        L("誰もが目を逸らし","everyone looked away"),
+        L("遠目に見る、その視線に","at those gazes watching from afar"),
+        L("僕らは咽び泣いた","we sobbed"),
+        L("世界の果て","at the edge of the world"),
+        L("楽園を夢見続けていた","we kept dreaming of paradise"),
+      ]},
+      {label:"Instrumental", lines:[
+        E("(Electric guitar solo and synth lead over jazz harmony)"),
+      ]},
+      {label:"Chorus", lines:[
+        L("地球は回り、吐息をかける","The Earth turns, and breathes"),
+        L("目眩がするほど多忙でも","whether dizzyingly busy"),
+        L("欠伸が出るほど暇でも","or idle enough to yawn"),
+        L("同じリズムで、時を刻む","it marks time in the same rhythm"),
+        L("世界が永遠に眠っても","even if the world sleeps forever"),
+        L("地球は芽吹く生命(いのち)を守る","the Earth protects the budding life"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("いつから僕らは大人になったのか","When did we become adults?"),
+        L("手鏡は姿見になり","the hand mirror became a full-length glass"),
+        L("怪魚たちの捌き方に","to the way of dressing the monster fish"),
+        L("僕らは慣れ","we grew accustomed"),
+        L("動じない心で","with an unflinching heart"),
+        L("月あかりがなくても","even without the moonlight"),
+        L("夜道を歩ける","we can walk the night roads now"),
+      ]},
+      {label:"Pre-Chorus", lines:[
+        E("Now I can"),
+        L("誰とも笑顔の仮面で話せる","talk with anyone behind a smiling mask"),
+      ]},
+      {label:"Verse 4", lines:[
+        L("壊れる心を","Our breaking hearts —"),
+        L("誰もが目を逸らし","everyone looked away"),
+        L("遠目に見る、その視線に","at those gazes watching from afar"),
+        L("僕らは咽び泣いた","we sobbed"),
+        L("世界の果て","at the edge of the world"),
+        L("楽園を夢見続けていた","we kept dreaming of paradise"),
+      ]},
+      {label:"Pre-Chorus", lines:[
+        E("In those days"),
+        L("僕らは世界で2人きりだった","we were the only two in the world"),
+      ]},
+      {label:"Chorus", lines:[
+        L("地球は回り、吐息をかける","The Earth turns, and breathes"),
+        L("目眩がするほど多忙でも","whether dizzyingly busy"),
+        L("欠伸が出るほど暇でも","or idle enough to yawn"),
+        L("同じリズムで、時を刻む","it marks time in the same rhythm"),
+        L("世界が永遠に眠っても","even if the world sleeps forever"),
+        L("地球は芽吹く生命(いのち)を守る","the Earth protects the budding life"),
+      ]},
+      {label:"Outro", lines:[
+        E("Tomorrow morning"),
+        L("君はウエディング姿","you'll be in your wedding dress"),
+        L("僕らは2人で1つに溶ける","we two will melt into one"),
+        L("地球の上","upon the Earth"),
+        L("世界の果てを見たいと","\"I want to see the edge of the world\""),
+        L("君が寝ぼけた眼で言った","you said, with sleepy eyes"),
+      ]},
+    ]
+  },
+  {
+    roman:"Ⅲ", title:"シナリオの上を歩く", romaji:"〜Someone Tell me〜",
+    theme:"Standing on Earth under an unseen destiny, asking who writes the script — and whether the answer waits somewhere out in space.",
+    sections:[
+      {label:"Verse 1", lines:[
+        E("Someone tell me"),
+        L("僕はなぜ","why do I"),
+        L("地球に生きるのか","live on this Earth?"),
+        L("分からない","I don't know"),
+        L("地球という生き物","the living thing called Earth"),
+        L("僕は","and I —"),
+        L("心という得体が知れない","a creature with something unknowable"),
+        L("感情がある生き物","called a heart, with feelings"),
+        L("それだけは分かる","that much, at least, I know"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("心で思う事は","What I think in my heart —"),
+        L("なぜそう思うのか","why do I think that way?"),
+        L("それが僕の本心なのか","is it even my true feeling?"),
+        L("地球はなぜ回るのか","why does the Earth turn?"),
+        L("宇宙の外は","beyond the universe"),
+        L("誰がいて、どこまで広がっているのか","who is there, how far does it stretch?"),
+        L("誰かが操っているのか","is someone pulling the strings?"),
+        E("Someone tell me"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        E("What's it like outside the universe?"),
+        L("僕がしたいと思った事は","the things I wanted to do"),
+        L("そうならない事ばかり","never turn out that way"),
+        L("シナリオのように","as if by a script"),
+        L("初めから決まっている","decided from the very start"),
+        L("作られた物語の上を","upon a story already written"),
+        L("僕は歩いているのか","am I just walking?"),
+      ]},
+      {label:"Chorus", lines:[
+        L("地球の上で僕は生きる","I live upon the Earth"),
+        L("生まれて泣いた瞬間から","from the moment I was born and cried"),
+        L("僕は あらがえない","I cannot resist"),
+        L("宿命の下 時を刻み始めた","under fate, I began to mark time"),
+        L("戻る事は許されない","going back is not allowed"),
+        L("進むだけの闇の道","a dark road where I can only move forward"),
+        L("光の一筋を頼りに","relying on a single ray of light"),
+        L("僕は 見えない道の先を求め歩く","I walk, seeking what lies beyond the unseen road"),
+        L("心が叫んでも 戻れない","even if my heart screams, I can't go back"),
+        L("記憶が曖昧の 白い世界","a white world of hazy memory"),
+        L("いつでも夢見ているのに","even though I'm always dreaming"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("なぜ 生まれてきたのだろう","Why was I ever born?"),
+        L("僕は静かに身を委ね","I quietly give myself over"),
+        L("海に浮かび波風を感じる","floating on the sea, feeling the waves and wind"),
+        L("遠い記憶を思う度","each time I recall a distant memory"),
+        L("心が熱くなる","my heart grows warm"),
+        L("誰かが操っているだろう","someone must be pulling the strings"),
+        L("シナリオの上を歩くしかない","I can only walk upon the script"),
+      ]},
+      {label:"Bridge", lines:[
+        L("温かい夢を見る","I see a warm dream"),
+        L("懐かしい波風に触れた時間(とき)","a time when I touched the nostalgic waves and wind"),
+        L("戻りたくても戻れない","I can't go back, however I long to"),
+        L("いつか","someday"),
+        L("僕は 波風に全てを委ねたい","I want to give everything to the waves and wind"),
+        E("Could the answer lie in space?"),
+      ]},
+      {label:"Chorus", lines:[
+        L("地球の上で僕は生きる","I live upon the Earth"),
+        L("生まれて泣いた瞬間から","from the moment I was born and cried"),
+        L("僕は あらがえない","I cannot resist"),
+        L("宿命の下 時を刻み始めた","under fate, I began to mark time"),
+        L("戻る事は許されない","going back is not allowed"),
+        L("進むだけの闇の道","a dark road where I can only move forward"),
+        L("光の一筋を頼りに","relying on a single ray of light"),
+        L("僕は 見えない道の先を夢見る","I dream of what lies beyond the unseen road"),
+        L("心が叫んでも 戻れない","even if my heart screams, I can't go back"),
+        L("だけど感じている 懐かしさ","but I feel it — that nostalgia"),
+        L("いつでも戻りたい","I always want to go back"),
+      ]},
+      {label:"Outro", lines:[
+        L("宇宙がなぜあるのか","Why does the universe exist?"),
+        L("宇宙は誰かが操っているのか","is someone controlling the universe?"),
+        L("僕の人生は 誰かが操っているのか","is someone controlling my life?"),
+        E("Someone tell me"),
+        L("誰も答えてくれない","no one answers me"),
+      ]},
+    ]
+  },
+  {
+    roman:"Ⅳ", title:"色褪せた紙飛行機", romaji:"〜同化〜",
+    theme:"Pulled toward a green sea of illusion by the voices of loved ones, struggling to stay anchored to the real world — a faded paper airplane drawn into the blue.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("ふとした瞬間","In a fleeting moment"),
+        L("頭をよぎる 緑の海","a green sea crosses my mind"),
+        L("遮る物はなく","with nothing to block it"),
+        L("心ごと春風に煽られ","my whole heart is fanned by the spring wind"),
+        L("目を閉じれば","when I close my eyes"),
+        L("聴こえる 愛しい人達の声","I hear the voices of my beloved ones"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("いつでも想う","I always think of them"),
+        L("遠い記憶の欠片達が","fragments of distant memory"),
+        L("カシスの香りで","with the scent of cassis"),
+        L("僕の身体を全て塗り替え","repaint my whole body"),
+        L("新天地に","to a new world"),
+        L("導く、愛しい人達の元へ","they guide me, to where my beloved ones are"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("人の声はステレオ","People's voices come in stereo"),
+        L("街の音は虚夢","the city's sounds, an empty dream"),
+        L("全てが幻で作られた世界","a world made entirely of illusion"),
+        L("これが現実なのに","even though this is reality"),
+        L("心も足も浮き立ち","my heart and feet float up"),
+        L("幻想を見る日々","days of seeing fantasies"),
+      ]},
+      {label:"Chorus", lines:[
+        L("逃げ惑う僕を","As I flee in panic —"),
+        L("誰か捕まえて離さないで","someone, catch me and don't let go"),
+        L("リアルな毎日に","in the real everyday"),
+        L("胸が押しつぶされ","my chest is crushed"),
+        L("息も止まり","my breath stops"),
+        L("視界もかすみ","my vision blurs"),
+        L("僕は緑の海に","I dream of being thrown"),
+        L("心ごと投げこまれる夢を見る","body and soul, into the green sea"),
+        L("幻の世界の甘美な誘い","the sweet lure of the phantom world"),
+        L("夢の世界で 僕は藻掻く","in the dream world, I struggle"),
+        L("誰か捕まえて離さないで","someone, catch me and don't let go"),
+        L("リアルな世界で生きたいと","to live in the real world —"),
+        L("心がざわつく","my heart stirs with the wish"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("いつでも想う","I always think of them"),
+        L("遠い記憶の欠片達が","fragments of distant memory"),
+        L("カシスの香りで","with the scent of cassis"),
+        L("僕の身体を全て塗り替え","repaint my whole body"),
+        L("新天地に","to a new world"),
+        L("導く、愛しい人達の元へ","they guide me, to where my beloved ones are"),
+      ]},
+      {label:"Bridge", lines:[
+        L("人混みかき分け","Pushing through the crowds"),
+        L("地下鉄で待つ","waiting in the subway"),
+        L("リアルな重機","real heavy machinery"),
+        L("行き先は、酸素不足の星","the destination — a star starved of oxygen"),
+        L("幻想が僕を誘う","the fantasy beckons me"),
+      ]},
+      {label:"Chorus", lines:[
+        L("逃げ惑う僕を","As I flee in panic —"),
+        L("誰か捕まえて離さないで","someone, catch me and don't let go"),
+        L("リアルな毎日に","in the real everyday"),
+        L("胸が押しつぶされ","my chest is crushed"),
+        L("息も止まり","my breath stops"),
+        L("視界もかすみ","my vision blurs"),
+        L("僕は緑の海に","I dream of being thrown"),
+        L("心ごと投げこまれる夢を見る","body and soul, into the green sea"),
+        L("幻の世界の甘美な誘い","the sweet lure of the phantom world"),
+        L("夢の世界で 僕は藻掻く","in the dream world, I struggle"),
+        L("誰か捕まえて離さないで","someone, catch me and don't let go"),
+        L("リアルな世界で生きたいと","to live in the real world —"),
+        L("心がざわつく","my heart stirs with the wish"),
+      ]},
+      {label:"Outro", lines:[
+        L("僕を呼ぶ 愛しい人達","My beloved ones, calling me"),
+        L("声を辿れば","if I follow their voices"),
+        L("僕は逃げられない","I cannot escape"),
+        L("二度と戻れない 虚夢","an empty dream I can never return from"),
+        L("色褪せた紙飛行機が","a faded paper airplane"),
+        L("青い空に吸い込まれる","is drawn up into the blue sky"),
+      ]},
+    ]
+  },
+  {
+    roman:"Ⅴ", title:"僕の生きる場所", romaji:"-Waiting in line in heaven-",
+    theme:"Longing for the bridge to Heaven to escape this world — until ancestors answer that truth belongs only to the living, and rebirth is the privilege worth waiting for.",
+    sections:[
+      {label:"Intro", lines:[
+        L("幸せな人には","Happy people cannot understand"),
+        L("分からない","they cannot see"),
+        L("僕の苦しみ","my suffering"),
+        L("僕の願い","my plea"),
+        L("今すぐに","right now, this instant —"),
+        L("捨てたい世界","a world I want to abandon"),
+        L("意味のない現世","this meaningless life"),
+      ]},
+      {label:"Verse 1", lines:[
+        L("Heavenに繋がる架け橋","The bridge that leads to Heaven"),
+        L("その向こうには","and beyond it"),
+        L("安堵の世界","a world of relief"),
+        L("そんな夢が","such a dream"),
+        L("頭をよぎる","crosses my mind"),
+        E("I completely believed"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("綺麗な言葉は","Beautiful words"),
+        L("オウムが真似る","that parrots mimic"),
+        L("誰かのもの","belonging to someone else"),
+        L("真意は","their true meaning —"),
+        L("偽善者の唾","a hypocrite's spit"),
+        L("絡みつき","clinging tight"),
+        L("悪臭を放つ","giving off a stench"),
+        E("Relentlessly won't let go"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("僕は","I was"),
+        L("天国に夢見ていた","dreaming of Heaven above"),
+        L("華麗な世界が","that a brilliant world"),
+        L("あると信じ","existed, I believed"),
+        L("永遠に広がる","spreading on forever"),
+        L("優美な者達の","where I longed to dissolve"),
+        L("宴に溶けたかった","into the feast of graceful souls"),
+      ]},
+      {label:"Chorus", lines:[
+        L("夢の中","In the dream"),
+        L("何もない広間には","an empty hall"),
+        L("人影はなく","no figure, no one near"),
+        L("心は でも","my heart, even so"),
+        L("安堵に満ち","filled with relief"),
+        L("誰もいない","no one there"),
+        L("虚無の世界","a world of void"),
+        L("会いたい人","the ones I want to meet"),
+        L("行きたい場所","the places I want to go"),
+        L("全ては","everything"),
+        L("宙に浮く","floats in the air"),
+        L("白いシャボン玉の中","inside white soap bubbles"),
+        L("手に届かない","beyond my reach"),
+        L("もどかしい世界","a maddening world"),
+        L("自由なのに","though I am free"),
+        L("欲しいものは","what I want"),
+        L("幻想の世界","is only an illusion"),
+        E("Lonely World"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("瞼に差し込む 朝陽","Morning sun pierces through my eyelids"),
+        L("目が覚め 気づく","I wake and realize"),
+        L("とめどなく流れる","flowing without end"),
+        L("理由を失った涙","tears that have lost their reason"),
+        L("行きたい場所","the place I want to go —"),
+        L("それは Heavenなのか","is it Heaven?"),
+        E("I didn't understand."),
+      ]},
+      {label:"Bridge 1", lines:[
+        L("嘘と狡さで","With lies and cunning"),
+        L("塗り固められた","plastered over"),
+        L("ジャングルの世界","a jungle of a world"),
+        L("蟻地獄が潜む","where antlion pits lie hidden"),
+        L("砂地を踏み分け","wading through the shifting sand"),
+        L("呼吸が止まりそうな","barely able to breathe"),
+        L("この世界から","from this world"),
+        L("僕は脱したかった","I wanted to escape"),
+        E("I wanna go to Heaven"),
+      ]},
+      {label:"Chorus", lines:[
+        L("現世から","From this present life"),
+        L("抜け出した向こうに","beyond where I'd broken free"),
+        L("安堵広がる世界が","a world of spreading relief"),
+        L("両手広げていると","waiting with open arms"),
+        L("信じていた","I believed"),
+        L("夢の中は","but in the dream"),
+        L("無情な現実","a merciless reality"),
+        L("願ったものは","what I wished for"),
+        L("白いシャボン玉の中","inside white soap bubbles"),
+        L("広がる幻想","spreading illusions"),
+        L("苦難は","hardship"),
+        L("追いかけてくる","keeps chasing me"),
+        L("僕が見たい","the world I want to see"),
+        L("世界は その先にあるのか","is it somewhere beyond?"),
+        L("それすらも","even that"),
+        L("不確かな事実","an uncertain truth"),
+        E("A World of Relief"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("Heavenの架け橋","Heaven's bridge"),
+        L("その先には","and beyond it"),
+        L("シャボンの幻想が","bubble illusions"),
+        L("枯れない涙","tears that never dry"),
+        L("届かない夢を見せるけど","show me unreachable dreams, and yet —"),
+        L("走りきった","I ran the whole way"),
+        L("この先の未来にしか","only in the future ahead"),
+        L("Heavenはない","does Heaven lie"),
+        L("夢が言った","the dream told me"),
+      ]},
+      {label:"Chorus", lines:[
+        L("感じる","I feel it now"),
+        L("人の狡さや汚さ","human cunning, human filth"),
+        L("交わす術は","the art of dealing with it"),
+        L("時間の神が","the god of time"),
+        L("教えてくれる","will teach me"),
+        E("In a VIP seat"),
+        L("目が覚めて 知る","I wake, and understand"),
+      ]},
+      {label:"Bridge 2", lines:[
+        E("Ancestors from the distant past"),
+        L("あなた達は言う","you tell me —"),
+        L("時が来るまで","until the time arrives"),
+        L("足掻き 経験を積み","struggle, gather experience"),
+        L("コーヒーのエキスを","let the essence of coffee"),
+        L("魂に注ぎ","pour into your soul"),
+        L("苦笑いしながら","and with a wry smile"),
+        L("話そう と","let's talk, you say"),
+        L("この世の理は","the reason of this world"),
+        L("生きた者達の","belongs to those who have lived"),
+        L("かけがえのない 特権","an irreplaceable privilege"),
+        L("天国にはない理","a truth not found in Heaven"),
+        L("だから 人は生まれ変わる","and so, people are reborn"),
+      ]},
+      {label:"Outro", lines:[
+        L("たとえ 辛くても","Even if it's painful"),
+        L("現世にしかない","found only in this present life"),
+        L("真実を知るため","to know that truth"),
+        L("順番待ちし","I wait in line"),
+        L("生まれ変わる日を","for the day of rebirth"),
+        L("待ち焦がれている","I yearn, and wait"),
+        E("I was born by a one in 70 trillion miracle"),
+      ]},
+    ]
+  },
+];
+
+// starfield (top cosmos region only)
+const sf=document.getElementById('stars');
+for(let i=0;i<70;i++){
+  const s=document.createElement('i');
+  const size=Math.random()*2+0.6;
+  s.style.width=size+'px';s.style.height=size+'px';
+  s.style.left=(Math.random()*100)+'%';
+  s.style.top=(Math.random()*60)+'%';
+  s.style.animationDelay=(Math.random()*4)+'s';
+  sf.appendChild(s);
+}
+
+// TOC
+const tg=document.getElementById('tocGrid');
+songs.forEach(s=>{
+  const a=document.createElement('a');
+  a.href='#song'+s.roman;
+  a.innerHTML='<span class="n">'+s.roman+'</span><span class="t">'+s.title+'</span>';
+  tg.appendChild(a);
+});
+
+// songs
+const main=document.getElementById('songs');
+songs.forEach(s=>{
+  const sec=document.createElement('section');
+  sec.className='song';
+  sec.id='song'+s.roman;
+  const romaji=s.romaji?('<span class="romaji">'+s.romaji+'</span>'):'';
+  let html='<div class="song-head reveal"><div class="song-roman"><b>'+s.roman+'</b></div><div class="song-title">'+s.title+romaji+'</div><div class="song-theme">'+s.theme+'</div></div>';
+  s.sections.forEach(sc=>{
+    html+='<div class="reveal"><div class="section-label">'+sc.label+'</div>';
+    sc.lines.forEach(ln=>{
+      if(ln.eng){
+        html+='<div class="line eng-only"><div class="jp">'+ln.jp+'</div></div>';
+      }else{
+        html+='<div class="line"><div class="jp">'+ln.jp+'</div><div class="en">'+ln.en+'</div></div>';
+      }
+    });
+    html+='</div>';
+  });
+  sec.innerHTML=html;
+  main.appendChild(sec);
+});
+
+// reveal
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.1, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
