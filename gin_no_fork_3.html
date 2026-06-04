@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銀のフォーク 〜Heartbreak〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+  :root{
+    --ink: #d6d8dc;
+    --ink-soft: #9a9ca2;
+    --ink-faint: #61636a;
+    --silver: #c7ccd4;        /* 銀 */
+    --silver-bright: #e8ecf2; /* 光るフォーク */
+    --diamond: #a8c4d4;       /* ダイヤの冷たい青 */
+    --blood: #7a4a52;         /* 血走った瞳の沈んだ赤 */
+    --bg-top: #07080b;        /* コンクリートの闇 */
+    --bg-mid: #0d0f14;
+    --bg-low: #12141a;
+    --steel: #1a1d24;
+    --line: rgba(199,204,212,0.16);
+    --en: #7f828a;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.05; letter-spacing: 0.04em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* 冷たい摩天楼の夜（固定背景） */
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .grad{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-low) 75%, var(--steel) 100%);
+  }
+  /* 遠いビルの窓明かり（冷たい点光） */
+  .window{
+    position:absolute; width:2px; height:3px;
+    background: rgba(168,196,212,0.5); opacity:0.4;
+    animation: flick 7s infinite ease-in-out;
+  }
+  @keyframes flick{ 0%,100%{opacity:0.1;} 50%{opacity:0.55;} }
+  /* 上方から差す冷たい光の筋 */
+  .cold-beam{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:50vw; height:50vh;
+    background: linear-gradient(180deg, rgba(199,204,212,0.10) 0%, transparent 100%);
+    filter: blur(40px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 660px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  /* タイトル */
+  .title{ text-align:center; margin-bottom: 11vh; }
+  .title .num{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.4rem; letter-spacing:0.3em; color: var(--silver);
+    display:block; margin-bottom:0.8em; opacity:0.8;
+  }
+  .title h1{
+    font-weight:500; font-size: clamp(1.9rem, 6vw, 2.8rem);
+    letter-spacing: 0.16em; color: var(--silver-bright);
+    text-shadow: 0 0 30px rgba(199,204,212,0.3), 0 0 2px rgba(232,236,242,0.6);
+    line-height:1.4;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.1rem; letter-spacing:0.2em; color: var(--diamond);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.8em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  /* 小さな銀のフォーク */
+  .fork-icon{
+    display:block; width: 26px; height: auto; margin: 4vh auto 0;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 8px rgba(199,204,212,0.4));
+  }
+
+  /* 歌詞 */
+  .lyric{ font-size: 1.05rem; line-height: 2.3; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.76rem; letter-spacing:0.2em; color: var(--ink-faint);
+    display:block; margin: 2.8em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  .lyric p{ margin:0; white-space:pre-line; }
+  /* 英語＝権力者の言語：冷たい銀色 */
+  .lyric .en{
+    color: var(--diamond); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+    letter-spacing:0.03em;
+  }
+  /* 鍵となる固有名詞は、あえて何も装飾せず本文に沈める（気づく人だけ気づく） */
+
+  .divider{
+    text-align:center; color:var(--silver); opacity:0.35;
+    font-size:0.9rem; letter-spacing:0.55em; margin: 4.5vh 0;
+  }
+
+  footer{
+    margin-top: 11vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--diamond); font-size:1.15rem; letter-spacing:0.08em;
+    text-shadow: 0 0 22px rgba(168,196,212,0.3);
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="grad"></div>
+  <div class="cold-beam"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <span class="num">III</span>
+    <h1>銀のフォーク</h1>
+    <span class="en">Heartbreak</span>
+    <div class="by">大森 カエ</div>
+    <svg class="fork-icon" viewBox="0 0 40 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="silverGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#7c828c"/>
+          <stop offset="45%" stop-color="#e8ecf2"/>
+          <stop offset="55%" stop-color="#e8ecf2"/>
+          <stop offset="100%" stop-color="#7c828c"/>
+        </linearGradient>
+      </defs>
+      <g fill="url(#silverGrad)" stroke="rgba(232,236,242,0.5)" stroke-width="0.4">
+        <!-- 4本の歯 -->
+        <rect x="9"  y="6" width="2.2" height="34" rx="1"/>
+        <rect x="15" y="4" width="2.2" height="36" rx="1"/>
+        <rect x="22" y="4" width="2.2" height="36" rx="1"/>
+        <rect x="28" y="6" width="2.2" height="34" rx="1"/>
+        <!-- 歯を束ねる首 -->
+        <path d="M8 38 Q20 50 31 38 L29 46 Q20 54 10 46 Z"/>
+        <!-- 柄 -->
+        <rect x="18.2" y="50" width="3.0" height="74" rx="1.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>忘れかけていた
+夏の景色
+あの頃　見たもの
+どこまでが事実だったのか
+誰に聞けばいい？
+親も友も　横に振る首
+覚えているのは
+鼻を擽る　生暖かい風</p>
+<span class="sec">Verse 2</span><p>エイリアン達と
+作る世界を
+銀のフォークが奏でる
+耳に響く不協和音
+コンクリート壁
+見えない傷跡を残し
+心を抉る
+<span class="en">The sound of concrete and metal rubbing</span></p>
+<span class="sec">Pre-chorus</span><p>打ちつける
+胸の鼓動
+残像する　息遣い
+変わらない　人の命</p>
+<span class="sec">Chorus 1</span><p>肌や眼の色
+異食行為は　<span class="en">Justifiable act</span>
+片膝立てて　蔑む目
+公言は　<span class="en">Exercise of rights</span>
+誰もが夢見て
+誰もが期待して
+明るい明日を　思い描き
+変貌する　世界を託すけど
+人は　知らない
+カーテンコールの裏世界
+嘲笑う　権利行使者
+道行く人々の
+決死の思いを　糧にする
+血走った瞳に　誰もが
+サイケデリック
+偶像視する</p>
+<span class="sec">Verse 3</span><p>アパルトヘイト
+声高らかに
+パーティー会場で
+否定演説
+心押し殺し
+エイリアン達は
+シャンパン片手に
+獲物を狙う
+浮かべるは　薄ら笑い</p>
+<span class="sec">Bridge 1</span><p>モニター越しの　笑顔
+隠された心　暴くため
+同調するトーンで
+交わす　シャンパン</p>
+<span class="sec">Chorus 2</span><p>全身に立つ
+鳥肌と嫌悪感
+銀のフォーク翳して
+ミッドタウン　めがけ
+唾吐き捨てる　夜
+喉元　乾く
+真夜中の街
+全ての期待が
+裏切られる現実前にし
+ほくそ笑む　<span class="en">Rights holders</span>
+人の夢は
+いつでも　温かなスープ
+喉元伝い　ダイヤへ
+ホロコースト
+歴史語る涙声
+同情と欲望
+エイリアン達の　晩餐会
+人の目は
+義眼へ化す</p>
+<span class="sec">Bridge 2</span><p>欲望の塊　コンクリート壁
+人の声かき集め　銀フォーク
+掻き散らす　夜
+全身に走る　鳥肌</p>
+<span class="sec">Outro</span><p>気づけず
+濁り水　注がれるコップ
+喉元潤す　人々
+全身走る毒に侵される　夜
+<span class="en">Everyone is deceived</span></p>
+  </div>
+
+  <footer>
+    <span class="en">Everyone is deceived.</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  // ビルの窓明かりを縦に積む（摩天楼の冷たい点光）
+  for(let i=0;i<90;i++){
+    const w = document.createElement('div');
+    w.className='window';
+    w.style.left = Math.random()*100 + '%';
+    w.style.top = Math.random()*100 + '%';
+    w.style.animationDelay = (Math.random()*7) + 's';
+    if(Math.random()>0.7){ w.style.height = '2px'; }
+    scene.appendChild(w);
+  }
+</script>
+
+</body>
+</html>
