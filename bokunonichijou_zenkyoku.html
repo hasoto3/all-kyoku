@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>僕の日常 〜Achlys and Hades' Love Story〜 全曲歌詞集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0f;
+    --ink2:#12121a;
+    --mist:#1c1c28;
+    --fog:#2a2a3a;
+    --rose:#e6a9bb;
+    --rose-soft:#d28aa0;
+    --rose-glow:rgba(230,169,187,.18);
+    --steel:#8da3b8;
+    --steel-deep:#4a5a6e;
+    --paper:#e9e6ee;
+    --paper-dim:#a39fb0;
+    --paper-faint:#6f6b7e;
+    --line:rgba(230,169,187,.16);
+    --serif-jp:"Shippori Mincho B1",serif;
+    --serif-en:"Cormorant Garamond",serif;
+    --sans-jp:"Zen Kaku Gothic New",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--serif-jp);
+    line-height:1.85;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* atmospheric layers */
+  .bg-fog{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1200px 700px at 75% -10%, rgba(230,169,187,.10), transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, rgba(74,90,110,.16), transparent 60%),
+      radial-gradient(700px 500px at 50% 50%, rgba(42,42,58,.5), transparent 70%);
+  }
+  .grain{
+    position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 8s steps(6) infinite;
+  }
+  @keyframes grain{0%{transform:translate(0,0)}50%{transform:translate(-3%,2%)}100%{transform:translate(2%,-2%)}}
+  .content{position:relative;z-index:2}
+
+  /* ---- HERO ---- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:6vh 6vw;position:relative;
+  }
+  .hero .eyebrow{
+    font-family:var(--serif-en);font-style:italic;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--rose);font-size:clamp(.7rem,1.4vw,.95rem);margin-bottom:2.2rem;opacity:0;
+    animation:rise 1.2s .2s forwards;
+  }
+  .hero h1{
+    font-weight:800;font-size:clamp(2.4rem,7vw,5.6rem);line-height:1.18;letter-spacing:.04em;
+    color:var(--paper);text-shadow:0 0 50px rgba(230,169,187,.15);opacity:0;animation:rise 1.2s .45s forwards;
+  }
+  .hero .sub{
+    font-family:var(--serif-en);font-style:italic;font-size:clamp(1.1rem,3vw,2rem);
+    color:var(--rose-soft);margin-top:1.1rem;letter-spacing:.06em;opacity:0;animation:rise 1.2s .7s forwards;
+  }
+  .hero .rule{width:1px;height:90px;background:linear-gradient(var(--rose),transparent);margin:2.6rem 0;opacity:0;animation:grow 1.4s 1s forwards}
+  .hero .epigraph{
+    max-width:640px;font-family:var(--serif-jp);font-weight:400;font-size:clamp(.86rem,1.7vw,1rem);
+    color:var(--paper-dim);line-height:2.2;letter-spacing:.02em;opacity:0;animation:rise 1.2s 1.15s forwards;
+  }
+  .hero .epigraph .en{display:block;font-family:var(--serif-en);font-style:italic;color:var(--paper-faint);font-size:.92em;margin-top:.4rem}
+  .hero .credit{margin-top:3rem;font-family:var(--sans-jp);font-weight:300;letter-spacing:.25em;font-size:.78rem;color:var(--paper-faint);opacity:0;animation:rise 1.2s 1.4s forwards}
+  .scrolldown{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--serif-en);font-style:italic;font-size:.8rem;letter-spacing:.2em;color:var(--paper-faint);opacity:0;animation:rise 1.2s 1.7s forwards,float 2.4s 2.4s ease-in-out infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes grow{from{opacity:0;height:0}to{opacity:1;height:90px}}
+  @keyframes float{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---- PREFACE ---- */
+  .preface{max-width:760px;margin:0 auto;padding:9vh 7vw}
+  .preface .tag{font-family:var(--serif-en);font-style:italic;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);font-size:.82rem;margin-bottom:1.6rem}
+  .preface p{font-size:clamp(.92rem,1.9vw,1.06rem);color:var(--paper-dim);line-height:2.35;margin-bottom:1.3rem;letter-spacing:.015em}
+  .preface .warn{
+    border:1px solid var(--line);border-left:2px solid var(--rose);background:rgba(28,28,40,.5);
+    padding:1.5rem 1.7rem;margin-top:2.4rem;border-radius:2px;
+  }
+  .preface .warn p{font-size:.9rem;color:var(--paper-faint);margin:0;line-height:2.1}
+  .preface .warn .en{font-family:var(--serif-en);font-style:italic;display:block;margin-top:.5rem;color:var(--paper-faint)}
+
+  /* ---- VOLUME DIVIDER ---- */
+  .vol{max-width:880px;margin:0 auto;padding:7vh 7vw 2vh;text-align:center}
+  .vol .roman{font-family:var(--serif-en);font-size:clamp(3rem,8vw,5rem);color:var(--rose);line-height:1;letter-spacing:.05em;text-shadow:0 0 40px var(--rose-glow)}
+  .vol .vname{font-family:var(--serif-jp);font-weight:700;font-size:clamp(1.2rem,3vw,1.7rem);margin-top:.6rem;letter-spacing:.18em;color:var(--paper)}
+  .vol .vdesc{font-family:var(--serif-en);font-style:italic;color:var(--paper-faint);margin-top:.5rem;letter-spacing:.08em;font-size:.95rem}
+  .vol .vline{width:60px;height:1px;background:var(--rose-soft);margin:1.6rem auto 0;opacity:.5}
+
+  /* ---- SONG ---- */
+  .song{max-width:760px;margin:0 auto;padding:7vh 7vw}
+  .song-head{margin-bottom:3rem;border-bottom:1px solid var(--line);padding-bottom:1.8rem;position:relative}
+  .song-no{font-family:var(--serif-en);font-style:italic;font-size:clamp(2.6rem,7vw,4rem);color:var(--fog);line-height:.8;letter-spacing:.02em}
+  .song-no b{color:var(--rose);font-style:normal;font-weight:600}
+  .song-title{font-family:var(--serif-jp);font-weight:700;font-size:clamp(1.35rem,3.6vw,2rem);margin-top:.4rem;letter-spacing:.06em;color:var(--paper)}
+  .song-theme{font-family:var(--serif-en);font-style:italic;color:var(--steel);margin-top:.7rem;font-size:clamp(.9rem,1.9vw,1.05rem);letter-spacing:.03em;line-height:1.7}
+
+  .section-label{
+    font-family:var(--serif-en);font-style:italic;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--rose-soft);font-size:.74rem;margin:2.4rem 0 1.1rem;display:flex;align-items:center;gap:1rem;opacity:.9;
+  }
+  .section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  .line{margin-bottom:1.15rem}
+  .line .jp{font-family:var(--serif-jp);font-weight:500;font-size:clamp(1.02rem,2.3vw,1.22rem);color:var(--paper);letter-spacing:.04em;line-height:1.65}
+  .line .en{font-family:var(--serif-en);font-style:italic;font-size:clamp(.84rem,1.7vw,.96rem);color:var(--paper-faint);letter-spacing:.02em;margin-top:.12rem;line-height:1.5}
+  .line.eng-only .jp{font-family:var(--serif-en);font-style:italic;color:var(--rose);font-weight:500}
+  .line.eng-only .en{display:none}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---- NAV ---- */
+  .toc{max-width:760px;margin:0 auto;padding:5vh 7vw}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:2rem}
+  .toc-grid a{
+    display:block;text-decoration:none;border:1px solid var(--line);border-radius:3px;padding:1rem 1.1rem;
+    color:var(--paper-dim);transition:.4s;background:rgba(28,28,40,.35)
+  }
+  .toc-grid a:hover{border-color:var(--rose-soft);background:rgba(230,169,187,.06);color:var(--paper);transform:translateY(-2px)}
+  .toc-grid a .n{font-family:var(--serif-en);font-style:italic;color:var(--rose);font-size:1.3rem}
+  .toc-grid a .t{display:block;font-family:var(--serif-jp);font-size:.86rem;margin-top:.2rem;letter-spacing:.04em}
+
+  /* ---- OUTRO ---- */
+  .closing{max-width:680px;margin:0 auto;padding:10vh 7vw;text-align:center}
+  .closing .mark{font-family:var(--serif-en);font-style:italic;font-size:2.2rem;color:var(--rose);letter-spacing:.1em}
+  .closing p{margin-top:1.6rem;color:var(--paper-dim);line-height:2.3;font-size:.95rem}
+  .closing .en{font-family:var(--serif-en);font-style:italic;color:var(--paper-faint);display:block;margin-top:.5rem}
+  footer{text-align:center;padding:4vh 7vw 7vh;color:var(--paper-faint);font-family:var(--sans-jp);font-weight:300;letter-spacing:.2em;font-size:.74rem}
+  footer .b{color:var(--rose-soft)}
+
+  ::selection{background:var(--rose-glow);color:#fff}
+  @media(max-width:540px){.line .en{font-size:.82rem}}
+</style>
+</head>
+<body>
+<div class="bg-fog"></div>
+<div class="grain"></div>
+<div class="content">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">A Bilingual Song Cycle &nbsp;·&nbsp; 全8曲</div>
+    <h1>僕の日常</h1>
+    <div class="sub">〜 Achlys and Hades' Love Story 〜</div>
+    <div class="rule"></div>
+    <p class="epigraph">
+      アクリュス —— 瀕死の者の目に覆いかぶさる、死の霧の女神。<br>
+      その傍らには、いつも冥府の王ハデスがいる。<br>
+      これは、彼らに見守られた僕の、ごく普通の日常の記録。
+      <span class="en">Achlys, goddess of the death-mist that veils the dying. Hades, ever at her side. This is the record of my ordinary days — watched over by them both.</span>
+    </p>
+    <div class="credit">大森 カエ &nbsp;／&nbsp; OMORI KAE</div>
+    <div class="scrolldown">scroll ↓</div>
+  </header>
+
+  <!-- PREFACE -->
+  <section class="preface reveal">
+    <div class="tag">Preface — はじめに</div>
+    <p>この物語は、僕の記憶であり、たくさんの人たちの記憶でもあります。こういう家族は、ドラマの中の作り話だと思われがちです。でも僕は、夢でもフィクションでもない、現実に今を生きている者です。</p>
+    <p>救急の現場でも、慢性期でも、急性期でも、僕はこういう家族を見てきました。そして、その大半が、自分たちを「異常な家族」だとは思っていません。それくらい、これはありふれて、現実に、起きていることなのです。</p>
+    <p>あなたの日常と、僕たちの日常は、同じですか。違いますか。あなたがどう生きるかは、あなた自身の心に、じっくりと聞いて決めてほしいと思います。</p>
+    <div class="warn">
+      <p>※ この曲群は、辛い人には辛く、分からない人には分からないかもしれません。聴いていて心が苦しくなったら、どうか無理をせず、視聴をやめてください。また聴きたくなった時に、戻ってきてくれたら嬉しいです。
+      <span class="en">If listening becomes painful, please stop — and come back when you feel ready.</span></p>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc reveal">
+    <div class="tag" style="font-family:var(--serif-en);font-style:italic;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);font-size:.82rem;">Contents — 収録曲</div>
+    <div class="toc-grid" id="tocGrid"></div>
+  </nav>
+
+  <main id="songs"></main>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <div class="mark">✦</div>
+    <p>世の中は、汚いことばかり。でも、優しい人もいる。友もいる。<br>僕は、自分の生き方をいつも考えながら、それでも前に進んでいく。
+    <span class="en">The world is full of filth. But there are gentle people too. And a friend. I keep thinking about how to live — and still, I walk on.</span></p>
+    <p style="margin-top:2.4rem">僕は、美味しい物を食べる。好きな所へも行く。<br>僕が自由に楽しむことを、咎められる人は誰もいない。<br>誰もが、自分の人生を、自分なりに過ごせる権利がある。<br>だから——あなたも、自分の人生を大切に、自分のために歩んでほしい。
+    <span class="en">I eat good food. I go where I want. No one can blame me for enjoying my freedom. Everyone has the right to live their own life, their own way. So — please, treasure your life, and walk it for yourself.</span></p>
+  </section>
+
+  <footer>
+    僕の日常 〜Achlys and Hades' Love Story〜 &nbsp;·&nbsp; <span class="b">大森 カエ</span> &nbsp;·&nbsp; 全8曲 歌詞集
+  </footer>
+
+</div>
+
+<script>
+const L = (jp,en)=>({jp,en});
+const E = (txt)=>({jp:txt,en:null,eng:true}); // English-only line
+
+const songs = [
+  {
+    no:1, vol:1,
+    title:"コンクリートの箱",
+    theme:"School, betrayal, and a true friend — the beginning of a dark yet hopeful journey.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("朝焼けが空に滲む中","As the morning glow spreads across the sky"),
+        L("大人達に紛れ","Blending in with the adults"),
+        L("僕は","I"),
+        L("コンクリートの箱を目指した","Headed toward the concrete box"),
+        L("部活という仲間","Friends in club activities"),
+        L("クラスメイトという仲間が待つ","Friends called classmates waiting"),
+        L("その場所へ","At that place"),
+        E("A meaningless world"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("あの頃から","Since those days"),
+        L("何でも話せる友がいた","I had a friend I could tell anything"),
+        L("ただそれだけで","Just that alone"),
+        L("僕は 生きていられた","Could keep living"),
+        E("The present moment"),
+        L("心の内を明かせない日々","Days when I couldn't reveal my heart"),
+        L("友にしか打ち明けない秘密","Secrets I told only to my friend"),
+        L("抱えて生きていた","I lived carrying them"),
+      ]},
+      {label:"Bridge 1", lines:[
+        L("僕は歪んで生きていた","I lived distorted"),
+        L("汚い心で","With a dirty heart"),
+        L("愛想笑いを振り撒く日々","Days of scattering fake smiles"),
+      ]},
+      {label:"Chorus", lines:[
+        L("友達と言っていた狐を信じ","I believed the fox I called a friend"),
+        L("秘密を打ち明けた過去の自分","My past self who revealed my secrets"),
+        L("気が付けば","Before I knew it"),
+        L("誰もが秘密を知っていた","Everyone knew my secrets"),
+        E("I can't trust anyone"),
+        L("信じていたのに","Even though I trusted"),
+        L("悲しくて 眠れない夜","Sad, sleepless nights"),
+        L("アキュリスが微笑み","Achlys smiled"),
+        L("僕に手を差し伸べ囁いた","Reached out to me and whispered"),
+        E("Come here"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("コンクリートに","To the concrete"),
+        L("行く事をやめた","I stopped going"),
+        L("初めての仮病","My first fake illness"),
+        L("心の内は","Inside my heart"),
+        L("茨が絡み合い","Thorns intertwined"),
+        L("鼓動は静かだった","The heartbeat was quiet"),
+        E("The heartbeat was quiet"),
+      ]},
+      {label:"Chorus", lines:[
+        L("秘密は隠し通す","I'll keep the secret hidden"),
+        L("僕はあの日","That day, I"),
+        L("神に誓った","Swore to God"),
+        L("声掛けられ笑われた","Called out to and laughed at"),
+        E("I can't trust anyone"),
+        L("あの日の声が","The voices from that day"),
+        L("走馬灯になって襲う夜","Nights when they attack like a revolving lantern"),
+        L("アキュリスの手を","Achlys's hand"),
+        L("僕はためらった","I hesitated"),
+      ]},
+      {label:"Bridge 2", lines:[
+        L("何でも話せる友が","A friend I could tell anything"),
+        L("僕の前に現れた","Appeared before me"),
+        L("それだけで世界は","Just that alone, the world"),
+        L("広く輝いて見えた","Seemed vast and shining"),
+        E("A vast world shining in seven colors"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("大人も知らない僕の心","My heart that even adults don't know"),
+        L("友と語る","Talking with my friend"),
+        L("大人社会は","Adult society is"),
+        L("汚さと愚弄まみれの","Covered in filth and mockery"),
+        L("ダッシュボード","Dashboard"),
+        E("Dashboards are scattered"),
+        L("クラスメイトは知らなかった","Classmates didn't know"),
+      ]},
+      {label:"Outro", lines:[
+        L("友と練る計画は","The plan we made together"),
+        L("この世界の捨て方","How to abandon this world"),
+        L("何処に行くかは","Where to go"),
+        E("It hasn't been decided yet"),
+        L("僕も未来も","Both me and the future"),
+        L("歪んで見えた","Looked distorted"),
+        L("見渡すかぎり 広く","As far as the eye can see, vast"),
+      ]},
+    ]
+  },
+  {
+    no:2, vol:1,
+    title:"逃避計画",
+    theme:"Planning to escape a broken life with a best friend — dreaming of a new world far away.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("コンクリートの中","Inside the concrete"),
+        L("人の息遣い","People's breathing"),
+        L("寄せ合う肩","Shoulders pressed together"),
+        L("黒板に並ぶ文字","Letters lined up on the blackboard"),
+        L("息詰まる空間に","In the suffocating space"),
+        L("窓からの日差しが","Sunlight from the window"),
+        L("目に焼き付く","Burns into my eyes"),
+        E("I want to jump out right now"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("放課後 沈む夕日","After school, the setting sun"),
+        L("店に立ち寄り","Stopping by a store"),
+        L("ワンコインで","With one coin"),
+        L("食べ物を求める","Seeking food"),
+        L("温かい食卓は","A warm dinner table"),
+        L("遠い記憶の果て","At the end of distant memories"),
+        L("頭をよぎる","Crosses my mind"),
+        E("The family laughing together"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("シンク下には","Under the sink"),
+        L("いつでも","Always"),
+        E("cooking sake"),
+      ]},
+      {label:"Chorus", lines:[
+        L("誰も信じない","I trust no one"),
+        L("友だけが分かっている","Only my friend understands"),
+        L("それだけでいい","That's enough"),
+        L("世界は広い","The world is vast"),
+        L("遠い地には","In distant lands"),
+        L("僕らを知らない人達","People who don't know us"),
+        L("友と二人","Just the two of us"),
+        L("計画を練る","Making plans"),
+        L("新天地を手にするため","To obtain a new land"),
+        L("友以外は捨てる","Abandon everything except my friend"),
+        E("That's what brings the greatest happiness."),
+      ]},
+      {label:"Verse 3", lines:[
+        L("秘密を暴き笑う","Exposing secrets and laughing"),
+        L("クラスメイト達","Classmates"),
+        L("アキュリスと","Achlys and"),
+        L("ハデスが今宵","Hades tonight"),
+        L("得意げに","Proudly"),
+        L("ダンスを披露する","Perform their dance"),
+        L("星達は物陰隠れ","The stars hide behind things"),
+        L("呆れ顔で見る","Watching with exasperated faces"),
+        L("2人は気付かない","The two don't notice"),
+      ]},
+      {label:"Bridge", lines:[
+        L("遠く離れた場所に","In a place far away"),
+        L("僕らは夢を抱いた","We held a dream"),
+        L("コンクリートの中には","Inside the concrete"),
+        L("温かい手を差し伸べる","Reaching out warm hands"),
+        L("クラスメイト達","Classmates"),
+        L("泣きそうな顔が","A face about to cry"),
+        L("笑顔になる母","Mother's face becomes a smile"),
+      ]},
+      {label:"Chorus", lines:[
+        L("誰も信じない","I trust no one"),
+        L("友だけが分かっている","Only my friend understands"),
+        L("それだけでいい","That's enough"),
+        L("世界は広い","The world is vast"),
+        L("遠い地には","In distant lands"),
+        L("僕らを知らない人達","People who don't know us"),
+        L("友と二人","Just the two of us"),
+        L("幸せを夢見て","Dreaming of happiness"),
+        L("計画を練る","Making plans"),
+        L("新天地を手にするため","To obtain a new land"),
+        L("友以外は捨てる","Abandon everything except my friend"),
+        E("That's what brings the greatest happiness."),
+      ]},
+      {label:"Outro", lines:[
+        L("部屋には","In the room"),
+        L("泣き崩れる母が","Mother collapsed in tears"),
+        L("僕を見つめる","Stares at me"),
+        L("縋るように","As if clinging"),
+        E("That's what brings the greatest happiness"),
+      ]},
+    ]
+  },
+  {
+    no:3, vol:1,
+    title:"新天地の悪夢",
+    theme:"Past secrets exposed again in a new town — social media, gossip, and becoming a clown before others.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("見慣れた高層ビルの景色が","The familiar high-rise cityscape"),
+        L("小高い山の上 山林に変わる","Transforms into mountains and forests on a hill"),
+        L("遠く離れた","Far away"),
+        L("初めて見るクラスメイト達","Classmates I'm seeing for the first time"),
+        L("僕と友の過去を知る人はいない","No one here knows the past of my friend and me"),
+        L("新天地に 夢を見た","In this new land, I dreamed"),
+        L("あの日までは","Until that day"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("いつからか 人の目が気になった","At some point, I became conscious of people's eyes"),
+        L("何が起きているか 何も見えなかった","I couldn't see what was happening"),
+        L("遠く離れた","Far away"),
+        L("この地で安息を求めた","I sought peace in this place"),
+        L("僕と友の過去は葬られていた","The past of my friend and me was buried"),
+        L("再び 悪夢が","Once again, the nightmare"),
+        L("降りかかった","Came crashing down"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("スマホのラインに届いた","It arrived on my smartphone LINE"),
+        L("忘れたはずの約束が","The promise I thought I'd forgotten"),
+        L("僕らの心を抉り","Gouged out our hearts"),
+        L("体を突き抜けた","And pierced through our bodies"),
+        L("息が止まった","My breath stopped"),
+      ]},
+      {label:"Chorus", lines:[
+        L("黒いカーテンに隠した","Hidden behind black curtains"),
+        L("約束事は","That promise"),
+        L("あいつは","She"),
+        E("Everyone sees right through it"),
+        L("隠しても","Even if hidden"),
+        L("閉じ込めても","Even if locked away"),
+        L("あいつは自らステージに立ち","She takes the stage herself"),
+        L("優しい笑みを浮かべ","With a gentle smile"),
+        E("I want to show off"),
+        L("煌めく冠を頭上に載せ","Wearing a sparkling crown on her head"),
+        L("綺麗な化粧の","Beautiful makeup"),
+        L("女優気分","Actress mood"),
+        L("しなやかな仕草も","Even her graceful gestures"),
+        E("Like a witch"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("ラインのメッセージ","The LINE message"),
+        L("僕らは 安息が欲しかった","We wanted peace"),
+        L("僕と友の過去は炎に包まれ","The past of my friend and me was wrapped in flames"),
+        L("なのに 再び蘇った","Yet it was resurrected again"),
+        E("But there are no enemies"),
+        L("同情するクラスメイトがいるだけ","Only sympathetic classmates"),
+        L("僕らは","We became"),
+        L("悲しい目のピエロになった","Sad-eyed Pierrots"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("ラインに映る","Reflected in LINE"),
+        L("友の母と僕の父","My friend's mother and my father"),
+        L("肩寄せて歩く姿","Walking side by side"),
+        L("笑顔のあいつと父","Her smiling with father"),
+        L("忘れたはずの約束が","The promise I thought I'd forgotten"),
+        L("僕らの心を抉り","Gouged out our hearts"),
+        L("記憶が蘇る","Memories resurface"),
+        L("嵐が吹き荒れた","A storm raged"),
+      ]},
+      {label:"Chorus", lines:[
+        L("影で嘲笑う","Sneering in the shadows"),
+        L("クラスメイト達","Classmates"),
+        E("Smile politely to avoid attracting attention"),
+        L("部屋の片隅","In the corner of the room"),
+        L("呻くように震える母を","My mother who trembles as if groaning"),
+        L("側で抱きしめ","I embrace her close"),
+        L("僕は あいつに黒いコートを掛ける","I drape a black coat over her"),
+        L("煌めく冠を頭上に載せ","Wearing a sparkling crown on her head"),
+        L("綺麗な化粧の","Beautiful makeup"),
+        L("女優気分","Actress mood"),
+        L("優しい笑みも","Even her gentle smile"),
+        L("しなやかな仕草も","Even her graceful gestures"),
+        E("Like a witch"),
+      ]},
+      {label:"Bridge", lines:[
+        L("優しい母の","My gentle mother's"),
+        L("乱れた髪 うつろな瞳","Disheveled hair, vacant eyes"),
+        L("力まかせの愛を","Her forceful love"),
+        L("僕は受け止める","I receive"),
+        L("愛している","I love you"),
+        L("母の言葉が脆弱な夜を","Mother's words transform the fragile night"),
+        L("赤いビロードに塗り替える","Into red velvet"),
+        E("I miss the dawn"),
+      ]},
+      {label:"Outro", lines:[
+        L("コンクリートの中で","Within the concrete"),
+        L("大人になった僕らは","We became adults"),
+        L("クラスメイトの","With the kind words"),
+        L("優しい言葉で","Of our classmates"),
+        L("今なら 笑える","Now I can laugh"),
+      ]},
+    ]
+  },
+  {
+    no:4, vol:1,
+    title:"処世術",
+    theme:"University and a part-time job — learning to survive by reading people, slowly turning cunning. The chorus carries a bright, waltz-like lilt.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("同じ秘密を分かち合い","Sharing the same secrets"),
+        L("僕と友は","My friend and I"),
+        L("仲間とコンクリートの中","Within the concrete with our companions"),
+        L("笑い 悩み 苦しみ","Laughing, worrying, suffering"),
+        L("かけがえのない時間を過ごした","Spent irreplaceable time"),
+        L("あんな日々は","Those days"),
+        L("二度と来ないほど","Never to return"),
+        L("世界は希望の光に満ちていた","The world was full of the light of hope"),
+        E("The world was full of light"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("僕らのことを悪く言う","Speaking ill of us"),
+        L("そんな人は","Such people"),
+        L("クラスメイトも先生も","Neither classmates nor teachers"),
+        L("話し 考え 意見し","Talking, thinking, sharing opinions"),
+        L("あふれ出る知識を共有し","Sharing overflowing knowledge"),
+        L("僕らは","We"),
+        L("荒波の競争を","Through rough waves of competition"),
+        L("くぐり抜けて一つ大人へ","Made it through and became one step more adult"),
+        E("We went on to college"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("初めての自由","First freedom"),
+        L("初めてのバイト","First part-time job"),
+        L("全てが輝き 夢を掴んだ","Everything shone, we grasped our dreams"),
+      ]},
+      {label:"Chorus", lines:[
+        L("気分屋の先輩","Moody senior"),
+        L("バイト先での理不尽さ","Unreasonableness at the part-time job"),
+        E("How to get through it by appeasing the other person"),
+        L("いい勉強","Good learning"),
+        L("人生で役立つアイテム","Items useful in life"),
+        L("気分屋の先輩","Moody senior"),
+        L("恋した女性への情熱","Passion for the woman he loved"),
+        L("僕に向けられる嫉妬","Jealousy directed at me"),
+        L("切り抜けるための","To get through"),
+        L("アイテムが増えてく","The items keep increasing"),
+        L("ルーチンな毎日","Routine everyday"),
+        L("僕は狡さを身につけた","I learned to be cunning"),
+        E("I learned to play the game."),
+      ]},
+      {label:"Verse 3", lines:[
+        L("ワンコインで","With one coin"),
+        L("僕と友は","My friend and I"),
+        L("公園ベンチに座り","Sitting on a park bench"),
+        L("秘密事 未来 優しさ","Secrets, future, kindness"),
+        L("得たものは計り知れないと","What we gained is immeasurable"),
+        L("幸せを","Happiness"),
+        L("二人で分かち合った","We shared together"),
+        L("世界は希望の光に満ちていた","The world was full of the light of hope"),
+        E("The world was full of light"),
+      ]},
+      {label:"Bridge", lines:[
+        L("朝返りの父","Father returning in the morning"),
+        L("あいつの匂いを漂わせ","Carrying her scent"),
+        L("母の前を無言で通り過ぎる","Passes silently in front of mother"),
+        L("当たり前の日常","An ordinary everyday"),
+      ]},
+      {label:"Chorus", lines:[
+        L("気分屋の先輩","Moody senior"),
+        L("バイト先での理不尽さ","Unreasonableness at the part-time job"),
+        E("How to get through it by appeasing the other person"),
+        L("人は言う","People say"),
+        L("先輩は苦手だから","I don't like the senior"),
+        L("シフトを外したい","I want to be off the shift"),
+        L("機嫌が良い時は","When in a good mood"),
+        L("優しい母を思い出す","I remember my gentle mother"),
+        L("機嫌が悪いときは","When in a bad mood"),
+        L("母に比べたら","Compared to mother"),
+        L("簡単なもの","It's easy"),
+        L("なのに","And yet"),
+        E("It's a completely natural thing, so isn't everyone just crazy?"),
+      ]},
+      {label:"Outro", lines:[
+        L("今日も床で","Today on the floor again"),
+        L("母は瓶を抱えて眠る","Mother sleeps holding a bottle"),
+        L("まるで 子どものように","Like a child"),
+        L("涙を頬に伝わせて","With tears streaming down her cheeks"),
+        L("僕はそっと抱きしめる","I gently embrace her"),
+        L("優しく","Tenderly"),
+      ]},
+    ]
+  },
+  {
+    no:5, vol:2,
+    title:"写真と日常",
+    theme:"Economic abuse, a hidden past, a mysterious woman in old photos, a mother's tears, and alcohol beneath the sink.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("すぐに返す","I'll return it soon"),
+        L("そう言って","Saying that"),
+        L("初めての給料から","From my first paycheck"),
+        L("父に渡したマネーは","The money I gave to father"),
+        L("幾つもの季節が過ぎても","Even as many seasons passed"),
+        L("返る事はなかった","Never came back"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("母がすがりつき","Mother clings to me"),
+        L("こう言う","And says"),
+        L("生活のためだと","It's for living expenses"),
+        L("全てが覆い被さる","Everything weighs down"),
+        L("見えない未来","An invisible future"),
+        L("消えないケロイドがうずく","The indelible keloid aches"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("誰にも隠して生きた","I lived hiding it from everyone"),
+        L("僕は何も知らなかった","I knew nothing"),
+        L("この傷痕の呪縛を","Of this scar's curse"),
+      ]},
+      {label:"Chorus", lines:[
+        L("あいつが笑う","She laughs"),
+        L("楽しそうに…","Happily…"),
+        L("あいつはアキュリスに","Did she"),
+        L("愛想を尽かされたのか","Tire of Achlys?"),
+        L("違和感だけが残る","Only discomfort remains"),
+        L("母とあいつの写真","A photo of mother and her"),
+        L("セピア色に染まり","Stained in sepia"),
+        L("二人笑顔で写る","The two smiling together"),
+        L("いつも一緒だったと","Always together"),
+        L("母は泣きながら言った","Mother said while crying"),
+        L("父の残り香に浮かぶ","Floating in father's lingering scent"),
+        L("あいつの笑顔","Her smile"),
+        L("それが僕の日常","That's my everyday life"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("泣きながら","While crying"),
+        L("力任せで僕に","With all her strength"),
+        L("叫ぶ母","Mother shouts at me"),
+        L("痛む手を振りほどき","Shaking off my aching hand"),
+        L("僕は強く抱きしめる","I embrace her tightly"),
+        L("愛している","I love you"),
+        L("母の声は 昔よりも","Mother's voice"),
+        L("か細くなった","Has become weaker than before"),
+      ]},
+      {label:"Bridge", lines:[
+        L("なぜ 母はいつも泣くのか","Why does mother always cry"),
+        L("なぜ 父は母と話さないのか","Why doesn't father talk to mother"),
+        L("僕は 何も知らなかった","I knew nothing"),
+        L("秘密の事実も","Not even the secret truth"),
+        L("何も","Nothing"),
+      ]},
+      {label:"Chorus", lines:[
+        L("あいつが笑う","She laughs"),
+        L("楽しそうに…","Happily…"),
+        L("あいつはアキュリスに","Did she"),
+        L("愛想を尽かされたのか","Tire of Achlys?"),
+        L("違和感だけが残る","Only discomfort remains"),
+        L("母とあいつの写真","A photo of mother and her"),
+        L("セピア色に染まり","Stained in sepia"),
+        L("二人笑顔で写る","The two smiling together"),
+        L("いつも一緒だったと","Always together"),
+        L("母は泣きながら言った","Mother said while crying"),
+        L("父の残り香に浮かぶ","Floating in father's lingering scent"),
+        L("あいつの笑顔","Her smile"),
+        L("それが僕の日常","That's my everyday life"),
+      ]},
+      {label:"Outro", lines:[
+        L("シンク下には","Under the sink"),
+        L("広がる","Spreading"),
+        L("アルコール瓶の海","A sea of alcohol bottles"),
+        L("父の無心も","Father's demands"),
+        L("母の涙も","Mother's tears"),
+        L("当たり前の日々","Ordinary days"),
+        L("僕は その意味を","I knew nothing"),
+        L("何も知らなかった","Of what it meant"),
+        E("Same every time"),
+      ]},
+    ]
+  },
+  {
+    no:6, vol:2,
+    title:"愛想笑い",
+    theme:"Entering society and realizing fake smiles and flattery were never normal — mixed feelings toward both parents.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("家に 着けば","When I get home"),
+        L("母から漂う アルコール臭","The smell of alcohol wafting from mother"),
+        L("言葉は強く 僕を罵り","Her words harshly curse me"),
+        L("忘れかけていた","Nearly forgotten"),
+        L("過去を 思い起こす","I recall the past"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("隠した はずの","What I should have hidden"),
+        L("葬った はずの","What I should have buried"),
+        L("秘密が 蘇る","The secret resurfaces"),
+        L("強く 誰よりも","Strongly, more than anyone"),
+        L("愛されている","I am loved"),
+        L("なのに 何故","Yet why"),
+        L("涙が知らぬ間に 頬を伝る","Do tears unknowingly stream down my cheeks"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("愛している","I love you"),
+        L("誰よりも","More than anyone"),
+        L("離れないで","Don't leave me"),
+        L("縋るように","As if clinging"),
+        L("母は 僕を抱きしめ","Mother embraces me"),
+        L("僕も 母を抱きしめる","I embrace mother too"),
+        L("アキュリスが","Achlys"),
+        L("微笑みながら、目が","Smiling, eyes"),
+        E("Come here."),
+      ]},
+      {label:"Chorus", lines:[
+        L("社会に出て 知った","I learned when I entered society"),
+        L("人との 付き合い方","How to interact with people"),
+        L("愛想笑いは 要らないと","You don't need fake smiles"),
+        L("言われ 戸惑った僕","I was confused when told"),
+        L("頭を 撫でられ","My head was patted"),
+        L("笑った 上司","My boss who smiled"),
+        L("ここは 優しい人たちで","This place is filled"),
+        L("あふれている","With kind people"),
+        L("僕は 知らぬ間に","Without realizing"),
+        L("愛想笑いも媚びも振り撒き","I scattered fake smiles and flattery"),
+        L("ずっと 生きていた","I had been living that way all along"),
+        E("I suppose I didn't think it was strange"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("仕事 帰り","On my way home from work"),
+        L("行き交う 人達","People passing by"),
+        L("手を繋ぐ 親子","Parents and children holding hands"),
+        L("休みの日","On days off"),
+        L("出かけた記憶を 探すけど","I search for memories of going out but"),
+        E("I can't find it"),
+        L("愛されていた","I was loved"),
+        L("なのに 何故","Yet why"),
+        L("心に 突き刺さる","Piercing my heart"),
+        L("茨が 締め付ける","Thorns tighten"),
+      ]},
+      {label:"Bridge", lines:[
+        L("父からの お金の催促","Father's demands for money"),
+        L("拒否も","I can't refuse"),
+        L("無視もできない 僕","I can't ignore"),
+        L("胸が 痛むのは","My chest aches"),
+        L("カードで 送金する度","Every time I send money by card"),
+        L("涙腺が緩み 声を押し殺して泣くのは","My tear ducts loosen and I cry while suppressing my voice"),
+        L("なぜ？","Why?"),
+        E("What's sad?"),
+      ]},
+      {label:"Chorus", lines:[
+        L("社会に出て 知った","I learned when I entered society"),
+        L("人との 付き合い方","How to interact with people"),
+        L("愛想笑いは 要らないと","You don't need fake smiles"),
+        L("言われ 戸惑った僕","I was confused when told"),
+        L("頭を 撫でられ","My head was patted"),
+        L("笑った 上司","My boss who smiled"),
+        L("ここは 優しい人たちで","This place is filled"),
+        L("あふれている","With kind people"),
+        L("僕は 知らぬ間に","Without realizing"),
+        L("愛想笑いも 媚びも振り撒き","I scattered fake smiles and flattery"),
+        L("ずっと 生きていた","I had been living that way all along"),
+        E("I suppose I didn't think it was strange"),
+      ]},
+      {label:"Outro", lines:[
+        L("どうして 涙が出るのか","Why do tears come out"),
+        L("父も母も","Both father and mother"),
+        L("この先 どうなるのか","What will happen from now on"),
+        L("不安が よぎった","Anxiety crossed my mind"),
+        E("What's the right thing to do?"),
+        L("僕はそんなに 強くないのに","Even though I'm not that strong"),
+      ]},
+    ]
+  },
+  {
+    no:7, vol:2,
+    title:"恋の代償",
+    theme:"An emergency night — mother collapsed from alcohol and pills, her confession of a blind love, and a father's betrayal.",
+    sections:[
+      {label:"Verse 1", lines:[
+        L("灯のない家","A house without light"),
+        L("物音一つない夜","A night without a sound"),
+        L("僕の胸は高なる","My heart races"),
+        L("アキュリスが","Achlys"),
+        L("微笑んでいた","Was smiling"),
+        L("床に転がる無数の","Countless scattered on the floor"),
+        L("空き瓶と薬のシート","Empty bottles and sheets of pills"),
+        L("横たわる母の姿","Mother's figure lying down"),
+        L("鼓動が速度を上げた","My heartbeat accelerated"),
+        L("僕しかいない部屋","A room with only me"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("本で読んだ知識を","Relying on knowledge"),
+        L("頼りに、首に触れる","I read in books, I touch her neck"),
+        L("脈も呼吸も微か","Both pulse and breathing faint"),
+        L("スマホで救急要請","Called emergency on my smartphone"),
+        L("手の震え","My hands trembling"),
+        L("詰まる言葉","Words stuck"),
+        L("誰にも頼れない","No one to rely on"),
+        L("辿りついた隊員","The paramedics who arrived"),
+        L("母の側に立つアキュリス","Achlys standing beside mother"),
+        L("僕だけが見た景色","A scene only I saw"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("いつか 母が言っていた","Once mother said"),
+        L("父に恋して何も見えなくなり","Fell in love with father and saw nothing else"),
+        L("親や兄妹の反対を無視し","Ignored the opposition of parents and siblings"),
+        L("ずっと後悔している","Has always regretted it"),
+      ]},
+      {label:"Chorus", lines:[
+        L("恋して僕は生まれた","I was born from love"),
+        L("人の心は移りゆくもの","People's hearts change"),
+        L("結婚して いつか空気になる","Get married and eventually become air"),
+        L("激しい恋心は","Intense love"),
+        L("燃え滓を生み","Produces burnt residue"),
+        L("残るのはローズクウォーツ","What remains is rose quartz"),
+        L("母が招いた","Mother invited"),
+        L("小さな罅は","A small crack"),
+        L("コア近くまで深く抉り","Gouged deeply near the core"),
+        E("Never coming back"),
+        L("傷を治そうとしても","Even trying to heal the wound"),
+        L("言葉すら届かず","Not even words reach"),
+        L("いつしか","Eventually"),
+        L("母の声は 父には無音","Mother's voice is silent to father"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("父の後ろで聴こえる","Heard behind father"),
+        L("子供達の声","Children's voices"),
+        L("聞き覚えある","A familiar"),
+        L("女性の声","Woman's voice"),
+        L("スマホの向こう側は","On the other side of the smartphone"),
+        L("別世界","Another world"),
+        L("全てが壊れる","Everything breaks"),
+        L("瓦礫の音が","The sound of rubble"),
+        L("頭の中で鳴り響いた","Echoed in my head"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("父に告げた","I told father"),
+        L("別れの言葉は","The words of farewell"),
+        E("Don't ever contact me again."),
+        L("怒りだけが 心に満たる","Only anger fills my heart"),
+      ]},
+      {label:"Chorus", lines:[
+        L("恋して僕は生まれた","I was born from love"),
+        L("人の心は移りゆくもの","People's hearts change"),
+        L("結婚して いつか空気になる","Get married and eventually become air"),
+        L("激しい恋心は","Intense love"),
+        L("燃え滓を生み","Produces burnt residue"),
+        L("残るのはローズクウォーツ","What remains is rose quartz"),
+        L("母が招いた","Mother invited"),
+        L("小さな罅は","A small crack"),
+        L("コア近くまで深く抉り","Gouged deeply near the core"),
+        E("Never coming back"),
+        L("傷は亀裂となり","The wound became a crack"),
+        L("父には","To father"),
+        L("母の姿は 透明人間","Mother's figure is invisible"),
+        L("母の声は 騒音","Mother's voice is noise"),
+      ]},
+      {label:"Bridge", lines:[
+        L("病院のベッド","Hospital bed"),
+        L("横たわる母","Mother lying down"),
+        L("呼吸 鼓動","Breathing, heartbeat"),
+        L("全てが戻り始めた","Everything began to return"),
+      ]},
+      {label:"Outro", lines:[
+        L("医師からの言葉に","At the doctor's words"),
+        L("涙が一粒","A single tear"),
+        L("頬を濡らした","Wet my cheek"),
+        L("もう一人で頑張らなくて良い","You don't have to struggle alone anymore"),
+        L("よく頑張ったね","You did well"),
+        L("これからは僕らがいる","We're here from now on"),
+        E("You're not alone anymore"),
+      ]},
+    ]
+  },
+  {
+    no:8, vol:2,
+    title:"決別と受容",
+    theme:"Childhood scars, the decision to cut ties with father, an unbreakable bond with a friend, a distorted yet warm love — and a quiet resolution.",
+    sections:[
+      {label:"Intro", lines:[
+        L("誰にも言わない","Won't tell anyone"),
+        L("母と誓った秘密","The secret I swore with mother"),
+      ]},
+      {label:"Verse 1", lines:[
+        L("腕に残る小さなケロイド","A small keloid remaining on my arm"),
+        L("記憶にはない昔","From a time I don't remember"),
+        L("父が僕を殴ろうとし","Father tried to hit me"),
+        L("庇った母が強く抱きしめ","Mother who protected me hugged me tightly"),
+        L("ついた痕だと","That's how the scar was made"),
+        L("父が笑い転げた","Father laughed and rolled"),
+      ]},
+      {label:"Verse 2", lines:[
+        L("泣きそうな母の顔が","Mother's face about to cry"),
+        L("記憶の片隅よぎる","Crosses a corner of my memory"),
+        L("お前がいなければ","If you weren't here"),
+        L("頭に響く父の声","Father's voice echoes in my head"),
+        L("心の声だと","His true feelings"),
+        L("大人になって気付いた","I realized as an adult"),
+      ]},
+      {label:"Pre-chorus", lines:[
+        L("帰らない父","Father who doesn't come home"),
+        L("寂しげな瞳(め)の母","Mother with lonely eyes"),
+        L("公園も出かけも","The park, going out"),
+        L("母と2人","Just the two of us, mother and I"),
+        L("僕は母に愛されていた","I was loved by mother"),
+      ]},
+      {label:"Chorus", lines:[
+        L("友は言った","My friend said"),
+        L("あいつは悪魔だと","She's a demon"),
+        L("友と二人で話した計画","The plan we talked about together"),
+        L("この世から","From this world"),
+        L("二人で消える事","To disappear together"),
+        L("汚い世界を見捨て 天国を夢見た","Abandon the dirty world, dreamed of heaven"),
+        L("友と誓った","I swore with my friend"),
+        L("いつか悪魔を捨て","Someday abandon the demon"),
+        L("僕と二人 生き残ろう","Let's survive, just the two of us"),
+        L("あいつと父が縋っても","Even if she and father cling to us"),
+        L("嘲笑ってやる","We'll mock them"),
+        L("僕らは二人で一つ","The two of us are one"),
+        L("魂が惹かれ合っていた","Our souls were drawn to each other"),
+        L("ローズクウォーツの歪み","The distortion of rose quartz"),
+        L("砕ける前に鋼を巻いた","Wrapped in steel before it shattered"),
+      ]},
+      {label:"Verse 3", lines:[
+        L("ベッドの上","On the bed"),
+        L("僕の顔を見て誰？","Looking at my face, “Who?”"),
+        L("と聞く母","Mother asks"),
+        L("久しぶりの笑顔","A smile after a long time"),
+        L("穏やかな言葉","Gentle words"),
+        L("目は虚ろで","Eyes are vacant"),
+        L("心はピュアな","Heart is pure"),
+        L("僕に恋する乙女","A maiden in love with me"),
+      ]},
+      {label:"Chorus", lines:[
+        L("僕は父に言った","I told father"),
+        L("二度と会わないと","We'll never meet again"),
+        L("友と二人で話した計画","The plan we talked about together"),
+        L("血という 絆は儚いもの","The bond called blood is fleeting"),
+        L("そんなものに縛られ","Bound by such a thing"),
+        L("生きる事をやめるのは","To stop living is"),
+        L("ナンセンス","Nonsense"),
+        L("いつか一人になり","Someday when you're alone"),
+        L("僕らを当てにしても","Even if you rely on us"),
+        L("二度と関わらない","We'll never be involved again"),
+        L("法律で壁を守る","The law protects the wall"),
+        L("友と僕は誓った","My friend and I swore"),
+        L("魂が囁く","Our souls whisper"),
+        L("ローズクウォーツの歪み","The distortion of rose quartz"),
+        L("砕ける前に鋼を巻けと","Wrap in steel before it shatters"),
+      ]},
+      {label:"Outro", lines:[
+        L("母は僕に言う","Mother tells me"),
+        L("愛していると","I love you"),
+        L("歪な愛でも","Even if it's distorted love"),
+        L("あなたが幸せなら","If you're happy"),
+        L("誰にも秘密の恋なら","If it's a secret love to everyone"),
+        L("悪魔に恋するよりも","Rather than falling in love with a demon"),
+        E("I love you, forever"),
+        L("それで良い","That's fine"),
+      ]},
+    ]
+  },
+];
+
+const volMeta = {
+  1:{roman:"Ⅰ", name:"不協和音", desc:"Dissonance"},
+  2:{roman:"Ⅱ", name:"需要と供給", desc:"Supply and Demand"},
+};
+
+// ----- render TOC -----
+const tg = document.getElementById('tocGrid');
+songs.forEach(s=>{
+  const a=document.createElement('a');
+  a.href='#song'+s.no;
+  a.innerHTML='<span class="n">'+String(s.no).padStart(2,'0')+'</span><span class="t">'+s.title+'</span>';
+  tg.appendChild(a);
+});
+
+// ----- render songs with volume dividers -----
+const main=document.getElementById('songs');
+let lastVol=0;
+songs.forEach(s=>{
+  if(s.vol!==lastVol){
+    lastVol=s.vol;
+    const v=volMeta[s.vol];
+    const vd=document.createElement('section');
+    vd.className='vol reveal';
+    vd.innerHTML='<div class="roman">'+v.roman+'</div><div class="vname">'+v.name+'</div><div class="vdesc">'+v.desc+'</div><div class="vline"></div>';
+    main.appendChild(vd);
+  }
+  const sec=document.createElement('section');
+  sec.className='song';
+  sec.id='song'+s.no;
+  let html='<div class="song-head reveal"><div class="song-no">No.<b>'+s.no+'</b></div><div class="song-title">'+s.title+'</div><div class="song-theme">'+s.theme+'</div></div>';
+  s.sections.forEach(sc=>{
+    html+='<div class="reveal"><div class="section-label">'+sc.label+'</div>';
+    sc.lines.forEach(ln=>{
+      if(ln.eng){
+        html+='<div class="line eng-only"><div class="jp">'+ln.jp+'</div></div>';
+      }else{
+        html+='<div class="line"><div class="jp">'+ln.jp+'</div><div class="en">'+ln.en+'</div></div>';
+      }
+    });
+    html+='</div>';
+  });
+  sec.innerHTML=html;
+  main.appendChild(sec);
+});
+
+// ----- reveal on scroll -----
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
