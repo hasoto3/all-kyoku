@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公式は、いつ使うの？ 〜I just want to know〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #dde0e6;
+    --ink-soft: #a7abb4;
+    --ink-faint: #6a6e78;
+    --star: #cdd6e8;          /* 羨ましい星の色 */
+    --star-bright: #eef2fb;
+    --desk: #c8a66a;          /* 勉強机のスタンドの光 */
+    --desk-soft: #9a8050;
+    --bg-top: #080a12;        /* 夜空の一番上 */
+    --bg-mid: #0e1018;
+    --bg-low: #14161f;
+    --bg-desk: #1c1a18;       /* 机のある下の方・少し暖色 */
+    --line: rgba(205,214,232,0.16);
+    --en: #8589a0;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* 夜空（上）と勉強机の明かり（下）*/
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-low) 78%, var(--bg-desk) 100%);
+  }
+  .star{
+    position:absolute; border-radius:50%;
+    background: var(--star-bright);
+    animation: tw 5s infinite ease-in-out;
+  }
+  @keyframes tw{ 0%,100%{opacity:0.15;} 50%{opacity:0.85;} }
+  /* 机のスタンドの、ぽつんとした暖かい光（下方） */
+  .desk-glow{
+    position:absolute; left:50%; bottom:-10vh; transform:translateX(-50%);
+    width:70vw; height:35vh; max-width:600px;
+    background: radial-gradient(ellipse 100% 100% at 50% 100%,
+      rgba(200,166,106,0.20) 0%, rgba(154,128,80,0.07) 45%, transparent 72%);
+    filter: blur(10px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 640px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  /* タイトル */
+  .title{ text-align:center; margin-bottom: 9vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+    letter-spacing: 0.08em; color: var(--star);
+    text-shadow: 0 0 30px rgba(205,214,232,0.25); line-height:1.5;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.18em; color: var(--desk);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.7em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  .title .tag{
+    display:block; margin-top:0.8em; font-size:0.78rem; letter-spacing:0.2em;
+    color: var(--ink-faint);
+  }
+
+  /* 歌詞 */
+  .lyric{ font-size: 1.05rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.77rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  /* 英語＝声にならない本音：星の色で */
+  .lyric .en{
+    color: var(--en); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+
+  footer{
+    margin-top: 10vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--star); font-size:1.15rem; letter-spacing:0.06em;
+    text-shadow: 0 0 22px rgba(205,214,232,0.3);
+  }
+  footer .note{
+    display:block; margin-top:1.6em; color:var(--ink-faint);
+    font-size:0.82rem; letter-spacing:0.05em; line-height:2.0;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky"></div>
+  <div class="desk-glow"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>公式は、いつ使うの？</h1>
+    <span class="en">I just want to know</span>
+    <div class="by">大森 カエ</div>
+    <span class="tag">― 10代へ ―</span>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>机に座り
+ノートに書き込んだ
+数学の公式
+どこで　何に使うの？
+先生も大人も皆
+口閉ざす</p>
+<span class="sec">Verse 2</span><p>朝のラッシュ
+満員電車揺られ
+大人に紛れ
+僕が　向かう先に
+明るい未来はある？
+分からない</p>
+<span class="sec">Pre-chorus</span><p>大人は言う
+学歴があれば
+先の未来は
+明るい　と
+<span class="en">Is that really true?</span></p>
+<span class="sec">Chorus 1</span><p>何のために
+僕は　生きるの？
+成績一番の世界
+<span class="en">I can't see the future.</span>
+ゲームよりも
+テスト勉強
+真夜中に
+ふと見上げた空
+星が羨ましかった
+空で輝くだけで
+誰からも
+愛してもらえる
+僕は　結果次第
+<span class="en">Even if I get tired, I'm not allowed to.</span></p>
+<span class="sec">Verse 3</span><p>人を悪く言う
+大人達は
+偉そうな人に
+上機嫌で話し
+僕らの前では
+今日も怒鳴る</p>
+<span class="sec">Bridge 1</span><p>夜遅くまで
+僕は勉強する
+いつ使われるか
+分からない
+公式を覚えるため</p>
+<span class="sec">Chorus 2</span><p>何のために
+僕は　生きるの？
+成績重視の世界
+<span class="en">I can't see the future.</span>
+誰よりも
+点数稼ぎ
+満点
+目指すプレッシャー
+この先の未来は
+明るいと言うけど
+それは
+どういう事なの？
+大人は目を逸らす
+<span class="en">I'm not allowed to get tired.</span></p>
+<span class="sec">Bridge 2</span><p>安定の生活
+安心の老後
+大人の理想が
+僕を支配しに来る
+理由が知りたい</p>
+<span class="sec">Outro</span><p>誰もが口閉ざす
+数学の公式は
+いつ使うの？
+僕はなぜ
+満点目指し
+生きていかないと
+いけないの？
+<span class="en">I want someone to tell me about my future</span>
+僕は　理由が知りたいだけ</p>
+  </div>
+
+  <footer>
+    <span class="en">I just want to know.</span>
+    <span class="note">この歌をうたう君へ。<br>
+    理由が知りたい、と思えること自体が、君がちゃんと考えている証です。<br>
+    答えはまだなくていい。問いを持ったまま、生きていてください。</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  // 星空：上の方ほど密に（見上げる空）、机の明かり付近は控えめに
+  for(let i=0;i<70;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = (Math.random()*70) + '%';
+    s.style.animationDelay = (Math.random()*5) + 's';
+    const sz = Math.random()*1.6 + 1;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    // ときどき、ひときわ明るい「羨ましい星」
+    if(Math.random() > 0.88){
+      s.style.width = '2.6px'; s.style.height = '2.6px';
+      s.style.boxShadow = '0 0 6px rgba(238,242,251,0.8)';
+    }
+    scene.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
