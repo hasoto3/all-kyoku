@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cliff of Illusion 〜マリンスノーの夢〜｜大森カエ / Omori Kae</title>
+<style>
+  :root {
+    --abyss-1:#0b1826;
+    --abyss-2:#081320;
+    --abyss-3:#050c15;
+    --ink:#e9eef3;
+    --ink-soft:#aebccb;
+    --en:#7d93a8;
+    --snow:#d8ecf4;
+    --indigo:#9db4d8;
+    --accent:#cfe7f0;
+    --rule:rgba(140,170,200,.16);
+    --maxw:760px;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 70% at 50% -10%, rgba(120,150,190,.10), transparent 60%),
+      linear-gradient(180deg, var(--abyss-1) 0%, var(--abyss-2) 45%, var(--abyss-3) 100%);
+    background-attachment:fixed;
+    font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",
+                "Songti SC",serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:.01em;
+  }
+
+  /* marine snow */
+  .snowfield {
+    position:fixed; inset:0; overflow:hidden;
+    pointer-events:none; z-index:0;
+  }
+  .flake {
+    position:absolute; top:-6%;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #ffffff, var(--snow) 55%, rgba(216,236,244,0) 100%);
+    animation:fall var(--dur) linear var(--delay) infinite;
+    filter:blur(.2px);
+  }
+  @keyframes fall {
+    0%   { transform:translateY(-10vh) translateX(0); }
+    100% { transform:translateY(112vh) translateX(var(--drift)); }
+  }
+
+  .wrap {
+    position:relative; z-index:1;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:clamp(28px,6vw,64px) clamp(20px,5vw,40px) 80px;
+  }
+
+  /* hero */
+  .hero { text-align:center; padding:clamp(36px,9vw,90px) 0 clamp(30px,7vw,64px); }
+  .hero .eyebrow {
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem; letter-spacing:.42em; text-transform:uppercase;
+    color:var(--indigo); margin-bottom:1.6em; padding-left:.42em;
+  }
+  .hero h1 {
+    margin:0; font-weight:400;
+    font-family:"Didot","Bodoni MT","Hiragino Mincho ProN",Georgia,serif;
+    font-size:clamp(2.5rem,9vw,4.6rem);
+    letter-spacing:.04em; line-height:1.04;
+    color:var(--ink);
+    text-shadow:0 0 34px rgba(160,195,225,.18);
+  }
+  .hero .sub {
+    margin-top:.5em; font-size:clamp(1.05rem,3.6vw,1.5rem);
+    color:var(--ink-soft); letter-spacing:.16em;
+  }
+  .hero .meta {
+    margin-top:2.2em;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.74rem; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--en);
+  }
+  .hairline {
+    width:1px; height:clamp(46px,9vw,84px);
+    margin:1.8em auto 0;
+    background:linear-gradient(var(--indigo),transparent);
+    opacity:.55;
+  }
+
+  /* toc */
+  .toc { margin:0 auto clamp(40px,8vw,72px); max-width:560px; }
+  .toc-title {
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.7rem; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--indigo); text-align:center; margin-bottom:1.6em;
+  }
+  .toc-item {
+    display:flex; align-items:baseline; gap:1em;
+    padding:.72em .4em; text-decoration:none; color:var(--ink);
+    border-top:1px solid var(--rule);
+    transition:color .25s, padding-left .25s;
+  }
+  .toc-item:last-child { border-bottom:1px solid var(--rule); }
+  .toc-item:hover, .toc-item:focus-visible { color:var(--accent); padding-left:.9em; outline:none; }
+  .toc-num {
+    font-family:"Didot","Bodoni MT",Georgia,serif;
+    font-size:1.25rem; color:var(--indigo); min-width:1.9em;
+  }
+  .toc-open { font-size:.98rem; color:var(--ink-soft); }
+
+  /* song */
+  .song { padding:clamp(40px,8vw,72px) 0; border-top:1px solid var(--rule); }
+  .song-head { margin-bottom:2.2em; text-align:center; }
+  .song-num {
+    display:block;
+    font-family:"Didot","Bodoni MT",Georgia,serif;
+    font-size:clamp(3.4rem,16vw,6rem); line-height:1; font-weight:400;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(157,180,216,.55);
+    text-stroke:1px rgba(157,180,216,.55);
+  }
+  .song-eyebrow {
+    display:inline-block; margin-top:.6em;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--en);
+  }
+  .song-eyebrow .dot { color:var(--indigo); margin:0 .4em; }
+
+  .lyrics { max-width:38em; margin:0 auto; }
+  .ln { margin:0 0 1.15em; }
+  .ln .ja {
+    display:block;
+    font-size:clamp(1.04rem,4vw,1.22rem);
+    color:var(--ink);
+  }
+  .ln .en {
+    display:block;
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-size:.86rem; line-height:1.5;
+    color:var(--en);
+    margin-top:.16em; letter-spacing:.005em;
+  }
+  /* English-only anchor lines — the objective "cold temperature" voice */
+  .ln.anchor { margin:1.7em 0; text-align:center; }
+  .ln.anchor .enmark {
+    display:inline-block;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:.96rem; letter-spacing:.08em;
+    color:var(--accent);
+    padding:.2em 0;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding-left:1.4em; padding-right:1.4em;
+  }
+
+  .back-top {
+    display:block; text-align:center; margin-top:3em;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem; letter-spacing:.2em;
+    color:var(--en); text-decoration:none;
+  }
+  .back-top:hover, .back-top:focus-visible { color:var(--accent); outline:none; }
+
+  footer {
+    margin-top:clamp(48px,9vw,88px); padding-top:2.4em;
+    border-top:1px solid var(--rule); text-align:center;
+  }
+  footer .artist { font-size:1.05rem; color:var(--ink-soft); letter-spacing:.14em; }
+  footer .links { margin-top:1.1em; }
+  footer a {
+    color:var(--indigo); text-decoration:none;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.78rem; letter-spacing:.16em; margin:0 .7em;
+    border-bottom:1px solid transparent; padding-bottom:2px;
+  }
+  footer a:hover, footer a:focus-visible { border-color:var(--indigo); outline:none; }
+  footer .note {
+    margin-top:1.8em; font-size:.72rem; color:var(--en);
+    font-family:"Helvetica Neue",Arial,sans-serif; letter-spacing:.06em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flake { animation:none; }
+    html { scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+<div class="snowfield" aria-hidden="true">
+<span class="flake" style="left:32.38%;width:1.53px;height:1.53px;--dur:27.0s;--delay:-31.5s;--drift:1.9px;opacity:0.31"></span>
+<span class="flake" style="left:5.8%;width:2.32px;height:2.32px;--dur:14.7s;--delay:-19.3s;--drift:-22.4px;opacity:0.19"></span>
+<span class="flake" style="left:42.45%;width:3.02px;height:3.02px;--dur:16.5s;--delay:-26.4s;--drift:6.6px;opacity:0.58"></span>
+<span class="flake" style="left:57.71%;width:2.07px;height:2.07px;--dur:33.5s;--delay:-32.4s;--drift:18.6px;opacity:0.28"></span>
+<span class="flake" style="left:14.43%;width:1.46px;height:1.46px;--dur:20.2s;--delay:-6.3s;--drift:-16.6px;opacity:0.41"></span>
+<span class="flake" style="left:63.89%;width:2.02px;height:2.02px;--dur:25.0s;--delay:-31.9s;--drift:-22.9px;opacity:0.24"></span>
+<span class="flake" style="left:68.04%;width:2.14px;height:2.14px;--dur:20.3s;--delay:-14.1s;--drift:-2.4px;opacity:0.28"></span>
+<span class="flake" style="left:79.44%;width:2.74px;height:2.74px;--dur:18.9s;--delay:-14.5s;--drift:1.3px;opacity:0.54"></span>
+<span class="flake" style="left:72.94%;width:1.83px;height:1.83px;--dur:33.6s;--delay:-30.0s;--drift:-4.3px;opacity:0.49"></span>
+<span class="flake" style="left:15.2%;width:2.28px;height:2.28px;--dur:14.8s;--delay:-11.3s;--drift:13.8px;opacity:0.41"></span>
+<span class="flake" style="left:87.55%;width:1.89px;height:1.89px;--dur:27.9s;--delay:-13.8s;--drift:4.2px;opacity:0.36"></span>
+<span class="flake" style="left:84.0%;width:3.28px;height:3.28px;--dur:23.5s;--delay:-11.4s;--drift:-22.8px;opacity:0.47"></span>
+<span class="flake" style="left:64.71%;width:3.38px;height:3.38px;--dur:30.4s;--delay:-24.3s;--drift:-5.9px;opacity:0.45"></span>
+<span class="flake" style="left:2.26%;width:2.22px;height:2.22px;--dur:17.4s;--delay:-30.0s;--drift:-22.9px;opacity:0.5"></span>
+<span class="flake" style="left:12.93%;width:1.74px;height:1.74px;--dur:21.8s;--delay:-4.4s;--drift:-21.8px;opacity:0.35"></span>
+<span class="flake" style="left:54.94%;width:3.14px;height:3.14px;--dur:30.4s;--delay:-4.6s;--drift:-11.5px;opacity:0.34"></span>
+<span class="flake" style="left:35.88%;width:3.15px;height:3.15px;--dur:33.2s;--delay:-28.9s;--drift:-16.8px;opacity:0.25"></span>
+<span class="flake" style="left:23.33%;width:2.27px;height:2.27px;--dur:25.8s;--delay:-25.1s;--drift:-25.8px;opacity:0.34"></span>
+<span class="flake" style="left:36.93%;width:2.45px;height:2.45px;--dur:33.1s;--delay:-10.5s;--drift:0.8px;opacity:0.43"></span>
+<span class="flake" style="left:67.62%;width:1.32px;height:1.32px;--dur:32.0s;--delay:-7.5s;--drift:19.5px;opacity:0.51"></span>
+<span class="flake" style="left:39.24%;width:2.08px;height:2.08px;--dur:16.1s;--delay:-12.4s;--drift:-22.8px;opacity:0.18"></span>
+<span class="flake" style="left:20.88%;width:1.56px;height:1.56px;--dur:20.8s;--delay:-32.2s;--drift:-26.0px;opacity:0.22"></span>
+<span class="flake" style="left:10.15%;width:2.0px;height:2.0px;--dur:14.5s;--delay:-4.3s;--drift:5.9px;opacity:0.22"></span>
+<span class="flake" style="left:25.23%;width:1.96px;height:1.96px;--dur:21.3s;--delay:-29.8s;--drift:18.1px;opacity:0.6"></span>
+<span class="flake" style="left:46.6%;width:2.26px;height:2.26px;--dur:15.7s;--delay:-30.5s;--drift:-8.2px;opacity:0.27"></span>
+<span class="flake" style="left:82.89%;width:1.56px;height:1.56px;--dur:14.5s;--delay:-1.7s;--drift:1.5px;opacity:0.22"></span>
+<span class="flake" style="left:54.32%;width:1.26px;height:1.26px;--dur:24.6s;--delay:-0.7s;--drift:18.9px;opacity:0.46"></span>
+<span class="flake" style="left:26.11%;width:2.01px;height:2.01px;--dur:17.3s;--delay:-7.8s;--drift:1.7px;opacity:0.5"></span>
+<span class="flake" style="left:32.97%;width:1.69px;height:1.69px;--dur:30.2s;--delay:-0.5s;--drift:18.3px;opacity:0.51"></span>
+<span class="flake" style="left:81.83%;width:2.83px;height:2.83px;--dur:18.5s;--delay:-16.4s;--drift:-7.5px;opacity:0.16"></span>
+<span class="flake" style="left:2.79%;width:1.81px;height:1.81px;--dur:19.2s;--delay:-10.5s;--drift:23.7px;opacity:0.35"></span>
+<span class="flake" style="left:93.7%;width:3.37px;height:3.37px;--dur:33.1s;--delay:-21.6s;--drift:-14.5px;opacity:0.25"></span>
+<span class="flake" style="left:19.67%;width:1.65px;height:1.65px;--dur:26.5s;--delay:-3.4s;--drift:17.7px;opacity:0.37"></span>
+<span class="flake" style="left:65.3%;width:2.96px;height:2.96px;--dur:15.7s;--delay:-11.5s;--drift:21.3px;opacity:0.5"></span>
+<span class="flake" style="left:75.01%;width:2.25px;height:2.25px;--dur:17.6s;--delay:-7.2s;--drift:-8.7px;opacity:0.51"></span>
+<span class="flake" style="left:97.17%;width:2.07px;height:2.07px;--dur:22.0s;--delay:-1.8s;--drift:11.7px;opacity:0.23"></span>
+<span class="flake" style="left:12.7%;width:1.53px;height:1.53px;--dur:32.1s;--delay:-6.6s;--drift:-18.4px;opacity:0.52"></span>
+<span class="flake" style="left:98.03%;width:2.65px;height:2.65px;--dur:21.0s;--delay:-15.3s;--drift:-19.2px;opacity:0.16"></span>
+<span class="flake" style="left:97.09%;width:2.63px;height:2.63px;--dur:24.5s;--delay:-2.3s;--drift:-3.4px;opacity:0.54"></span>
+<span class="flake" style="left:82.62%;width:1.66px;height:1.66px;--dur:19.0s;--delay:-24.0s;--drift:-13.5px;opacity:0.41"></span>
+<span class="flake" style="left:25.94%;width:2.12px;height:2.12px;--dur:16.6s;--delay:-3.1s;--drift:-7.6px;opacity:0.36"></span>
+<span class="flake" style="left:58.33%;width:3.19px;height:3.19px;--dur:22.4s;--delay:-2.8s;--drift:0.1px;opacity:0.39"></span>
+<span class="flake" style="left:52.35%;width:1.24px;height:1.24px;--dur:22.8s;--delay:-27.8s;--drift:-25.8px;opacity:0.51"></span>
+<span class="flake" style="left:17.23%;width:2.24px;height:2.24px;--dur:28.5s;--delay:-15.1s;--drift:-9.0px;opacity:0.38"></span>
+<span class="flake" style="left:55.54%;width:2.93px;height:2.93px;--dur:16.1s;--delay:-14.9s;--drift:-13.1px;opacity:0.27"></span>
+<span class="flake" style="left:77.23%;width:2.32px;height:2.32px;--dur:25.2s;--delay:-8.2s;--drift:21.4px;opacity:0.35"></span>
+</div>
+
+<div class="wrap" id="top">
+  <div class="hero">
+    <div class="eyebrow">A Six-Song Cycle · 全6曲</div>
+    <h1>Cliff of Illusion</h1>
+    <div class="sub">〜マリンスノーの夢〜</div>
+    <div class="meta">Lyrics · 対訳 — 大森カエ / Omori Kae</div>
+    <div class="hairline"></div>
+  </div>
+
+  <nav class="toc" aria-label="曲目次">
+    <div class="toc-title">Tracks · 目次</div>
+<a class="toc-item" href="#track-1"><span class="toc-num">01</span><span class="toc-open">いつも 谷の底から 崖を見上げ</span></a>
+<a class="toc-item" href="#track-2"><span class="toc-num">02</span><span class="toc-open">誰よりも 夢を描いていた</span></a>
+<a class="toc-item" href="#track-3"><span class="toc-num">03</span><span class="toc-open">誰よりも 夢を描く日々</span></a>
+<a class="toc-item" href="#track-4"><span class="toc-num">04</span><span class="toc-open">谷の底で 過ごした日々</span></a>
+<a class="toc-item" href="#track-5"><span class="toc-num">05</span><span class="toc-open">友や大人が語る</span></a>
+<a class="toc-item" href="#track-6"><span class="toc-num">06</span><span class="toc-open">手を伸ばせば 届きそうな距離</span></a>
+  </nav>
+
+
+<section class="song" id="track-1">
+  <header class="song-head">
+    <span class="song-num">01</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第1曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">いつも 谷の底から 崖を見上げ</span><span class="en">Always gazing up at the cliffs from the valley floor</span></div>
+<div class="ln"><span class="ja">崖の上の世界を 想像し夢を描いていた</span><span class="en">I imagined and dreamed of the world above</span></div>
+<div class="ln"><span class="ja">綺羅びやかで どこまでも 広がる世界</span><span class="en">A dazzling world stretching out endlessly</span></div>
+<div class="ln"><span class="ja">自由で 自信に満ちあふれた 未来の僕の姿</span><span class="en">The image of my future self , free and full of confidence</span></div>
+<div class="ln"><span class="ja">あの時代 谷の底で 名も知らない 野草を口にした</span><span class="en">Back then, at the bottom of the valley, I ate wild plants with no name</span></div>
+<div class="ln"><span class="ja">冷え込む夜は 星の瞬きさえ 届かない場所で</span><span class="en">On freezing nights, in a place where even starlight couldn&#x27;t reach</span></div>
+<div class="ln"><span class="ja">僕は崖の上に オーロラ思い浮かべ</span><span class="en">I pictured the aurora above the cliffs</span></div>
+<div class="ln"><span class="ja">未来を手にしたかった</span><span class="en">I so desperately wanted to hold the future in my hands</span></div>
+<div class="ln"><span class="ja">谷の時代 見つめていたのは 山のトップ</span><span class="en">In the valley days, what I stared at was the mountain&#x27;s peak</span></div>
+<div class="ln"><span class="ja">輝く王冠に ガラスの靴は 相応しくないと</span><span class="en">A shining crown , and glass slippers don&#x27;t belong here, I thought</span></div>
+<div class="ln"><span class="ja">川に投げ捨てた</span><span class="en">And threw them into the river</span></div>
+<div class="ln"><span class="ja">力蓄え 貪り得た</span><span class="en">I gathered strength and devoured wisdom with fierce hunger</span></div>
+<div class="ln"><span class="ja">宝物を隠すように 人の裏を進み</span><span class="en">Like hiding treasure, I moved behind others&#x27; backs</span></div>
+<div class="ln"><span class="ja">僕は 何も知らない顔で 仲間と肩を組んだ</span><span class="en">I linked arms with my companions, wearing the face of innocence</span></div>
+<div class="ln anchor"><span class="enmark">I was a shrewd guy.</span></div>
+<div class="ln"><span class="ja">夜 夢を見た</span><span class="en">At night, I dreamed</span></div>
+<div class="ln"><span class="ja">海底のマリンスノーが 谷底に舞う夢</span><span class="en">Of marine snow from the ocean floor, drifting into the valley below</span></div>
+<div class="ln"><span class="ja">山頂に立ち 全てを手に入れたと</span><span class="en">Standing at the summit, believing I had everything</span></div>
+<div class="ln"><span class="ja">幻想の夢に溺れ</span><span class="en">I drowned in an illusory dream</span></div>
+<div class="ln"><span class="ja">始まる未来に 鼓動が速った</span><span class="en">My heart raced at the future beginning to unfold</span></div>
+<div class="ln"><span class="ja">終着駅が見えない 鉄道に乗り</span><span class="en">I boarded a train with no visible final stop</span></div>
+<div class="ln"><span class="ja">片道切符を 握りしめる事実</span><span class="en">The reality of clutching a one-way ticket</span></div>
+<div class="ln"><span class="ja">行き先を告げる アナウンスに 心躍った</span><span class="en">My heart leapt at the announcement declaring the destination</span></div>
+<div class="ln"><span class="ja">彼の地 谷の底に 友を置いて</span><span class="en">In that place, I left my friends behind in the valley</span></div>
+<div class="ln"><span class="ja">山頂に足を踏み入れた</span><span class="en">And set foot upon the summit</span></div>
+<div class="ln"><span class="ja">誰よりも憧れていた</span><span class="en">I had longed for it more than anyone</span></div>
+<div class="ln"><span class="ja">どんな未来が 待ち受け 何が起きるか</span><span class="en">What kind of future awaited, what would come to pass</span></div>
+<div class="ln"><span class="ja">眠れぬ 夜はそっと月に願った</span><span class="en">On sleepless nights, I quietly wished upon the moon</span></div>
+<div class="ln"><span class="ja">幸せな未来を</span><span class="en">For a happy future</span></div>
+<div class="ln"><span class="ja">勇気1つで 歩む道を変え</span><span class="en">With a single act of courage, I changed the path I walked</span></div>
+<div class="ln"><span class="ja">心が求めるもの 僕が望む未来が</span><span class="en">The thing my heart desired, the future I wanted</span></div>
+<div class="ln"><span class="ja">簡単に 手に入れられると テクノロジーが言った</span><span class="en">Could easily be obtained , or so technology told me</span></div>
+<div class="ln anchor"><span class="enmark">If I don&#x27;t move, get killed.</span></div>
+<div class="ln"><span class="ja">崖の上から 岩場のタンポポ群衆が</span><span class="en">From above the cliff, a crowd of dandelions on the rocky slope</span></div>
+<div class="ln"><span class="ja">花を咲き乱す光景を見た</span><span class="en">I saw them blooming wildly, scattered in full bloom</span></div>
+<div class="ln"><span class="ja">崖の上に立ち 初めて知る</span><span class="en">Standing on the cliff&#x27;s edge, I learn for the first time</span></div>
+<div class="ln"><span class="ja">後ずさりすら許されぬ</span><span class="en">Not even stepping back is allowed</span></div>
+<div class="ln"><span class="ja">進むしかない 過酷な世界</span><span class="en">A harsh world where I have no choice but to move forward</span></div>
+<div class="ln"><span class="ja">谷の底から夢見た あの頃が</span><span class="en">Those days when I dreamed from the valley floor</span></div>
+<div class="ln"><span class="ja">本当に幸せだったと</span><span class="en">Were truly the happiest of my life</span></div>
+<div class="ln"><span class="ja">テクノロジー横目に 心痛む</span><span class="en">Watching technology from the corner of my eye, my heart aches</span></div>
+<div class="ln anchor"><span class="enmark">How long will this lonely battle continue?</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+
+<section class="song" id="track-2">
+  <header class="song-head">
+    <span class="song-num">02</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第2曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">誰よりも 夢を描いていた</span><span class="en">I dreamed more than anyone</span></div>
+<div class="ln"><span class="ja">谷の底 冷たい水に 手を凍らせ</span><span class="en">At the valley floor, my hands frozen in cold water</span></div>
+<div class="ln"><span class="ja">粉雪に光の粒浮かばせ</span><span class="en">Letting particles of light float in the powdered snow</span></div>
+<div class="ln"><span class="ja">幻想の世界を 届かない希望に託し</span><span class="en">Entrusting an unreachable hope to an illusory world</span></div>
+<div class="ln"><span class="ja">水の中を歩いた</span><span class="en">I walked through the water</span></div>
+<div class="ln"><span class="ja">遠くから 聞えるエンジン音</span><span class="en">From far away, the sound of an engine reaches me</span></div>
+<div class="ln"><span class="ja">遠い地に 飛行機が飛ぶ</span><span class="en">A plane flies to distant lands</span></div>
+<div class="ln"><span class="ja">空に描く 飛行機雲</span><span class="en">Contrails drawn across the sky</span></div>
+<div class="ln"><span class="ja">アンビエントな世界</span><span class="en">An ambient world</span></div>
+<div class="ln"><span class="ja">現実と幻想が交差する</span><span class="en">Where reality and illusion intersect</span></div>
+<div class="ln"><span class="ja">谷の底で夢を見ていた</span><span class="en">I was dreaming at the bottom of the valley</span></div>
+<div class="ln"><span class="ja">渇いた喉元 潤す 冷たい水は</span><span class="en">The cold water that quenches my parched throat</span></div>
+<div class="ln"><span class="ja">まるで僕の心</span><span class="en">Is just like my heart</span></div>
+<div class="ln"><span class="ja">流れる涙は 水に溶ける</span><span class="en">The tears that flow dissolve into the water</span></div>
+<div class="ln"><span class="ja">山頂に立ち 見えた風景は</span><span class="en">Standing at the summit, the view I saw</span></div>
+<div class="ln"><span class="ja">誰よりも高い視線</span><span class="en">A gaze higher than anyone else&#x27;s</span></div>
+<div class="ln"><span class="ja">引けない道は 進むだけ</span><span class="en">A path I cannot retreat from , only forward</span></div>
+<div class="ln"><span class="ja">背負う十字架は 体に重い火傷を残す</span><span class="en">The cross I carry leaves deep burns upon my body</span></div>
+<div class="ln"><span class="ja">けれど 知っている</span><span class="en">Yet I know</span></div>
+<div class="ln"><span class="ja">誰よりも 挑める未来がある</span><span class="en">There is a future I can face more boldly than anyone</span></div>
+<div class="ln"><span class="ja">心が求める 魅力的な世界</span><span class="en">A captivating world my heart longs for</span></div>
+<div class="ln"><span class="ja">藍色の暖簾を潜れば</span><span class="en">If I pass through the indigo curtain</span></div>
+<div class="ln"><span class="ja">僕を待つ人がいる</span><span class="en">Someone is waiting for me</span></div>
+<div class="ln"><span class="ja">谷底に差し込む 僅かな光に</span><span class="en">Reaching out toward the faint light filtering into the valley floor</span></div>
+<div class="ln"><span class="ja">手を差し伸べるけど</span><span class="en">I stretch out my hand</span></div>
+<div class="ln"><span class="ja">手に触れるのは 塵だけだった</span><span class="en">But all that touches my fingers is dust</span></div>
+<div class="ln"><span class="ja">笑顔で接する 裏で唾吐く僕</span><span class="en">I smile to their faces, yet spit behind their backs</span></div>
+<div class="ln"><span class="ja">出し抜くことを いつから覚え 生きてきた？</span><span class="en">When did I learn to deceive, and live that way？</span></div>
+<div class="ln"><span class="ja">記憶は曖昧で 霧の中にいる</span><span class="en">My memories are hazy , I am inside a fog</span></div>
+<div class="ln"><span class="ja">現実と幻想が混在する</span><span class="en">Reality and illusion coexist</span></div>
+<div class="ln"><span class="ja">谷の底で泣いていた日々</span><span class="en">The days I spent weeping at the valley floor</span></div>
+<div class="ln"><span class="ja">列車に乗ったこと 何度も後悔した</span><span class="en">I regretted boarding that train, over and over</span></div>
+<div class="ln"><span class="ja">時が巻き戻る夢を 何度も描いた</span><span class="en">I dreamed of time rewinding itself, again and again</span></div>
+<div class="ln"><span class="ja">飛行機雲追いかけて</span><span class="en">Chasing the contrails</span></div>
+<div class="ln"><span class="ja">置いてきた友の元に 行きたい衝動</span><span class="en">The impulse to return to the friends I left behind</span></div>
+<div class="ln"><span class="ja">こらえきれず</span><span class="en">I could no longer hold it back</span></div>
+<div class="ln"><span class="ja">崖の上から 焼けつく喉を両手で押さえ</span><span class="en">From the cliff&#x27;s edge, pressing both hands against my burning throat</span></div>
+<div class="ln"><span class="ja">叫び続けた</span><span class="en">I kept on screaming</span></div>
+<div class="ln"><span class="ja">月だけが 涙を拭ってくれた</span><span class="en">Only the moon wiped away my tears</span></div>
+<div class="ln"><span class="ja">朝日昇り 今日を生きるため</span><span class="en">As the morning sun rises, to live through today</span></div>
+<div class="ln"><span class="ja">エンジン音響き渡る</span><span class="en">The engine&#x27;s roar echoes all around</span></div>
+<div class="ln"><span class="ja">崖の上を歩き始めた</span><span class="en">I began to walk along the cliff&#x27;s edge</span></div>
+<div class="ln"><span class="ja">心は知っている</span><span class="en">My heart knows</span></div>
+<div class="ln"><span class="ja">明日に向かえば</span><span class="en">If I face tomorrow</span></div>
+<div class="ln"><span class="ja">月光の幻想が</span><span class="en">The illusion of moonlight</span></div>
+<div class="ln"><span class="ja">太陽の光に変わる</span><span class="en">Will transform into the light of the sun</span></div>
+<div class="ln"><span class="ja">未来に出会えること</span><span class="en">And I will meet the future waiting for me</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+
+<section class="song" id="track-3">
+  <header class="song-head">
+    <span class="song-num">03</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第3曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">誰よりも 夢を描く日々</span><span class="en">Days when I dreamed more than anyone</span></div>
+<div class="ln"><span class="ja">谷の底 冷たい水に 手を凍らせ</span><span class="en">At the valley floor, my hands frozen in cold water</span></div>
+<div class="ln"><span class="ja">粉雪に 幻想の世界を</span><span class="en">In the powdered snow, an illusory world</span></div>
+<div class="ln"><span class="ja">届かない希望を託し</span><span class="en">I entrusted my unreachable hopes</span></div>
+<div class="ln"><span class="ja">水の上を歩いた</span><span class="en">And walked upon the water</span></div>
+<div class="ln"><span class="ja">遠くから 聞えるエンジン音</span><span class="en">From far away, the sound of an engine reaches me</span></div>
+<div class="ln"><span class="ja">遠く 飛行機が飛ぶ</span><span class="en">A plane flies far into the distance</span></div>
+<div class="ln"><span class="ja">空に描く 飛行機雲</span><span class="en">Contrails drawn across the sky</span></div>
+<div class="ln"><span class="ja">アンビエントな世界</span><span class="en">An ambient world</span></div>
+<div class="ln"><span class="ja">現実と幻想が交差し</span><span class="en">Where reality and illusion intersect</span></div>
+<div class="ln"><span class="ja">谷の底で夢見ていた</span><span class="en">I was dreaming at the bottom of the valley</span></div>
+<div class="ln"><span class="ja">渇いた喉元 潤す 冷たい水は</span><span class="en">The cold water that quenches my parched throat</span></div>
+<div class="ln"><span class="ja">まるで僕の心の様で</span><span class="en">Is just like my heart</span></div>
+<div class="ln"><span class="ja">流す涙は 水に溶けていった</span><span class="en">The tears I shed dissolved into the water</span></div>
+<div class="ln"><span class="ja">山頂に立って 見えた風景</span><span class="en">Standing at the summit, the view that appeared</span></div>
+<div class="ln"><span class="ja">誰よりも高い視線</span><span class="en">A gaze higher than anyone else&#x27;s</span></div>
+<div class="ln"><span class="ja">引けない進む道</span><span class="en">A path I cannot retreat from, only forward</span></div>
+<div class="ln"><span class="ja">負う十字架は 体に重い火傷を残す</span><span class="en">The cross I bear leaves deep burns upon my body</span></div>
+<div class="ln"><span class="ja">けれど 知っている</span><span class="en">Yet I know</span></div>
+<div class="ln"><span class="ja">誰よりも 挑める未来がある</span><span class="en">There is a future I can face more boldly than anyone</span></div>
+<div class="ln"><span class="ja">心が求める 魅力的な世界</span><span class="en">A captivating world my heart longs for</span></div>
+<div class="ln"><span class="ja">藍色の暖簾を潜れば</span><span class="en">If I pass through the indigo curtain</span></div>
+<div class="ln"><span class="ja">僕を待つ人がいる</span><span class="en">Someone is waiting for me</span></div>
+<div class="ln"><span class="ja">欲に溺れ 人を蹴落とす</span><span class="en">Drowning in greed, trampling others down</span></div>
+<div class="ln"><span class="ja">冷ややかな クールな態度</span><span class="en">A cold, detached demeanor</span></div>
+<div class="ln"><span class="ja">煌びやかな衣装 身に纏い ネオンに消える</span><span class="en">Draped in glittering costumes, vanishing into the neon</span></div>
+<div class="ln"><span class="ja">ベールに包まれた 崖の上 秘密の世界</span><span class="en">The cliff above, veiled in secrecy , a hidden world</span></div>
+<div class="ln"><span class="ja">名のない野草 口にし</span><span class="en">Taking nameless wild grass into my mouth</span></div>
+<div class="ln"><span class="ja">喉伝う 鉄の臭い</span><span class="en">The iron scent trailing down my throat</span></div>
+<div class="ln"><span class="ja">あの日々 想像した</span><span class="en">In those days, I imagined</span></div>
+<div class="ln"><span class="ja">煌めく 崖の上の世界</span><span class="en">The glittering world above the cliff</span></div>
+<div class="ln"><span class="ja">事実は ベールに覆われていた</span><span class="en">The truth was shrouded in a veil</span></div>
+<div class="ln anchor"><span class="enmark">Fantasy Dream</span></div>
+<div class="ln"><span class="ja">谷底に置いた 優しい思い出</span><span class="en">The tender memories I left behind at the valley floor</span></div>
+<div class="ln"><span class="ja">強く望み 思い描いた 明るい未来は</span><span class="en">The bright future I so desperately wished for and imagined</span></div>
+<div class="ln"><span class="ja">飛行機雲に溶け</span><span class="en">Dissolved into the contrails</span></div>
+<div class="ln"><span class="ja">悲しみだけ残し</span><span class="en">Leaving only sorrow behind</span></div>
+<div class="ln"><span class="ja">谷の底 憧れ 求め続けた</span><span class="en">The world I longed for and kept reaching toward from the valley</span></div>
+<div class="ln"><span class="ja">世界は 灰に染まり</span><span class="en">Has been stained with ash</span></div>
+<div class="ln"><span class="ja">崖の上から 見下ろした 視界に映る</span><span class="en">Looking down from the cliff, what appears in my sight</span></div>
+<div class="ln"><span class="ja">マリンスノー</span><span class="en">Marine snow</span></div>
+<div class="ln anchor"><span class="enmark">disappearing into the deep blue seabed</span></div>
+<div class="ln"><span class="ja">人の欲望が渦巻く 崖の上</span><span class="en">The cliff above, where human desires swirl</span></div>
+<div class="ln"><span class="ja">薄笑い浮かべ 谷底を見下ろす</span><span class="en">Wearing thin smiles, looking down at the valley below</span></div>
+<div class="ln"><span class="ja">野心家たち</span><span class="en">Ambitious men</span></div>
+<div class="ln"><span class="ja">片手にワイン 指にダイヤ</span><span class="en">Wine in one hand, diamonds on their fingers</span></div>
+<div class="ln"><span class="ja">権力が作る 煌びやかな世界</span><span class="en">A glittering world built by power</span></div>
+<div class="ln anchor"><span class="enmark">Nausea attacks</span></div>
+<div class="ln"><span class="ja">いつか迎えに行くと 友に言った</span><span class="en">I told my friends I would come for them someday</span></div>
+<div class="ln"><span class="ja">僕は 心の内 突き刺す棘を</span><span class="en">Yet I, unable to pull out the thorn</span></div>
+<div class="ln"><span class="ja">抜けず のたうち回る夢を</span><span class="en">That pierces deep within my heart, writhing in a dream</span></div>
+<div class="ln"><span class="ja">今日も 見る</span><span class="en">I see again today</span></div>
+<div class="ln anchor"><span class="enmark">I want to see my friends but I can&#x27;t</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+
+<section class="song" id="track-4">
+  <header class="song-head">
+    <span class="song-num">04</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第4曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">谷の底で 過ごした日々</span><span class="en">The days I spent at the bottom of the valley</span></div>
+<div class="ln"><span class="ja">ヘドロ漂う水を 喉に伝わらせ</span><span class="en">Letting sludge-laden water pass down my throat</span></div>
+<div class="ln"><span class="ja">僕らは 生きていた</span><span class="en">We were alive</span></div>
+<div class="ln"><span class="ja">友が語る 未来 変わらない平凡な日々</span><span class="en">The future my friends spoke of , unchanging, ordinary days</span></div>
+<div class="ln"><span class="ja">僕は 遠くに聞こえる ステレオの声に</span><span class="en">I, hearing a stereo voice from far away</span></div>
+<div class="ln"><span class="ja">テクノロジーを夢描いた</span><span class="en">Dreamed of a world of technology</span></div>
+<div class="ln anchor"><span class="enmark">A world of endless happiness</span></div>
+<div class="ln"><span class="ja">必死という感覚もなく</span><span class="en">Without even a sense of desperation</span></div>
+<div class="ln"><span class="ja">僕らは 日々を過ごし</span><span class="en">We passed our days</span></div>
+<div class="ln"><span class="ja">変わりゆく時代 別世界を知らず</span><span class="en">In a changing era, knowing nothing of another world</span></div>
+<div class="ln"><span class="ja">谷の底で 死にゆく 仲間たちに自分を重ね</span><span class="en">Seeing myself in the friends who were fading away at the valley floor</span></div>
+<div class="ln"><span class="ja">日々をただ 過ごした</span><span class="en">I simply let the days pass</span></div>
+<div class="ln anchor"><span class="enmark">I am a weak person who can&#x27;t do anything</span></div>
+<div class="ln"><span class="ja">初めて耳にした ジェット音に</span><span class="en">Until the first time I heard the roar of a jet</span></div>
+<div class="ln"><span class="ja">心震えるまで</span><span class="en">And felt my heart tremble</span></div>
+<div class="ln"><span class="ja">僕は 谷の底で 生を終えると</span><span class="en">I never doubted for a single moment</span></div>
+<div class="ln"><span class="ja">微塵も疑わなかった</span><span class="en">That I would end my life at the bottom of this valley</span></div>
+<div class="ln"><span class="ja">テクノロジー 進化する時代に</span><span class="en">In an era of evolving technology</span></div>
+<div class="ln"><span class="ja">僕は 言葉では表せない</span><span class="en">I always felt something words cannot express</span></div>
+<div class="ln"><span class="ja">期待と胸踊る喜びを いつも感じていた</span><span class="en">An expectation, a joy that made my heart dance</span></div>
+<div class="ln"><span class="ja">谷の底 飛び越えて</span><span class="en">Leaping beyond the valley floor</span></div>
+<div class="ln"><span class="ja">いつか 広がる未来の世界で</span><span class="en">In a future world that would one day unfold</span></div>
+<div class="ln"><span class="ja">果ての夢を見ると 強く願い</span><span class="en">I strongly wished to dream a dream without end</span></div>
+<div class="ln"><span class="ja">降り注ぐ マリンスノーに 敬意を添えた</span><span class="en">And offered my reverence to the marine snow falling down upon me</span></div>
+<div class="ln anchor"><span class="enmark">I want to break free from here and chase my dreams</span></div>
+<div class="ln"><span class="ja">誰かの 犠牲の上に立つ</span><span class="en">Standing upon someone&#x27;s sacrifice</span></div>
+<div class="ln"><span class="ja">権力者たちの 声</span><span class="en">The voices of those in power</span></div>
+<div class="ln"><span class="ja">モニター越しの 姿はモニュメント</span><span class="en">Their figures through the monitor , monuments</span></div>
+<div class="ln"><span class="ja">崖の上で 知った</span><span class="en">On the cliff above, I learned</span></div>
+<div class="ln"><span class="ja">人は 天変地異に弱い</span><span class="en">That people are fragile before catastrophe</span></div>
+<div class="ln"><span class="ja">権威に依存する 生き物という 事実</span><span class="en">The truth that we are creatures who depend on authority</span></div>
+<div class="ln"><span class="ja">蹴落とすか 蹴落とされるか</span><span class="en">Knock others down, or be knocked down yourself</span></div>
+<div class="ln"><span class="ja">弱肉強食の世界</span><span class="en">A world of the survival of the fittest</span></div>
+<div class="ln"><span class="ja">権力者達の 栄誉あるコメント</span><span class="en">The honorable words of those in power</span></div>
+<div class="ln"><span class="ja">崖の上に立ち いつか見たのは</span><span class="en">Standing on the cliff, what I once envisioned was</span></div>
+<div class="ln"><span class="ja">友に 手を差し伸べ</span><span class="en">Reaching out my hand to my friends</span></div>
+<div class="ln"><span class="ja">テクノロジーが創る世界で</span><span class="en">In a world created by technology</span></div>
+<div class="ln"><span class="ja">名のない野草より 温かな食事を</span><span class="en">A warm meal spread out instead of nameless wild grass</span></div>
+<div class="ln"><span class="ja">テーブルに広げ 笑いながら</span><span class="en">Laid across the table, laughing together</span></div>
+<div class="ln"><span class="ja">喉元を伝る そんな夢</span><span class="en">That kind of dream, passing warmly down the throat</span></div>
+<div class="ln"><span class="ja">とめどなく マリンスノーが 舞う景色の中で</span><span class="en">In a landscape where marine snow drifts endlessly</span></div>
+<div class="ln"><span class="ja">僕は 涙を隠した</span><span class="en">I hid my tears</span></div>
+<div class="ln anchor"><span class="enmark">I want to protect the people I care about</span></div>
+<div class="ln"><span class="ja">テクノロジーの 冷たく軋む音色</span><span class="en">The cold, creaking sound of technology</span></div>
+<div class="ln"><span class="ja">心ない 言葉</span><span class="en">Heartless words</span></div>
+<div class="ln"><span class="ja">コード通りに 完成される 未来図</span><span class="en">A blueprint for the future completed exactly as coded</span></div>
+<div class="ln"><span class="ja">弱肉強食の世界 広がる波を</span><span class="en">The spreading waves of a world ruled by the strong</span></div>
+<div class="ln"><span class="ja">僕は 崖の上から ただ 見つめるだけ</span><span class="en">I only watch from the cliff above</span></div>
+<div class="ln"><span class="ja">変わらない自分に</span><span class="en">To my unchanging self</span></div>
+<div class="ln"><span class="ja">名のない野草は</span><span class="en">The nameless wild grass</span></div>
+<div class="ln anchor"><span class="enmark">I realized it couldn&#x27;t suit me any better.</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+
+<section class="song" id="track-5">
+  <header class="song-head">
+    <span class="song-num">05</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第5曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">友や大人が語る</span><span class="en">What friends and elders spoke of</span></div>
+<div class="ln"><span class="ja">貧しくとも 温かく平凡な生活</span><span class="en">A warm and ordinary life, even in poverty</span></div>
+<div class="ln"><span class="ja">見える世界は 古びた たてもの</span><span class="en">The world in view , weathered buildings</span></div>
+<div class="ln"><span class="ja">生い茂る 蔦</span><span class="en">Ivy growing thick and wild</span></div>
+<div class="ln"><span class="ja">伸びた枝は 天空目指す</span><span class="en">Branches stretching toward the sky</span></div>
+<div class="ln anchor"><span class="enmark">A simple and peaceful life</span></div>
+<div class="ln"><span class="ja">川には マリンスノーが 降り注ぐ</span><span class="en">Marine snow rains down into the river</span></div>
+<div class="ln"><span class="ja">いのちの儚い 夢の残像は 跡形も消え</span><span class="en">The fleeting afterimage of life&#x27;s fragile dream vanishes without a trace</span></div>
+<div class="ln"><span class="ja">腰に手を添え 訴えかける</span><span class="en">Hands placed on hips, appealing to the crowd</span></div>
+<div class="ln"><span class="ja">その姿に 人は夢託す</span><span class="en">People entrust their dreams to that figure</span></div>
+<div class="ln"><span class="ja">誰もが夢描く 満ち足りた 優美な世界</span><span class="en">Everyone dreams of a fulfilled and graceful world</span></div>
+<div class="ln"><span class="ja">導きの叡智者は 寓話の中で ヒーローと化す</span><span class="en">The wise guide transforms into a hero within the fable</span></div>
+<div class="ln"><span class="ja">人の欲望は 限りなく</span><span class="en">Human desire knows no end</span></div>
+<div class="ln anchor"><span class="enmark">Every era will continue forever into the future.</span></div>
+<div class="ln"><span class="ja">崖の上で 毎夜繰り返される 仮面武装会</span><span class="en">The masked gathering repeated every night above the cliff</span></div>
+<div class="ln"><span class="ja">褒め称え 手にプレゼント携え</span><span class="en">Heaping praise, bearing gifts in hand</span></div>
+<div class="ln"><span class="ja">権力者の豪語に 拍手喝采</span><span class="en">Thunderous applause for the boastful words of those in power</span></div>
+<div class="ln"><span class="ja">夜明けの明星 昇る朝日を背に</span><span class="en">The morning star at dawn, the rising sun at their backs</span></div>
+<div class="ln"><span class="ja">人々は 社会に溶けていく</span><span class="en">People dissolve into society</span></div>
+<div class="ln"><span class="ja">いつの間にか 慣れ親しんだ光景</span><span class="en">A scene that has become familiar before anyone noticed</span></div>
+<div class="ln anchor"><span class="enmark">The World of Brainwashing</span></div>
+<div class="ln"><span class="ja">友から届く メール</span><span class="en">A message arrives from a friend</span></div>
+<div class="ln"><span class="ja">手に入れた 満ち足りた テクノロジー生活</span><span class="en">A fulfilled life of technology, finally obtained</span></div>
+<div class="ln"><span class="ja">温もりも息も 皆無な日常</span><span class="en">A daily life utterly devoid of warmth or breath</span></div>
+<div class="ln"><span class="ja">心閉ざし 上目使いの</span><span class="en">Hearts shut tight, looking up with cautious eyes</span></div>
+<div class="ln anchor"><span class="enmark">Conversations with those in power</span></div>
+<div class="ln"><span class="ja">染みついたヘドロが 蔦に絡みつく</span><span class="en">The deeply stained sludge coils around the ivy</span></div>
+<div class="ln"><span class="ja">マイク越しの演説 煌めく スポットライト</span><span class="en">A speech through the microphone, a glittering spotlight</span></div>
+<div class="ln"><span class="ja">誰もが羨む 拍手喝采</span><span class="en">Thunderous applause that everyone envies</span></div>
+<div class="ln"><span class="ja">崖の上にそびえ立つ 冷たい風吹く ビル街</span><span class="en">A cityscape of towers looming above the cliff, cold wind sweeping through</span></div>
+<div class="ln anchor"><span class="enmark">The World of the Glories of the Powerful</span></div>
+<div class="ln"><span class="ja">違和感も 怒りも 僕の心と 全て同化する</span><span class="en">Both the unease and the anger merge completely with my heart</span></div>
+<div class="ln"><span class="ja">リアルな世界の果てを 谷の底の時代 想像した</span><span class="en">I imagined the edge of the real world from those valley days</span></div>
+<div class="ln"><span class="ja">拍手も笑顔も 振りまく日常</span><span class="en">Days of scattering applause and smiles</span></div>
+<div class="ln"><span class="ja">僕の心は いつも泣き叫ぶ</span><span class="en">My heart always weeps and screams within</span></div>
+<div class="ln"><span class="ja">鎖で繋がった足枷 見つからない 鍵</span><span class="en">Shackles chained to my feet ｡ a key that cannot be found</span></div>
+<div class="ln"><span class="ja">目を閉じ 浮かぶのは</span><span class="en">When I close my eyes, what surfaces is</span></div>
+<div class="ln"><span class="ja">懐かしい 谷の底 見慣れた 光景</span><span class="en">The familiar valley floor I know so well</span></div>
+<div class="ln"><span class="ja">聞き慣れた 声</span><span class="en">The voices I know by heart</span></div>
+<div class="ln"><span class="ja">目に焼きつけた 谷の底から見た 満天の星たち</span><span class="en">Burned into my eyes , the stars filling the sky as seen from the valley floor</span></div>
+<div class="ln anchor"><span class="enmark">A gentle breeze was blowing</span></div>
+<div class="ln"><span class="ja">ヘドロ漂う 水の味</span><span class="en">The taste of sludge-drifting water</span></div>
+<div class="ln"><span class="ja">熱を 逃がさないよう 肩を寄せ合い 眠った夜</span><span class="en">Nights we slept pressed shoulder to shoulder, holding onto our warmth</span></div>
+<div class="ln"><span class="ja">全てが アンビエントな幻想だった</span><span class="en">All of it was an ambient illusion</span></div>
+<div class="ln anchor"><span class="enmark">I want to go back to those days.</span></div>
+<div class="ln"><span class="ja">心はずっと 泣き叫ぶ</span><span class="en">My heart never stops weeping and screaming</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+
+<section class="song" id="track-6">
+  <header class="song-head">
+    <span class="song-num">06</span>
+    <span class="song-eyebrow">Cliff of Illusion <span class="dot">·</span> 第6曲</span>
+  </header>
+  <div class="lyrics">
+<div class="ln"><span class="ja">手を伸ばせば 届きそうな距離</span><span class="en">Close enough that if I reached out, I could almost touch it</span></div>
+<div class="ln"><span class="ja">谷の底には 懐かしい人達の面影</span><span class="en">In the valley below, the faces of those I miss</span></div>
+<div class="ln"><span class="ja">名のない野草も ヘドロ漂う水も</span><span class="en">The nameless wild grass, the sludge-drifting water</span></div>
+<div class="ln"><span class="ja">今なら 好きと言える</span><span class="en">Now I can say , I love them</span></div>
+<div class="ln"><span class="ja">変わりゆく 風景に浮かぶ 建物の姿</span><span class="en">The shapes of buildings floating in the ever-changing landscape</span></div>
+<div class="ln"><span class="ja">谷にそよぐ風の匂い</span><span class="en">The scent of the breeze drifting through the valley</span></div>
+<div class="ln"><span class="ja">口ずさむ 歌は 谷の世界に響き</span><span class="en">The song I hum echoes through the valley world</span></div>
+<div class="ln"><span class="ja">誰もを 癒した</span><span class="en">And healed everyone it reached</span></div>
+<div class="ln anchor"><span class="enmark">The voice of the person I love</span></div>
+<div class="ln"><span class="ja">僕は 夢を見る</span><span class="en">I dream</span></div>
+<div class="ln"><span class="ja">覚めない熱を抱き</span><span class="en">Holding a fever that won&#x27;t break</span></div>
+<div class="ln"><span class="ja">夜露に濡れる枕 抱きしめ</span><span class="en">Clutching a pillow dampened by the night dew</span></div>
+<div class="ln"><span class="ja">果てなく続く 遠くに置いてきた 過去の記憶</span><span class="en">The endless memories of a past left far behind</span></div>
+<div class="ln"><span class="ja">遠くに響く ジェット音</span><span class="en">The roar of a jet echoing in the distance</span></div>
+<div class="ln"><span class="ja">行き先は どこなのか</span><span class="en">Where is it headed</span></div>
+<div class="ln"><span class="ja">想像だけが 全ての アンビエントな幻想</span><span class="en">Imagination alone , the entirety of an ambient illusion</span></div>
+<div class="ln"><span class="ja">大人達の 冷たい視線</span><span class="en">The cold gazes of adults</span></div>
+<div class="ln"><span class="ja">大空に弧を描く 飛行機は</span><span class="en">The plane tracing an arc across the open sky</span></div>
+<div class="ln"><span class="ja">だけど 僕の未来を示していた</span><span class="en">Yet it was pointing toward my future</span></div>
+<div class="ln"><span class="ja">リアルな世界は 崖の上 高層ビルの中</span><span class="en">The real world , above the cliff, inside the high-rise towers</span></div>
+<div class="ln"><span class="ja">誰もが知らない 巨塔</span><span class="en">A towering giant no one knows</span></div>
+<div class="ln anchor"><span class="enmark">A World Full of Concealment</span></div>
+<div class="ln"><span class="ja">谷の底に 置いてきた 友</span><span class="en">The friend I left behind at the valley floor</span></div>
+<div class="ln"><span class="ja">迎えに行くと 約束した日の記憶</span><span class="en">The memory of the day I promised to come for them</span></div>
+<div class="ln"><span class="ja">部屋の扉 開け 谷の底を後に</span><span class="en">Opening the door to my room, leaving the valley behind</span></div>
+<div class="ln"><span class="ja">友は一人 僕の側に</span><span class="en">That one friend, by my side</span></div>
+<div class="ln anchor"><span class="enmark">Miracles happen</span></div>
+<div class="ln"><span class="ja">一人で眠る夜は 胸ざわつき</span><span class="en">On nights I sleep alone, unease stirs in my chest</span></div>
+<div class="ln"><span class="ja">声すら忘れ</span><span class="en">I have even forgotten their voice</span></div>
+<div class="ln"><span class="ja">アンビエントな幻想に 全てを委ねた</span><span class="en">I surrendered everything to an ambient illusion</span></div>
+<div class="ln anchor"><span class="enmark">A night that feels like I&#x27;m going crazy</span></div>
+<div class="ln"><span class="ja">友がいる 気づけば</span><span class="en">When I look up, there are friends</span></div>
+<div class="ln"><span class="ja">僕を気にかける 優しい笑みの 人達がいる</span><span class="en">People with gentle smiles who care about me</span></div>
+<div class="ln"><span class="ja">冷たい機械音が 鳴り響く ビル街に</span><span class="en">In the cityscape where cold mechanical sounds ring out</span></div>
+<div class="ln"><span class="ja">差し伸べられた手を取り</span><span class="en">I take the hand stretched out toward me</span></div>
+<div class="ln"><span class="ja">崖の下めがけ 僕は 友と二人</span><span class="en">The two of us, my friend and I, heading toward the base of the cliff</span></div>
+<div class="ln"><span class="ja">鎖を断ち切り</span><span class="en">Breaking free from our chains</span></div>
+<div class="ln"><span class="ja">谷の底 懐かしい人達に 会うため</span><span class="en">To meet the beloved people of the valley once more</span></div>
+<div class="ln"><span class="ja">巨塔を飛び出した</span><span class="en">We burst out of the towering giant</span></div>
+<div class="ln anchor"><span class="enmark">It&#x27;s not about running away</span></div>
+<div class="ln"><span class="ja">束の間の 夢</span><span class="en">A fleeting dream</span></div>
+<div class="ln"><span class="ja">息整え</span><span class="en">Catching my breath</span></div>
+<div class="ln"><span class="ja">明日の 未来の 崖の上を思い描く</span><span class="en">I envision the cliff above , tomorrow, the future</span></div>
+<div class="ln"><span class="ja">逃げるよりも 戦い</span><span class="en">Rather than running, we fight</span></div>
+<div class="ln"><span class="ja">いつか 谷の底に 自由と希望を 持ち帰る</span><span class="en">One day, we will bring freedom and hope back to the valley floor</span></div>
+<div class="ln"><span class="ja">友と語った夜</span><span class="en">The night we spoke of this together</span></div>
+<div class="ln anchor"><span class="enmark">I will never forget</span></div>
+<div class="ln"><span class="ja">心許せる 仲間がいる</span><span class="en">There are companions I can open my heart to</span></div>
+<div class="ln"><span class="ja">谷の底 この地で 僕は 生まれ</span><span class="en">At the valley floor, in this place, I was born</span></div>
+<div class="ln"><span class="ja">名のない野草を口にし</span><span class="en">I ate nameless wild grass</span></div>
+<div class="ln"><span class="ja">ヘドロ漂う水を飲んだ</span><span class="en">I drank sludge-drifting water</span></div>
+<div class="ln"><span class="ja">降り注ぐマリンスノーに 愛を教わり</span><span class="en">From the marine snow raining down, I learned what love is</span></div>
+<div class="ln"><span class="ja">見上げた空に 未来を夢見た</span><span class="en">And dreamed of the future in the sky above</span></div>
+<div class="ln"><span class="ja">一人では叶わない 未来の夢</span><span class="en">A dream of the future that cannot be fulfilled alone</span></div>
+<div class="ln anchor"><span class="enmark">I can still fight</span></div>
+  </div>
+  <a class="back-top" href="#top">↑ 目次へ戻る</a>
+</section>
+</div>
+</body>
+</html>
