@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立ち去った貴方へ 〜When the light went out〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+  :root{
+    --ink: #e4e6ec;
+    --ink-soft: #b6b9c4;
+    --ink-faint: #74778a;
+    --moon: #c9d3e8;        /* 月明かり */
+    --moon-soft: #9aa6c4;
+    --bg-top: #07080e;
+    --bg-mid: #10131e;
+    --bg-low: #171b2a;
+    --bg-glow: #1b2233;
+    --line: rgba(201,211,232,0.18);
+    --en: #8f93a6;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-low) 80%, var(--bg-glow) 100%);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .moonlight{
+    position: fixed; left:0; right:0; top:0; height: 50vh; z-index:0;
+    background: radial-gradient(ellipse 90% 60% at 50% -10%,
+      rgba(201,211,232,0.10) 0%, rgba(154,166,196,0.04) 45%, transparent 75%);
+    pointer-events:none;
+  }
+  .sky{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:#e4e6ec; opacity:0.5; animation: tw 6s infinite ease-in-out;
+  }
+  @keyframes tw{ 0%,100%{opacity:0.12;} 50%{opacity:0.6;} }
+
+  .wrap{ position: relative; z-index:1; max-width: 660px; margin: 0 auto; padding: 13vh 26px 16vh; }
+
+  .ep-title{ text-align:center; margin-bottom: 11vh; }
+  .ep-title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.16em; color: var(--moon-soft);
+    display:block; margin-bottom: 1.4em;
+  }
+  .ep-title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.2vw, 2.4rem);
+    letter-spacing: 0.1em; color: var(--moon);
+    text-shadow: 0 0 26px rgba(201,211,232,0.18); line-height:1.6;
+  }
+  .ep-title .by{ margin-top:1.8em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint); }
+
+  .ep-intro{
+    text-align:center; max-width: 32em; margin: 0 auto 13vh;
+    color: var(--ink-soft); font-size: 1.0rem; line-height: 2.2; letter-spacing:0.05em;
+  }
+  .ep-intro p{ margin-bottom: 1.3em; }
+  .ep-intro .en{
+    display:block; margin-top:1.6em;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color: var(--en); font-size:0.9rem; line-height:1.9;
+  }
+
+  .track{ margin-bottom: 16vh; }
+  .track:last-of-type{ margin-bottom: 4vh; }
+
+  .track-head{ text-align:center; margin-bottom: 7vh; }
+  .track-no{
+    display:inline-block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.85rem; letter-spacing:0.3em; color: var(--moon-soft); margin-bottom:1.2em;
+  }
+  .track-head .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 0.98rem; letter-spacing:0.14em; color: var(--moon);
+    display:block; margin-bottom: 0.9em;
+  }
+  .track-head h2{
+    font-weight:500; font-size: clamp(1.3rem, 4.2vw, 1.7rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    line-height:1.6;
+  }
+  .track-rule{ width:32px; height:1px; background: var(--line); margin: 1.8em auto 0; }
+
+  .lyric{ font-size: 1.02rem; line-height: 2.3; color: var(--ink); }
+  .lyric p{ margin:0 0 2em; white-space:pre-line; }
+  .lyric p:last-child{ margin-bottom:0; }
+  .lyric .paren{ color: var(--en); font-size:0.92em; }
+
+  .chorus{
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 2em 0; margin: 2em 0;
+  }
+  .chorus p{ margin-bottom:0; }
+
+  .final{ text-align:center; margin-top: 5vh; padding-top: 4vh; border-top: 1px solid var(--line); }
+  .final .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:1.25rem; color: var(--moon);
+    text-shadow: 0 0 24px rgba(201,211,232,0.25);
+    display:block; letter-spacing:0.06em;
+  }
+  .final .ja{ margin-top:0.9em; color: var(--moon-soft); font-size:1.0rem; letter-spacing:0.1em; }
+
+  .care{
+    margin-top: 9vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    color: var(--ink-soft); font-size:0.92rem; line-height:2.2; letter-spacing:0.04em;
+    text-align:left;
+  }
+  .care h3{
+    text-align:center; color: var(--moon); font-weight:500; font-size:1.0rem;
+    letter-spacing:0.1em; margin-bottom: 2em;
+  }
+  .care p{ margin-bottom: 1.4em; }
+  .care .en{
+    display:block; color: var(--en); font-size:0.85rem; font-style:italic;
+    font-family:'Cormorant Garamond', serif; margin-top:0.5em; line-height:1.9;
+  }
+  .care .hotline{ color: var(--moon); font-weight:500; }
+
+  footer{
+    text-align:center; margin-top: 9vh; padding-top: 6vh;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint); font-size:0.85rem; letter-spacing:0.08em; line-height:2.2;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    display:block; margin-top:0.8em; color:var(--en);
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 9vh 20px 13vh; }
+    .lyric{ font-size:0.98rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+<div class="moonlight"></div>
+
+<div class="wrap">
+
+  <div class="ep-title">
+    <span class="en">When the light went out</span>
+    <h1>立ち去った貴方へ</h1>
+    <div class="by">大森 カエ</div>
+  </div>
+
+  <div class="ep-intro">
+    <p>誰かを見送るということは、その人を失うことだけではない。<br>
+    その人が生きた証を、これからも自分の中で生かし続けるということ。</p>
+    <span class="en">To see someone off is not only to lose them. It is to keep the proof that they lived, alive within yourself, from now on.</span>
+  </div>
+
+  <!-- ============ Track 1: 穏やかに、眠るように ============ -->
+  <section class="track" id="odayaka">
+    <div class="track-head">
+      <span class="track-no">I.</span>
+      <h2>穏やかに、眠るように</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>いつからか <span class="paren">(Somewhere along the way)</span>
+声も出せなくなり <span class="paren">(The voice could no longer come)</span>
+眠る時間が多くなっていた <span class="paren">(And sleep began to take more and more of the hours)</span></p>
+
+<p>体力を奪われないよう <span class="paren">(So as not to drain what little strength remained)</span>
+休息の時間を多く取り <span class="paren">(More and more time was given to rest)</span>
+呼吸も脈も弱まり <span class="paren">(Breath and pulse growing faint)</span>
+起きている時間は <span class="paren">(In the hours of wakefulness)</span>
+静かに天井を見つめるようになった <span class="paren">(Quietly gazing up at the ceiling)</span></p>
+
+<p>食事を受け付けなくなり <span class="paren">(Food could no longer be taken)</span>
+起きている時間が減り <span class="paren">(The hours of waking grew fewer)</span>
+動きも緩慢になり <span class="paren">(Movement became slow and still)</span>
+好きだったTVも <span class="paren">(The television once loved)</span>
+お話もやめて眠ることを選んだ <span class="paren">(the conversations once shared, all set aside, and sleep chosen instead)</span></p>
+
+<p>家族に愛され <span class="paren">(Loved by family)</span>
+いつも屈託なく笑い合う家族との風景 <span class="paren">(The image of everyone laughing together without a care)</span>
+今も目に浮かぶの <span class="paren">(Even now, it rises before my eyes)</span></p>
+
+<div class="chorus"><p>辛い闘病生活を送っても <span class="paren">(Even through the pain of fighting this illness)</span>
+長生きして欲しいと願う家族のために <span class="paren">(For the sake of family who wished for more time)</span>
+あなたは精一杯生き続けた <span class="paren">(You kept living with everything you had)</span>
+もう　これからは <span class="paren">(Now, from here on)</span>
+あなたらしく過ごしてほしい <span class="paren">(Please spend your days as only you can)</span></p></div>
+
+<p>自分で活動出来なくなり <span class="paren">(No longer able to do things on your own)</span>
+いつも　申し訳ない <span class="paren">(You would whisper, always)</span>
+そうあなたは漏らしていた <span class="paren">("I'm sorry, I'm so sorry")</span></p>
+
+<div class="chorus"><p>辛い闘病生活を送っても <span class="paren">(Even through the pain of fighting this illness)</span>
+長生きして欲しいと願う家族のために <span class="paren">(For the sake of family who wished for more time)</span>
+あなたは精一杯生き続けた <span class="paren">(You kept living with everything you had)</span>
+もう　これからは <span class="paren">(Now, from here on)</span>
+あなたらしく過ごしてほしい <span class="paren">(Please spend your days as only you can)</span></p></div>
+
+<p>今まで　よく頑張ったね <span class="paren">(You worked so hard, for so long)</span>
+先に旅立った仲間と楽しんで <span class="paren">(Go now, and enjoy your time with those who set out before you)</span></p>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 2: 天使になった母へ 〜記憶〜 ============ -->
+  <section class="track" id="kioku">
+    <div class="track-head">
+      <span class="track-no">II.</span>
+      <span class="en">Memory</span>
+      <h2>天使になった母へ<br>〜記憶〜</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>今日は造花と写真を持って <span class="paren">(Today, taking artificial flowers and a photo)</span>
+母の待つ場所に行こう <span class="paren">(I'll go to the place where Mother waits)</span>
+桜の花は散り　夏の匂いがする　あの場所へ <span class="paren">(To that place where cherry blossoms have scattered and summer scents linger)</span>
+訪れた事も　映像やSNSで聞いた事もない <span class="paren">(I've never visited, never heard of it through images or social media)</span>
+なのに　この小さな街を知っている気がした <span class="paren">(Yet I felt I knew this small town)</span>
+デジャヴ <span class="paren">(Déjà vu)</span>
+そんな言葉が頭を掠めた <span class="paren">(Such a word grazed my mind)</span></p>
+
+<p>古びた建物　100年以上昔から立つ桜の木 <span class="paren">(Old buildings, a cherry tree standing for over 100 years)</span>
+ひんやりとした木肌に触れると優しい気持ちになれた <span class="paren">(Touching its cool bark made me feel gentle)</span>
+ナゼ？ <span class="paren">(Why?)</span>
+いつか　何処かで　僕は同じ経験をした <span class="paren">(Sometime, somewhere, I had the same experience)</span>
+心がそう叫んでいるんだ <span class="paren">(My heart is screaming so)</span></p>
+
+<p>母は自分を追い詰めていた <span class="paren">(Mother was cornering herself)</span>
+いつも辛く追い詰められた顔 <span class="paren">(Always a pained, cornered face)</span>
+それだけが　いつも気がかりだった <span class="paren">(That alone always worried me)</span>
+いつか　何処か遠くに行ってしまいそうで <span class="paren">(Someday she might go somewhere far away)</span>
+僕は何が出来る？ <span class="paren">(What can I do?)</span>
+誰に何を言えば良い？ <span class="paren">(What should I say to whom?)</span>
+何が起きているかも分からず <span class="paren">(Not even knowing what was happening)</span>
+母の作り笑いを指くわえて見るしかなかった <span class="paren">(I could only watch Mother's forced smile helplessly)</span></p>
+
+<div class="chorus"><p>The past won't come back（過去は戻らない）
+過去は戻らない（The past won't come back）
+What was sad wasn't just sadness, there's always a reason why
+（悲しかった事は悲しかっただけではなく　いつも理由がある）
+悲しかった事は悲しかっただけではなく　いつも理由がある
+（What was sad wasn't just sadness, there's always a reason why）
+Some could have been avoided（理由には避けられた事もある）
+理由には避けられた事もある（Some could have been avoided）
+But I pretend not to know（だけど　わざと知らないふりをする）
+だけど　わざと知らないふりをする（But I pretend not to know）
+Isn't that alright?（それでいいだろう？）
+それでいいだろう？（Isn't that alright?）
+The more I know the truth（壊れた心は　理由を知るほど）
+壊れた心は　理由を知るほど（The more I know the truth）
+This broken heart sinks deeper（心は重く沈み）
+心は重く沈み（This broken heart sinks deeper）
+Almost touching the god of night's onyx（夜のオニキス神に触れてしまいそうになる）
+夜のオニキス神に触れてしまいそうになる（Almost touching the god of night's onyx）</p></div>
+
+<p>いつか行った事のある　あの小さな街 <span class="paren">(That small town I once visited)</span>
+何故　懐かしいのに悲しいのだろう <span class="paren">(Why do I feel nostalgic yet sad)</span>
+幼い頃の記憶は曖昧で <span class="paren">(Childhood memories are vague)</span>
+その疑問を知るべきではないと <span class="paren">(I shouldn't seek the answer to that question)</span>
+頭の奥深くに誰かが忠告してくる <span class="paren">(Someone deep in my mind warns me)</span></p>
+
+<div class="chorus"><p>The past won't come back（過去は戻らない）
+過去は戻らない（The past won't come back）
+What was sad wasn't just sadness, there's always a reason why
+（悲しかった事は悲しかっただけではなく　いつも理由がある）
+悲しかった事は悲しかっただけではなく　いつも理由がある
+（What was sad wasn't just sadness, there's always a reason why）
+Some could have been avoided（理由には避けられた事もある）
+理由には避けられた事もある（Some could have been avoided）
+But I pretend not to know（だけど　わざと知らないふりをする）
+だけど　わざと知らないふりをする（But I pretend not to know）
+Isn't that alright?（それでいいだろう？）
+それでいいだろう？（Isn't that alright?）
+The more I know the truth（壊れた心は　理由を知るほど）
+壊れた心は　理由を知るほど（The more I know the truth）
+This broken heart sinks deeper（心は重く沈み）
+心は重く沈み（This broken heart sinks deeper）
+Almost touching the god of night's onyx（夜のオニキス神に触れてしまいそうになる）
+夜のオニキス神に触れてしまいそうになる（Almost touching the god of night's onyx）</p></div>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 3: 天使になった母へ 〜思い〜 ============ -->
+  <section class="track" id="omoi">
+    <div class="track-head">
+      <span class="track-no">III.</span>
+      <span class="en">Remembrance</span>
+      <h2>天使になった母へ<br>〜思い〜</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>子供の頃　母が言っていた <span class="paren">(When I was a child, Mother said)</span>
+あなたにずっとずっと会いたかった <span class="paren">(I wanted to meet you for so long)</span>
+腹の中で10か月　守られていた <span class="paren">(For ten months in her womb, I was protected)</span>
+人は非難しても僕は愛されていた <span class="paren">(Even if people criticized, I was loved)</span>
+誰にも理解されなくても良い <span class="paren">(It's fine if no one understands)</span>
+それだけでいい <span class="paren">(That alone is enough)</span></p>
+
+<p>人は　言葉ではなく　アイコンタクトで言う <span class="paren">(People say it not with words, but with eye contact)</span>
+母は心を病み　母親の資格はなかった <span class="paren">(Mother was mentally ill, she wasn't qualified to be a mother)</span>
+言わせたい人には言わせればいい <span class="paren">(Let those who want to say it, say it)</span>
+聞き流すだけでいい <span class="paren">(I just need to let it go)</span>
+お腹の中で守られ愛されていた <span class="paren">(I was protected and loved in her womb)</span>
+その事実が真実だと僕は知っている <span class="paren">(I know that fact is the truth)</span>
+本当の気持ちは <span class="paren">(The true feelings)</span>
+僕と母だけが知っていればいい <span class="paren">(Only Mother and I need to know)</span></p>
+
+<p>母は言っていた　ごめんね <span class="paren">(Mother said, "I'm sorry")</span>
+謝るのは　母を追い詰めた社会なのに <span class="paren">(Yet it's the society that cornered her who should apologize)</span>
+離れていても <span class="paren">(Even apart)</span>
+社会から離れた所に <span class="paren">(In a place away from society)</span>
+今は呼吸も止めて<br>辛い毎日から解放された母に伝えたい <span class="paren">(I want to tell Mother, now freed from the painful days, her breathing stopped)</span>
+僕を産んで　愛してくれて有難う <span class="paren">(Thank you for giving birth to me and loving me)</span></p>
+
+<div class="chorus"><p>The past won't come back（過去は戻らない）
+過去は戻らない（The past won't come back）
+What was sad wasn't just sadness, there's always a reason why
+（悲しかった事は悲しかっただけではなく　いつも理由がある）
+悲しかった事は悲しかっただけではなく　いつも理由がある
+（What was sad wasn't just sadness, there's always a reason why）
+Some could have been avoided（理由には避けられた事もある）
+理由には避けられた事もある（Some could have been avoided）
+But I pretend not to know（だけど　わざと知らないふりをする）
+だけど　わざと知らないふりをする（But I pretend not to know）
+Isn't that alright?（それでいいだろう？）
+それでいいだろう？（Isn't that alright?）
+The more I know the truth（壊れた心は　理由を知るほど）
+壊れた心は　理由を知るほど（The more I know the truth）
+This broken heart sinks deeper（心は重く沈み）
+心は重く沈み（This broken heart sinks deeper）
+Almost touching the god of night's onyx（夜のオニキス神に触れてしまいそうになる）
+夜のオニキス神に触れてしまいそうになる（Almost touching the god of night's onyx）</p></div>
+
+<p>人生という限られた時間 <span class="paren">(The limited time called life)</span>
+辛く悲しい事の方が多いけれど <span class="paren">(Though painful and sad things are more common)</span>
+苦悩の城の中で生きている <span class="paren">(We live in a castle of anguish)</span>
+だから僅かな幸せを愛おしく思える <span class="paren">(That's why we can cherish even small happiness)</span>
+辛さや悲しみは気配を消して近づく <span class="paren">(Pain and sorrow approach stealthily)</span>
+僕はその度に地面を蹴り上げて戦うと決めた <span class="paren">(Each time, I decided to kick the ground and fight)</span></p>
+
+<p>今日は　あの街の写真を持って <span class="paren">(Today, bringing a photo of that town)</span>
+ピンク色の造花を抱えながら <span class="paren">(Carrying pink artificial flowers)</span>
+長い坂道を登り <span class="paren">(Climbing the long slope)</span>
+静かでのどかな墓地が並ぶ <span class="paren">(Quiet, peaceful cemeteries line up)</span>
+春の匂いが肌に纏わりついて <span class="paren">(The scent of spring clings to my skin)</span>
+思わず鼻歌を歌いながら <span class="paren">(Unconsciously humming a tune)</span>
+誰も恨まない <span class="paren">(I don't resent anyone)</span>
+母は運命に流されたと知っているから <span class="paren">(Because I know Mother was swept by fate)</span></p>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 4: また会う時まで ============ -->
+  <section class="track" id="mata-au">
+    <div class="track-head">
+      <span class="track-no">IV.</span>
+      <span class="en">My dearest, precious angel</span>
+      <h2>また会う時まで</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>今は　深く眠りたいの <span class="paren">(Now, I want to sleep deeply)</span>
+疲れちゃった… <span class="paren">(I'm so tired…)</span>
+あなたはそう言って目を閉じた <span class="paren">(You said that and closed your eyes)</span>
+次に目が覚めたら <span class="paren">(When you wake up next time)</span>
+あなたは <span class="paren">(You will)</span>
+幸せな夢の続きをみるのね <span class="paren">(Continue your happy dream)</span></p>
+
+<p>天使達が <span class="paren">(Angels are)</span>
+あなたが道に迷わないよう <span class="paren">(Watching over you by your side)</span>
+側で見守り <span class="paren">(So you won't lose your way)</span>
+私の髪を撫でる <span class="paren">(They stroke my hair)</span>
+眠りから覚めるのを待っている <span class="paren">(Waiting for you to wake from sleep)</span>
+一緒に　遊びましょう、と <span class="paren">("Let's play together," they say)</span></p>
+
+<p>天使達が <span class="paren">(The angels)</span>
+あなたの手をそっと取り <span class="paren">(Gently take your hand)</span>
+大天使様や精霊達の待つ <span class="paren">(Where archangels and spirits await)</span>
+夢の世界に <span class="paren">(To the dream world)</span>
+幸せな物語を語りながら <span class="paren">(While telling happy stories)</span>
+誘う <span class="paren">(Invite)</span></p>
+
+<div class="chorus"><p>小さな心の灯火を <span class="paren">(The small flame of your heart)</span>
+あなたは精一杯燃やした <span class="paren">(You burned it with all your might)</span>
+ただ　それだけで <span class="paren">(Just that alone)</span>
+ありがとう <span class="paren">(Thank you)</span>
+あなたは永遠に <span class="paren">(You are forever)</span>
+My dearest, precious angel <span class="paren">(愛おしい、かけがえのない天使よ)</span>
+いつか会えるまで <span class="paren">(Until we meet again someday)</span>
+Please, God, watch over them <span class="paren">(神様、あの子をどうか見守っていてください)</span>
+毎晩、月に願う <span class="paren">(I wish upon the moon every night)</span></p></div>
+
+<p>いつか再会するとき <span class="paren">(When we meet again someday)</span>
+あなたは <span class="paren">(I wonder if you)</span>
+少しだけ、大人になっているかしら <span class="paren">(Will have grown up just a little)</span>
+そんな想像をしながら <span class="paren">(With such imaginations)</span>
+今日を生きていく <span class="paren">(I live through today)</span></p>
+
+<p>あなたに笑われないよう <span class="paren">(So you won't laugh at me)</span>
+精一杯　生きていく <span class="paren">(I'll live with all my might)</span>
+あなたに色んな話しが出来るように <span class="paren">(So I can tell you many stories)</span>
+でも　時々 <span class="paren">(But sometimes)</span>
+涙を流させてね <span class="paren">(Let me shed tears)</span></p>
+
+<div class="chorus"><p>小さな心の灯火を <span class="paren">(The small flame of your heart)</span>
+あなたは精一杯燃やした <span class="paren">(You burned it with all your might)</span>
+ただ　それだけで <span class="paren">(Just that alone)</span>
+ありがとう <span class="paren">(Thank you)</span>
+あなたは永遠に <span class="paren">(You are forever)</span>
+My dearest, precious angel <span class="paren">(愛おしい、かけがえのない天使よ)</span>
+いつか会えるまで <span class="paren">(Until we meet again someday)</span>
+Please, God, watch over them <span class="paren">(神様、あの子をどうか見守っていてください)</span>
+毎晩、月に願う <span class="paren">(I wish upon the moon every night)</span></p></div>
+
+<p>どうか　あなたが笑っていられるように <span class="paren">(So that you can keep smiling)</span>
+神様　見守っていてあげて <span class="paren">(God, please watch over them)</span>
+私の願いは　それだけ <span class="paren">(That is my only wish)</span></p>
+
+    </div>
+  </section>
+
+  <div class="final">
+    <span class="en">Rest now, as gently as you lived</span>
+    <span class="ja">穏やかに、眠るように</span>
+  </div>
+
+  <div class="care">
+    <h3>大切な人を見送ったあなたへ</h3>
+    <p>大切な人を亡くした悲しみは、時間が経てば消えるものではありません。ふとした瞬間に、思い出と一緒に押し寄せてくることもあります。それは、ちゃんと愛していた証です。
+    <span class="en">The grief of losing someone dear doesn't simply fade with time. It can rise again unexpectedly, carried in with a memory. That, too, is proof of how truly you loved them.</span></p>
+    <p>もし、その悲しみを一人で抱えきれないと感じたら、話を聞いてくれる場所があります。
+    <span class="en">If that grief feels like too much to carry alone, there are places where someone will listen.</span></p>
+    <p><span class="hotline">よりそいホットライン 0120-279-338</span>(24時間・通話無料)。ご遺族のための分かち合いの会なども、各地にあります。
+    <span class="en">Yorisoi Hotline: 0120-279-338 (24 hours, toll-free, Japan). Bereavement support groups also exist in many communities.</span></p>
+  </div>
+
+  <footer>
+    あなたが見送った人は、今もあなたの中で生きている。<br>
+    どうか、その記憶と共に、生きていってください。
+    <span class="en">The one you saw off still lives on within you. Please keep living, together with that memory.</span>
+  </footer>
+
+</div>
+
+<script>
+  const sky = document.getElementById('sky');
+  for(let i=0;i<55;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = (Math.random()*70) + '%';
+    s.style.animationDelay = (Math.random()*6) + 's';
+    const sz = Math.random()*1.4 + 1;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    sky.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
