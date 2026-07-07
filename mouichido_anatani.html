@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>もう一度、あなたに 〜On Christmas Day〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+  :root{
+    --ink: #f0e9e6;
+    --ink-soft: #cdbfb8;
+    --ink-faint: #8a7c76;
+    --candle: #d94f4f;      /* クリスマスの赤 */
+    --candle-soft: #b8433f;
+    --gold: #d9b874;        /* 灯り */
+    --bg-top: #0d0a10;
+    --bg-mid: #1a1016;
+    --bg-low: #241318;
+    --bg-glow: #2c161a;
+    --line: rgba(217,184,116,0.20);
+    --en: #a08e86;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-low) 80%, var(--bg-glow) 100%);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .lights{
+    position: fixed; left:0; right:0; bottom:0; height: 40vh; z-index:0;
+    background: radial-gradient(ellipse 120% 100% at 50% 130%,
+      rgba(217,184,116,0.14) 0%, rgba(184,67,63,0.06) 42%, transparent 72%);
+    pointer-events:none;
+  }
+  .sky{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .flake{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:#f0e9e6; opacity:0.5; animation: tw 6s infinite ease-in-out;
+  }
+  @keyframes tw{ 0%,100%{opacity:0.12;} 50%{opacity:0.55;} }
+
+  .wrap{ position: relative; z-index:1; max-width: 660px; margin: 0 auto; padding: 13vh 26px 16vh; }
+
+  .ep-title{ text-align:center; margin-bottom: 11vh; }
+  .ep-title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.16em; color: var(--gold);
+    display:block; margin-bottom: 1.4em;
+  }
+  .ep-title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.2vw, 2.4rem);
+    letter-spacing: 0.1em; color: var(--ink);
+    text-shadow: 0 0 26px rgba(217,184,116,0.18); line-height:1.6;
+  }
+  .ep-title .by{ margin-top:1.8em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint); }
+
+  .ep-intro{
+    text-align:center; max-width: 32em; margin: 0 auto 13vh;
+    color: var(--ink-soft); font-size: 1.0rem; line-height: 2.2; letter-spacing:0.05em;
+  }
+  .ep-intro p{ margin-bottom: 1.3em; }
+  .ep-intro .en{
+    display:block; margin-top:1.6em;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color: var(--en); font-size:0.9rem; line-height:1.9;
+  }
+
+  .track{ margin-bottom: 16vh; }
+  .track:last-of-type{ margin-bottom: 4vh; }
+
+  .track-head{ text-align:center; margin-bottom: 7vh; }
+  .track-no{
+    display:inline-block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.85rem; letter-spacing:0.3em; color: var(--gold); margin-bottom:1.2em;
+  }
+  .track-head .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 0.98rem; letter-spacing:0.14em; color: var(--candle-soft);
+    display:block; margin-bottom: 0.9em;
+  }
+  .track-head h2{
+    font-weight:500; font-size: clamp(1.3rem, 4.2vw, 1.7rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    line-height:1.6;
+  }
+  .track-rule{ width:32px; height:1px; background: var(--line); margin: 1.8em auto 0; }
+
+  .lyric{ font-size: 1.02rem; line-height: 2.3; color: var(--ink); }
+  .lyric p{ margin:0 0 2em; white-space:pre-line; }
+  .lyric p:last-child{ margin-bottom:0; }
+  .lyric .en-line{ color: var(--gold); font-style:italic; font-family:'Cormorant Garamond','Shippori Mincho',serif; }
+  .lyric .paren{ color: var(--en); font-size:0.92em; }
+
+  .chorus{
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 2em 0; margin: 2em 0;
+  }
+  .chorus p{ margin-bottom:0; }
+
+  .final{ text-align:center; margin-top: 5vh; padding-top: 4vh; border-top: 1px solid var(--line); }
+  .final .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:1.25rem; color: var(--gold);
+    text-shadow: 0 0 24px rgba(217,184,116,0.25);
+    display:block; letter-spacing:0.06em;
+  }
+  .final .ja{ margin-top:0.9em; color: var(--candle-soft); font-size:1.0rem; letter-spacing:0.1em; }
+
+  footer{
+    text-align:center; margin-top: 9vh; padding-top: 6vh;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint); font-size:0.85rem; letter-spacing:0.08em; line-height:2.2;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    display:block; margin-top:0.8em; color:var(--en);
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 9vh 20px 13vh; }
+    .lyric{ font-size:0.98rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+<div class="lights"></div>
+
+<div class="wrap">
+
+  <div class="ep-title">
+    <span class="en">On Christmas Day</span>
+    <h1>もう一度、あなたに</h1>
+    <div class="by">大森 カエ</div>
+  </div>
+
+  <div class="ep-intro">
+    <p>同じ夜、同じ灯りの下で。<br>
+    伝えられなかった人と、伝えたくてたまらない人。</p>
+    <span class="en">The same night, under the same lights. One who couldn't say it, and one who can't stop saying it.</span>
+  </div>
+
+  <!-- ============ Track 1: あなたを想う最後のクリスマス ============ -->
+  <section class="track" id="lonely-without-you">
+    <div class="track-head">
+      <span class="track-no">I.</span>
+      <span class="en">Lonely Without You (Mid)</span>
+      <h2>あなたを想う最後のクリスマス</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p><span class="en-line">I miss you, I love you
+Tears are gone, my heart still waits
+If I could turn back time, I'd hold you close</span>
+もう一度　言って
+今なら素直に　好きと言えるから</p>
+
+<p>もうすぐ来る、私の高校生活で2度目のクリスマス
+街にはイルミネーションが宝石のように散りばめられ
+子供や大人が笑顔で通り過ぎていく
+誰もが前を向く季節なのに
+私だけ、あの冬の交差点から動けない
+誰もが小さな喜びをかち割っているのに
+私だけ喜べないでいる</p>
+
+<div class="chorus"><p><span class="en-line">I miss you, I love you
+Tears are gone, my heart still waits
+If I could turn back time, I'd hold you close</span>
+もう一度　言って
+今なら素直に　好きと言えるから</p></div>
+
+<p>貴方が笑って言った「付き合おう」の言葉
+本当の想いを隠して、冗談みたいに笑い返した
+あの頃は自分の心に気付けなくて
+笑って「冗談でしょ？」って言った</p>
+
+<p>こんなにも後悔している、光が痛いほど眩しくて
+2つ年上の貴方は、もう大人の階段を登っている
+私はまだ、卒業した貴方と並べない
+季節が私を置いて、加速していく
+最後のクリスマス　笑顔でいよう
+最後のクリスマス　泣き腫らしてもいい
+遠く離れても　心は繋がってる
+戻らない月日を　貴方も時々思い出して</p>
+
+<p>卒業間近の冬休み　友達と一緒に遊んだ日々
+何気なく握った手を　そのまま握っていた
+貴方がもう少し強引だったら　今が違う未来になったかも
+後悔しても遅い、分かっているけれど
+携帯のラインにメッセージが届くのではと期待してしまう
+後悔しているのに　送れない自分がただ悲しい</p>
+
+<div class="chorus"><p>寂しいよ　会いたいよ
+<span class="en-line">Tears are gone, my heart still waits</span>
+時を戻せたら　あの日に戻れたら
+<span class="en-line">If I could turn back time, I'd hold you close</span>
+最後のクリスマス　笑顔でいよう
+最後のクリスマス　泣き腫らしてもいい
+遠く離れても　心は繋がってる
+戻らない月日を</p></div>
+
+<p>最後のクリスマス　笑顔でいよう
+最後のクリスマス　泣き腫らしてもいい
+遠く離れても　心は繋がってる
+戻らない月日を　貴方も時々思い出して</p>
+
+<p>最後のクリスマス　笑顔でいよう
+…　最後のクリスマス</p>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 2: クリスマスの奇跡 ============ -->
+  <section class="track" id="christmas-miracle">
+    <div class="track-head">
+      <span class="track-no">II.</span>
+      <span class="en">A gift to you</span>
+      <h2>クリスマスの奇跡</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>いつも隣にいるのが <span class="paren">(Being by your side always)</span>
+当たり前の日常 <span class="paren">(Is my everyday normal)</span>
+君がいなくなったら… <span class="paren">(If you were gone...)</span>
+なんて考えられない <span class="paren">(I can't even imagine)</span>
+君が隣にいて、話ができる <span class="paren">(You're beside me, and we can talk)</span>
+ただ、それだけが <span class="paren">(Just that alone)</span>
+この出会いが <span class="paren">(This encounter)</span>
+本当はかけがえのない <span class="paren">(Is truly irreplaceable)</span>
+奇跡なんだって <span class="paren">(A miracle)</span>
+心の中では知っている <span class="paren">(Deep down, I know)</span></p>
+
+<p>赤いバラは派手だと <span class="paren">(You said red roses are too flashy)</span>
+君が言ったから、覚えている？ <span class="paren">(Do you remember?)</span>
+10月に赤いダリアを <span class="paren">(In October, I made)</span>
+50本花束にして贈ったね <span class="paren">(A bouquet of 50 red dahlias and gave it to you)</span>
+君は困った顔をしたけど <span class="paren">(You looked troubled, but)</span>
+ただ、どうしようもなく <span class="paren">(I just couldn't help it)</span>
+受け取ってほしかった <span class="paren">(I wanted you to accept it)</span>
+僕は君に、言葉でまだ <span class="paren">(I still haven't said to you in words)</span>
+愛していると <span class="paren">(That I love you)</span>
+どうしても言えていないから <span class="paren">(Because I just can't say it)</span></p>
+
+<p>言葉にできない真実がある <span class="paren">(There's a truth I can't put into words)</span>
+君に出会うために <span class="paren">(To meet you)</span>
+僕は生きて <span class="paren">(I've been living)</span>
+君を探していたんだ <span class="paren">(Searching for you)</span>
+クリスマスの夜、君に伝える <span class="paren">(On Christmas night, I'll tell you)</span>
+愛していると <span class="paren">(That I love you)</span>
+そばにいさせてほしいと <span class="paren">(And ask you to let me stay by your side)</span></p>
+
+<div class="chorus"><p>心の底、僕のすべてが <span class="paren">(The bottom of my heart, my everything)</span>
+君で作られている <span class="paren">(Is made of you)</span>
+動悸が止まらないほど　愛している <span class="paren">(I love you so much my heart won't stop racing)</span>
+眠れないほど　愛している <span class="paren">(I love you so much I can't sleep)</span>
+君がいなかったら <span class="paren">(If you weren't here)</span>
+僕は灰になってしまう <span class="paren">(I would turn to ash)</span>
+今も、ドキドキしているんだ <span class="paren">(Even now, my heart is pounding)</span>
+お願い、伝わって <span class="paren">(Please, let it reach you)</span>
+お願い、僕を捨てないで <span class="paren">(Please, don't leave me)</span></p></div>
+
+<p>神様は本当にいるのか <span class="paren">(Does God really exist)</span>
+それは分からない <span class="paren">(I don't know)</span>
+でも　君はいると言うから <span class="paren">(But you say He does)</span>
+僕もいると信じている <span class="paren">(So I believe He does too)</span>
+だから、神様お願い <span class="paren">(So, God, please)</span>
+僕を一生、彼女の隣にいさせて <span class="paren">(Let me stay by her side for life)</span></p>
+
+<p>君がいなくなったら <span class="paren">(If you were gone)</span>
+僕は灰になる <span class="paren">(I would turn to ash)</span>
+部屋から一生出てこれなくなる <span class="paren">(I could never leave my room again)</span>
+だから、僕を捨てないで <span class="paren">(So please, don't leave me)</span>
+心の底から愛しているんだ <span class="paren">(I love you from the bottom of my heart)</span></p>
+
+<div class="chorus"><p>心の底　僕のすべてが <span class="paren">(The bottom of my heart, my everything)</span>
+君で作られている <span class="paren">(Is made of you)</span>
+君は僕の一部、愛している <span class="paren">(You're a part of me, I love you)</span>
+動悸が止まらないほど愛している <span class="paren">(I love you so much my heart won't stop racing)</span>
+眠れないほど愛している <span class="paren">(I love you so much I can't sleep)</span>
+君がいなかったら <span class="paren">(If you weren't here)</span>
+僕は灰になってしまう <span class="paren">(I would turn to ash)</span>
+今も、ドキドキしているんだ <span class="paren">(Even now, my heart is pounding)</span>
+お願い、伝わって <span class="paren">(Please, let it reach you)</span>
+お願い、僕を捨てないで <span class="paren">(Please, don't leave me)</span></p></div>
+
+<p>今日は、クリスマス <span class="paren">(Today is Christmas)</span>
+神様はきっと <span class="paren">(I'm sure God)</span>
+僕の味方になってくれる <span class="paren">(Will be on my side)</span>
+君に贈った赤いダリアも <span class="paren">(The red dahlias I gave you)</span>
+味方してくれる <span class="paren">(Will be on my side too)</span>
+そう信じている <span class="paren">(I believe that)</span>
+ねえ、一緒にいてくれるよね？ <span class="paren">(Hey, you'll stay with me, right?)</span></p>
+
+<div class="chorus"><p>心の底　僕のすべてが <span class="paren">(The bottom of my heart, my everything)</span>
+君で作られている <span class="paren">(Is made of you)</span>
+君は僕の一部、愛している <span class="paren">(You're a part of me, I love you)</span>
+動悸が止まらないほど愛している <span class="paren">(I love you so much my heart won't stop racing)</span>
+君がいなかったら <span class="paren">(If you weren't here)</span>
+僕は灰になってしまう <span class="paren">(I would turn to ash)</span>
+今も、ドキドキしているんだ <span class="paren">(Even now, my heart is pounding)</span>
+お願い、伝わって <span class="paren">(Please, let it reach you)</span>
+お願い、僕を捨てないで <span class="paren">(Please, don't leave me)</span></p></div>
+
+<p>クリスマスがこんなに <span class="paren">(I never knew Christmas)</span>
+緊張するなんて <span class="paren">(Could be so nerve-wracking)</span>
+誰も教えてくれなかった <span class="paren">(No one told me)</span>
+でも <span class="paren">(But)</span>
+君の照れた顔が見られた <span class="paren">(I got to see your embarrassed face)</span>
+それだけで全てがばら色になった <span class="paren">(That alone made everything rosy)</span>
+奇跡、神様ありがとう！ <span class="paren">(A miracle, thank you God!)</span>
+All's well that ends well.<span class="paren">(終わりよければすべてよし)</span>
+メリークリスマス！ <span class="paren">(Merry Christmas!)</span>
+神様が迷信なんて <span class="paren">(Saying God is superstition)</span>
+誰が言ったか…狂っているね <span class="paren">(Whoever said that... is crazy)</span></p>
+
+    </div>
+  </section>
+
+  <div class="final">
+    <span class="en">Once more, to you</span>
+    <span class="ja">もう一度、あなたに</span>
+  </div>
+
+  <footer>
+    伝えられなかった夜も、伝えすぎた夜も。<br>
+    どちらもきっと、本当の恋だった。
+    <span class="en">The night you couldn't speak, and the night you said too much — both, surely, were real love.</span>
+  </footer>
+
+</div>
+
+<script>
+  const sky = document.getElementById('sky');
+  for(let i=0;i<50;i++){
+    const s = document.createElement('div');
+    s.className='flake';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = (Math.random()*70) + '%';
+    s.style.animationDelay = (Math.random()*6) + 's';
+    const sz = Math.random()*1.5 + 1;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    sky.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
