@@ -1,0 +1,179 @@
+<!--
+═══════════════════════════════════════════════════════════
+  曲の追加・編集はこの下の「DATA」のところだけ触ればOKです。
+  ・新しい曲を足したいとき → { } のかたまりを1つコピーして増やす
+  ・歌詞ページのURL → lyrics: "ここに貼る"（空 "" ならボタンは出ません）
+  ・配信のURL       → stream: "ここに貼る"（空 "" ならボタンは出ません）
+  ・一言コメント     → memo:   "ここに書く"（空 "" なら何も出ません）
+  ・新しいシリーズを足したいとき → 一番下の例を参考に { } を増やす
+═══════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大森カエ 楽曲カタログ</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: #ffffff;
+    color: #2a2a2a;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+
+  header { text-align: center; margin-bottom: 64px; }
+  header h1 {
+    font-size: 26px; font-weight: 400; letter-spacing: 0.12em;
+    color: #1a1a1a; margin-bottom: 14px;
+  }
+  header p {
+    font-size: 13px; color: #999; letter-spacing: 0.08em;
+  }
+  .rule { width: 40px; height: 1px; background: #ddd; margin: 28px auto 0; }
+
+  .series { margin-bottom: 56px; }
+  .series-title {
+    font-size: 15px; font-weight: 500; letter-spacing: 0.1em;
+    color: #1a1a1a; padding-bottom: 12px; margin-bottom: 8px;
+    border-bottom: 1px solid #ececec;
+  }
+  .series-note { font-size: 12px; color: #aaa; margin-bottom: 8px; letter-spacing: 0.04em; }
+
+  .song {
+    padding: 18px 4px;
+    border-bottom: 1px solid #f4f4f4;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .song:last-child { border-bottom: none; }
+  .song-main { flex: 1 1 300px; }
+  .song-no {
+    display: inline-block; min-width: 22px; color: #c4c4c4;
+    font-size: 13px; margin-right: 4px;
+  }
+  .song-jp { font-size: 15px; color: #222; }
+  .song-en { display: block; font-size: 12px; color: #a8a8a8; margin-top: 3px; padding-left: 26px; letter-spacing: 0.03em; }
+  .song-memo { display: block; font-size: 12px; color: #b0a89c; margin-top: 5px; padding-left: 26px; letter-spacing: 0.03em; font-style: normal; }
+
+  .links { display: flex; gap: 8px; flex-shrink: 0; }
+  .btn {
+    font-size: 12px; letter-spacing: 0.05em; text-decoration: none;
+    padding: 6px 14px; border-radius: 2px; transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn-lyrics { color: #555; border: 1px solid #ddd; }
+  .btn-lyrics:hover { background: #f7f7f7; border-color: #ccc; }
+  .btn-stream { color: #fff; background: #2a2a2a; border: 1px solid #2a2a2a; }
+  .btn-stream:hover { background: #000; }
+
+  footer { text-align: center; margin-top: 72px; font-size: 12px; color: #bbb; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>大森カエ 楽曲カタログ</h1>
+    <p>必要な人が、聴けたらいい。</p>
+    <div class="rule"></div>
+  </header>
+
+  <div id="catalog"></div>
+
+  <footer>© 大森カエ</footer>
+</div>
+
+<script>
+/* ═══════════ DATA ここだけ編集すればOK ═══════════ */
+
+const SERIES = [
+
+  {
+    title: "アルバム",
+    note: "",   // シリーズの説明を入れたいときはここに。不要なら "" のまま
+    songs: [
+      { jp: "I can't touch you", en: "黒翼と砂利の城", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/gravel_castle.html", stream: "" },
+      { jp: "綺麗な私", en: "ideal and reality", memo: "", lyrics: "", stream: "" },
+      { jp: "夢を追えなかった僕", en: "Days of crying", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/yume_series_zenkyoku%20.html", stream: "" },
+      { jp: "泣いても良いですか？", en: "Questions in the Dark", memo: "生きる事を考える、内省", lyrics: "https://hasoto3.github.io/all-kyoku/naisei_series_zenkyoku.html", stream: "" },
+      { jp: "僕の日常", en: "Achlys and Hades' Love Story", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/bokunonichijou_zenkyoku.html", stream: "" },
+      { jp: "一本道", en: "Everyone lived to the limit", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/ippondou.html", stream: "" },
+      { jp: "兄と僕の物語", en: "My respected brother", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/aniki_to_boku_no_monogatari.html", stream: "" },
+      { jp: "錆びついた勇気", en: "Your responsibility", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/sabitate_yuuki_your_responsibility.html", stream: "" },
+      { jp: "一人で聴きたい夜", en: "A Night for Myself", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/hitori_de_kikiitai_yoru.html", stream: "" },
+      { jp: "名もなき胸のつかえ", en: "Chain of Silence", memo: "", lyrics: "", stream: "" },
+      { jp: "立ち去った貴方へ", en: "When the light went out", memo: "", lyrics: "", stream: "" },
+      { jp: "Happy Birthday", en: "生まれてきてくれて、ありがとう", memo: "", lyrics: "", stream: "" },
+      { jp: "幸せになりたいの", en: "I want to have a happy marriage", memo: "", lyrics: "", stream: "" },
+      { jp: "もう一度、あなたに", en: "On Christmas Day", memo: "", lyrics: "", stream: "" },
+      { jp: "Cliff of Illusion", en: "マリンスノーの夢", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/cliff_of_illusion_lyrics.html", stream: "" },
+      { jp: "恐れ＋痛み＝明日の未来", en: "Fear + Pain = Tomorrow's Future", memo: "", lyrics: "https://hasoto3.github.io/all-kyoku/osore_itami_asuno_mirai_zenkyoku.html", stream: "" },
+    ]
+  },
+
+  /* ↓ 新しいシリーズを足すときは、この { } をコピーして使ってください
+  {
+    title: "セイレーンシリーズ",
+    note: "",
+    songs: [
+      { jp: "曲名", en: "English", memo: "", lyrics: "", stream: "" },
+    ]
+  },
+  */
+
+];
+
+/* ═══════════ ここから下は触らなくてOK ═══════════ */
+
+const catalog = document.getElementById("catalog");
+
+SERIES.forEach(series => {
+  const sec = document.createElement("section");
+  sec.className = "series";
+
+  const h = document.createElement("h2");
+  h.className = "series-title";
+  h.textContent = series.title;
+  sec.appendChild(h);
+
+  if (series.note) {
+    const n = document.createElement("p");
+    n.className = "series-note";
+    n.textContent = series.note;
+    sec.appendChild(n);
+  }
+
+  series.songs.forEach((song, i) => {
+    const row = document.createElement("div");
+    row.className = "song";
+
+    const main = document.createElement("div");
+    main.className = "song-main";
+    const no = series.songs.length > 1 ? `<span class="song-no">${i + 1}</span>` : `<span class="song-no"></span>`;
+    const en = song.en ? `<span class="song-en">${song.en}</span>` : "";
+    const memo = song.memo ? `<span class="song-memo">${song.memo}</span>` : "";
+    main.innerHTML = `<div>${no}<span class="song-jp">${song.jp}</span></div>${en}${memo}`;
+    row.appendChild(main);
+
+    const links = document.createElement("div");
+    links.className = "links";
+    if (song.lyrics) {
+      links.innerHTML += `<a class="btn btn-lyrics" href="${song.lyrics}" target="_blank" rel="noopener">歌詞</a>`;
+    }
+    if (song.stream) {
+      links.innerHTML += `<a class="btn btn-stream" href="${song.stream}" target="_blank" rel="noopener">配信</a>`;
+    }
+    row.appendChild(links);
+
+    sec.appendChild(row);
+  });
+
+  catalog.appendChild(sec);
+});
+</script>
+</body>
+</html>
