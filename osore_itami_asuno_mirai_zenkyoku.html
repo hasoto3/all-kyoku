@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恐れ＋痛み＝明日の未来 〜Fear + Pain = Tomorrow's Future〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+  :root{
+    --ink: #eceae6;
+    --ink-soft: #c2beb8;
+    --ink-faint: #7c7873;
+    --ember: #c97a5a;       /* 痛みの熾火色 */
+    --ember-soft: #a8654a;
+    --dawn: #d9b98c;        /* 明日への光 */
+    --bg-top: #0b0a0e;
+    --bg-mid: #1c1416;
+    --bg-low: #2a1b18;
+    --bg-glow: #331f1a;
+    --line: rgba(201,122,90,0.22);
+    --en: #948e8a;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-low) 80%, var(--bg-glow) 100%);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .ember-glow{
+    position: fixed; left:0; right:0; bottom:0; height: 46vh; z-index:0;
+    background: radial-gradient(ellipse 120% 100% at 50% 130%,
+      rgba(201,122,90,0.16) 0%, rgba(169,101,74,0.06) 42%, transparent 72%);
+    pointer-events:none;
+  }
+  .sky{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .ash{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:#d9c8bd; opacity:0.45; animation: drift 7s infinite ease-in-out;
+  }
+  @keyframes drift{ 0%,100%{opacity:0.1; transform:translateY(0);} 50%{opacity:0.55; transform:translateY(-6px);} }
+
+  .wrap{ position: relative; z-index:1; max-width: 660px; margin: 0 auto; padding: 13vh 26px 16vh; }
+
+  /* EP全体タイトル */
+  .ep-title{ text-align:center; margin-bottom: 11vh; }
+  .ep-title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.16em; color: var(--ember-soft);
+    display:block; margin-bottom: 1.4em;
+  }
+  .ep-title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.2vw, 2.4rem);
+    letter-spacing: 0.1em; color: var(--dawn);
+    text-shadow: 0 0 26px rgba(217,185,140,0.18); line-height:1.6;
+  }
+  .ep-title .by{ margin-top:1.8em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint); }
+
+  .ep-intro{
+    text-align:center; max-width: 32em; margin: 0 auto 13vh;
+    color: var(--ink-soft); font-size: 1.0rem; line-height: 2.2; letter-spacing:0.05em;
+  }
+  .ep-intro p{ margin-bottom: 1.3em; }
+  .ep-intro .en{
+    display:block; margin-top:1.6em;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color: var(--en); font-size:0.9rem; line-height:1.9;
+  }
+
+  /* 各曲セクション */
+  .track{ margin-bottom: 16vh; }
+  .track:last-of-type{ margin-bottom: 4vh; }
+
+  .track-head{ text-align:center; margin-bottom: 7vh; }
+  .track-no{
+    display:inline-block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.85rem; letter-spacing:0.3em; color: var(--ember-soft); margin-bottom:1.2em;
+  }
+  .track-head .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 0.98rem; letter-spacing:0.14em; color: var(--dawn);
+    display:block; margin-bottom: 0.9em;
+  }
+  .track-head h2{
+    font-weight:500; font-size: clamp(1.3rem, 4.2vw, 1.7rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    line-height:1.6;
+  }
+  .track-rule{ width:32px; height:1px; background: var(--line); margin: 1.8em auto 0; }
+
+  /* 歌詞本文 */
+  .lyric{ font-size: 1.02rem; line-height: 2.3; color: var(--ink); }
+  .lyric p{ margin:0 0 2em; white-space:pre-line; }
+  .lyric p:last-child{ margin-bottom:0; }
+  .lyric .paren{ color: var(--en); font-size:0.92em; }
+
+  .chorus{
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 2em 0; margin: 2em 0;
+  }
+  .chorus p{ margin-bottom:0; }
+
+  .track-note{
+    text-align:center; margin-top: 3.5em; font-size:0.85rem;
+    color: var(--ink-faint); letter-spacing:0.08em; line-height:2;
+  }
+  .track-note .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    display:block; margin-top:0.6em; color: var(--en);
+  }
+
+  .final{ text-align:center; margin-top: 5vh; padding-top: 4vh; border-top: 1px solid var(--line); }
+  .final .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:1.25rem; color: var(--dawn);
+    text-shadow: 0 0 24px rgba(217,185,140,0.25);
+    display:block; letter-spacing:0.06em;
+  }
+  .final .ja{ margin-top:0.9em; color: var(--ember-soft); font-size:1.0rem; letter-spacing:0.1em; }
+
+  footer{
+    text-align:center; margin-top: 9vh; padding-top: 6vh;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint); font-size:0.85rem; letter-spacing:0.08em; line-height:2.2;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    display:block; margin-top:0.8em; color:var(--en);
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 9vh 20px 13vh; }
+    .lyric{ font-size:0.98rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+<div class="ember-glow"></div>
+
+<div class="wrap">
+
+  <div class="ep-title">
+    <span class="en">Fear + Pain = Tomorrow's Future</span>
+    <h1>恐れ＋痛み＝明日の未来</h1>
+    <div class="by">大森 カエ</div>
+  </div>
+
+  <div class="ep-intro">
+    <p>誰にも言えない夜がある。<br>
+    答えの出ない問いを、抱えたまま歩く日々がある。</p>
+    <p>それでも、恐れも痛みも、消してしまわなくていい。<br>
+    それは、いつか明日を形づくる欠片だから。</p>
+    <span class="en">There are nights no one can know about. Days spent carrying questions with no answers. Still, fear and pain don't need to be erased — they are the fragments that will someday shape tomorrow.</span>
+  </div>
+
+  <!-- ============ Track 1: Why ============ -->
+  <section class="track" id="why">
+    <div class="track-head">
+      <span class="track-no">I.</span>
+      <span class="en">Why</span>
+      <h2>大人は目を逸らす</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>嗚咽漏らせず <span class="paren">(Swallowing my sobs)</span>
+だけど　泣いた夜 <span class="paren">(But still — a night I cried)</span>
+親は知らない <span class="paren">(My parents don't know)</span>
+僕の涙　心の痛み <span class="paren">(My tears, the ache inside)</span>
+いつもの笑顔 <span class="paren">(The same old smile)</span>
+変わらない挨拶 <span class="paren">(The same old greeting)</span></p>
+
+<p>眠る前に <span class="paren">(Before I fall asleep)</span>
+月に願う <span class="paren">(I make a wish upon the moon)</span>
+朝　目が覚めたら <span class="paren">(That when morning comes)</span>
+僕の魂が　異次元に <span class="paren">(my soul will be somewhere far away)</span>
+いることを <span class="paren">(far from here)</span>
+涙は見せない <span class="paren">(I never show my tears)</span></p>
+
+<p>誰かに聞いても <span class="paren">(Even when I ask someone)</span>
+ありきたりの答え <span class="paren">(I get the same old answers)</span>
+それが心地良いのだと <span class="paren">("That's what feels comfortable," said)</span>
+ネットサーフィンで <span class="paren">(a stranger on the internet)</span>
+見知らぬ人が言った <span class="paren">(while I was surfing online)</span></p>
+
+<div class="chorus"><p>Why am I still alive?
+大人は言葉濁し <span class="paren">(The adults mumble vaguely)</span>
+会話変える <span class="paren">(and change the subject)</span>
+テレビでは <span class="paren">(On TV)</span>
+悲惨な事件 <span class="paren">(a parade of)</span>
+オンパレード <span class="paren">(tragic incidents)</span>
+誰もが言う <span class="paren">(Everyone says)</span>
+物騒な世の中だと <span class="paren">("What a dangerous world we live in")</span>
+平和な国と <span class="paren">(Yet this country is called peaceful)</span>
+世界中で <span class="paren">(by the whole world)</span>
+言われているのに <span class="paren">(So why?)</span>
+Why?
+大人は目を逸らす <span class="paren">(The adults look away)</span></p></div>
+
+<p>涙で濡れた <span class="paren">(My vision blurs)</span>
+枕に視界が歪む <span class="paren">(against a tear-soaked pillow)</span>
+親は気付かない <span class="paren">(My parents don't notice)</span>
+僕は笑顔振りまき <span class="paren">(I scatter smiles around)</span>
+会話弾ませる <span class="paren">(and keep the conversation light)</span></p>
+
+<p>なぜ　生きるのか <span class="paren">(Why do I live?)</span>
+何のために <span class="paren">(What for?)</span>
+呼吸を繰り返すのか <span class="paren">(Why do I keep breathing?)</span>
+答えは　見つからない <span class="paren">(The answer won't come)</span></p>
+
+<div class="chorus"><p>Why am I still alive?
+大人は答えない <span class="paren">(The adults won't answer)</span>
+先生は　言葉噤み <span class="paren">(The teacher bites their tongue)</span>
+下校勧める <span class="paren">(and tells me to go home)</span>
+逃げ上手な　大人たち <span class="paren">(Adults so skilled at running away)</span>
+生きる意味は <span class="paren">(Where is the meaning)</span>
+どこにあるの？ <span class="paren">(of being alive?)</span>
+現世に留まる <span class="paren">(What is my worth)</span>
+僕の価値 <span class="paren">(for remaining in this world?)</span>
+Until when?</p></div>
+
+<p>探し続ける <span class="paren">(I keep searching)</span>
+時空の海の中 <span class="paren">(in an ocean of space and time)</span>
+Why am I still alive?
+見つからない　答え <span class="paren">(An answer I can't find)</span></p>
+
+<p>いつか　見つかるだろうか <span class="paren">(Will I ever find it?)</span>
+ネットで答えた <span class="paren">(That person who replied online)</span>
+あの人は <span class="paren">(said they)</span>
+家から出られないと言う <span class="paren">(can't even leave their house)</span>
+平和な国なのに <span class="paren">(Even though this is a peaceful country)</span>
+生きる意味も分からない <span class="paren">(they don't know the meaning of living either)</span>
+Why?
+いつか　答えを <span class="paren">(Someday, I want)</span>
+見つけたい <span class="paren">(to find that answer)</span></p>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 2: Andante of an Aggressive Leader ============ -->
+  <section class="track" id="aria">
+    <div class="track-head">
+      <span class="track-no">II.</span>
+      <span class="en">Andante of an Aggressive Leader</span>
+      <h2>アリア</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>同じベクトル方向 <span class="paren">[We were heading the same direction]</span>
+向いていたはず <span class="paren">[or so I believed]</span>
+いつから <span class="paren">[When did we start]</span>
+僕らは違う方向を目指し <span class="paren">[chasing different horizons]</span>
+遠く見えるオアシスを <span class="paren">[reaching for an oasis]</span>
+探し求めていたんだろう <span class="paren">[that only shimmered in the distance]</span>
+アリア　君に全てを捧げた <span class="paren">[Aria — I gave you everything]</span></p>
+
+<p>赤く色づいた紅葉 <span class="paren">[Crimson autumn leaves]</span>
+木枯らしが頭上 <span class="paren">[a cold wind overhead]</span>
+吹き抜ける <span class="paren">[cuts right through]</span>
+都会のシュールな目線を横目に <span class="paren">[Past the surreal gaze of the city]</span>
+高くそびえ立つ建物 <span class="paren">[towers looming high]</span>
+何を置いてきたか確かめに行く <span class="paren">[I go back to see what I left behind]</span></p>
+
+<p>いつもの場所に <span class="paren">[At our usual spot]</span>
+あいつの姿が見えない <span class="paren">[he's nowhere to be found]</span>
+何も告げず <span class="paren">[Without a word]</span>
+消息を辿った <span class="paren">[I traced where he'd gone]</span></p>
+
+<div class="chorus"><p>いつも一緒にいた <span class="paren">[We were always together]</span>
+屈託なく笑い <span class="paren">[laughing without a care]</span>
+共に寝て <span class="paren">[sleeping side by side]</span>
+悩みも隠さず <span class="paren">[never hiding our troubles]</span>
+僕らはオアシスを探していた <span class="paren">[We were searching for an oasis]</span>
+焼けるように <span class="paren">[Like a burning thirst]</span>
+熱を帯びる <span class="paren">[heat rising through]</span>
+全身が冷やされ <span class="paren">[the whole body cooled]</span>
+潤い、満たされる <span class="paren">[quenched and fulfilled]</span>
+あの感覚をもう一度 <span class="paren">[That feeling — once more]</span>
+求め続けていた <span class="paren">[we kept chasing it]</span>
+都会のうねりに呑まれ <span class="paren">[Swallowed by the city's tide]</span>
+僕らは <span class="paren">[we were]</span>
+ベクトル方向を <span class="paren">[bent off course]</span>
+捻じ曲げられた <span class="paren">[against our will]</span>
+アリア　君に <span class="paren">[Aria — to you]</span></p></div>
+
+<p>あいつが消えた <span class="paren">[He vanished from]</span>
+静寂な部屋 <span class="paren">[the silent room]</span>
+大切なものだったと <span class="paren">[I only realized how precious it was]</span>
+失くしてから気づく <span class="paren">[after it was gone]</span>
+何度も街中を彷徨い歩く <span class="paren">[I wander the streets again and again]</span>
+泣き顔を隠す <span class="paren">[hiding his tears —]</span>
+いつものあいつを <span class="paren">[that was always him]</span></p>
+
+<div class="chorus"><p>いつも一緒だった <span class="paren">[We were always together]</span>
+屈託なく笑い <span class="paren">[laughing without a care]</span>
+共に喜び <span class="paren">[sharing our joys]</span>
+辛さも乗り越え <span class="paren">[pushing through the pain]</span>
+僕らはオアシスを探していた <span class="paren">[We were searching for an oasis]</span>
+乾いた喉に <span class="paren">[Down a dry throat]</span>
+冷たく全身に行き渡る <span class="paren">[cold spreading through every limb]</span>
+あの満たされる <span class="paren">[that rush of being]</span>
+感覚をもう一度 <span class="paren">[fulfilled — once more]</span>
+求め続けていた <span class="paren">[we kept chasing it]</span>
+いつからか <span class="paren">[Somewhere along the way]</span>
+僕らは <span class="paren">[we became]</span>
+戦場のアリアに <span class="paren">[an aria on the battlefield]</span>
+military service</p></div>
+
+<p>僕は <span class="paren">[I will]</span>
+あいつを探し続ける <span class="paren">[keep searching for him]</span>
+都会という戦場で <span class="paren">[in this city — this battlefield]</span>
+アリアを手放し <span class="paren">[letting go of the aria]</span>
+今度こそ <span class="paren">[this time for sure]</span>
+あいつを取り戻すため <span class="paren">[to bring him back]</span></p>
+
+    </div>
+  </section>
+
+  <!-- ============ Track 3: 君を想う ============ -->
+  <section class="track" id="anemone">
+    <div class="track-head">
+      <span class="track-no">III.</span>
+      <span class="en">Flower of Passion</span>
+      <h2>君を想う</h2>
+      <div class="track-rule"></div>
+    </div>
+
+    <div class="lyric">
+
+<p>君には想い人がいる <span class="paren">(You have someone you love — I didn't want to care about the rumors)</span>
+小耳に挟む君の声 <span class="paren">(Your voice I overheard)</span>
+言葉一つ一つを <span class="paren">(Each word)</span>
+鉱石のように <span class="paren">(Like precious stones)</span>
+大切に拾い集めた <span class="paren">(I carefully gathered them)</span></p>
+
+<p><span class="paren">Alone in the classroom at sunset</span>
+君がくれたアネモネの花 <span class="paren">(The anemone flower you gave me)</span>
+今も心の奥で木霊する <span class="paren">(Still echoes deep in my heart)</span>
+優しい思い出は <span class="paren">(Those gentle memories)</span>
+夏の水のように <span class="paren">(Like summer water, cooling down the pain)</span></p>
+
+<p><span class="paren">You're the only one,</span>
+いつまでも <span class="paren">(Forever)</span>
+心に居座っている <span class="paren">(You stay in my heart)</span>
+<span class="paren">She plays games, but I still love her (Still love her!)</span></p>
+
+<div class="chorus"><p>赤いアネモネの花が <span class="paren">(The red anemone flower)</span>
+心に棘をのこし <span class="paren">(Leaves thorns in my heart)</span>
+忘れたくても <span class="paren">(Even when I want to forget)</span>
+痛みで奮い起こさせる <span class="paren">(The pain stirs me awake)</span>
+夏の水で <span class="paren">(With summer water I cool it down — Cool it down!)</span>
+痛みで熱を起こし <span class="paren">(The pain creates heat)</span>
+<span class="paren">Sleepless till the morning light (Morning light!)</span></p></div>
+
+<p>噂の彼の話 <span class="paren">(Talk of that guy in the rumors)</span>
+君はいつも言葉を濁し <span class="paren">(You always dodge the words)</span>
+<span class="paren">You come close, pretending to care</span>
+俺はいつも心ざわつき <span class="paren">(My heart always stirs)</span>
+今も夏の熱 <span class="paren">(Still the summer heat)</span>
+君を思い出す <span class="paren">(Reminds me of you)</span></p>
+
+<div class="chorus"><p>赤いアネモネの花が <span class="paren">(The red anemone flower)</span>
+心に棘をのこし <span class="paren">(Leaves thorns in my heart)</span>
+忘れたくても <span class="paren">(Even when I want to forget)</span>
+痛みで奮い起こさせる <span class="paren">(The pain stirs me awake)</span>
+夏の水で <span class="paren">(With summer water I cool it down — Cool it down!)</span>
+痛みで熱を起こし <span class="paren">(The pain creates heat)</span>
+<span class="paren">Sleepless till the morning light (Morning light!)</span></p></div>
+
+<p>勇気のなかった俺は <span class="paren">(I who lacked courage)</span>
+綺麗な思い出も全て捨てて <span class="paren">(Cast away all the beautiful memories)</span>
+<span class="paren">I'll smile for tomorrow</span>
+息が切れるほど <span class="paren">(Until I run out of breath)</span>
+夏の海泳ぎ続ける <span class="paren">(I keep swimming in the summer sea)</span></p>
+
+<div class="chorus"><p>赤いアネモネの花が <span class="paren">(The red anemone flower)</span>
+心に棘をのこし <span class="paren">(Leaves thorns in my heart)</span>
+忘れたくても <span class="paren">(Even when I want to forget)</span>
+痛みで奮い起こさせる <span class="paren">(The pain stirs me awake)</span>
+夏の水で <span class="paren">(With summer water I cool it down — Cool it down!)</span>
+痛みで熱を起こし <span class="paren">(The pain creates heat)</span>
+<span class="paren">Sleepless till the morning light (Morning light!)</span></p></div>
+
+    </div>
+  </section>
+
+  <div class="final">
+    <span class="en">Fear and pain are not the enemy</span>
+    <span class="ja">恐れも痛みも、明日を作る欠片になる</span>
+  </div>
+
+  <footer>
+    答えの出ない夜を、一人で抱えているなら。<br>
+    その痛みごと、生きていってほしい。
+    <span class="en">If you're carrying a question with no answer, alone, tonight — I hope you keep living, pain and all.</span>
+  </footer>
+
+</div>
+
+<script>
+  const sky = document.getElementById('sky');
+  for(let i=0;i<50;i++){
+    const s = document.createElement('div');
+    s.className='ash';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = (Math.random()*70) + '%';
+    s.style.animationDelay = (Math.random()*7) + 's';
+    const sz = Math.random()*1.5 + 1;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    sky.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
