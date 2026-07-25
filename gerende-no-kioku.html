@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ゲレンデの記憶 〜A Heartless Woman〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #2c313a;
+    --ink-soft: #5b626e;
+    --ink-faint: #9aa1ab;
+    --snow: #eef2f6;
+    --distance: #b7c4d1;      /* 遠のいていく人達 */
+    --wound: #8b4a52;         /* 塩水・涙 */
+    --bg-top: #cfd9e3;
+    --bg-mid: #b3bfcb;
+    --bg-low: #94a0ac;
+    --bg-room: #6f7580;
+    --line: rgba(44,49,58,0.12);
+    --en: #7c8a99;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-low) 74%, var(--bg-room) 100%);
+  }
+  /* 遠ざかっていく人影のような、薄い縦筋 */
+  .figure{
+    position:absolute; bottom:0; width:2px;
+    background: linear-gradient(180deg, transparent, var(--distance), transparent);
+    opacity:0.35;
+    animation: recede linear infinite;
+  }
+  @keyframes recede{
+    0%{ transform: scaleY(1) translateX(0); opacity:0.45; }
+    100%{ transform: scaleY(0.15) translateX(40px); opacity:0; }
+  }
+  .room-light{
+    position:absolute; left:50%; bottom:-6vh; transform:translateX(-50%);
+    width:60vw; height:30vh; max-width:520px;
+    background: radial-gradient(ellipse 100% 100% at 50% 100%,
+      rgba(255,255,255,0.10) 0%, rgba(111,117,128,0.06) 45%, transparent 72%);
+    filter: blur(14px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 640px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  .title{ text-align:center; margin-bottom: 9vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    text-shadow: 0 0 30px rgba(255,255,255,0.5); line-height:1.5;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.18em; color: var(--wound);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.7em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  .title .tag{
+    display:block; margin-top:0.8em; font-size:0.78rem; letter-spacing:0.2em;
+    color: var(--ink-faint);
+  }
+
+  .lyric{ font-size: 1.05rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.77rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  .lyric .en{
+    color: var(--wound); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+  .lyric .trans{
+    display:block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.82rem; color: var(--ink-faint); line-height:1.9;
+    margin-top:0.6em; letter-spacing:0.02em;
+  }
+
+  footer{
+    margin-top: 10vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--wound); font-size:1.15rem; letter-spacing:0.06em;
+  }
+  footer .note{
+    display:block; margin-top:1.6em; color:var(--ink-faint);
+    font-size:0.82rem; letter-spacing:0.05em; line-height:2.0;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky"></div>
+  <div class="room-light"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>ゲレンデの記憶</h1>
+    <span class="en">A Heartless Woman</span>
+    <div class="by">大森 カエ</div>
+    <span class="tag">こんな僕で、ごめんね〜I cannot live on my own.〜 Ⅱ</span>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>友達と
+共に笑い
+過ごした日々
+今は 年数回
+話すだけ
+<span class="trans">The days we spent laughing together with friends — now, we only talk a few times a year.</span></p>
+<span class="sec">Verse 2</span><p>あの子が
+悪かったと
+周りは言う
+避けれなかった
+あの瞬間
+<span class="trans">"That girl was at fault," everyone around says — that moment I couldn't avoid.</span></p>
+<span class="sec">Pre-chorus</span><p>慣れ親しんだ
+ゲレンデ
+綺麗な
+雪の世界
+<span class="trans">The familiar ski slope — a beautiful world of snow.</span></p>
+<span class="sec">Chorus 1</span><p>俺か好き
+そう言った彼女
+今は人妻
+<span class="en">A heartless woman</span>
+何も言わず
+身を引いた
+親友だった
+あいつは
+目を伏せた
+それが答え
+<span class="trans">"She liked me," she said. Now she's someone's wife. A heartless woman. Without a word, she stepped away. My best friend — he lowered his eyes. That was the answer.</span></p>
+<span class="sec">Verse 3</span><p>感覚失った体
+定期的に
+体の向き変え
+床ずれ予防
+<span class="trans">A body that lost all sensation. Regularly, turning my body over, to prevent bedsores.</span></p>
+<span class="sec">Bridge 1</span><p>諦めなければ
+辛いだけ
+いっそ…
+<span class="trans">If I don't give up, it's only painful. I might as well…</span></p>
+<span class="sec">Chorus 2</span><p>生きる意味
+探し続ける
+呼吸するだけ
+<span class="en">I can't even eat by myself.</span>
+真夜中
+目を覚まし
+過去を思い出す
+時間が
+巻き戻ったら
+塩水が
+頬伝る
+<span class="trans">The meaning of living, I keep searching for it — just breathing. I can't even eat by myself. In the middle of the night, I wake up and remember the past. If time could be rewound — salty water runs down my cheek.</span></p>
+<span class="sec">Bridge 2</span><p>眩い雪
+心踊った
+あの頃
+<span class="trans">The dazzling snow — my heart used to dance, back then.</span></p>
+<span class="sec">Outro</span><p>飛び出した
+少女
+あの瞬間
+死を意識した
+なのに…
+生き延びた事が
+良かったのか
+答えを探している
+<span class="trans">A girl who darted out — that moment, I became aware of death. And yet… was the fact that I survived a good thing? I'm still searching for the answer.</span></p>
+  </div>
+
+  <footer>
+    <span class="en">Still searching for the answer.</span>
+    <span class="note">離れていく人がいた。それでも、離れずにいてくれる人もいた。<br>
+    答えが出なくても、探し続けていい。</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  for(let i=0;i<28;i++){
+    const s = document.createElement('div');
+    s.className='figure';
+    s.style.left = Math.random()*100 + '%';
+    const h = Math.random()*22 + 10;
+    s.style.height = h+'vh';
+    s.style.bottom = (Math.random()*50)+'vh';
+    const dur = Math.random()*10 + 12;
+    s.style.animationDuration = dur+'s';
+    s.style.animationDelay = (Math.random()*dur) + 's';
+    scene.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
