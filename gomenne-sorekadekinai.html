@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ごめんね、それしかできない 〜All I Can Do Is Laugh〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #2c2b2e;
+    --ink-soft: #5b5960;
+    --ink-faint: #9c99a1;
+    --tear: #b8b3ad;          /* 枯れた涙 */
+    --mother: #c9a869;        /* 母のぬくもり、控えめな灯 */
+    --bg-top: #dcd8d3;        /* 明るい室内 */
+    --bg-mid: #c3bdb6;
+    --bg-low: #a49d97;
+    --bg-room: #77716c;
+    --line: rgba(44,43,46,0.12);
+    --en: #8a8580;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-low) 74%, var(--bg-room) 100%);
+  }
+  /* 静かに落ちて消える、涙のような粒 */
+  .drop{
+    position:absolute; border-radius:50%;
+    background: var(--tear);
+    opacity: 0.5;
+    animation: dripfall linear infinite;
+  }
+  @keyframes dripfall{
+    0%{ transform: translateY(-4vh); opacity:0; }
+    15%{ opacity:0.6; }
+    85%{ opacity:0.2; }
+    100%{ transform: translateY(100vh); opacity:0; }
+  }
+  .mother-glow{
+    position:absolute; left:50%; bottom:-6vh; transform:translateX(-50%);
+    width:55vw; height:28vh; max-width:480px;
+    background: radial-gradient(ellipse 100% 100% at 50% 100%,
+      rgba(201,168,105,0.16) 0%, rgba(119,113,108,0.05) 45%, transparent 72%);
+    filter: blur(14px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 640px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  .title{ text-align:center; margin-bottom: 9vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(1.6rem, 5vw, 2.3rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    text-shadow: 0 0 30px rgba(255,255,255,0.5); line-height:1.5;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.18em; color: var(--mother);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.7em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  .title .tag{
+    display:block; margin-top:0.8em; font-size:0.78rem; letter-spacing:0.2em;
+    color: var(--ink-faint);
+  }
+
+  .lyric{ font-size: 1.05rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.77rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  .lyric .en{
+    color: var(--mother); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+  .lyric .trans{
+    display:block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.82rem; color: var(--ink-faint); line-height:1.9;
+    margin-top:0.6em; letter-spacing:0.02em;
+  }
+
+  footer{
+    margin-top: 10vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--mother); font-size:1.15rem; letter-spacing:0.06em;
+  }
+  footer .note{
+    display:block; margin-top:1.6em; color:var(--ink-faint);
+    font-size:0.82rem; letter-spacing:0.05em; line-height:2.0;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky"></div>
+  <div class="mother-glow"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>ごめんね、それしかできない</h1>
+    <span class="en">All I Can Do Is Laugh</span>
+    <div class="by">大森 カエ</div>
+    <span class="tag">こんな僕で、ごめんね〜I cannot live on my own.〜 Ⅲ</span>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>動けなくなり
+親が泣いた
+仕事を辞めて
+僕の
+世話してくれた
+<span class="trans">I became unable to move, and my parent cried. They quit their job and took care of me.</span></p>
+<span class="sec">Verse 2</span><p>寝たきりになり
+弟は
+僕を避けた
+一人
+泣いた日々
+<span class="trans">Bedridden, my younger brother avoided me. Alone, I spent days crying.</span></p>
+<span class="sec">Pre-chorus</span><p>若いからと
+施設に入れず
+自宅介護
+<span class="trans">Because I'm young, they wouldn't put me in a facility — caring for me at home.</span></p>
+<span class="sec">Chorus 1</span><p>ごめんね
+心で呟き
+<span class="en">All I can do is laugh.</span>
+生き残った
+僕の精一杯
+それしか
+できない
+何も返せない
+迷惑かけるだけ
+<span class="trans">I'm sorry, I whisper it in my heart. All I can do is laugh. Having survived, this is my utmost effort — that's all I can do. I can't give anything back, I only cause trouble.</span></p>
+<span class="sec">Bridge</span><p>働く事も
+着替える事も
+トイレも
+一人で出来ない
+<span class="trans">Working, getting dressed, using the toilet — none of it, I can do alone.</span></p>
+<span class="sec">Outro</span><p>情けなくて
+涙も枯れた
+生きている意味
+探し続ける僕
+<span class="trans">It's so pitiful, even my tears have dried up. The meaning of being alive — I keep searching for it.</span></p>
+  </div>
+
+  <footer>
+    <span class="en">All I can do is laugh.</span>
+    <span class="note">返せないことは、いる意味がないことじゃない。<br>
+    誰かの手を借りて生きることに、謝らなくていい日が来ますように。</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  for(let i=0;i<30;i++){
+    const s = document.createElement('div');
+    s.className='drop';
+    s.style.left = Math.random()*100 + '%';
+    const sz = Math.random()*2.4 + 1.2;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    const dur = Math.random()*9 + 10;
+    s.style.animationDuration = dur+'s';
+    s.style.animationDelay = (Math.random()*dur) + 's';
+    scene.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
