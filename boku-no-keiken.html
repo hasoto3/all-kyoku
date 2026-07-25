@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>僕の経験が、誰かを変える 〜It's Going to Be Huge〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #22282f;
+    --ink-soft: #4d5560;
+    --ink-faint: #8b93a0;
+    --lake: #4f7a8c;          /* 心の中に生まれた湖 */
+    --signal: #c9974f;        /* テクノロジーの光、奇跡 */
+    --bg-top: #eef4f6;        /* 明るい湖面のような空 */
+    --bg-mid: #d4e2e6;
+    --bg-low: #aebfc7;
+    --bg-room: #7c8e97;
+    --line: rgba(34,40,47,0.12);
+    --en: #5f7d8c;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-low) 74%, var(--bg-room) 100%);
+  }
+  /* 湖面に広がる波紋＝希望が伝わっていく様子 */
+  .ripple{
+    position:absolute; border-radius:50%;
+    border: 1px solid rgba(201,151,79,0.35);
+    animation: spread ease-out infinite;
+  }
+  @keyframes spread{
+    0%{ transform: scale(0); opacity:0.7; }
+    100%{ transform: scale(1); opacity:0; }
+  }
+  .signal-glow{
+    position:absolute; left:50%; bottom:-6vh; transform:translateX(-50%);
+    width:65vw; height:32vh; max-width:540px;
+    background: radial-gradient(ellipse 100% 100% at 50% 100%,
+      rgba(201,151,79,0.18) 0%, rgba(124,142,151,0.06) 45%, transparent 72%);
+    filter: blur(14px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 640px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  .title{ text-align:center; margin-bottom: 9vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(1.6rem, 5.2vw, 2.4rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    text-shadow: 0 0 30px rgba(255,255,255,0.5); line-height:1.5;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.18em; color: var(--signal);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.7em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  .title .tag{
+    display:block; margin-top:0.8em; font-size:0.78rem; letter-spacing:0.2em;
+    color: var(--ink-faint);
+  }
+
+  .lyric{ font-size: 1.05rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.77rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  .lyric .en{
+    color: var(--signal); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+  .lyric .trans{
+    display:block; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.82rem; color: var(--ink-faint); line-height:1.9;
+    margin-top:0.6em; letter-spacing:0.02em;
+  }
+
+  footer{
+    margin-top: 10vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--signal); font-size:1.15rem; letter-spacing:0.06em;
+  }
+  footer .note{
+    display:block; margin-top:1.6em; color:var(--ink-faint);
+    font-size:0.82rem; letter-spacing:0.05em; line-height:2.0;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky"></div>
+  <div class="signal-glow"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>僕の経験が、誰かを変える</h1>
+    <span class="en">It's Going to Be Huge</span>
+    <div class="by">大森 カエ</div>
+    <span class="tag">こんな僕で、ごめんね〜I cannot live on my own.〜 Ⅳ</span>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>施設に入れる
+親が笑った
+僕も笑った
+心の中に
+湖が生まれた
+<span class="trans">Going into a facility, my parent smiled. I smiled too. Inside my heart, a lake was born.</span></p>
+<span class="sec">Verse 2</span><p>僕の世話に
+慣れた手つき
+年取り
+弱る親
+人に縋る僕
+<span class="trans">Caring for me, hands grown practiced at it. Growing older, my parent growing frail. I lean on others.</span></p>
+<span class="sec">Pre-chorus</span><p>見慣れた風景
+この部屋で
+僕は過ごした
+<span class="trans">A familiar sight — in this room, I've spent my days.</span></p>
+<span class="sec">Chorus 1</span><p>施設に行く
+嬉しい
+僕の言葉
+<span class="en">The parents looked relieved.</span>
+難関大学
+行っても
+動かない体に
+意味はあるのか
+僕の問い
+綺麗な言葉は
+要らない
+<span class="trans">"Going to a facility makes me happy," my words. The parents looked relieved. Even if I'd gone to a top university, with a body that can't move, does it mean anything? My question. Pretty words, I don't need.</span></p>
+<span class="sec">Verse 3</span><p>目線で書ける
+テクノロジー
+小説も
+仕事も
+可能な時代
+<span class="trans">Writing with just my gaze — technology. An age when novels and work too are possible.</span></p>
+<span class="sec">Bridge 1</span><p>生きる意味
+テクノロジーが
+教えてくれた
+<span class="trans">The meaning of living — technology taught it to me.</span></p>
+<span class="sec">Chorus 2</span><p>僕の知識
+経験が
+誰かに届く
+<span class="en">It's going to be huge.</span>
+SNS使い
+講義も
+アドバイザーも
+可能になり
+誰かの
+未来を変える
+奇跡
+<span class="trans">My knowledge, my experience, reaching someone. It's going to be huge. Using social media, lectures, and advising too become possible — changing someone's future. A miracle.</span></p>
+<span class="sec">Bridge 2</span><p>僕の経験が
+誰かを変える
+情報が
+テクノロジーが
+起こす奇跡
+<span class="trans">My experience changes someone. Information, technology — the miracle it brings about.</span></p>
+<span class="sec">Outro</span><p>呼吸をする
+それだけで
+幸せ
+親の言葉
+今 感謝する
+<span class="trans">Just breathing, that alone is happiness. My parent's words — now, I feel grateful.</span></p>
+  </div>
+
+  <footer>
+    <span class="en">It's going to be huge.</span>
+    <span class="note">動かせない体でも、届けられるものがある。<br>
+    生きているだけで、いつか誰かの奇跡になる。</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  function makeRipple(){
+    const r = document.createElement('div');
+    r.className='ripple';
+    const sz = Math.random()*140 + 60;
+    r.style.width = sz+'px'; r.style.height = sz+'px';
+    r.style.left = (Math.random()*90+5)+'%';
+    r.style.top = (Math.random()*70+15)+'%';
+    const dur = Math.random()*5 + 5;
+    r.style.animationDuration = dur+'s';
+    scene.appendChild(r);
+    setTimeout(()=>r.remove(), dur*1000);
+  }
+  for(let i=0;i<8;i++){ setTimeout(makeRipple, i*900); }
+  setInterval(makeRipple, 1400);
+</script>
+
+</body>
+</html>
