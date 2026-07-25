@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>白銀の記憶 〜The Day I Couldn't Do It〜 — 大森カエ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --ink: #2c313a;
+    --ink-soft: #5b626e;
+    --ink-faint: #9aa1ab;
+    --snow: #eef2f6;
+    --snow-bright: #ffffff;
+    --sky-blue: #7c93ad;
+    --wound: #a6403f;         /* 後悔・血の色を薄く */
+    --bg-top: #dce4ec;        /* 白銀のゲレンデ（明） */
+    --bg-mid: #c4ced8;
+    --bg-low: #aab4bf;
+    --bg-room: #8b8f94;       /* 病室のグレー（下） */
+    --line: rgba(44,49,58,0.12);
+    --en: #7c8a99;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg-top);
+    color: var(--ink);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.1; letter-spacing: 0.03em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* 白銀のゲレンデ（上）から病室の天井（下）へ */
+  .scene{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .sky{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg,
+      var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-low) 74%, var(--bg-room) 100%);
+  }
+  .flake{
+    position:absolute; border-radius:50%;
+    background: var(--snow-bright);
+    opacity: 0.75;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    0%{ transform: translateY(-5vh) translateX(0); opacity:0; }
+    10%{ opacity:0.8; }
+    90%{ opacity:0.5; }
+    100%{ transform: translateY(105vh) translateX(20px); opacity:0; }
+  }
+  /* 病室の窓からの、動かない光の帯 */
+  .room-light{
+    position:absolute; left:50%; bottom:-6vh; transform:translateX(-50%);
+    width:60vw; height:30vh; max-width:520px;
+    background: radial-gradient(ellipse 100% 100% at 50% 100%,
+      rgba(255,255,255,0.12) 0%, rgba(139,143,148,0.06) 45%, transparent 72%);
+    filter: blur(14px);
+  }
+
+  .wrap{
+    position: relative; z-index:1;
+    max-width: 640px; margin: 0 auto; padding: 15vh 26px 16vh;
+  }
+
+  .title{ text-align:center; margin-bottom: 9vh; }
+  .title h1{
+    font-weight:500; font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+    letter-spacing: 0.08em; color: var(--ink);
+    text-shadow: 0 0 30px rgba(255,255,255,0.5); line-height:1.5;
+  }
+  .title .en{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1.05rem; letter-spacing:0.18em; color: var(--sky-blue);
+    display:block; margin-top: 1.2em;
+  }
+  .title .by{
+    margin-top:1.7em; font-size:0.85rem; letter-spacing:0.3em; color: var(--ink-faint);
+  }
+  .title .tag{
+    display:block; margin-top:0.8em; font-size:0.78rem; letter-spacing:0.2em;
+    color: var(--ink-faint);
+  }
+
+  .lyric{ font-size: 1.05rem; line-height: 2.35; color: var(--ink); }
+  .lyric .sec{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:0.77rem; letter-spacing:0.18em; color: var(--ink-faint);
+    display:block; margin: 2.6em 0 0.9em; text-transform:lowercase;
+  }
+  .lyric .sec:first-child{ margin-top:0; }
+  /* 英語＝声にならない本音：くすんだ赤みで */
+  .lyric .en{
+    color: var(--wound); font-style:italic;
+    font-family:'Cormorant Garamond','Shippori Mincho',serif; font-size:0.97rem;
+  }
+  .lyric p{ margin:0; white-space:pre-line; }
+
+  footer{
+    margin-top: 10vh; padding-top: 6vh; border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer .en{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    color: var(--wound); font-size:1.15rem; letter-spacing:0.06em;
+  }
+  footer .note{
+    display:block; margin-top:1.6em; color:var(--ink-faint);
+    font-size:0.82rem; letter-spacing:0.05em; line-height:2.0;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding: 11vh 20px 13vh; }
+    .lyric{ font-size:1.0rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="sky"></div>
+  <div class="room-light"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>白銀の記憶</h1>
+    <span class="en">The Day I Couldn't Do It</span>
+    <div class="by">大森 カエ</div>
+    <span class="tag">こんな僕で、ごめんね〜I cannot live on my own.〜 Ⅰ</span>
+  </div>
+
+  <div class="lyric">
+<span class="sec">Verse 1</span><p>白銀の世界
+ゲレンデに立つ
+急斜面を
+滑る快感
+肌掠める風</p>
+<span class="sec">Verse 2</span><p>滑り具合
+確かめ
+どこまでも
+突き抜ける
+スノーボード</p>
+<span class="sec">Pre-chorus</span><p>今も思い出す
+輝き
+楽しかった
+あの頃</p>
+<span class="sec">Chorus 1</span><p>白い世界
+羨望かき集め
+<span class="en">The people looking at me</span>
+急斜面の
+上級コース
+滑走する
+自分に
+自信満ちていた</p>
+<span class="sec">Verse 3</span><p>言い寄る
+女の子
+当たり前の
+光景を
+思い起こさせる</p>
+<span class="sec">Bridge 1</span><p>エッジきかせ
+いつもなら
+避ける
+雪の悪戯</p>
+<span class="sec">Chorus 2</span><p>ハイスピード
+減速かけて
+立ち止まる
+<span class="en">Things I was always able to do</span>
+なのに
+どうして
+出来なかった僕
+今も後悔に
+涙溢れる</p>
+<span class="sec">Bridge 2</span><p>僕の動かない手足
+頭はクリアでも
+何も出来ず
+排泄感覚はなく
+オムツ交換する母
+この運命に
+涙伝う頬</p>
+<span class="sec">Outro</span><p>今日も
+家の外から
+同じ年の人が
+話す声
+僕はベッドの上
+空を見つめる日々</p>
+  </div>
+
+  <footer>
+    <span class="en">The Day I Couldn't Do It.</span>
+    <span class="note">あの日、避けられたはずのことが、避けられなかった。<br>
+    答えのない後悔を抱えたまま、それでも今日を生きている人へ。</span>
+  </footer>
+
+</div>
+
+<script>
+  const scene = document.getElementById('scene');
+  for(let i=0;i<45;i++){
+    const s = document.createElement('div');
+    s.className='flake';
+    s.style.left = Math.random()*100 + '%';
+    const sz = Math.random()*3 + 1.5;
+    s.style.width = sz+'px'; s.style.height = sz+'px';
+    const dur = Math.random()*8 + 9;
+    s.style.animationDuration = dur+'s';
+    s.style.animationDelay = (Math.random()*dur) + 's';
+    scene.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
