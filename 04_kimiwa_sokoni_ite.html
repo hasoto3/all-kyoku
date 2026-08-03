@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>君は、そこにいて 〜Until the day I go there〜</title>
+<style>
+  :root{
+    --ink: #e8e4de;
+    --paper: #1c1f2a;
+    --dusk: #2a2e40;
+    --window: #e8a95f;
+    --scar: #7a5566;
+    --line: rgba(232,228,222,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #15161e 0%, #1c1f2a 45%, #22201f 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .town{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .window-light{
+    position: absolute;
+    border-radius: 2px;
+    background: var(--window);
+    box-shadow: 0 0 12px 3px rgba(232,169,95,0.45);
+    animation: flicker ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ opacity: 0.35; }
+    50%{ opacity: 0.75; }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--window);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.06em;
+    color: #f2ede4;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: #b8b2c4;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.5;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--window);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+    color: #f0ece5;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #a9a3b6;
+  }
+  .en-line{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--scar);
+    margin-bottom: 1.1rem;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #8a8592;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="town" id="town"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — 君は、そこにいて</div>
+  <h1>君は、そこにいて</h1>
+  <div class="subtitle">〜Until the day I go there〜</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅳ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="line-pair"><div class="jp">冷たい風が吹き抜ける</div><div class="en">A cold wind blows through</div></div>
+  <div class="line-pair"><div class="jp">薄陽差した　夕暮れ</div><div class="en">a dusk lit by pale sun</div></div>
+  <div class="line-pair"><div class="jp">人気ない</div><div class="en">deserted</div></div>
+  <div class="line-pair"><div class="jp">閑散な街に灯る</div><div class="en">in the quiet, empty town</div></div>
+  <div class="line-pair"><div class="jp">家の灯り</div><div class="en">the lights of homes come on</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="line-pair"><div class="jp">遠い過去に置いてきた</div><div class="en">Left behind in the distant past</div></div>
+  <div class="line-pair"><div class="jp">温かい記憶を</div><div class="en">warm memories</div></div>
+  <div class="line-pair"><div class="jp">手繰り寄せ</div><div class="en">I draw them close</div></div>
+  <div class="line-pair"><div class="jp">冷たい空気に</div><div class="en">into the cold air</div></div>
+  <div class="line-pair"><div class="jp">滲ませる</div><div class="en">and let them bleed</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">失った者は</div><div class="en">The one who's lost</div></div>
+  <div class="line-pair"><div class="jp">二度と戻らない</div><div class="en">never comes back</div></div>
+  <div class="line-pair"><div class="jp">壊れた心は</div><div class="en">a broken heart</div></div>
+  <div class="line-pair"><div class="jp">元には戻らない</div><div class="en">never returns to what it was</div></div>
+  <div class="line-pair"><div class="jp">歪な形で戻るだけ</div><div class="en">it comes back only warped</div></div>
+  <div class="en-line">The same shape never lasts forever.</div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">戻らない日々</div><div class="en">Days that won't return</div></div>
+  <div class="line-pair"><div class="jp">時間は容赦なく</div><div class="en">time, without mercy</div></div>
+  <div class="line-pair"><div class="jp">歩みを進める</div><div class="en">keeps moving forward</div></div>
+  <div class="line-pair"><div class="jp">リアルな傷跡を</div><div class="en">carving real scars</div></div>
+  <div class="line-pair"><div class="jp">刻みながら</div><div class="en">as it goes</div></div>
+  <div class="line-pair"><div class="jp">深く抉った傷が</div><div class="en">when a deep-gouged wound</div></div>
+  <div class="line-pair"><div class="jp">皮一枚になれば</div><div class="en">heals to a thin layer of skin</div></div>
+  <div class="line-pair"><div class="jp">別の場所に</div><div class="en">somewhere else</div></div>
+  <div class="line-pair"><div class="jp">鋭い痛みを</div><div class="en">it calls up</div></div>
+  <div class="line-pair"><div class="jp">呼び起こし</div><div class="en">a sharp new pain</div></div>
+  <div class="line-pair"><div class="jp">温かな血で</div><div class="en">with warm blood</div></div>
+  <div class="line-pair"><div class="jp">傷を覆う</div><div class="en">I cover the wound</div></div>
+  <div class="line-pair"><div class="jp">誰にも見えないように</div><div class="en">so no one can see</div></div>
+  <div class="en-line">I hide it because I'm afraid of slander.</div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="line-pair"><div class="jp">悲しいニュースが流れ</div><div class="en">Sad news airs</div></div>
+  <div class="line-pair"><div class="jp">メディアは理由を探る</div><div class="en">the media hunts for reasons</div></div>
+  <div class="line-pair"><div class="jp">事実は</div><div class="en">but the truth</div></div>
+  <div class="line-pair"><div class="jp">失った魂だけが知る</div><div class="en">only the lost soul knows</div></div>
+  <div class="en-line">No one can hear the voice of the heart.</div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">失う前に出来た事を</div><div class="en">What I could have done before I lost them</div></div>
+  <div class="line-pair"><div class="jp">繰り返し</div><div class="en">over and over</div></div>
+  <div class="line-pair"><div class="jp">頭の中で回想する</div><div class="en">I replay it in my head</div></div>
+  <div class="line-pair"><div class="jp">答えは出ない</div><div class="en">no answer comes</div></div>
+  <div class="line-pair"><div class="jp">過去は戻らないから</div><div class="en">because the past won't return</div></div>
+  <div class="line-pair"><div class="jp">後悔しても</div><div class="en">no matter how I regret</div></div>
+  <div class="line-pair"><div class="jp">僕を責め立てても</div><div class="en">no matter how I blame myself</div></div>
+  <div class="line-pair"><div class="jp">出来た事が</div><div class="en">whether what I could have done</div></div>
+  <div class="line-pair"><div class="jp">本当に良かった事なのか</div><div class="en">was truly the right thing</div></div>
+  <div class="line-pair"><div class="jp">答えは見つからない</div><div class="en">I find no answer</div></div>
+  <div class="en-line">I keep repeating endless recollections</div>
+
+  <div class="section-label">Chorus 2</div>
+  <div class="line-pair"><div class="jp">世界が終わっても</div><div class="en">Even if the world ends</div></div>
+  <div class="line-pair"><div class="jp">失った魂は戻らない</div><div class="en">the lost soul won't come back</div></div>
+  <div class="line-pair"><div class="jp">誰が悪いのか</div><div class="en">who is to blame</div></div>
+  <div class="line-pair"><div class="jp">どうすれば</div><div class="en">what could have</div></div>
+  <div class="line-pair"><div class="jp">悲しい出来事が</div><div class="en">stopped</div></div>
+  <div class="line-pair"><div class="jp">防げたのだろうか</div><div class="en">this sorrow from happening</div></div>
+  <div class="line-pair"><div class="jp">後悔を</div><div class="en">no matter how many times</div></div>
+  <div class="line-pair"><div class="jp">繰り返しても</div><div class="en">I repeat my regret</div></div>
+  <div class="line-pair"><div class="jp">魂は</div><div class="en">the soul</div></div>
+  <div class="line-pair"><div class="jp">その場所に</div><div class="en">stays there</div></div>
+  <div class="line-pair"><div class="jp">帰ったまま戻らない</div><div class="en">returned, and won't come back</div></div>
+  <div class="line-pair"><div class="jp">愛しい者達が</div><div class="en">to that place where</div></div>
+  <div class="line-pair"><div class="jp">出迎え守るその場所に</div><div class="en">loved ones welcome and watch over them</div></div>
+
+  <div class="section-label">Bridge 2</div>
+  <div class="line-pair"><div class="jp">戻らなくていい</div><div class="en">You don't have to come back</div></div>
+  <div class="line-pair"><div class="jp">現世は</div><div class="en">this world</div></div>
+  <div class="line-pair"><div class="jp">あなたにとって</div><div class="en">for you</div></div>
+  <div class="line-pair"><div class="jp">苦しく悲しい</div><div class="en">was a place of</div></div>
+  <div class="line-pair"><div class="jp">場所だったから</div><div class="en">pain and sorrow</div></div>
+  <div class="line-pair"><div class="jp">帰ったままでいい</div><div class="en">so stay where you've returned</div></div>
+  <div class="line-pair"><div class="jp">今は笑って過ごせる</div><div class="en">now you can live in laughter</div></div>
+  <div class="line-pair"><div class="jp">愛しい者達と</div><div class="en">with those you love</div></div>
+  <div class="line-pair"><div class="jp">苦しんだ分</div><div class="en">for all you suffered</div></div>
+  <div class="line-pair"><div class="jp">どうか　幸せに過ごして</div><div class="en">please, live in happiness</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">僕もいつか行く</div><div class="en">I'll go there too, someday</div></div>
+  <div class="line-pair"><div class="jp">失った魂のいる</div><div class="en">to that place where</div></div>
+  <div class="line-pair"><div class="jp">その場所へ</div><div class="en">the lost souls are</div></div>
+  <div class="line-pair"><div class="jp">僕はいつか　謝る</div><div class="en">someday, I'll apologize</div></div>
+  <div class="line-pair"><div class="jp">ただ　それだけで</div><div class="en">and with just that</div></div>
+  <div class="line-pair"><div class="jp">共に長い時間を</div><div class="en">the long time together</div></div>
+  <div class="line-pair"><div class="jp">取り戻せる</div><div class="en">we can win back</div></div>
+  <div class="line-pair"><div class="jp">そう信じている</div><div class="en">I believe it</div></div>
+  <div class="line-pair"><div class="jp">だから　それまで</div><div class="en">so, until then</div></div>
+  <div class="line-pair"><div class="jp">僕も　今を明日を生きる</div><div class="en">I too will live — today, tomorrow</div></div>
+  <div class="line-pair"><div class="jp">あなたに</div><div class="en">because I want to tell you</div></div>
+  <div class="line-pair"><div class="jp">これからの出来事を</div><div class="en">all the things to come</div></div>
+  <div class="line-pair"><div class="jp">教えてあげたいから</div><div class="en">everything, someday</div></div>
+  <div class="en-line">What will be written in the notepad one year from now?</div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('town');
+  const count = 16;
+  for(let i=0;i<count;i++){
+    const w = document.createElement('div');
+    w.className = 'window-light';
+    const size = 4 + Math.random()*8;
+    w.style.width = size+'px';
+    w.style.height = (size*1.3)+'px';
+    w.style.left = (Math.random()*100)+'vw';
+    w.style.top = (30 + Math.random()*55)+'vh';
+    w.style.animationDuration = (3 + Math.random()*4)+'s';
+    w.style.animationDelay = (Math.random()*5)+'s';
+    container.appendChild(w);
+  }
+</script>
+
+</body>
+</html>
