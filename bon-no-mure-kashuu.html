@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>盆の群 -Bon no Mure- | 大森カエ 歌詞集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Serif+JP:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10121a;
+    --bg-card: #171b26;
+    --bg-card-2: #1d2230;
+    --text: #eceef3;
+    --text-soft: #a7afc2;
+    --text-faint: #6b7386;
+    --ember: #e2924f;
+    --ember-soft: #b97a4a;
+    --silver: #cfd6e4;
+    --rule: rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(226,146,79,0.08), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans JP', sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px 120px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:110px 0 70px;
+    text-align:center;
+    position:relative;
+  }
+  .hero .lantern{
+    width:2px; height:56px;
+    margin:0 auto 18px;
+    background:linear-gradient(to bottom, transparent, var(--ember));
+    position:relative;
+  }
+  .hero .lantern::after{
+    content:"";
+    position:absolute;
+    left:50%; top:0;
+    width:10px; height:10px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:var(--ember);
+    box-shadow:0 0 18px 6px rgba(226,146,79,0.55);
+    animation:flicker 3.4s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{opacity:1; box-shadow:0 0 18px 6px rgba(226,146,79,0.55);}
+    45%{opacity:0.75; box-shadow:0 0 12px 3px rgba(226,146,79,0.35);}
+    55%{opacity:0.9; box-shadow:0 0 20px 7px rgba(226,146,79,0.6);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero .lantern::after{animation:none;}
+  }
+  .hero h1{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size:2.5rem;
+    letter-spacing:0.14em;
+    margin:0 0 6px;
+  }
+  .hero .en-title{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--text-soft);
+    font-size:1.05rem;
+    letter-spacing:0.06em;
+    margin:0 0 30px;
+  }
+  .hero p{
+    max-width:480px;
+    margin:0 auto;
+    color:var(--text-soft);
+    font-size:0.94rem;
+    line-height:2;
+  }
+  .hero .credit{
+    margin-top:34px;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    color:var(--text-faint);
+    text-transform:uppercase;
+  }
+
+  /* ---------- INDEX ---------- */
+  .index{
+    display:grid;
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin-bottom:80px;
+  }
+  .index a{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    padding:16px 20px;
+    background:var(--bg-card);
+    color:var(--text);
+    text-decoration:none;
+    transition:background 0.25s ease, padding-left 0.25s ease;
+  }
+  .index a:hover{background:var(--bg-card-2); padding-left:26px;}
+  .index .num{
+    font-family:'Shippori Mincho', serif;
+    color:var(--ember);
+    font-size:1.1rem;
+    flex-shrink:0;
+    width:1.4em;
+  }
+  .index .titles{display:flex; flex-direction:column; gap:2px;}
+  .index .jp{font-size:0.98rem;}
+  .index .en{font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.82rem;}
+
+  /* ---------- SONG ---------- */
+  .song{
+    scroll-margin-top:40px;
+    padding:64px 0 0;
+    border-top:1px solid var(--rule);
+  }
+  .song:first-of-type{border-top:none;}
+  .song-head{margin-bottom:8px;}
+  .song-num{
+    font-family:'Shippori Mincho', serif;
+    color:var(--ember);
+    font-size:1.05rem;
+    letter-spacing:0.1em;
+  }
+  .song h2{
+    font-family:'Shippori Mincho', serif;
+    font-size:1.62rem;
+    font-weight:700;
+    margin:8px 0 4px;
+    letter-spacing:0.04em;
+  }
+  .song .en-sub{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--silver);
+    font-size:1.02rem;
+    margin:0 0 20px;
+  }
+  .note{
+    background:var(--bg-card);
+    border-left:2px solid var(--ember-soft);
+    padding:16px 20px;
+    margin:0 0 26px;
+    font-size:0.9rem;
+    color:var(--text-soft);
+  }
+  .note .en{
+    display:block;
+    margin-top:8px;
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--text-faint);
+  }
+
+  details.lyrics{margin-bottom:12px;}
+  details.lyrics summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 0;
+    color:var(--ember);
+    font-family:'Noto Serif JP', serif;
+    font-size:0.92rem;
+    letter-spacing:0.08em;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  details.lyrics summary::-webkit-details-marker{display:none;}
+  details.lyrics summary::before{
+    content:"＋";
+    color:var(--text-faint);
+    font-size:0.85rem;
+  }
+  details.lyrics[open] summary::before{content:"－";}
+
+  .lyric-body{padding:28px 4px 10px;}
+  .stanza{margin-bottom:28px;}
+  .tag{
+    display:inline-block;
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--text-faint);
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .line{margin:0 0 4px;}
+  .line .jp{color:var(--text); font-size:1rem;}
+  .line .en{
+    display:block;
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--text-faint);
+    font-size:0.86rem;
+    margin:1px 0 10px;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:100px;
+    color:var(--text-faint);
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="lantern"></div>
+    <h1>盆 の 群</h1>
+    <p class="en-title">Bon no Mure — songs for the season of送り火</p>
+    <p>8月。送り火の季節に、還ることと、送ることをめぐる曲を、一つずつ置いていきます。</p>
+    <div class="credit">大森カエ ｜ Kae Omori</div>
+  </div>
+
+  <nav class="index">
+    <a href="#s1"><span class="num">Ⅰ</span><span class="titles"><span class="jp">泡幻譚 〜A person who lived an honest time〜</span><span class="en">The Tale of Ephemeral Foam</span></span></a>
+    <a href="#s2"><span class="num">Ⅱ</span><span class="titles"><span class="jp">紡ぐ生命 〜sound of waves〜</span><span class="en">Spinning Life</span></span></a>
+    <a href="#s3"><span class="num">Ⅲ</span><span class="titles"><span class="jp">戦火の果て 〜後世の誓い〜</span><span class="en">At the End of the Flames of War</span></span></a>
+    <a href="#s4"><span class="num">Ⅳ</span><span class="titles"><span class="jp">君は、そこにいて 〜Until the day I go there〜</span><span class="en">Stay There, Where You Are</span></span></a>
+    <a href="#s5"><span class="num">Ⅴ</span><span class="titles"><span class="jp">紫陽花の記憶 〜I was at my limit〜</span><span class="en">Memories in the Hydrangeas</span></span></a>
+    <a href="#s6"><span class="num">Ⅵ</span><span class="titles"><span class="jp">Silver Solitude</span><span class="en">&nbsp;</span></span></a>
+  </nav>
+
+  <!-- ============ I ============ -->
+  <section class="song" id="s1">
+    <div class="song-head">
+      <div class="song-num">Ⅰ</div>
+      <h2>泡幻譚 〜A person who lived an honest time〜</h2>
+      <div class="en-sub">The Tale of Ephemeral Foam</div>
+    </div>
+    <div class="note">
+      小さな体で家族を守り抜いた、誠実な人へ。その人の前では、犬も雀も、皆が正直だった。やがて海の泡に還っていく、一つの生涯の記録です。
+      <span class="en">For a person who protected their family with a small, honest body. Before them, even dogs and sparrows were sincere. A record of one life, returning at last to the foam of the sea.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">小さな身体張り</span><span class="en">With your small body, you stood your ground</span></p>
+          <p class="line"><span class="jp">あなたは 家族を守り</span><span class="en">You protected your family</span></p>
+          <p class="line"><span class="jp">精一杯 生き抜いた</span><span class="en">and lived it through with everything you had</span></p>
+          <p class="line"><span class="jp">抱きしめれば 両腕に収まり</span><span class="en">When I held you close, you fit entirely in my arms</span></p>
+          <p class="line"><span class="jp">子供よりも 低い背丈</span><span class="en">smaller in height than a child</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">あなたは笑い 子供は</span><span class="en">You would laugh, and the children</span></p>
+          <p class="line"><span class="jp">あなたを慕い 懸命に</span><span class="en">adored you — earnestly</span></p>
+          <p class="line"><span class="jp">生きた時代</span><span class="en">you lived through that era</span></p>
+          <p class="line"><span class="jp">言葉噤み 熱奪われないよう</span><span class="en">Keeping words unspoken, so the warmth wouldn't be taken</span></p>
+          <p class="line"><span class="jp">体寄せ合い 今日を生きた</span><span class="en">bodies pressed close, you lived through the day</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">しめやかに語る その物語</span><span class="en">Told quietly, that story —</span></p>
+          <p class="line"><span class="jp">誰そ知るか 今は昔</span><span class="en">who is left to know it now, it's the past</span></p>
+          <p class="line"><span class="jp">記憶を辿り あなたを想う</span><span class="en">I trace the memory, and think of you</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus</span>
+          <p class="line"><span class="jp">質素な生活 笑顔溢れ 温かいリビング</span><span class="en">A modest life, overflowing with smiles, a warm living room</span></p>
+          <p class="line"><span class="jp">邪な考えを持つ者も あなたの前では 皆 誠実だった</span><span class="en">Even those with wicked thoughts were, before you, every one, sincere</span></p>
+          <p class="line"><span class="jp">ソファ越しの犬も 窓際の雀も 皆 真摯だった</span><span class="en">The dog beyond the sofa, the sparrow at the window — all of them earnest</span></p>
+          <p class="line"><span class="jp">贅沢も 欲も 全てが無になる あなたの側</span><span class="en">Luxury, desire — all of it turns to nothing, beside you</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp">永遠の愛 誓い あなたは夢見た</span><span class="en">Eternal love — you vowed it, you dreamed of it</span></p>
+          <p class="line"><span class="jp">いつしか リアルな世界で</span><span class="en">And then, before long, in the real world</span></p>
+          <p class="line"><span class="jp">虚偽の言葉と態度に 心擦り減り</span><span class="en">false words and gestures wore your heart thin</span></p>
+          <p class="line"><span class="jp">生命の灯火</span><span class="en">the flame of your life</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge</span>
+          <p class="line"><span class="jp">極限の海に 無と化し</span><span class="en">Into a sea of extremity, turning to nothing</span></p>
+          <p class="line"><span class="jp">漂う魚に連れられ</span><span class="en">carried by a drifting fish</span></p>
+          <p class="line"><span class="jp">淡い飛沫に溶けゆく そんな夢物語</span><span class="en">dissolving into a faint spray — such a fairy tale</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 2</span>
+          <p class="line"><span class="jp">信じ続けた 神話だと</span><span class="en">You kept believing it was a myth —</span></p>
+          <p class="line"><span class="jp">誰もが思う事実も 卑下する者達の言葉も</span><span class="en">even the truth everyone assumed, even the words of those who belittled you</span></p>
+          <p class="line"><span class="jp">疑念を抱かず ただ 信じ続けた</span><span class="en">without doubt, you simply kept believing</span></p>
+          <p class="line"><span class="jp">泡となる瞬間まで</span><span class="en">until the moment you became foam</span></p>
+          <p class="line"><span class="jp">愛する人を あなたは 想い</span><span class="en">The one you loved — you thought of them</span></p>
+          <p class="line"><span class="jp">いつか 戻ると 涙 堪えて その日を待った</span><span class="en">believing they'd return someday, holding back tears, you waited for that day</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 2</span>
+          <p class="line"><span class="jp">人は 移りゆく 心も 態度も</span><span class="en">People change and move on — hearts, and gestures too</span></p>
+          <p class="line"><span class="jp">全ては 時空の果て 運命やいかに</span><span class="en">All of it, at the edge of time and space — what, then, is fate</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">去りゆく 愛する人の影</span><span class="en">Departing — the shadow of the one you loved</span></p>
+          <p class="line"><span class="jp">届かぬ あなたを想う声</span><span class="en">unreachable, the voice that thinks of you</span></p>
+          <p class="line"><span class="jp">人の手は 儚い泡と化し</span><span class="en">A person's hands turn into fleeting foam</span></p>
+          <p class="line"><span class="jp">染吉野の花びら 温かな陽射しに 煌めく</span><span class="en">petals of dyed Yoshino cherry, shimmering in the warm sunlight</span></p>
+          <p class="line"><span class="jp">小川の畔に 土に溶けゆく 夢物語</span><span class="en">by the edge of a small stream, melting into the earth — a fairy tale</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ II ============ -->
+  <section class="song" id="s2">
+    <div class="song-head">
+      <div class="song-num">Ⅱ</div>
+      <h2>紡ぐ生命 〜sound of waves〜</h2>
+      <div class="en-sub">Spinning Life</div>
+    </div>
+    <div class="note">
+      何十億年前、海から生まれた命。人は砂粒ほどの、小さな存在。それでも一人ひとりが、唯一無二。移ろうものと、変わらないものを、波の音に重ねて。
+      <span class="en">Life born from the sea, billions of years ago. We are small as grains of sand — yet each of us, one of a kind. What changes and what endures, laid over the sound of the waves.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">Coastal Road ── 行き交う人々</span><span class="en">People passing by</span></p>
+          <p class="line"><span class="jp">冬の海風 さざ波連れ 静かに奏でる</span><span class="en">The winter sea breeze, carried on gentle ripples, quietly playing</span></p>
+          <p class="line"><span class="jp">波音に 心を預け</span><span class="en">I entrust my heart to the sound of the waves</span></p>
+          <p class="line"><span class="jp">春の匂い 辿るが 欠片一つ 彼の地</span><span class="en">Tracing the scent of spring — not a single fragment remains of that place</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">Seaside townscape ── 誰もが 待ち詫びる</span><span class="en">Everyone longs and waits</span></p>
+          <p class="line"><span class="jp">暖かな季節 耳澄まし</span><span class="en">for the warm season, straining to hear</span></p>
+          <p class="line"><span class="jp">桃の花 蕾も膨らみ 春の息吹 鳥の囀り</span><span class="en">Peach blossoms, their buds swelling — the breath of spring, the song of birds</span></p>
+          <p class="line"><span class="jp">今は昔 忘れた過去</span><span class="en">A past now distant, long forgotten</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">人々は 待ち望む 気が遠くなるほどの 長い年月</span><span class="en">People long and wait, for what feels like an eternity, the long passage of years</span></p>
+          <p class="line"><span class="jp">季節の移ろいを</span><span class="en">as the seasons quietly shift</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus</span>
+          <p class="line"><span class="jp">波飛沫 浴び 海辺 はしゃぐ子供</span><span class="en">Drenched in sea spray, children playing wild along the shore</span></p>
+          <p class="line"><span class="jp">波音 聞きながら 寄り添い 語らう恋人</span><span class="en">Listening to the waves, lovers leaning close, sharing words</span></p>
+          <p class="line"><span class="jp">Beach 織り成される 数多の記憶</span><span class="en">A beach woven through with countless memories</span></p>
+          <p class="line"><span class="jp">不朽の無常 いみじけれ</span><span class="en">the eternal impermanence, how profound</span></p>
+          <p class="line"><span class="jp">心の内 広がるは ストロベリーハウス</span><span class="en">Within the heart, spreads a strawberry house</span></p>
+          <p class="line"><span class="jp">甘酸っぱい 想いに 恋忘れ草 求め</span><span class="en">In bittersweet longing, searching for the flower of forgetting</span></p>
+          <p class="line"><span class="jp">先人は この道を辿った</span><span class="en">Those who came before walked this same path</span></p>
+          <p class="line"><span class="jp">砂を 掬い取り 掌から 零れ落ちる</span><span class="en">Scooping up the sand, watching it spill from the palm</span></p>
+          <p class="line"><span class="jp">不変の 出御</span><span class="en">The unchanging departure — lost memories leave a breath</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp">The expansive ocean view ── 人は 小さな生き物</span><span class="en">People are small creatures</span></p>
+          <p class="line"><span class="jp">鳥は 大空舞い 何十億年前 から</span><span class="en">Birds soar through the vast sky, since billions of years ago</span></p>
+          <p class="line"><span class="jp">母なる 海頼りに 全ての 生物が</span><span class="en">Leaning on the mother sea, every living thing</span></p>
+          <p class="line"><span class="jp">生命の リズム刻む 未来永劫</span><span class="en">beats the rhythm of life, for all eternity</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge Ⅰ</span>
+          <p class="line"><span class="jp">無常の 世界 人は 小さな存在</span><span class="en">A world of transience — people are small beings</span></p>
+          <p class="line"><span class="jp">体は 砂粒 儚い命は 尊く</span><span class="en">The body, a grain of sand — a fleeting life, and yet so precious</span></p>
+          <p class="line"><span class="jp">唯一無二の存在</span><span class="en">a presence like no other</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 2</span>
+          <p class="line"><span class="jp">生物は 火山から 誕生し</span><span class="en">Living things, born from volcanoes</span></p>
+          <p class="line"><span class="jp">気が遠のく 時空 進化しながら</span><span class="en">across an unfathomable expanse of time, evolving still</span></p>
+          <p class="line"><span class="jp">迷い 言葉にならない 幾多の 愛が生まれ</span><span class="en">wandering, beyond what words can hold, countless loves come into being</span></p>
+          <p class="line"><span class="jp">すれ違う 想いを 伝え合い 声帯 震わせ</span><span class="en">feelings that pass each other by, reaching out, the vocal cords tremble</span></p>
+          <p class="line"><span class="jp">はかなかりし夢 とめどなく 伝う涙</span><span class="en">a dream that was always fleeting, tears that flow without end</span></p>
+          <p class="line"><span class="jp">砂地は 知る 涙 拭い取り 瞳から 零れ落ちる</span><span class="en">The sandy shore knows, wiping away the tears that spill from these eyes</span></p>
+          <p class="line"><span class="jp">不変の 逸話</span><span class="en">an unchanging tale — a passionate love that never fades</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge</span>
+          <p class="line"><span class="jp">壊れゆく 愛 生まれ 変わり</span><span class="en">A love that crumbles, reborn</span></p>
+          <p class="line"><span class="jp">穏やかに 誰そを 思いやる 優しさへ 昇華す</span><span class="en">gently, thinking of another, sublimated into tenderness</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">人は この地球の上 1人で生まれ</span><span class="en">People, upon this earth, born alone</span></p>
+          <p class="line"><span class="jp">1人で生命の花散らす</span><span class="en">alone, they scatter the flower of their life</span></p>
+          <p class="line"><span class="jp">紡ぎゆく 生命の記憶</span><span class="en">The memories of life, spun onward</span></p>
+          <p class="line"><span class="jp">秒針が 同じリズム刻み 時空の中</span><span class="en">The second hand beats the same rhythm, within time and space</span></p>
+          <p class="line"><span class="jp">不変と無常 織り返す</span><span class="en">weaving permanence and transience together</span></p>
+          <p class="line"><span class="jp">不変の愛が 時間を超える</span><span class="en">An unchanging love that transcends time</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ III ============ -->
+  <section class="song" id="s3">
+    <div class="song-head">
+      <div class="song-num">Ⅲ</div>
+      <h2>戦火の果て 〜後世の誓い〜</h2>
+      <div class="en-sub">At the End of the Flames of War 〜A Vow for the World to Come〜</div>
+    </div>
+    <div class="note">
+      還らなかった人と、待ち続けた人へ。時代が奪い、欲が渦巻いた、悲しい歴史。生まれ出づる小さな魂に、意味はあるのか──問いを、問いのまま。
+      <span class="en">For those who never came home, and those who kept waiting. A sorrowful history, taken by its era, swirling with greed. Is there meaning in each small soul being born? — a question left as a question.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">明日が来ない 夢</span><span class="en">A dream where tomorrow never comes</span></p>
+          <p class="line"><span class="jp">何度も願った 幾夜もの歳月</span><span class="en">I wished for it, over and over, through countless nights and years</span></p>
+          <p class="line"><span class="jp">月光の光浴び 冷たく</span><span class="en">bathed in moonlight, cold</span></p>
+          <p class="line"><span class="jp">流れる滴を感じ 掌に感じる 生臭い 匂い</span><span class="en">I feel the dripping flow in my palm, the smell of blood</span></p>
+          <p class="line"><span class="jp">脈打つ痛み 焼けるような熱</span><span class="en">throbbing pain, a burning heat</span></p>
+          <p class="line"><span class="jp">人は悲しみを隠し 時代を生きる</span><span class="en">people hide their grief and live through their age</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">口の中 広がる 異臭放つ 高級料理</span><span class="en">Spreading in my mouth, fine cuisine that reeks</span></p>
+          <p class="line"><span class="jp">満開の桜見上げ 新しい季節は</span><span class="en">looking up at cherries in full bloom, the new season</span></p>
+          <p class="line"><span class="jp">灰色に 黒煙漂う 西の空</span><span class="en">gray, with black smoke drifting, the western sky</span></p>
+          <p class="line"><span class="jp">不運な未来へ 時を刻む</span><span class="en">toward an ill-fated future, time ticks on</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">吐き気 覚える台詞 繰り返される 再生ボタン</span><span class="en">Words that turn my stomach, played again, the replay button</span></p>
+          <p class="line"><span class="jp">幾夜の悪夢は 終わらない雨に 身を焦がす</span><span class="en">the nightmares, night after night, in rain that never ends, I burn</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus</span>
+          <p class="line"><span class="jp">現し世に 別れを告げ 常世に 望みかける</span><span class="en">To this waking world, bidding farewell, on the eternal world they pin their hopes</span></p>
+          <p class="line"><span class="jp">老若男女 真剣に だけど 真実を知らないまま</span><span class="en">young and old, men and women, in earnest — and yet never knowing the truth</span></p>
+          <p class="line"><span class="jp">人生に 終止符のコスモス託し</span><span class="en">to their lives, entrusting cosmos flowers as a final period</span></p>
+          <p class="line"><span class="jp">常世に夢抱き 恋人達は 鎖で繋がれた 運命に従う</span><span class="en">holding dreams of the eternal world, the lovers, chained together, obey their fate</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp">去りゆく 愛しい人 共に誓った 五世の世界</span><span class="en">My beloved, departing — the world beyond, we vowed to share</span></p>
+          <p class="line"><span class="jp">年若き者相手に えたたかはぬなり</span><span class="en">against one so young, I cannot fight</span></p>
+          <p class="line"><span class="jp">優しいあの人は 晩酌 涙もろなり</span><span class="en">that gentle soul, an evening drink, quick to tears</span></p>
+          <p class="line"><span class="jp">記憶の片隅 今は亡き人</span><span class="en">in a corner of memory, now among the dead</span></p>
+          <p class="line"><span class="jp">五世で笑いましょうぞ</span><span class="en">let us laugh together, in the world to come</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 1</span>
+          <p class="line"><span class="jp">戦の根源 望まぬ 絶鬼の己</span><span class="en">The root of war, the demon I never wished to be</span></p>
+          <p class="line"><span class="jp">平穏に まかり過ぎ 愛しい人との 温かな未来</span><span class="en">let peace pass me by, a warm future with my beloved</span></p>
+          <p class="line"><span class="jp">満月の夜 願った</span><span class="en">I wished, on the night of the full moon</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus</span>
+          <p class="line"><span class="jp">見送る人 あの人の姿 探すけど</span><span class="en">Those who see them off, searching for that person's figure, but —</span></p>
+          <p class="line"><span class="jp">出立は 一人立つからと 誰にも別れ告げず</span><span class="en">the departure — "I'll go alone," they said, telling no one goodbye</span></p>
+          <p class="line"><span class="jp">抗えない 大きな海練りに 身を委ね</span><span class="en">unresisting, to the great swell of the sea, surrendering</span></p>
+          <p class="line"><span class="jp">列車に身を預けた 残された家族</span><span class="en">they gave themselves to the train, the family left behind</span></p>
+          <p class="line"><span class="jp">兵士を輩出した 誇り高き栄誉</span><span class="en">having sent forth a soldier, a proud honor</span></p>
+          <p class="line"><span class="jp">父母への 恩返し 愛しい人 未来永劫 再会願う</span><span class="en">repaying the debt to mother and father — I pray we meet again, my beloved, for all eternity</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 2</span>
+          <p class="line"><span class="jp">冬の如く 冷え込む朝 無事の帰還願う 人</span><span class="en">A morning cold as winter, one who prays for a safe return</span></p>
+          <p class="line"><span class="jp">時代の悪戯 人の欲が渦巻いた 悲しい 歴史</span><span class="en">the mischief of the age, human greed swirled — a sorrowful history</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">テレビに映る 権力者</span><span class="en">On the television screen, those in power</span></p>
+          <p class="line"><span class="jp">生命の灯火 掻き消す 言葉</span><span class="en">the flame of life, words that snuff it out</span></p>
+          <p class="line"><span class="jp">戦火に揺れる 黒い煙</span><span class="en">trembling in the fires of war, black smoke</span></p>
+          <p class="line"><span class="jp">涙も 声も かき消され 灰色の空に溶け合う</span><span class="en">tears and voices alike, drowned out, melting into the gray sky</span></p>
+          <p class="line"><span class="jp">愛しい者達への 裏切り 無意味な 欲の果て</span><span class="en">a betrayal of those we love, the end of meaningless greed</span></p>
+          <p class="line"><span class="jp">時代の 生塵 生まれ出づる 小さな魂</span><span class="en">the living dust of an age, a small soul, coming into being</span></p>
+          <p class="line"><span class="jp">意味はあるのか 老少不定</span><span class="en">is there meaning in it? — no one knows who goes first, the old or the young</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ IV ============ -->
+  <section class="song" id="s4">
+    <div class="song-head">
+      <div class="song-num">Ⅳ</div>
+      <h2>君は、そこにいて 〜Until the day I go there〜</h2>
+      <div class="en-sub">Stay There, Where You Are</div>
+    </div>
+    <div class="note">
+      遠い国で失われた、名も知らぬ魂へ。戻らなくていい。現世が苦しかったなら、愛しい人たちのいるその場所で、どうか笑って。僕が行く、その日まで。
+      <span class="en">For nameless souls lost in distant lands. You don't have to come back. If this world was painful, then stay and smile, there among those you love. Until the day I go there.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">冷たい風が吹き抜ける</span><span class="en">A cold wind blows through</span></p>
+          <p class="line"><span class="jp">薄陽差した 夕暮れ</span><span class="en">a dusk lit by pale sun</span></p>
+          <p class="line"><span class="jp">人気ない 閑散な街に灯る 家の灯り</span><span class="en">deserted, in the quiet empty town, the lights of homes come on</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">遠い過去に置いてきた 温かい記憶を</span><span class="en">Left behind in the distant past, warm memories</span></p>
+          <p class="line"><span class="jp">手繰り寄せ 冷たい空気に 滲ませる</span><span class="en">I draw them close, and let them bleed into the cold air</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">失った者は 二度と戻らない</span><span class="en">The one who's lost never comes back</span></p>
+          <p class="line"><span class="jp">壊れた心は 元には戻らない 歪な形で戻るだけ</span><span class="en">a broken heart never returns to what it was, it comes back only warped</span></p>
+          <p class="line"><span class="jp"></span><span class="en">The same shape never lasts forever.</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus</span>
+          <p class="line"><span class="jp">戻らない日々 時間は容赦なく 歩みを進める</span><span class="en">Days that won't return, time, without mercy, keeps moving forward</span></p>
+          <p class="line"><span class="jp">リアルな傷跡を 刻みながら</span><span class="en">carving real scars as it goes</span></p>
+          <p class="line"><span class="jp">深く抉った傷が 皮一枚になれば</span><span class="en">when a deep-gouged wound heals to a thin layer of skin</span></p>
+          <p class="line"><span class="jp">別の場所に 鋭い痛みを 呼び起こし</span><span class="en">somewhere else it calls up a sharp new pain</span></p>
+          <p class="line"><span class="jp">温かな血で 傷を覆う 誰にも見えないように</span><span class="en">with warm blood I cover the wound, so no one can see</span></p>
+          <p class="line"><span class="jp"></span><span class="en">I hide it because I'm afraid of slander.</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp">悲しいニュースが流れ メディアは理由を探る</span><span class="en">Sad news airs, the media hunts for reasons</span></p>
+          <p class="line"><span class="jp">事実は 失った魂だけが知る</span><span class="en">but the truth, only the lost soul knows</span></p>
+          <p class="line"><span class="jp"></span><span class="en">No one can hear the voice of the heart.</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge</span>
+          <p class="line"><span class="jp">失う前に出来た事を 繰り返し 頭の中で回想する</span><span class="en">What I could have done before I lost them, over and over, I replay it in my head</span></p>
+          <p class="line"><span class="jp">答えは出ない 過去は戻らないから</span><span class="en">no answer comes, because the past won't return</span></p>
+          <p class="line"><span class="jp">後悔しても 僕を責め立てても</span><span class="en">no matter how I regret, no matter how I blame myself</span></p>
+          <p class="line"><span class="jp">出来た事が 本当に良かった事なのか 答えは見つからない</span><span class="en">whether what I could have done was truly the right thing, I find no answer</span></p>
+          <p class="line"><span class="jp"></span><span class="en">I keep repeating endless recollections</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 2</span>
+          <p class="line"><span class="jp">世界が終わっても 失った魂は戻らない</span><span class="en">Even if the world ends, the lost soul won't come back</span></p>
+          <p class="line"><span class="jp">誰が悪いのか どうすれば 悲しい出来事が 防げたのだろうか</span><span class="en">who is to blame, what could have stopped this sorrow from happening</span></p>
+          <p class="line"><span class="jp">後悔を 繰り返しても</span><span class="en">no matter how many times I repeat my regret</span></p>
+          <p class="line"><span class="jp">魂は その場所に 帰ったまま戻らない</span><span class="en">the soul stays there, returned, and won't come back</span></p>
+          <p class="line"><span class="jp">愛しい者達が 出迎え守るその場所に</span><span class="en">to that place where loved ones welcome and watch over them</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 2</span>
+          <p class="line"><span class="jp">戻らなくていい 現世は あなたにとって 苦しく悲しい 場所だったから</span><span class="en">You don't have to come back — this world, for you, was a place of pain and sorrow</span></p>
+          <p class="line"><span class="jp">帰ったままでいい 今は笑って過ごせる 愛しい者達と</span><span class="en">so stay where you've returned, now you can live in laughter, with those you love</span></p>
+          <p class="line"><span class="jp">苦しんだ分 どうか 幸せに過ごして</span><span class="en">for all you suffered, please, live in happiness</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">僕もいつか行く 失った魂のいる その場所へ</span><span class="en">I'll go there too, someday, to that place where the lost souls are</span></p>
+          <p class="line"><span class="jp">僕はいつか 謝る ただ それだけで</span><span class="en">someday, I'll apologize, and with just that</span></p>
+          <p class="line"><span class="jp">共に長い時間を 取り戻せる そう信じている</span><span class="en">the long time together we can win back — I believe it</span></p>
+          <p class="line"><span class="jp">だから それまで 僕も 今を明日を生きる</span><span class="en">so, until then, I too will live — today, tomorrow</span></p>
+          <p class="line"><span class="jp">あなたに これからの出来事を 教えてあげたいから</span><span class="en">because I want to tell you all the things to come</span></p>
+          <p class="line"><span class="jp"></span><span class="en">What will be written in the notepad one year from now?</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ V ============ -->
+  <section class="song" id="s5">
+    <div class="song-head">
+      <div class="song-num">Ⅴ</div>
+      <h2>紫陽花の記憶 〜I was at my limit〜</h2>
+      <div class="en-sub">Memories in the Hydrangeas</div>
+    </div>
+    <div class="note">
+      子供の頃、逃がすことしかできなかった君へ。あれが、あの時の限界だった。湿った夏の夜、ソプラノの声で還ってくる、遠い記憶。
+      <span class="en">For the one I could only set free, back in childhood. That was my limit, back then. On a humid summer night, a distant memory returns — in a soprano voice.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">蒼白の月</span><span class="en">A pale blue moon</span></p>
+          <p class="line"><span class="jp">声なき夜の涙 朧げな記憶</span><span class="en">tears of a voiceless night, a hazy memory</span></p>
+          <p class="line"><span class="jp">流れこむ ソプラノ声 デジャヴ</span><span class="en">flows in — a soprano voice, déjà vu</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">誘われた 時空の海</span><span class="en">Drawn into a sea of space and time</span></p>
+          <p class="line"><span class="jp">旅立ちの鐘 街に響く</span><span class="en">the bell of departure rings through the town</span></p>
+          <p class="line"><span class="jp">悠久の果て 夢描く</span><span class="en">at the edge of eternity, I sketch a dream</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">声の主 記憶の理由</span><span class="en">The one whose voice it is, the reason for the memory</span></p>
+          <p class="line"><span class="jp">全ては 紫陽花の花弁 隠した</span><span class="en">all of it, in the hydrangea petals, I hid it away</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 1</span>
+          <p class="line"><span class="jp">ゲリラ豪雨 七色の虹</span><span class="en">A sudden downpour, a seven-colored rainbow</span></p>
+          <p class="line"><span class="jp">濡れた髪の君 眩い水滴</span><span class="en">you, your hair soaked, dazzling droplets</span></p>
+          <p class="line"><span class="jp">暑さ奪い 蒸した空気 溶ける夕日</span><span class="en">stealing the heat, the humid air, the melting sunset</span></p>
+          <p class="line"><span class="jp">人影を踏み 涙拭った</span><span class="en">stepping on the shadows, I wiped my tears</span></p>
+          <p class="line"><span class="jp"></span><span class="en">My heartbreakingly beloved you</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp">虫の音色 星が隠す</span><span class="en">The song of insects, the stars conceal</span></p>
+          <p class="line"><span class="jp">夜の闇を探す 絡みつく</span><span class="en">I search the dark of night, clinging</span></p>
+          <p class="line"><span class="jp">汗拭う 夢の中</span><span class="en">I wipe the sweat, inside a dream</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 1</span>
+          <p class="line"><span class="jp">肌湿る 真夜中</span><span class="en">Skin damp, in the dead of night</span></p>
+          <p class="line"><span class="jp">聞こえるは ソプラノ声</span><span class="en">what I hear is a soprano voice</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 2</span>
+          <p class="line"><span class="jp">柔らかな髪 四葉クローバー 探し泣いた日</span><span class="en">Soft hair, a four-leaf clover, the day we searched and wept</span></p>
+          <p class="line"><span class="jp">引き裂く 大人達</span><span class="en">tearing us apart, the grown-ups</span></p>
+          <p class="line"><span class="jp">鎖壊し 君を逃がした僕</span><span class="en">I broke the chains and set you free</span></p>
+          <p class="line"><span class="jp">こびりつく 虫の吃音 遠い記憶</span><span class="en">clinging still, the insects' stammer, a distant memory</span></p>
+          <p class="line"><span class="jp"></span><span class="en">There was nothing I could do.</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge 2</span>
+          <p class="line"><span class="jp">子供時代 成す術なく</span><span class="en">Childhood, powerless</span></p>
+          <p class="line"><span class="jp">抗えず 涙流した</span><span class="en">unable to resist, I let the tears fall</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">琥珀の瞳 見つめる君</span><span class="en">Amber eyes, you, gazing at me</span></p>
+          <p class="line"><span class="jp">虹に誓った約束 紫陽花に囲まれ 僕らは</span><span class="en">the promise sworn on the rainbow, surrounded by hydrangeas, we —</span></p>
+          <p class="line"><span class="jp"></span><span class="en">To share one's life</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ VI ============ -->
+  <section class="song" id="s6">
+    <div class="song-head">
+      <div class="song-num">Ⅵ</div>
+      <h2>Silver Solitude</h2>
+      <div class="en-sub">白銀の孤独</div>
+    </div>
+    <div class="note">
+      子供の頃、繰り返し見た夢の世界。色のない、静かな花畑。争いも悲しみもないその場所で、いつか出会うあなたを待っている。
+      <span class="en">A world I dreamed again and again as a child. A silent, colorless field of flowers. In that place with no conflict, no sorrow, I wait for the one I'll meet someday.</span>
+    </div>
+    <details class="lyrics">
+      <summary>歌詞を開く / Show lyrics</summary>
+      <div class="lyric-body">
+        <div class="stanza"><span class="tag">Verse 1</span>
+          <p class="line"><span class="jp">白銀の世界 静音が</span><span class="en">A silver world, silence</span></p>
+          <p class="line"><span class="jp">無限に広がり 天空と同化する</span><span class="en">spreading without end, becoming one with the sky</span></p>
+          <p class="line"><span class="jp">ここは 虚無の世界 冷たい空気</span><span class="en">this is a world of nothing, cold air</span></p>
+          <p class="line"><span class="jp">柔らかな光が 今 心の奥 そっと撫でる</span><span class="en">a soft light, now, deep in my heart, gently strokes it</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 2</span>
+          <p class="line"><span class="jp">誰も知らない 僕だけが 独り占めする 平穏な世界</span><span class="en">Known to no one, mine alone, to keep for myself — a world of peace</span></p>
+          <p class="line"><span class="jp">君だけ 招待する</span><span class="en">I invite only you</span></p>
+          <p class="line"><span class="jp">ひんやり冷たい 空気が 横切り</span><span class="en">chill and cold, the air passes through</span></p>
+          <p class="line"><span class="jp">僕らは 空気に溶ける 今 世界が動く 夢幻の未来</span><span class="en">and we melt into it, now the world moves, a dreamlike future</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Pre-chorus</span>
+          <p class="line"><span class="jp">サヨナラは 言わない</span><span class="en">Goodbye — I won't say it</span></p>
+          <p class="line"><span class="jp">忘れな草を 冷たい土の中 根を埋め いつか</span><span class="en">forget-me-nots, in the cold earth, I bury their roots, someday</span></p>
+          <p class="line"><span class="jp"></span><span class="en">Waiting for me in the future</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 1</span>
+          <p class="line"><span class="jp">何も聴こえない 何も感じない 虚無の 白銀の世界</span><span class="en">Nothing to hear, nothing to feel, a silver world of nothing</span></p>
+          <p class="line"><span class="jp">鷹は空を舞い 空には ちぢれ雲が顔出す</span><span class="en">a hawk circles the sky, wisps of cloud peek through</span></p>
+          <p class="line"><span class="jp">ここは 争いも 怒哀もない ただ 君と僕だけ</span><span class="en">here, no conflict, no anger or grief — just you and me</span></p>
+          <p class="line"><span class="jp">2人溶け合う 世界 夢幻の未来に 続く階段を目指す</span><span class="en">a world where we two melt together, toward a dreamlike future, I climb the stairway that leads on</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Verse 3</span>
+          <p class="line"><span class="jp"></span><span class="en">Being alone is lonely</span></p>
+          <p class="line"><span class="jp">だから 抱きしめて 熱を感じ 鼓動を聞き</span><span class="en">so, hold me, feel the warmth, hear the heartbeat</span></p>
+          <p class="line"><span class="jp">伝わる鼓動に 温かな吐息に</span><span class="en">in the pulse that passes between us, in the warm breath</span></p>
+          <p class="line"><span class="jp">今 心の底に 湧き上がる 愛しさ</span><span class="en">now, at the bottom of my heart, rising up, tenderness</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Bridge</span>
+          <p class="line"><span class="jp">僕は 一人 無音の世界</span><span class="en">I was alone, a soundless world</span></p>
+          <p class="line"><span class="jp">孤独を押し殺し 白銀の情景 抱きしめ生きていた</span><span class="en">stifling the solitude, the silver scene, I held it close, and lived</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Chorus 2</span>
+          <p class="line"><span class="jp">涙は忘れた ただ 生きて</span><span class="en">I've forgotten tears, just living</span></p>
+          <p class="line"><span class="jp">愛も 願いもなく 僕は世界一人</span><span class="en">without love, without wishes, I am alone in the world</span></p>
+          <p class="line"><span class="jp">声なく 笑顔作り いつか 出会う人のため</span><span class="en">silently, I shape a smile, someday, for the one I'll meet</span></p>
+          <p class="line"><span class="jp">ただ 君だけを求め 今なら分かる 運命を信じ</span><span class="en">seeking only you, now I understand, believing in fate</span></p>
+          <p class="line"><span class="jp">心は声なき 叫び声を いつも覚えている</span><span class="en">my heart, a voiceless cry, I always remember it</span></p>
+        </div>
+        <div class="stanza"><span class="tag">Outro</span>
+          <p class="line"><span class="jp">白銀の世界 君と僕 新しい境地</span><span class="en">A silver world, you and me, a new realm</span></p>
+          <p class="line"><span class="jp">忘れな草に 孤独な者のため</span><span class="en">to the forget-me-nots, for the lonely ones</span></p>
+          <p class="line"><span class="jp">その地に根ざすよう 願い</span><span class="en">may they take root in that ground, I wish</span></p>
+          <p class="line"><span class="jp">僕は この地を君と去る</span><span class="en">and I leave this land with you</span></p>
+          <p class="line"><span class="jp"></span><span class="en">Waiting for me in the future</span></p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <footer>盆の群 ｜ 大森カエ ｜ 全6曲</footer>
+</div>
+</body>
+</html>
