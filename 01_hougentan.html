@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡幻譚 ～A person who lived an honest time～</title>
+<style>
+  :root{
+    --ink: #2b2f38;
+    --paper: #eef1f0;
+    --mist: #c7d2ce;
+    --foam: #8fa89f;
+    --ember: #b1846a;
+    --line: rgba(43,47,56,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #e7ebe9 0%, #eef1f0 40%, #f2efe9 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .bubbles{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bubble{
+    position: absolute;
+    bottom: -10%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(143,168,159,0.05) 70%);
+    border: 1px solid rgba(255,255,255,0.5);
+    animation: rise linear infinite;
+    opacity: 0.6;
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.4; }
+    100%{ transform: translateY(-115vh) translateX(20px); opacity:0; }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--foam);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.06em;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: #5b6a63;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #6b7a72;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #8b968f;
+    border-top: 1px solid var(--line);
+  }
+
+  ::selection{
+    background: var(--mist);
+  }
+</style>
+</head>
+<body>
+
+<div class="bubbles" id="bubbles"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — 泡幻譚</div>
+  <h1>泡幻譚</h1>
+  <div class="subtitle">A person who lived an honest time</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅰ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="line-pair"><div class="jp">小さな身体張り</div><div class="en">With your small body, you stood your ground</div></div>
+  <div class="line-pair"><div class="jp">あなたは</div><div class="en">you</div></div>
+  <div class="line-pair"><div class="jp">家族を守り</div><div class="en">protected your family</div></div>
+  <div class="line-pair"><div class="jp">精一杯</div><div class="en">with everything you had</div></div>
+  <div class="line-pair"><div class="jp">生き抜いた</div><div class="en">and lived it through</div></div>
+  <div class="line-pair"><div class="jp">抱きしめれば</div><div class="en">When I held you close</div></div>
+  <div class="line-pair"><div class="jp">両腕に収まり</div><div class="en">you fit entirely in my arms</div></div>
+  <div class="line-pair"><div class="jp">子供よりも</div><div class="en">smaller in height</div></div>
+  <div class="line-pair"><div class="jp">低い背丈</div><div class="en">than a child</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="line-pair"><div class="jp">あなたは笑い</div><div class="en">You would laugh</div></div>
+  <div class="line-pair"><div class="jp">子供は</div><div class="en">and the children</div></div>
+  <div class="line-pair"><div class="jp">あなたを慕い</div><div class="en">adored you</div></div>
+  <div class="line-pair"><div class="jp">懸命に</div><div class="en">Earnestly,</div></div>
+  <div class="line-pair"><div class="jp">生きた時代</div><div class="en">you lived through that era</div></div>
+  <div class="line-pair"><div class="jp">言葉噤(つぐ)み</div><div class="en">Keeping words unspoken,</div></div>
+  <div class="line-pair"><div class="jp">熱奪われないよう</div><div class="en">so the warmth wouldn't be taken</div></div>
+  <div class="line-pair"><div class="jp">体寄せ合い</div><div class="en">bodies pressed close together</div></div>
+  <div class="line-pair"><div class="jp">今日を生きた</div><div class="en">you lived through the day</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">しめやかに語る</div><div class="en">Told quietly,</div></div>
+  <div class="line-pair"><div class="jp">その物語</div><div class="en">that story —</div></div>
+  <div class="line-pair"><div class="jp">誰(た)そ　知るか</div><div class="en">who is left to know it now</div></div>
+  <div class="line-pair"><div class="jp">今は昔</div><div class="en">it's the past now</div></div>
+  <div class="line-pair"><div class="jp">記憶を辿り</div><div class="en">I trace the memory</div></div>
+  <div class="line-pair"><div class="jp">あなたを想う</div><div class="en">and think of you</div></div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">質素な生活</div><div class="en">A modest life,</div></div>
+  <div class="line-pair"><div class="jp">笑顔溢れ</div><div class="en">overflowing with smiles</div></div>
+  <div class="line-pair"><div class="jp">温かいリビング</div><div class="en">a warm living room</div></div>
+  <div class="line-pair"><div class="jp">邪な考えを持つ者も</div><div class="en">Even those who carried wicked thoughts</div></div>
+  <div class="line-pair"><div class="jp">あなたの前では</div><div class="en">in front of you</div></div>
+  <div class="line-pair"><div class="jp">皆　誠実だった</div><div class="en">were, every one, sincere</div></div>
+  <div class="line-pair"><div class="jp">ソファ越しの犬も</div><div class="en">The dog beyond the sofa,</div></div>
+  <div class="line-pair"><div class="jp">窓際の雀も</div><div class="en">the sparrow at the window</div></div>
+  <div class="line-pair"><div class="jp">皆　真摯だった</div><div class="en">all of them, earnest</div></div>
+  <div class="line-pair"><div class="jp">贅沢も　欲も</div><div class="en">Luxury, desire —</div></div>
+  <div class="line-pair"><div class="jp">全てが無になる</div><div class="en">all of it turns to nothing</div></div>
+  <div class="line-pair"><div class="jp">あなたの側</div><div class="en">beside you</div></div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="line-pair"><div class="jp">永遠の愛</div><div class="en">Eternal love —</div></div>
+  <div class="line-pair"><div class="jp">誓い</div><div class="en">you vowed it</div></div>
+  <div class="line-pair"><div class="jp">あなたは夢見た</div><div class="en">you dreamed of it</div></div>
+  <div class="line-pair"><div class="jp">いつしか</div><div class="en">And then, before long,</div></div>
+  <div class="line-pair"><div class="jp">リアルな世界で</div><div class="en">in the real world</div></div>
+  <div class="line-pair"><div class="jp">虚偽の</div><div class="en">false</div></div>
+  <div class="line-pair"><div class="jp">言葉と態度に</div><div class="en">words and gestures</div></div>
+  <div class="line-pair"><div class="jp">心擦り減り</div><div class="en">wore your heart thin</div></div>
+  <div class="line-pair"><div class="jp">生命の灯火(ともしび)</div><div class="en">the flame of your life</div></div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">極限の海に</div><div class="en">Into a sea of extremity,</div></div>
+  <div class="line-pair"><div class="jp">無と化し</div><div class="en">turning to nothing</div></div>
+  <div class="line-pair"><div class="jp">漂う魚に</div><div class="en">carried by a drifting fish</div></div>
+  <div class="line-pair"><div class="jp">連れられ</div><div class="en">led away</div></div>
+  <div class="line-pair"><div class="jp">淡い飛沫に</div><div class="en">into a faint spray</div></div>
+  <div class="line-pair"><div class="jp">溶けゆく</div><div class="en">dissolving</div></div>
+  <div class="line-pair"><div class="jp">そんな夢物語</div><div class="en">such a fairy tale</div></div>
+
+  <div class="section-label">Chorus 2</div>
+  <div class="line-pair"><div class="jp">信じ続けた</div><div class="en">You kept believing</div></div>
+  <div class="line-pair"><div class="jp">神話だと</div><div class="en">it was a myth —</div></div>
+  <div class="line-pair"><div class="jp">誰もが思う事実も</div><div class="en">even the truth everyone assumed</div></div>
+  <div class="line-pair"><div class="jp">卑下する者達の言葉も</div><div class="en">even the words of those who belittled you</div></div>
+  <div class="line-pair"><div class="jp">疑念を抱かず</div><div class="en">without doubt</div></div>
+  <div class="line-pair"><div class="jp">ただ　信じ続けた</div><div class="en">you simply kept believing</div></div>
+  <div class="line-pair"><div class="jp">泡となる瞬間まで</div><div class="en">until the moment you became foam</div></div>
+  <div class="line-pair"><div class="jp">愛する人を</div><div class="en">The one you loved —</div></div>
+  <div class="line-pair"><div class="jp">あなたは　想い</div><div class="en">you thought of them</div></div>
+  <div class="line-pair"><div class="jp">いつか　戻ると</div><div class="en">believing they'd return someday</div></div>
+  <div class="line-pair"><div class="jp">涙　堪えて</div><div class="en">holding back tears</div></div>
+  <div class="line-pair"><div class="jp">その日を待った</div><div class="en">you waited for that day</div></div>
+
+  <div class="section-label">Bridge 2</div>
+  <div class="line-pair"><div class="jp">人は　移りゆく</div><div class="en">People change and move on —</div></div>
+  <div class="line-pair"><div class="jp">心も　態度も</div><div class="en">hearts, and gestures too</div></div>
+  <div class="line-pair"><div class="jp">全ては</div><div class="en">All of it</div></div>
+  <div class="line-pair"><div class="jp">時空の果て</div><div class="en">at the edge of time and space</div></div>
+  <div class="line-pair"><div class="jp">運命やいかに</div><div class="en">what, then, is fate</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">去りゆく</div><div class="en">Departing —</div></div>
+  <div class="line-pair"><div class="jp">愛する人の影</div><div class="en">the shadow of the one you loved</div></div>
+  <div class="line-pair"><div class="jp">届かぬ</div><div class="en">unreachable</div></div>
+  <div class="line-pair"><div class="jp">あなたを想う声</div><div class="en">the voice that thinks of you</div></div>
+  <div class="line-pair"><div class="jp">人の手は</div><div class="en">A person's hands</div></div>
+  <div class="line-pair"><div class="jp">儚い泡と化し</div><div class="en">turn into fleeting foam</div></div>
+  <div class="line-pair"><div class="jp">染吉野の花びら</div><div class="en">petals of dyed Yoshino cherry</div></div>
+  <div class="line-pair"><div class="jp">温かな陽射しに</div><div class="en">in the warm sunlight</div></div>
+  <div class="line-pair"><div class="jp">煌めく</div><div class="en">shimmering</div></div>
+  <div class="line-pair"><div class="jp">小川の畔(ほとり)に</div><div class="en">by the edge of a small stream</div></div>
+  <div class="line-pair"><div class="jp">土に溶けゆく</div><div class="en">melting into the earth</div></div>
+  <div class="line-pair"><div class="jp">夢物語</div><div class="en">a fairy tale</div></div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('bubbles');
+  const count = 14;
+  for(let i=0;i<count;i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 6 + Math.random()*22;
+    b.style.width = size+'px';
+    b.style.height = size+'px';
+    b.style.left = (Math.random()*100)+'vw';
+    b.style.animationDuration = (14 + Math.random()*16)+'s';
+    b.style.animationDelay = (Math.random()*20)+'s';
+    container.appendChild(b);
+  }
+</script>
+
+</body>
+</html>
