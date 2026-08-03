@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紡ぐ生命 ～sound of waves～</title>
+<style>
+  :root{
+    --ink: #24313a;
+    --paper: #eef2f2;
+    --mist: #bcd2d6;
+    --foam: #6f97a0;
+    --ember: #c98a5c;
+    --line: rgba(36,49,58,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #e2ebec 0%, #eef2f2 40%, #f1efe7 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .waves{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .wave{
+    position: absolute;
+    left: -20%;
+    width: 140%;
+    height: 160px;
+    border-radius: 45%;
+    background: radial-gradient(ellipse at center, rgba(111,151,160,0.10), rgba(111,151,160,0) 70%);
+    animation: drift ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateX(-3%) translateY(0); }
+    50%{ transform: translateX(3%) translateY(-14px); }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--foam);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.06em;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: #4f6a70;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #5e7176;
+  }
+  .en-line{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #3f545a;
+    margin-bottom: 1.1rem;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #7c8d8f;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="waves" id="waves"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — 紡ぐ生命</div>
+  <h1>紡ぐ生命</h1>
+  <div class="subtitle">sound of waves</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅱ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="en-line">Coastal Road</div>
+  <div class="line-pair"><div class="jp">行き交う人々</div><div class="en">People passing by</div></div>
+  <div class="line-pair"><div class="jp">冬の海風　さざ波連れ</div><div class="en">The winter sea breeze, carried on gentle ripples</div></div>
+  <div class="line-pair"><div class="jp">静かに奏でる</div><div class="en">Quietly playing</div></div>
+  <div class="line-pair"><div class="jp">波音に　心を預け</div><div class="en">I entrust my heart to the sound of the waves</div></div>
+  <div class="line-pair"><div class="jp">春の匂い　辿るが</div><div class="en">Tracing the scent of spring</div></div>
+  <div class="line-pair"><div class="jp">欠片一つ　彼の地</div><div class="en">Not a single fragment remains of that place</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="en-line">Seaside townscape</div>
+  <div class="line-pair"><div class="jp">誰もが　待ち詫びる</div><div class="en">Everyone longs and waits</div></div>
+  <div class="line-pair"><div class="jp">暖かな季節</div><div class="en">For the warm season</div></div>
+  <div class="line-pair"><div class="jp">耳澄まし</div><div class="en">Straining to hear</div></div>
+  <div class="line-pair"><div class="jp">桃の花　蕾も膨らみ</div><div class="en">Peach blossoms, their buds swelling</div></div>
+  <div class="line-pair"><div class="jp">春の息吹　鳥の囀り</div><div class="en">The breath of spring, the song of birds</div></div>
+  <div class="line-pair"><div class="jp">今は昔　忘れた過去</div><div class="en">A past now distant, long forgotten</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">人々は　待ち望む</div><div class="en">People long and wait</div></div>
+  <div class="line-pair"><div class="jp">気が遠くなるほどの</div><div class="en">For what feels like an eternity</div></div>
+  <div class="line-pair"><div class="jp">長い年月</div><div class="en">The long passage of years</div></div>
+  <div class="line-pair"><div class="jp">季節の移ろいを</div><div class="en">As the seasons quietly shift</div></div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">波飛沫　浴び</div><div class="en">Drenched in sea spray</div></div>
+  <div class="line-pair"><div class="jp">海辺　はしゃぐ子供</div><div class="en">Children playing wild along the shore</div></div>
+  <div class="line-pair"><div class="jp">波音　聞きながら</div><div class="en">Listening to the sound of the waves</div></div>
+  <div class="line-pair"><div class="jp">寄り添い　語らう恋人</div><div class="en">Lovers leaning close, sharing words</div></div>
+  <div class="line-pair"><div class="jp">Beach　織り成される</div><div class="en">A beach woven through with</div></div>
+  <div class="line-pair"><div class="jp">数多の記憶</div><div class="en">Countless memories</div></div>
+  <div class="line-pair"><div class="jp">不朽の無常　いみじけれ</div><div class="en">The eternal impermanence, how profound</div></div>
+  <div class="line-pair"><div class="jp">心の内</div><div class="en">Within the heart</div></div>
+  <div class="line-pair"><div class="jp">広がるは　ストロベリーハウス</div><div class="en">Spreads a strawberry house</div></div>
+  <div class="line-pair"><div class="jp">甘酸っぱい　想いに</div><div class="en">In bittersweet longing</div></div>
+  <div class="line-pair"><div class="jp">恋忘れ草　求め</div><div class="en">Searching for the flower of forgetting</div></div>
+  <div class="line-pair"><div class="jp">先人は　この道を辿った</div><div class="en">Those who came before walked this same path</div></div>
+  <div class="line-pair"><div class="jp">砂を　掬い取り</div><div class="en">Scooping up the sand</div></div>
+  <div class="line-pair"><div class="jp">掌から　零れ落ちる</div><div class="en">Watching it spill from the palm</div></div>
+  <div class="line-pair"><div class="jp">不変の　出御</div><div class="en">The unchanging departure</div></div>
+  <div class="en-line">Lost memories leave a breath</div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="en-line">The expansive ocean view</div>
+  <div class="line-pair"><div class="jp">人は　小さな生き物</div><div class="en">People are small creatures</div></div>
+  <div class="line-pair"><div class="jp">鳥は　大空舞い</div><div class="en">Birds soar through the vast sky</div></div>
+  <div class="line-pair"><div class="jp">何十億年前　から</div><div class="en">Since billions of years ago</div></div>
+  <div class="line-pair"><div class="jp">母なる　海頼りに</div><div class="en">Leaning on the mother sea</div></div>
+  <div class="line-pair"><div class="jp">全ての　生物が</div><div class="en">Every living thing</div></div>
+  <div class="line-pair"><div class="jp">生命の　リズム刻む</div><div class="en">Beats the rhythm of life</div></div>
+  <div class="line-pair"><div class="jp">未来永劫</div><div class="en">For all eternity</div></div>
+
+  <div class="section-label">Bridge Ⅰ</div>
+  <div class="line-pair"><div class="jp">無常の　世界</div><div class="en">A world of transience</div></div>
+  <div class="line-pair"><div class="jp">人は　小さな存在</div><div class="en">People are small beings</div></div>
+  <div class="line-pair"><div class="jp">体は　砂粒</div><div class="en">The body, a grain of sand</div></div>
+  <div class="line-pair"><div class="jp">儚い命は　尊く<br>瓊枝玉葉</div><div class="en">A fleeting life, and yet so precious — priceless and irreplaceable</div></div>
+  <div class="line-pair"><div class="jp">唯一無二の存在</div><div class="en">A presence like no other</div></div>
+
+  <div class="section-label">Chorus 2</div>
+  <div class="line-pair"><div class="jp">生物は</div><div class="en">Living things</div></div>
+  <div class="line-pair"><div class="jp">火山から　誕生し</div><div class="en">Born from volcanoes</div></div>
+  <div class="line-pair"><div class="jp">気が遠のく　時空</div><div class="en">Across an unfathomable expanse of time</div></div>
+  <div class="line-pair"><div class="jp">進化しながら</div><div class="en">Evolving still</div></div>
+  <div class="line-pair"><div class="jp">迷い　言葉にならない</div><div class="en">Wandering, beyond what words can hold</div></div>
+  <div class="line-pair"><div class="jp">幾多の　愛が生まれ</div><div class="en">Countless loves come into being</div></div>
+  <div class="line-pair"><div class="jp">すれ違う　想いを</div><div class="en">Feelings that pass each other by</div></div>
+  <div class="line-pair"><div class="jp">伝え合い</div><div class="en">Reaching out to one another</div></div>
+  <div class="line-pair"><div class="jp">声帯　震わせ</div><div class="en">The vocal cords tremble</div></div>
+  <div class="line-pair"><div class="jp">はかなかりし夢</div><div class="en">A dream that was always fleeting</div></div>
+  <div class="line-pair"><div class="jp">とめどなく　伝う涙</div><div class="en">Tears that flow without end</div></div>
+  <div class="line-pair"><div class="jp">砂地は　知る</div><div class="en">The sandy shore knows</div></div>
+  <div class="line-pair"><div class="jp">涙　拭い取り</div><div class="en">Wiping away the tears</div></div>
+  <div class="line-pair"><div class="jp">瞳から　零れ落ちる</div><div class="en">That spill from these eyes</div></div>
+  <div class="line-pair"><div class="jp">不変の　逸話</div><div class="en">An unchanging tale</div></div>
+  <div class="en-line">A passionate love that never fades</div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">壊れゆく　愛</div><div class="en">A love that crumbles</div></div>
+  <div class="line-pair"><div class="jp">生まれ　変わり</div><div class="en">Reborn</div></div>
+  <div class="line-pair"><div class="jp">穏やかに</div><div class="en">Gently</div></div>
+  <div class="line-pair"><div class="jp">誰そを　思いやる</div><div class="en">Thinking of another</div></div>
+  <div class="line-pair"><div class="jp">優しさへ　昇華す</div><div class="en">Sublimated into tenderness</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">人は　この地球の上</div><div class="en">People, upon this earth</div></div>
+  <div class="line-pair"><div class="jp">1人で生まれ</div><div class="en">Born alone</div></div>
+  <div class="line-pair"><div class="jp">1人で生命の花散らす<br>瓊枝玉葉</div><div class="en">Alone, they scatter the flower of their life — priceless and irreplaceable</div></div>
+  <div class="line-pair"><div class="jp">紡ぎゆく　生命の記憶</div><div class="en">The memories of life, spun onward</div></div>
+  <div class="line-pair"><div class="jp">秒針が</div><div class="en">The second hand</div></div>
+  <div class="line-pair"><div class="jp">同じリズム刻み</div><div class="en">Beats the same rhythm</div></div>
+  <div class="line-pair"><div class="jp">時空の中</div><div class="en">Within time and space</div></div>
+  <div class="line-pair"><div class="jp">不変と無常　織り返す</div><div class="en">Weaving permanence and transience together</div></div>
+  <div class="en-line">Living things live thinking of others</div>
+  <div class="line-pair"><div class="jp">不変の愛が　時間を超える</div><div class="en">An unchanging love that transcends time</div></div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('waves');
+  const count = 6;
+  for(let i=0;i<count;i++){
+    const w = document.createElement('div');
+    w.className = 'wave';
+    w.style.top = (10 + i*16)+'vh';
+    w.style.animationDuration = (10 + Math.random()*8)+'s';
+    w.style.animationDelay = (Math.random()*6)+'s';
+    container.appendChild(w);
+  }
+</script>
+
+</body>
+</html>
