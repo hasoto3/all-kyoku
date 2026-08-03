@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silver Solitude</title>
+<style>
+  :root{
+    --ink: #3a3f45;
+    --paper: #eef1f3;
+    --silver: #c7d0d6;
+    --deep: #7d8b93;
+    --forget-me-not: #6f8fb5;
+    --line: rgba(58,63,69,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #e5eaee 0%, #eef1f3 45%, #f0f1ee 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .snow{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .flake{
+    position: absolute;
+    top: -5%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff, #c7d0d6 80%);
+    opacity: 0.7;
+    animation: snowfall linear infinite;
+  }
+  @keyframes snowfall{
+    0%{ transform: translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.7; }
+    90%{ opacity:0.5; }
+    100%{ transform: translateY(112vh) translateX(var(--sway, 30px)); opacity:0; }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--deep);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.08em;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: #6a7278;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--forget-me-not);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #71797f;
+  }
+  .en-line{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--forget-me-not);
+    margin-bottom: 1.1rem;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #8b9298;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="snow" id="snow"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — Silver Solitude</div>
+  <h1>Silver Solitude</h1>
+  <div class="subtitle">白銀の孤独</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅵ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="line-pair"><div class="jp">白銀の世界</div><div class="en">A silver world</div></div>
+  <div class="line-pair"><div class="jp">静音が</div><div class="en">silence</div></div>
+  <div class="line-pair"><div class="jp">無限に広がり</div><div class="en">spreading without end</div></div>
+  <div class="line-pair"><div class="jp">天空と同化する</div><div class="en">becoming one with the sky</div></div>
+  <div class="line-pair"><div class="jp">ここは　虚無の世界</div><div class="en">this is a world of nothing</div></div>
+  <div class="line-pair"><div class="jp">冷たい空気</div><div class="en">cold air</div></div>
+  <div class="line-pair"><div class="jp">柔らかな光が</div><div class="en">a soft light</div></div>
+  <div class="line-pair"><div class="jp">今　心の奥</div><div class="en">now, deep in my heart</div></div>
+  <div class="line-pair"><div class="jp">そっと撫でる</div><div class="en">gently strokes it</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="line-pair"><div class="jp">誰も知らない</div><div class="en">Known to no one</div></div>
+  <div class="line-pair"><div class="jp">僕だけが</div><div class="en">mine alone</div></div>
+  <div class="line-pair"><div class="jp">独り占めする</div><div class="en">to keep for myself</div></div>
+  <div class="line-pair"><div class="jp">平穏な世界</div><div class="en">a world of peace</div></div>
+  <div class="line-pair"><div class="jp">君だけ　招待する</div><div class="en">I invite only you</div></div>
+  <div class="line-pair"><div class="jp">ひんやり冷たい</div><div class="en">chill and cold</div></div>
+  <div class="line-pair"><div class="jp">空気が　横切り</div><div class="en">the air passes through</div></div>
+  <div class="line-pair"><div class="jp">僕らは　空気に溶ける</div><div class="en">and we melt into it</div></div>
+  <div class="line-pair"><div class="jp">今　世界が動く</div><div class="en">now the world moves</div></div>
+  <div class="line-pair"><div class="jp">夢幻の未来</div><div class="en">a dreamlike future</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">サヨナラは</div><div class="en">Goodbye —</div></div>
+  <div class="line-pair"><div class="jp">言わない</div><div class="en">I won't say it</div></div>
+  <div class="line-pair"><div class="jp">忘れな草を</div><div class="en">forget-me-nots</div></div>
+  <div class="line-pair"><div class="jp">冷たい土の中</div><div class="en">in the cold earth</div></div>
+  <div class="line-pair"><div class="jp">根を埋め</div><div class="en">I bury their roots</div></div>
+  <div class="line-pair"><div class="jp">いつか</div><div class="en">someday</div></div>
+  <div class="en-line">Waiting for me in the future</div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">何も聴こえない</div><div class="en">Nothing to hear</div></div>
+  <div class="line-pair"><div class="jp">何も感じない</div><div class="en">nothing to feel</div></div>
+  <div class="line-pair"><div class="jp">虚無の　白銀の世界</div><div class="en">a silver world of nothing</div></div>
+  <div class="line-pair"><div class="jp">鷹は空を舞い</div><div class="en">a hawk circles the sky</div></div>
+  <div class="line-pair"><div class="jp">空には　ちぢれ雲が顔出す</div><div class="en">wisps of cloud peek through</div></div>
+  <div class="line-pair"><div class="jp">ここは</div><div class="en">here</div></div>
+  <div class="line-pair"><div class="jp">争いも　怒哀もない</div><div class="en">no conflict, no anger or grief</div></div>
+  <div class="line-pair"><div class="jp">ただ　君と僕だけ</div><div class="en">just you and me</div></div>
+  <div class="line-pair"><div class="jp">2人溶け合う　世界</div><div class="en">a world where we two melt together</div></div>
+  <div class="line-pair"><div class="jp">夢幻の未来に</div><div class="en">toward a dreamlike future</div></div>
+  <div class="line-pair"><div class="jp">続く階段を目指す</div><div class="en">I climb the stairway that leads on</div></div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="en-line">Being alone is lonely</div>
+  <div class="line-pair"><div class="jp">だから</div><div class="en">so</div></div>
+  <div class="line-pair"><div class="jp">抱きしめて</div><div class="en">hold me</div></div>
+  <div class="line-pair"><div class="jp">熱を感じ</div><div class="en">feel the warmth</div></div>
+  <div class="line-pair"><div class="jp">鼓動を聞き</div><div class="en">hear the heartbeat</div></div>
+  <div class="line-pair"><div class="jp">伝わる鼓動に</div><div class="en">in the pulse that passes between us</div></div>
+  <div class="line-pair"><div class="jp">温かな吐息に</div><div class="en">in the warm breath</div></div>
+  <div class="line-pair"><div class="jp">今　心の底に</div><div class="en">now, at the bottom of my heart</div></div>
+  <div class="line-pair"><div class="jp">湧き上がる</div><div class="en">rising up</div></div>
+  <div class="line-pair"><div class="jp">愛しさ</div><div class="en">tenderness</div></div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">僕は　一人</div><div class="en">I was alone</div></div>
+  <div class="line-pair"><div class="jp">無音の世界</div><div class="en">a soundless world</div></div>
+  <div class="line-pair"><div class="jp">孤独を押し殺し</div><div class="en">stifling the solitude</div></div>
+  <div class="line-pair"><div class="jp">白銀の情景</div><div class="en">the silver scene</div></div>
+  <div class="line-pair"><div class="jp">抱きしめ生きていた</div><div class="en">I held it close, and lived</div></div>
+
+  <div class="section-label">Chorus 2</div>
+  <div class="line-pair"><div class="jp">涙は忘れた</div><div class="en">I've forgotten tears</div></div>
+  <div class="line-pair"><div class="jp">ただ　生きて</div><div class="en">just living</div></div>
+  <div class="line-pair"><div class="jp">愛も　願いもなく</div><div class="en">without love, without wishes</div></div>
+  <div class="line-pair"><div class="jp">僕は世界一人</div><div class="en">I am alone in the world</div></div>
+  <div class="line-pair"><div class="jp">声なく　笑顔作り</div><div class="en">silently, I shape a smile</div></div>
+  <div class="line-pair"><div class="jp">いつか</div><div class="en">someday</div></div>
+  <div class="line-pair"><div class="jp">出会う人のため</div><div class="en">for the one I'll meet</div></div>
+  <div class="line-pair"><div class="jp">ただ　君だけを求め</div><div class="en">seeking only you</div></div>
+  <div class="line-pair"><div class="jp">今なら分かる</div><div class="en">now I understand</div></div>
+  <div class="line-pair"><div class="jp">運命を信じ</div><div class="en">believing in fate</div></div>
+  <div class="line-pair"><div class="jp">心は声なき</div><div class="en">my heart, a voiceless</div></div>
+  <div class="line-pair"><div class="jp">叫び声を</div><div class="en">cry</div></div>
+  <div class="line-pair"><div class="jp">いつも覚えている</div><div class="en">I always remember it</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">白銀の世界</div><div class="en">A silver world</div></div>
+  <div class="line-pair"><div class="jp">君と僕</div><div class="en">you and me</div></div>
+  <div class="line-pair"><div class="jp">新しい境地</div><div class="en">a new realm</div></div>
+  <div class="line-pair"><div class="jp">忘れな草に</div><div class="en">to the forget-me-nots</div></div>
+  <div class="line-pair"><div class="jp">孤独な者のため</div><div class="en">for the lonely ones</div></div>
+  <div class="line-pair"><div class="jp">その地に根ざすよう</div><div class="en">may they take root in that ground</div></div>
+  <div class="line-pair"><div class="jp">願い</div><div class="en">I wish</div></div>
+  <div class="line-pair"><div class="jp">僕は　この地を君と去る</div><div class="en">and I leave this land with you</div></div>
+  <div class="en-line">Waiting for me in the future</div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('snow');
+  const count = 55;
+  for(let i=0;i<count;i++){
+    const f = document.createElement('div');
+    f.className = 'flake';
+    const size = 2 + Math.random()*5;
+    f.style.width = size+'px';
+    f.style.height = size+'px';
+    f.style.left = (Math.random()*100)+'vw';
+    f.style.setProperty('--sway', (Math.random()*60-30)+'px');
+    f.style.animationDuration = (8 + Math.random()*10)+'s';
+    f.style.animationDelay = (Math.random()*12)+'s';
+    container.appendChild(f);
+  }
+</script>
+
+</body>
+</html>
