@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紫陽花の記憶 ～I was at my limit～</title>
+<style>
+  :root{
+    --ink: #2e2a3a;
+    --paper: #eeebf3;
+    --hydrangea: #8875b3;
+    --hydrangea2: #6c9bc4;
+    --amber: #c99a5a;
+    --line: rgba(46,42,58,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #e6e2ef 0%, #eeebf3 45%, #ece7ea 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .rain{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .drop{
+    position: absolute;
+    top: -5%;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(136,117,179,0), rgba(108,155,196,0.55));
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    0%{ transform: translateY(0); opacity:0; }
+    10%{ opacity:0.6; }
+    95%{ opacity:0.4; }
+    100%{ transform: translateY(110vh); opacity:0; }
+  }
+  .petal{
+    position: absolute;
+    top: -5%;
+    border-radius: 50% 50% 50% 0;
+    background: radial-gradient(circle at 35% 35%, #a794cc, #7d8fc0 80%);
+    opacity: 0.55;
+    animation: drift-fall linear infinite;
+  }
+  @keyframes drift-fall{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:0.55; }
+    90%{ opacity:0.35; }
+    100%{ transform: translateY(112vh) translateX(40px) rotate(220deg); opacity:0; }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--hydrangea);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.06em;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: #5f5a78;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #6e6785;
+  }
+  .en-line{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--hydrangea);
+    margin-bottom: 1.1rem;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #8d8698;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="rain" id="rain"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — 紫陽花の記憶</div>
+  <h1>紫陽花の記憶</h1>
+  <div class="subtitle">～I was at my limit～</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅴ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="line-pair"><div class="jp">蒼白の月</div><div class="en">A pale blue moon</div></div>
+  <div class="line-pair"><div class="jp">声なき夜の涙</div><div class="en">tears of a voiceless night</div></div>
+  <div class="line-pair"><div class="jp">朧げな記憶</div><div class="en">a hazy memory</div></div>
+  <div class="line-pair"><div class="jp">流れこむ</div><div class="en">flows in</div></div>
+  <div class="line-pair"><div class="jp">ソプラノ声</div><div class="en">a soprano voice</div></div>
+  <div class="line-pair"><div class="jp">デジャヴ</div><div class="en">déjà vu</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="line-pair"><div class="jp">誘われた</div><div class="en">Drawn into</div></div>
+  <div class="line-pair"><div class="jp">時空の海</div><div class="en">a sea of space and time</div></div>
+  <div class="line-pair"><div class="jp">旅立ちの鐘</div><div class="en">the bell of departure</div></div>
+  <div class="line-pair"><div class="jp">街に響く</div><div class="en">rings through the town</div></div>
+  <div class="line-pair"><div class="jp">悠久の果て</div><div class="en">at the edge of eternity</div></div>
+  <div class="line-pair"><div class="jp">夢描く</div><div class="en">I sketch a dream</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">声の主</div><div class="en">The one whose voice it is</div></div>
+  <div class="line-pair"><div class="jp">記憶の理由</div><div class="en">the reason for the memory</div></div>
+  <div class="line-pair"><div class="jp">全ては</div><div class="en">all of it</div></div>
+  <div class="line-pair"><div class="jp">紫陽花の花弁</div><div class="en">in the hydrangea petals</div></div>
+  <div class="line-pair"><div class="jp">隠した</div><div class="en">I hid it away</div></div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">ゲリラ豪雨</div><div class="en">A sudden downpour</div></div>
+  <div class="line-pair"><div class="jp">七色の虹</div><div class="en">a seven-colored rainbow</div></div>
+  <div class="line-pair"><div class="jp">濡れた髪の君</div><div class="en">you, your hair soaked</div></div>
+  <div class="line-pair"><div class="jp">眩い水滴</div><div class="en">dazzling droplets</div></div>
+  <div class="line-pair"><div class="jp">暑さ奪い</div><div class="en">stealing the heat</div></div>
+  <div class="line-pair"><div class="jp">蒸した空気</div><div class="en">the humid air</div></div>
+  <div class="line-pair"><div class="jp">溶ける夕日</div><div class="en">the melting sunset</div></div>
+  <div class="line-pair"><div class="jp">人影を踏み</div><div class="en">stepping on the shadows</div></div>
+  <div class="line-pair"><div class="jp">涙拭った</div><div class="en">I wiped my tears</div></div>
+  <div class="en-line">My heartbreakingly beloved you</div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="line-pair"><div class="jp">虫の音色</div><div class="en">The song of insects</div></div>
+  <div class="line-pair"><div class="jp">星が隠す</div><div class="en">the stars conceal</div></div>
+  <div class="line-pair"><div class="jp">夜の闇を探す</div><div class="en">I search the dark of night</div></div>
+  <div class="line-pair"><div class="jp">絡みつく</div><div class="en">clinging</div></div>
+  <div class="line-pair"><div class="jp">汗拭う</div><div class="en">I wipe the sweat</div></div>
+  <div class="line-pair"><div class="jp">夢の中</div><div class="en">inside a dream</div></div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">肌湿る</div><div class="en">Skin damp</div></div>
+  <div class="line-pair"><div class="jp">真夜中</div><div class="en">in the dead of night</div></div>
+  <div class="line-pair"><div class="jp">聞こえるは</div><div class="en">what I hear</div></div>
+  <div class="line-pair"><div class="jp">ソプラノ声</div><div class="en">is a soprano voice</div></div>
+
+  <div class="section-label">Chorus 2</div>
+  <div class="line-pair"><div class="jp">柔らかな髪</div><div class="en">Soft hair</div></div>
+  <div class="line-pair"><div class="jp">四葉クローバー</div><div class="en">a four-leaf clover</div></div>
+  <div class="line-pair"><div class="jp">探し泣いた日</div><div class="en">the day we searched and wept</div></div>
+  <div class="line-pair"><div class="jp">引き裂く</div><div class="en">tearing us apart</div></div>
+  <div class="line-pair"><div class="jp">大人達</div><div class="en">the grown-ups</div></div>
+  <div class="line-pair"><div class="jp">鎖壊し</div><div class="en">I broke the chains</div></div>
+  <div class="line-pair"><div class="jp">君を逃がした僕</div><div class="en">and set you free</div></div>
+  <div class="line-pair"><div class="jp">こびりつく</div><div class="en">clinging still</div></div>
+  <div class="line-pair"><div class="jp">虫の吃音</div><div class="en">the insects' stammer</div></div>
+  <div class="line-pair"><div class="jp">遠い記憶</div><div class="en">a distant memory</div></div>
+  <div class="en-line">There was nothing I could do.</div>
+
+  <div class="section-label">Bridge 2</div>
+  <div class="line-pair"><div class="jp">子供時代</div><div class="en">Childhood</div></div>
+  <div class="line-pair"><div class="jp">成す術なく</div><div class="en">powerless</div></div>
+  <div class="line-pair"><div class="jp">抗えず</div><div class="en">unable to resist</div></div>
+  <div class="line-pair"><div class="jp">涙流した</div><div class="en">I let the tears fall</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">琥珀の瞳</div><div class="en">Amber eyes</div></div>
+  <div class="line-pair"><div class="jp">見つめる君</div><div class="en">you, gazing at me</div></div>
+  <div class="line-pair"><div class="jp">虹に誓った約束</div><div class="en">the promise sworn on the rainbow</div></div>
+  <div class="line-pair"><div class="jp">紫陽花に囲まれ</div><div class="en">surrounded by hydrangeas</div></div>
+  <div class="line-pair"><div class="jp">僕らは</div><div class="en">we</div></div>
+  <div class="en-line">To share one's life</div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('rain');
+  const dropCount = 40;
+  for(let i=0;i<dropCount;i++){
+    const d = document.createElement('div');
+    d.className = 'drop';
+    d.style.left = (Math.random()*100)+'vw';
+    d.style.height = (14 + Math.random()*20)+'px';
+    d.style.animationDuration = (1.2 + Math.random()*1.4)+'s';
+    d.style.animationDelay = (Math.random()*3)+'s';
+    container.appendChild(d);
+  }
+  const petalCount = 8;
+  for(let i=0;i<petalCount;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 6 + Math.random()*8;
+    p.style.width = size+'px';
+    p.style.height = size+'px';
+    p.style.left = (Math.random()*100)+'vw';
+    p.style.animationDuration = (12 + Math.random()*10)+'s';
+    p.style.animationDelay = (Math.random()*15)+'s';
+    container.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
