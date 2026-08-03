@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>戦火の果て 〜後世の誓い〜</title>
+<style>
+  :root{
+    --ink: #e9e6e0;
+    --paper: #17181a;
+    --mist: #4a4d4f;
+    --ash: #8a8580;
+    --ember: #a4402c;
+    --line: rgba(233,230,224,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: linear-gradient(180deg, #121213 0%, #17181a 45%, #1c1a18 100%);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+
+  .smoke{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .plume{
+    position: absolute;
+    bottom: -20%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(138,133,128,0.25), rgba(138,133,128,0) 70%);
+    filter: blur(6px);
+    animation: smolder linear infinite;
+  }
+  @keyframes smolder{
+    0%{ transform: translateY(0) translateX(0) scale(0.8); opacity:0; }
+    15%{ opacity:0.5; }
+    85%{ opacity:0.2; }
+    100%{ transform: translateY(-120vh) translateX(30px) scale(1.4); opacity:0; }
+  }
+
+  .ember{
+    position: absolute;
+    bottom: -5%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff9a52 0%, #a4402c 55%, transparent 75%);
+    box-shadow: 0 0 6px 1px rgba(255,140,60,0.5);
+    animation: spark linear infinite;
+  }
+  @keyframes spark{
+    0%{ transform: translateY(0) translateX(0); opacity:0; }
+    8%{ opacity:0.9; }
+    60%{ opacity:0.6; }
+    100%{ transform: translateY(-95vh) translateX(var(--drift, 40px)); opacity:0; }
+  }
+
+  .jet{
+    position: absolute;
+    width: 90px;
+    height: auto;
+    opacity: 0;
+    animation: flyby linear infinite;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.4));
+  }
+  .jet svg{ width:100%; height:100%; display:block; }
+  @keyframes flyby{
+    0%{ transform: translateX(-15vw) translateY(0) rotate(-3deg); opacity:0; }
+    8%{ opacity:0.35; }
+    50%{ transform: translateX(60vw) translateY(-4vh) rotate(-1deg); opacity:0.3; }
+    92%{ opacity:0.35; }
+    100%{ transform: translateX(120vw) translateY(-8vh) rotate(-2deg); opacity:0; }
+  }
+
+  header{
+    position: relative;
+    z-index: 1;
+    padding: 8vh 6vw 6vh;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1{
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.06em;
+    color: #f2ede4;
+  }
+  .subtitle{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: var(--ash);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .series-tag{
+    margin-top: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.5;
+    letter-spacing: 0.15em;
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4vh 6vw 14vh;
+  }
+
+  .section-label{
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+    margin: 3.2rem 0 1rem;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap: 0.8rem;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  .section-label:first-child{ margin-top: 0; }
+
+  .line-pair{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    margin-bottom: 1.1rem;
+  }
+  .jp{
+    font-size: 1.18rem;
+    letter-spacing: 0.03em;
+    color: #f0ece5;
+  }
+  .en{
+    font-family: "EB Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ash);
+  }
+  .title-line{
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    color: #f2ede4;
+  }
+  .title-line .en{
+    display:block;
+    margin-top: 0.3rem;
+  }
+
+  footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6vh 6vw 8vh;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ash);
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="smoke" id="smoke"></div>
+
+<header>
+  <div class="eyebrow">盆の群 — 戦火の果て</div>
+  <h1>戦火の果て</h1>
+  <div class="subtitle">〜後世の誓い〜 / At the End of the Flames of War</div>
+  <div class="series-tag">大森カエ — 盆の群 シリーズ Ⅲ</div>
+</header>
+
+<main>
+
+  <div class="section-label">Verse 1</div>
+  <div class="line-pair"><div class="jp">明日が来ない　夢</div><div class="en">A dream where tomorrow never comes</div></div>
+  <div class="line-pair"><div class="jp">何度も願った</div><div class="en">I wished for it, over and over</div></div>
+  <div class="line-pair"><div class="jp">幾夜もの歳月</div><div class="en">through countless nights and years</div></div>
+  <div class="line-pair"><div class="jp">月光の光浴び</div><div class="en">bathed in moonlight</div></div>
+  <div class="line-pair"><div class="jp">冷たく</div><div class="en">cold</div></div>
+  <div class="line-pair"><div class="jp">流れる滴を感じ</div><div class="en">I feel the dripping flow</div></div>
+  <div class="line-pair"><div class="jp">掌に感じる</div><div class="en">in my palm</div></div>
+  <div class="line-pair"><div class="jp">生臭い　匂い</div><div class="en">the smell of blood</div></div>
+  <div class="line-pair"><div class="jp">脈打つ痛み　焼けるような熱</div><div class="en">throbbing pain, a burning heat</div></div>
+  <div class="line-pair"><div class="jp">人は悲しみを隠し</div><div class="en">people hide their grief</div></div>
+  <div class="line-pair"><div class="jp">時代を生きる</div><div class="en">and live through their age</div></div>
+
+  <div class="section-label">Verse 2</div>
+  <div class="line-pair"><div class="jp">口の中　広がる</div><div class="en">Spreading in my mouth</div></div>
+  <div class="line-pair"><div class="jp">異臭放つ　高級料理</div><div class="en">fine cuisine that reeks</div></div>
+  <div class="line-pair"><div class="jp">満開の桜見上げ</div><div class="en">looking up at cherries in full bloom</div></div>
+  <div class="line-pair"><div class="jp">新しい季節は</div><div class="en">the new season</div></div>
+  <div class="line-pair"><div class="jp">灰色に　黒煙漂う</div><div class="en">gray, with black smoke drifting</div></div>
+  <div class="line-pair"><div class="jp">西の空</div><div class="en">the western sky</div></div>
+  <div class="line-pair"><div class="jp">不運な未来へ</div><div class="en">toward an ill-fated future</div></div>
+  <div class="line-pair"><div class="jp">時を刻む</div><div class="en">time ticks on</div></div>
+
+  <div class="section-label">Pre-chorus</div>
+  <div class="line-pair"><div class="jp">吐き気　覚える台詞</div><div class="en">Words that turn my stomach</div></div>
+  <div class="line-pair"><div class="jp">繰り返される</div><div class="en">played again</div></div>
+  <div class="line-pair"><div class="jp">再生ボタン</div><div class="en">the replay button</div></div>
+  <div class="line-pair"><div class="jp">幾夜の悪夢は</div><div class="en">the nightmares, night after night</div></div>
+  <div class="line-pair"><div class="jp">終わらない雨に</div><div class="en">in rain that never ends</div></div>
+  <div class="line-pair"><div class="jp">身を焦がす</div><div class="en">I burn</div></div>
+
+  <div class="section-label">Chorus</div>
+  <div class="line-pair"><div class="jp">現し世に</div><div class="en">To this waking world</div></div>
+  <div class="line-pair"><div class="jp">別れを告げ</div><div class="en">bidding farewell</div></div>
+  <div class="line-pair"><div class="jp">常世に</div><div class="en">on the eternal world</div></div>
+  <div class="line-pair"><div class="jp">望みかける</div><div class="en">they pin their hopes</div></div>
+  <div class="line-pair"><div class="jp">老若男女</div><div class="en">young and old, men and women</div></div>
+  <div class="line-pair"><div class="jp">真剣に　だけど</div><div class="en">in earnest — and yet</div></div>
+  <div class="line-pair"><div class="jp">真実を知らないまま</div><div class="en">never knowing the truth</div></div>
+  <div class="line-pair"><div class="jp">人生に</div><div class="en">to their lives</div></div>
+  <div class="line-pair"><div class="jp">終止符のコスモス託し</div><div class="en">entrusting cosmos flowers as a final period</div></div>
+  <div class="line-pair"><div class="jp">常世に夢抱き</div><div class="en">holding dreams of the eternal world</div></div>
+  <div class="line-pair"><div class="jp">恋人達は</div><div class="en">the lovers</div></div>
+  <div class="line-pair"><div class="jp">鎖で繋がれた</div><div class="en">chained together</div></div>
+  <div class="line-pair"><div class="jp">運命に従う</div><div class="en">obey their fate</div></div>
+
+  <div class="section-label">Verse 3</div>
+  <div class="line-pair"><div class="jp">去りゆく　愛しい人</div><div class="en">My beloved, departing</div></div>
+  <div class="line-pair"><div class="jp">共に誓った</div><div class="en">the world beyond</div></div>
+  <div class="line-pair"><div class="jp">五世の世界</div><div class="en">we vowed to share</div></div>
+  <div class="line-pair"><div class="jp">年若き者相手に</div><div class="en">against one so young</div></div>
+  <div class="line-pair"><div class="jp">えたたかはぬなり</div><div class="en">I cannot fight</div></div>
+  <div class="line-pair"><div class="jp">優しいあの人は　晩酌</div><div class="en">that gentle soul, an evening drink</div></div>
+  <div class="line-pair"><div class="jp">涙もろなり</div><div class="en">quick to tears</div></div>
+  <div class="line-pair"><div class="jp">記憶の片隅</div><div class="en">in a corner of memory</div></div>
+  <div class="line-pair"><div class="jp">今は亡き人</div><div class="en">now among the dead</div></div>
+  <div class="line-pair"><div class="jp">五世で笑いましょうぞ</div><div class="en">let us laugh together, in the world to come</div></div>
+
+  <div class="section-label">Bridge</div>
+  <div class="line-pair"><div class="jp">戦の根源</div><div class="en">The root of war</div></div>
+  <div class="line-pair"><div class="jp">望まぬ　絶鬼の己</div><div class="en">the demon I never wished to be</div></div>
+  <div class="line-pair"><div class="jp">平穏に　まかり過ぎ</div><div class="en">let peace pass me by</div></div>
+  <div class="line-pair"><div class="jp">愛しい人との</div><div class="en">with my beloved</div></div>
+  <div class="line-pair"><div class="jp">温かな未来</div><div class="en">a warm future</div></div>
+  <div class="line-pair"><div class="jp">満月の夜　願った</div><div class="en">I wished, on the night of the full moon</div></div>
+
+  <div class="section-label">Chorus (reprise)</div>
+  <div class="line-pair"><div class="jp">見送る人</div><div class="en">Those who see them off</div></div>
+  <div class="line-pair"><div class="jp">あの人の姿</div><div class="en">searching for that person's figure</div></div>
+  <div class="line-pair"><div class="jp">探すけど</div><div class="en">but</div></div>
+  <div class="line-pair"><div class="jp">出立は</div><div class="en">the departure —</div></div>
+  <div class="line-pair"><div class="jp">一人立つからと</div><div class="en">"I'll go alone," they said</div></div>
+  <div class="line-pair"><div class="jp">誰にも別れ告げず</div><div class="en">telling no one goodbye</div></div>
+  <div class="line-pair"><div class="jp">抗えない</div><div class="en">unresisting</div></div>
+  <div class="line-pair"><div class="jp">大きな海練りに</div><div class="en">to the great swell of the sea</div></div>
+  <div class="line-pair"><div class="jp">身を委ね</div><div class="en">surrendering</div></div>
+  <div class="line-pair"><div class="jp">列車に身を預けた</div><div class="en">they gave themselves to the train</div></div>
+  <div class="line-pair"><div class="jp">残された家族</div><div class="en">the family left behind</div></div>
+  <div class="line-pair"><div class="jp">兵士を輩出した</div><div class="en">having sent forth a soldier</div></div>
+  <div class="line-pair"><div class="jp">誇り高き栄誉</div><div class="en">a proud honor</div></div>
+  <div class="line-pair"><div class="jp">父母への　恩返し</div><div class="en">repaying the debt to mother and father</div></div>
+  <div class="line-pair"><div class="jp">愛しい人</div><div class="en">my beloved</div></div>
+  <div class="line-pair"><div class="jp">未来永劫　再会願う</div><div class="en">I pray we meet again, for all eternity</div></div>
+
+  <div class="section-label">Bridge 2</div>
+  <div class="line-pair"><div class="jp">冬の如く　冷え込む朝</div><div class="en">A morning cold as winter</div></div>
+  <div class="line-pair"><div class="jp">無事の帰還願う　人</div><div class="en">one who prays for a safe return</div></div>
+  <div class="line-pair"><div class="jp">時代の悪戯</div><div class="en">the mischief of the age</div></div>
+  <div class="line-pair"><div class="jp">人の欲が渦巻いた</div><div class="en">human greed swirled</div></div>
+  <div class="line-pair"><div class="jp">悲しい　歴史</div><div class="en">a sorrowful history</div></div>
+
+  <div class="section-label">Outro</div>
+  <div class="line-pair"><div class="jp">テレビに映る</div><div class="en">On the television screen</div></div>
+  <div class="line-pair"><div class="jp">権力者</div><div class="en">those in power</div></div>
+  <div class="line-pair"><div class="jp">生命の灯火</div><div class="en">the flame of life</div></div>
+  <div class="line-pair"><div class="jp">掻き消す　言葉</div><div class="en">words that snuff it out</div></div>
+  <div class="line-pair"><div class="jp">戦火に揺れる</div><div class="en">trembling in the fires of war</div></div>
+  <div class="line-pair"><div class="jp">黒い煙</div><div class="en">black smoke</div></div>
+  <div class="line-pair"><div class="jp">涙も　声も</div><div class="en">tears and voices alike</div></div>
+  <div class="line-pair"><div class="jp">かき消され</div><div class="en">drowned out</div></div>
+  <div class="line-pair"><div class="jp">灰色の空に溶け合う</div><div class="en">melting into the gray sky</div></div>
+  <div class="line-pair"><div class="jp">愛しい者達への　裏切り</div><div class="en">a betrayal of those we love</div></div>
+  <div class="line-pair"><div class="jp">無意味な　欲の果て</div><div class="en">the end of meaningless greed</div></div>
+  <div class="line-pair"><div class="jp">時代の　生塵</div><div class="en">the living dust of an age</div></div>
+  <div class="line-pair"><div class="jp">生まれ出づる　小さな魂</div><div class="en">a small soul, coming into being</div></div>
+  <div class="line-pair"><div class="jp">意味はあるのか</div><div class="en">is there meaning in it?</div></div>
+  <div class="line-pair"><div class="jp">老少不定</div><div class="en">no one knows who goes first, the old or the young</div></div>
+
+</main>
+
+<footer>
+  大森カエ　Ohmori Kae　—　盆の群
+</footer>
+
+<script>
+  const container = document.getElementById('smoke');
+  const count = 10;
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'plume';
+    const size = 60 + Math.random()*120;
+    p.style.width = size+'px';
+    p.style.height = size+'px';
+    p.style.left = (Math.random()*100)+'vw';
+    p.style.animationDuration = (16 + Math.random()*18)+'s';
+    p.style.animationDelay = (Math.random()*20)+'s';
+    container.appendChild(p);
+  }
+
+  // 火の粉
+  const emberCount = 22;
+  for(let i=0;i<emberCount;i++){
+    const e = document.createElement('div');
+    e.className = 'ember';
+    const size = 2 + Math.random()*4;
+    e.style.width = size+'px';
+    e.style.height = size+'px';
+    e.style.left = (Math.random()*100)+'vw';
+    e.style.setProperty('--drift', (Math.random()*80-40)+'px');
+    e.style.animationDuration = (8 + Math.random()*10)+'s';
+    e.style.animationDelay = (Math.random()*14)+'s';
+    container.appendChild(e);
+  }
+
+  // 戦闘機シルエット（簡略なジェット機の形）
+  const jetSVG = `
+    <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,20 L45,17 L60,4 L66,4 L58,17 L78,17 L88,10 L94,10 L88,20 L94,20 L88,20 L88,30 L78,23 L58,23 L66,36 L60,36 L45,23 L2,23 Z"
+            fill="#0d0d0e" />
+    </svg>`;
+  const jetCount = 2;
+  for(let i=0;i<jetCount;i++){
+    const j = document.createElement('div');
+    j.className = 'jet';
+    j.innerHTML = jetSVG;
+    j.style.top = (15 + Math.random()*25)+'vh';
+    j.style.animationDuration = (28 + Math.random()*14)+'s';
+    j.style.animationDelay = (Math.random()*25)+'s';
+    container.appendChild(j);
+  }
+</script>
+
+</body>
+</html>
