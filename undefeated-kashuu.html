@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>お呼びじゃないのよ、ごめんね -Undefeated- | 大森カエ 歌詞集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Serif+JP:wght@500;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#150c14; --bg-card:#1f1220; --bg-card-2:#28162a;
+    --text:#f3ecf1; --text-soft:#c6a9c2; --text-faint:#7e5f7a;
+    --pink:#e0498a; --pink-bright:#f472ad; --gold:#d8b25c; --rule:rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:radial-gradient(ellipse at 50% -10%, rgba(224,73,138,0.14), transparent 55%), var(--bg);
+    color:var(--text); font-family:'Noto Sans JP', sans-serif; font-weight:300; line-height:1.9;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px 120px;}
+  .hero{padding:100px 0 40px; text-align:center;}
+  .hero .mark{width:60px; height:2px; margin:0 auto 24px; background:var(--pink-bright); border-radius:2px;}
+  .hero h1{font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; font-size:2.1rem; letter-spacing:0.06em; margin:0 0 8px;}
+  .hero .en-title{font-family:'EB Garamond', serif; font-style:italic; color:var(--gold); font-size:1.05rem; margin:0 0 26px;}
+  .hero p{max-width:520px; margin:0 auto; color:var(--text-soft); font-size:0.94rem;}
+  .hero .credit{margin-top:30px; font-size:0.78rem; letter-spacing:0.18em; color:var(--text-faint); text-transform:uppercase;}
+  .index{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:70px;}
+  .index a{display:flex; align-items:baseline; gap:16px; padding:14px 20px; background:var(--bg-card); color:var(--text); text-decoration:none; transition:background .25s, padding-left .25s;}
+  .index a:hover{background:var(--bg-card-2); padding-left:26px;}
+  .index .num{font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; color:var(--pink-bright); font-size:0.85rem; flex-shrink:0; width:2em;}
+  .index .jp{font-size:0.95rem;}
+  .song{scroll-margin-top:40px; padding:56px 0 0; border-top:1px solid var(--rule);}
+  .song:first-of-type{border-top:none;}
+  .song-num{font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; color:var(--pink-bright); font-size:0.95rem;}
+  .song h2{font-family:'Noto Serif JP', serif; font-size:1.45rem; font-weight:700; margin:8px 0 4px;}
+  .note{background:var(--bg-card); border-left:3px solid var(--pink); padding:14px 20px; margin:0 0 20px; font-size:0.87rem; color:var(--text-soft);}
+  details.lyrics summary{cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px; padding:13px 0; color:var(--pink-bright); font-family:'Noto Serif JP', serif; font-weight:500; font-size:0.9rem; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  details.lyrics summary::-webkit-details-marker{display:none;}
+  details.lyrics summary::before{content:"＋"; color:var(--text-faint); font-size:0.85rem;}
+  details.lyrics[open] summary::before{content:"－";}
+  .lyric-body{padding:24px 4px 8px;}
+  .stanza{margin-bottom:24px;}
+  .tag{display:inline-block; font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;}
+  .line{margin:0 0 4px;} .line .jp{color:var(--text); font-size:0.97rem;}
+  .line .en{display:block; font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.83rem; margin:1px 0 10px;}
+  footer{text-align:center; margin-top:100px; color:var(--text-faint); font-size:0.78rem; letter-spacing:0.1em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="mark"></div>
+    <h1>お呼びじゃないのよ、ごめんね</h1>
+    <p class="en-title">Undefeated</p>
+    <p>勘違いする男達に、はっきり線を引く女達。自分磨きも、駆け引きも、全部自分のためにやってる。ごめんね、あなたはお呼びじゃないの――したたかに、堂々と。</p>
+    <div class="credit">大森カエ ｜ Kae Omori</div>
+  </div>
+
+  <nav class="index">
+    <a href="#s1"><span class="num">Ⅰ</span><span class="jp">バイバイ、理想の彼</span></a>
+    <a href="#s2"><span class="num">Ⅱ</span><span class="jp">私の価値</span></a>
+    <a href="#s3"><span class="num">Ⅲ</span><span class="jp">一途な彼の初恋</span></a>
+    <a href="#s4"><span class="num">Ⅳ</span><span class="jp">青春の思い出をあげる</span></a>
+    <a href="#s5"><span class="num">Ⅴ</span><span class="jp">努力しているからね</span></a>
+  </nav>
+
+  <section class="song" id="s1">
+    <div class="song-head"><div class="song-num">Ⅰ</div><h2>バイバイ、理想の彼</h2></div>
+    <div class="note">顔よし性格よし、お金もね。3回目のデートで告白してきた彼は、束縛が早すぎた。行きつけの店で大暴れして出禁――バイバイ、もっと相手を労ってよね。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">顔が良くて 優しい性格 理想の男 でも お金もね</span><span class="en">Good-looking, kind personality, my ideal man — but money matters too</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">友達と 行きつけの店で 知り合う男 話し上手</span><span class="en">With friends, at our usual spot, I met a guy, smooth talker</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">心地よい会話に おだて上手 営業職みたい</span><span class="en">The conversation felt so easy, he's good at flattery, like he's in sales</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">2回お試しデート 3回目で告白され 彼はその気に</span><span class="en">Two trial dates in, on the third he confessed, he's already all in</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Isn't that a bit early?</span></p>
+        <p class="line"><span class="jp">LINEもこまめ 1日5回 中坊でもないのに 気付かないふり</span><span class="en">Texting nonstop, five times a day, we're not middle schoolers, I pretend not to notice</span></p>
+        <p class="line"><span class="jp">そのうち 引いて くれないかな</span><span class="en">Sooner or later, won't he just back off already</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">友達に話し ヤバい男に 確定フラグ 見切りつける？でも勿体ないかも</span><span class="en">Told my friends about it, "red flag guy" officially confirmed — should I cut him loose? But maybe that's a waste</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">行きつけの店 マスターと 会話弾む</span><span class="en">At my usual spot, with the bartender, chatting away</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">背後から声かけられ 怪訝そうな顔の彼 嫌なんだけど</span><span class="en">A voice calls out from behind, his face suspicious, I don't like this</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Did I do something?</span></p>
+        <p class="line"><span class="jp">他の男と 話すなって 何の権利で そんな事を 言うの？ちょっと ヤバ過ぎるかも</span><span class="en">Talking to other guys, he tells me not to — what right does he have to say something like that? This is getting a little too much</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">もう会えません 疲れました 突然の LINEブロック どう出る？</span><span class="en">"I can't see you anymore, I'm exhausted" — out of nowhere, LINE block. What'll he do?</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">マスターから 大暴れしたと 苦笑いで聞く 出禁男</span><span class="en">From the bartender, heard he made a scene, listening with a wry smile — banned from the bar now</span></p>
+        <p class="line"><span class="jp">バイバイ 相手の事 もっと労ってよね</span><span class="en">Bye-bye. Show some care for whoever's next, okay?</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s2">
+    <div class="song-head"><div class="song-num">Ⅱ</div><h2>私の価値</h2></div>
+    <div class="note">合コンの数合わせ。しつこい男は面倒、ナルシストお断り。爪もヘアも磨いてる私は、高いのよ。恋人イコール結婚じゃない――勝手な妄想、押しつけないでよね。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">合コンの 数合わせ いい男いるかも 優しい人限定で</span><span class="en">At the group date, just filling a seat, might find a good one — only if he's kind though</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">コンタクト おしゃれな 男の人 やたらと近い</span><span class="en">Contact lenses in, stylish, the guy sitting way too close</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">狙われている 私って そんなに魅力的？</span><span class="en">Am I being targeted? Is that what this is — am I really that attractive?</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">グループ LINEなら いいけど</span><span class="en">Group chat, LINE, that's fine, but</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Not one-on-one, though</span></p>
+        <p class="line"><span class="jp">しつこい男は 面倒で ナルシスト さっぱりな男なら 付き合うけど</span><span class="en">Clingy guys are such a hassle, narcissists — if he's easygoing though, I'd date him</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">爪ネイル 髪ブロー 頭から爪先まで 私は 高いのよ</span><span class="en">Nails done, hair blown out, head to toe, I don't come cheap</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">付き合って その言葉 何回も聞いたわ</span><span class="en">"Let's date," that line, I've heard it so many times</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">デートは 夜景が 綺麗な</span><span class="en">Dates should be with a night view that's beautiful</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Make it a luxury lounge.</span></p>
+        <p class="line"><span class="jp">服もブランド 靴も 有名店で 有り難う でもね</span><span class="en">Designer clothes too, shoes too, from a famous brand, thank you. But, well</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">恋人イコール 結婚じゃないのよ 恋と結婚は 別でしよ</span><span class="en">Boyfriend doesn't equal marriage, you know. Love and marriage are two different things</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">詐欺呼ばわりする 勘違い男なんて 最低</span><span class="en">Calling me a scammer, what a delusional guy, the worst</span></p>
+        <p class="line"><span class="jp">結婚の約束 そんなの いつしたの？勝手な妄想 押しつけないで 今日から他人ね</span><span class="en">A promise of marriage — when did I ever make that? Your own fantasy, don't push it on me. We're strangers starting today</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s3">
+    <div class="song-head"><div class="song-num">Ⅲ</div><h2>一途な彼の初恋</h2></div>
+    <div class="note">友達の彼氏。真面目で純粋な一途な人を、甘い言葉で少し揺さぶってみる。デートの誘いはさらっと断って、当日は音信不通。花畑の彼女に、忠告――それも人生ね。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">友達の彼は 真面目で純粋 浮気もせず 一途</span><span class="en">My friend's boyfriend, serious and pure-hearted, never cheats, completely devoted</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">女も男も 仮面被って 本当に 侮れないわ</span><span class="en">Women and men both wear masks, honestly, not to be underestimated</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">人も動物だから 仕方ないけどね</span><span class="en">We're animals after all, can't help it, I guess</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">甘い言葉 心擽る 彼もその気</span><span class="en">Sweet words, tickling his heart, he's tempted too</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Do you want to have a fling?</span></p>
+        <p class="line"><span class="jp">ネイルも ディオールの香水も 友達にはない 魅惑の誘い</span><span class="en">My nails too, my Dior perfume too, my friend doesn't have this, a tempting invitation</span></p>
+        <p class="line"><span class="jp">私は磨いて いるけどね</span><span class="en">I've kept myself polished, you know</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">デートに誘われ さり気なく お断り 一途な人</span><span class="en">Invited on a date, casually I turn him down — such a faithful guy</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">初めての恋だと 彼は言う 友達の話は タブー</span><span class="en">"This is my first love," he says — talk of my friend is off-limits</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">デートなら OKだけど 遠い所でね</span><span class="en">If it's a date that's fine, but somewhere far away though</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Your face is gross.</span></p>
+        <p class="line"><span class="jp">デレた顔に 気付かない彼 結婚間近の 男の本能</span><span class="en">The lovestruck look on his face, he doesn't notice — right before marriage, a man's true instinct</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">デートは 当日スルー LINEブロック 当然でしょ</span><span class="en">The date, I ghost him on the day, LINE block, obviously</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">友達に忠告 花畑の彼女 それも人生ね 幸せになってね</span><span class="en">I warn my friend — living in a fantasy, huh. That's life too, I guess. Hope you find happiness</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s4">
+    <div class="song-head"><div class="song-num">Ⅳ</div><h2>青春の思い出をあげる</h2></div>
+    <div class="note">真面目で物足りないエリートの彼氏がいるのに、密かに私を見てくる同級生の男子。指先が触れて胸がバクバクする、純粋な彼に――青春の良い思い出、感謝してね。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">優しくて 物静かな 同級生の男子 モテるけど 本人は気付かない</span><span class="en">Kind, quiet, a boy from class, he's popular but doesn't realize it</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">優等生で エリートの 彼氏 真面目で ちょっと物足りない</span><span class="en">An honor student, an elite guy, my boyfriend, serious, a bit lacking though</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">チラチラ 見てくる 同級生の男子</span><span class="en">Glancing over at me, that boy from class</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">付き合うなら エリート そうでしょ？</span><span class="en">If I'm dating someone, it should be elite, right?</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I want to live wisely.</span></p>
+        <p class="line"><span class="jp">少し 優しくしたら その気になる 男なんて そんな生き物</span><span class="en">Just a little, if I'm kind to him he gets the wrong idea — men really are such creatures</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">真面目な彼 刺激が欲しい 少しだけ 相手して 遊んであげる</span><span class="en">My serious boyfriend, I want some excitement, just a little, I'll play along and have some fun</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">大事なのは エリートな彼</span><span class="en">What matters most is my elite boyfriend</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">食い入るように 見てくる 同級生男子</span><span class="en">Staring intently at me, that boy from class</span></p>
+        <p class="line"><span class="jp"></span><span class="en">He is watching secretly.</span></p>
+        <p class="line"><span class="jp">隠すのが 下手ね モテるのに 気付かない 勿体ないわ</span><span class="en">He's bad at hiding it — he's popular, yet doesn't realize it, what a waste</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">青春の 良い思い出 あげる</span><span class="en">A memory of our youth, I'll give you</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">指先触れて 胸がバクバク 純粋な 同級生男子</span><span class="en">Our fingers touch, his heart pounding, pure-hearted boy from class</span></p>
+        <p class="line"><span class="jp">青春の 良い思い出 感謝してね</span><span class="en">A memory of our youth. Be grateful, okay?</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s5">
+    <div class="song-head"><div class="song-num">Ⅴ</div><h2>努力しているからね</h2></div>
+    <div class="note">楽しい人生を送るために、自分を磨く。プールサイドでナンパしてくる男達に、鏡を見た事あるの？と一言。ドキドキしない会話に、お金かけても意味ないわ――邪魔なのよ。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Intro/Pre-chorus</span>
+        <p class="line"><span class="jp">楽しい人生 送るために 自分を磨くの</span><span class="en">A fun life, that's what I'm living for, I'm polishing myself</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Don't get in my way, you boring man.</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">良い女だね なんて いつも聞く台詞 努力しているもの</span><span class="en">"You're a great woman," that's what I always hear — because I work at it</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">友達と 出かける お洒落なお店 頑張っているもの</span><span class="en">With friends, going out to a stylish spot — because I make the effort</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">プールサイド ナンパ男達 鏡を見た事ある？</span><span class="en">Poolside, guys trying to pick us up — ever looked in a mirror?</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">高価な腕時計 ブランドスーツ 磨いた革靴</span><span class="en">An expensive watch, a designer suit, polished leather shoes</span></p>
+        <p class="line"><span class="jp"></span><span class="en">He is working on improving himself.</span></p>
+        <p class="line"><span class="jp">努力なしの 成功なんて つまらないわ だから 相手しても良いけど Noデート</span><span class="en">Success without any effort is boring — so I might entertain him, but no dates</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">口説き上手 男は要らない ありきたりね</span><span class="en">Smooth-talking guys, I don't need — how ordinary</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">しつこい プールサイドの 男達</span><span class="en">Persistent, poolside, guys</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">取り柄がなく 会話も退屈 愛想笑いだけ</span><span class="en">No redeeming qualities, boring conversation too, just a forced smile</span></p>
+        <p class="line"><span class="jp"></span><span class="en">It's a waste of time.</span></p>
+        <p class="line"><span class="jp">ドキドキする 会話もない お金かけても 一瞬で 消えるものなら 意味ないわ</span><span class="en">Nothing exciting about the conversation either — even spending money, if it vanishes in an instant, then what's the point</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">流れるプール ついてくる 気持ち悪い男達</span><span class="en">The lazy river, following me, creepy guys</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">市民プールで 何を気取ってんの？私達は 海で焼けたくないから ここにいるだけ</span><span class="en">At a public pool, who do you think you are? We're here only because we don't want to tan at the beach</span></p>
+        <p class="line"><span class="jp">勘違いしないでよね 邪魔なのよ</span><span class="en">Don't get the wrong idea. You're in the way</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <footer>お呼びじゃないのよ、ごめんね -Undefeated- ｜ 大森カエ</footer>
+</div>
+</body>
+</html>
