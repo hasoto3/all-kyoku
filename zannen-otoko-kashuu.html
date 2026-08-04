@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Harfゴリラ+子鹿 -The Delusional Diary- | 大森カエ 歌詞集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Noto+Serif+JP:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161009; --bg-card:#1f1710; --bg-card-2:#261c13;
+    --text:#efe6d8; --text-soft:#b9a88f; --text-faint:#7a6a54;
+    --amber:#c9863f; --amber-bright:#e0a458; --rule:rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:radial-gradient(ellipse at 50% -10%, rgba(201,134,63,0.12), transparent 55%), var(--bg);
+    color:var(--text); font-family:'Noto Sans JP', sans-serif; font-weight:300; line-height:1.9;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px 120px;}
+  .hero{padding:100px 0 40px; text-align:center;}
+  .hero .mark{width:120px; height:1px; margin:0 auto 24px; background:linear-gradient(to right, transparent, var(--amber), transparent);}
+  .hero h1{font-family:'Zen Old Mincho', serif; font-weight:700; font-size:2.4rem; letter-spacing:0.1em; margin:0 0 8px;}
+  .hero .en-title{font-family:'EB Garamond', serif; font-style:italic; color:var(--amber-bright); font-size:1.05rem; margin:0 0 26px;}
+  .hero p{max-width:520px; margin:0 auto; color:var(--text-soft); font-size:0.94rem;}
+  .hero .credit{margin-top:30px; font-size:0.78rem; letter-spacing:0.18em; color:var(--text-faint); text-transform:uppercase;}
+  .index{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:70px;}
+  .index a{display:flex; align-items:baseline; gap:16px; padding:14px 20px; background:var(--bg-card); color:var(--text); text-decoration:none; transition:background .25s, padding-left .25s;}
+  .index a:hover{background:var(--bg-card-2); padding-left:26px;}
+  .index .num{font-family:'Zen Old Mincho', serif; color:var(--amber-bright); font-size:0.85rem; flex-shrink:0; width:2.2em;}
+  .index .jp{font-size:0.95rem;} .index .en{font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.78rem;}
+  .song{scroll-margin-top:40px; padding:56px 0 0; border-top:1px solid var(--rule);}
+  .song:first-of-type{border-top:none;}
+  .song-num{font-family:'Zen Old Mincho', serif; color:var(--amber-bright); font-size:0.95rem;}
+  .song h2{font-family:'Noto Serif JP', serif; font-size:1.45rem; font-weight:600; margin:8px 0 4px;}
+  .song .en-sub{font-family:'EB Garamond', serif; font-style:italic; color:var(--text-soft); font-size:0.95rem; margin:0 0 18px;}
+  .note{background:var(--bg-card); border-left:2px solid var(--amber); padding:14px 20px; margin:0 0 20px; font-size:0.87rem; color:var(--text-soft);}
+  details.lyrics summary{cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px; padding:13px 0; color:var(--amber-bright); font-family:'Noto Serif JP', serif; font-size:0.9rem; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  details.lyrics summary::-webkit-details-marker{display:none;}
+  details.lyrics summary::before{content:"＋"; color:var(--text-faint); font-size:0.85rem;}
+  details.lyrics[open] summary::before{content:"－";}
+  .lyric-body{padding:24px 4px 8px;}
+  .stanza{margin-bottom:24px;}
+  .tag{display:inline-block; font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;}
+  .line{margin:0 0 4px;} .line .jp{color:var(--text); font-size:0.97rem;}
+  .line .en{display:block; font-family:'EB Garamond', serif; font-style:italic; color:var(--text-faint); font-size:0.83rem; margin:1px 0 10px;}
+  footer{text-align:center; margin-top:100px; color:var(--text-faint); font-size:0.78rem; letter-spacing:0.1em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="mark"></div>
+    <h1>Harfゴリラ+子鹿</h1>
+    <p class="en-title">The Delusional Diary</p>
+    <p>何も手に入らなかった男たちの、色んな残念のかたち。品定めして自滅する男、恋を捨てた男、故郷を捨てた男、老いを受け入れられない男、不器用なまま生きる男――報われなさにも、それぞれの形がある。</p>
+    <div class="credit">大森カエ ｜ Kae Omori</div>
+  </div>
+
+  <nav class="index">
+    <a href="#s1"><span class="num">Ⅰ</span><span class="jp">オトせる女の子</span></a>
+    <a href="#s2"><span class="num">Ⅱ</span><span class="jp">砂に溶ける前に 〜Sandtrap〜</span></a>
+    <a href="#s3"><span class="num">Ⅲ</span><span class="jp">君を想う 〜Flower of Passion〜（アネモネ）</span></a>
+    <a href="#s4"><span class="num">Ⅳ</span><span class="jp">都会の壁 〜Memories of the past〜（こんにゃくいも）</span></a>
+    <a href="#s5"><span class="num">Ⅴ</span><span class="jp">シャボンの中 〜My dear friend and girlfriend〜</span></a>
+    <a href="#s6"><span class="num">Ⅵ</span><span class="jp">かけがえのない運命の恋</span></a>
+    <a href="#s7"><span class="num">Ⅶ</span><span class="jp">心だけは、永遠のアラサー</span></a>
+    <a href="#s8"><span class="num">Ⅷ</span><span class="jp">音外れの歌</span></a>
+    <a href="#s9"><span class="num">Ⅸ</span><span class="jp">いい男の定義</span></a>
+    <a href="#s10"><span class="num">Ⅹ</span><span class="jp">獰猛なリーダー達</span></a>
+    <a href="#s11"><span class="num">Ⅺ</span><span class="jp">君が魅了する 〜Dangerous Love〜</span></a>
+  </nav>
+
+  <section class="song" id="s1">
+    <div class="song-head"><div class="song-num">Ⅰ</div><h2>オトせる女の子</h2></div>
+    <div class="note">バイト先の大人しい女の子を「押せばイケる」と品定めする男。送った、送った気になっていたのに、彼女は連絡先も知らないままバイトを辞めていた。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">難関大学 入学 周りは サークルざんまい</span><span class="en">Got into a top university, everyone around me living it up in clubs</span></p>
+        <p class="line"><span class="jp">俺も彼女欲しいよ</span><span class="en">I want a girlfriend too, man</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">バイト先の女子 明るく 人当たり良い 女子は人気者</span><span class="en">This girl at my part-time job, cheerful, easy to get along with, everybody likes her</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">大人しい 女子の方でも まあ 良いか 贅沢言えないよな</span><span class="en">The quiet one, that type's fine too I guess — well, whatever, can't be too picky</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">飲み会で 終電逃した あの子 自慢の車で送る</span><span class="en">At the party she missed the last train, so I drive her home in my sweet ride</span></p>
+        <p class="line"><span class="jp"></span><span class="en">unexpected turn of events.</span></p>
+        <p class="line"><span class="jp">ワンチャンある？親父とバイトに 感謝するよ</span><span class="en">Maybe I've got a shot? I owe my dad and this job one</span></p>
+        <p class="line"><span class="jp">大人しいから 押せば きっと イケる</span><span class="en">She's the quiet type, so if I push, I can totally close this</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">車中で弾む会話 いい感じ 次は デート誘ってみるか</span><span class="en">Good talk in the car, going well — maybe I'll ask her out next</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">美人タレント 似てる あの子 自慢できる</span><span class="en">She looks just like that pretty TV star — something to show off</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">あの子が彼女なら 美人で頭良いから</span><span class="en">If she were my girlfriend, pretty and smart</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Something to brag about</span></p>
+        <p class="line"><span class="jp">家まで送り 両親と挨拶 順調だな</span><span class="en">Drive her home, say hi to her parents, going smooth</span></p>
+        <p class="line"><span class="jp">俺の親父達と 仲良く出来そう</span><span class="en">they'd probably get along with my old man and all</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">え？バイト辞めた？嘘だろ</span><span class="en">Huh? She quit the job? No way</span></p>
+        <p class="line"><span class="jp">まだ連絡先 聞いてないよ</span><span class="en">I haven't even gotten her number yet</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">俺に向けた あの笑顔は 嘘だったのか？</span><span class="en">That smile she gave me, was it all a lie?</span></p>
+        <p class="line"><span class="jp">車も気に入って 良いムードだったよな？</span><span class="en">She liked the car, the mood was good, wasn't it?</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s2">
+    <div class="song-head"><div class="song-num">Ⅱ</div><h2>砂に溶ける前に 〜Sandtrap〜</h2></div>
+    <div class="note">親友と、想い人と、いつも同じ場所にいた僕。君の視線に気付かないまま、君はあいつを選んだ。遠い国で「戻らない」と誓い、それでも最後に、君の幸せを願う。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">1節</span>
+        <p class="line"><span class="jp">先の見えない明日に 一縷の望みを託し</span><span class="en">To a future I can't see, entrusting a glimmer of hope</span></p>
+        <p class="line"><span class="jp">僕は 灼熱の砂浜を歩く</span><span class="en">I walk on the scorching sand</span></p>
+        <p class="line"><span class="jp">いつも 同じ空間にいた あいつと君と僕</span><span class="en">Always, we were in the same space — him, you, and me</span></p>
+        <p class="line"><span class="jp">君の視線 気付かず</span><span class="en">Your gaze, I didn't notice</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">君の一言笑顔にやられ いつか 隣で笑うと 信じていた</span><span class="en">I was defeated by your smiling words, believed someday I'd laugh beside you</span></p>
+        <p class="line"><span class="jp">君の思わせぶりな態度 僕は心ごと掴まれ</span><span class="en">Your suggestive attitude, my heart completely captured</span></p>
+        <p class="line"><span class="jp">あいつが 好きと泣いた君は 映画のヒロイン</span><span class="en">You cried saying you loved him, like a movie heroine</span></p>
+        <p class="line"><span class="jp">そんな幻に 砂時計が1秒落ちた</span><span class="en">To such an illusion, the hourglass dropped one second</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">好きと伝える僕に 信じていた</span><span class="en">To me confessing my love, I believed</span></p>
+        <p class="line"><span class="jp">君が照れながら受け止め 僕の隣に来ると</span><span class="en">you would shyly accept, and come to my side</span></p>
+        <p class="line"><span class="jp">気付かないフリで 心を閉じ込めた</span><span class="en">Pretending not to notice, I locked my heart away</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus</span>
+        <p class="line"><span class="jp">心震え 泣きそうなほど愛しいのに なぜ 君はここにいないの？</span><span class="en">My heart trembles, I love you so much I could cry — why aren't you here?</span></p>
+        <p class="line"><span class="jp">問いだけが 時間を止めて 僕は砂に埋もれていく事を</span><span class="en">Only the question stops time, that I'm being buried in sand</span></p>
+        <p class="line"><span class="jp">振り払えない 拒めない 泣く事も許されず</span><span class="en">I can't shake it off, can't refuse it, not even allowed to cry</span></p>
+        <p class="line"><span class="jp">一人 ただ後悔だけ残る 星たちが見下ろし囁く 僕は 哀れな奴</span><span class="en">Alone, only regret remains, the stars look down and whisper — I am a pitiful fool</span></p>
+      </div>
+      <div class="stanza"><span class="tag">3節</span>
+        <p class="line"><span class="jp">放課後 君の机に座り 3人笑いながら互いの未来を語り</span><span class="en">After school, sitting at your desk, three of us laughing, talking about our futures</span></p>
+        <p class="line"><span class="jp">君と目が合い 胸の高鳴りを 抑える事も出来なかった</span><span class="en">Our eyes met, the pounding of my heart, I couldn't even suppress it</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">僕の想いに気づき 描いた 君と歩く未来</span><span class="en">Noticing my feelings, I drew a future walking with you</span></p>
+        <p class="line"><span class="jp">僕の未来は君との姿</span><span class="en">My future was with you</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">あいつから届いた 君のウエディング姿</span><span class="en">It arrived from him — your figure in wedding attire</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">あいつは知らない 君が泣いた日 一人の男の心が砕けた事</span><span class="en">He doesn't know the day you cried, that one man's heart was shattered</span></p>
+        <p class="line"><span class="jp">あいつは知らない 僕が遠い国で 戻らないと誓った事</span><span class="en">He doesn't know that I, in a distant country, vowed never to return</span></p>
+      </div>
+      <div class="stanza"><span class="tag">End</span>
+        <p class="line"><span class="jp">どうか 君は幸せになって</span><span class="en">Please, be happy</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s3">
+    <div class="song-head"><div class="song-num">Ⅲ</div><h2>君を想う 〜Flower of Passion〜</h2><div class="en-sub">アネモネ</div></div>
+    <div class="note">噂の彼がいる君に、勇気を出せなかった俺。赤いアネモネの花が、心に棘を残したまま。捨ててきた綺麗な思い出を抱えて、夏の海を泳ぎ続ける。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">君には想い人がいる</span><span class="en">You have someone you love</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I didn't want to care about the rumors</span></p>
+        <p class="line"><span class="jp">小耳に挟む君の声 言葉一つ一つを</span><span class="en">Your voice I overheard, each word</span></p>
+        <p class="line"><span class="jp">鉱石のように 大切に拾い集めた</span><span class="en">like precious stones, I carefully gathered them</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp"></span><span class="en">Alone in the classroom at sunset</span></p>
+        <p class="line"><span class="jp">君がくれたアネモネの花 今も心の奥で木霊する</span><span class="en">The anemone flower you gave me still echoes deep in my heart</span></p>
+        <p class="line"><span class="jp">優しい思い出は 夏の水のように</span><span class="en">Those gentle memories, like summer water</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Cooling down the pain</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp"></span><span class="en">You're the only one,</span></p>
+        <p class="line"><span class="jp">いつまでも 心に居座っている</span><span class="en">forever, you stay in my heart</span></p>
+        <p class="line"><span class="jp"></span><span class="en">She plays games, but I still love her (Still love her!)</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus</span>
+        <p class="line"><span class="jp">赤いアネモネの花が 心に棘をのこし</span><span class="en">The red anemone flower leaves thorns in my heart</span></p>
+        <p class="line"><span class="jp">忘れたくても 痛みで奮い起こさせる</span><span class="en">Even when I want to forget, the pain stirs me awake</span></p>
+        <p class="line"><span class="jp">夏の水で</span><span class="en">With summer water, I cool it down (Cool it down!)</span></p>
+        <p class="line"><span class="jp">痛みで熱を起こし</span><span class="en">The pain creates heat</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Sleepless till the morning light</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge</span>
+        <p class="line"><span class="jp">噂の彼の話 君はいつも言葉を濁し</span><span class="en">Talk of that guy in the rumors, you always dodge the words</span></p>
+        <p class="line"><span class="jp"></span><span class="en">You come close, pretending to care</span></p>
+        <p class="line"><span class="jp">俺はいつも心ざわつき 今も夏の熱 君を思い出す</span><span class="en">My heart always stirs, still the summer heat reminds me of you</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">勇気のなかった俺は 綺麗な思い出も全て捨てて</span><span class="en">I who lacked courage, cast away all the beautiful memories</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I'll smile for tomorrow</span></p>
+        <p class="line"><span class="jp">息が切れるほど 夏の海泳ぎ続ける</span><span class="en">Until I run out of breath, I keep swimming in the summer sea</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s4">
+    <div class="song-head"><div class="song-num">Ⅳ</div><h2>都会の壁 〜Memories of the past〜</h2><div class="en-sub">こんにゃくいも</div></div>
+    <div class="note">洗練された都会に憧れて、故郷と親を捨てた僕。こんにゃくをタコ糸で縛る父の手が、今も心の中で都会のビルと絡み合う。飛べないペンギンは、それでも憎めず好きだった。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">絡み合う糸 ほつれた裾</span><span class="en">Tangled threads, a frayed hem</span></p>
+        <p class="line"><span class="jp">取り繕う布端 懐かしい景色 置いてきた過去</span><span class="en">patching the edge of the cloth, a scene I long for, the past I left behind</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">こんにゃく芋 父の掘る手が 好きだった</span><span class="en">Konjac potatoes, my father's digging hands, I loved them</span></p>
+        <p class="line"><span class="jp">母が恋した父 二人だけの恋物語</span><span class="en">the father my mother fell for, their love story, theirs alone</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">生まれる命 経た時間に 歴史なぞる 僕の軌跡</span><span class="en">A life born into the time that passed, tracing its history, the trail of me</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">極寒の地 空を仰ぎ見る ペンギン</span><span class="en">A frozen land, looking up at the sky, a penguin</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Seabirds soaring in the sky</span></p>
+        <p class="line"><span class="jp">憧れと 切なさ 入り混じり</span><span class="en">Longing and ache, mixed together</span></p>
+        <p class="line"><span class="jp">ペンギンは 海に涙落とす 絡み合う糸が 心縛る</span><span class="en">the penguin drops its tears into the sea, the tangled threads bind my heart</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">洒落た服 綺麗な店 洗練された 都会に憧れ 故郷離れた僕</span><span class="en">Stylish clothes, pretty shops, refined — longing for the city, I left my hometown</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">笑顔で見送り 時々の電話 優しかった親</span><span class="en">They saw me off with a smile, a call now and then, my gentle parents</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">広げた絵本 極寒の世界 ペンギン</span><span class="en">An open picture book, a frozen world, a penguin</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I liked that look on her face.</span></p>
+        <p class="line"><span class="jp">飛べない 不器用な ペンギンは どこか 憎めず好きで</span><span class="en">Flightless, clumsy, the penguin — somehow I can't help but love it</span></p>
+        <p class="line"><span class="jp">母が読む 本を思い出す</span><span class="en">the book my mother used to read, I remember</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">不格好で だけど 懸命に生き 父と母は 恋していた</span><span class="en">Awkward, but still living with all their might, my father and mother were in love</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">父が作る こんにゃく タコ糸縛る その手</span><span class="en">The konjac my father makes, tying it with kitchen string, those hands</span></p>
+        <p class="line"><span class="jp">心奥に 都会のビルと 絡み合う幻想</span><span class="en">deep in my heart, tangling with the city towers into illusion</span></p>
+        <p class="line"><span class="jp">今は昔 恋物語</span><span class="en">now all long ago, a love story</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s5">
+    <div class="song-head"><div class="song-num">Ⅴ</div><h2>シャボンの中 〜My dear friend and girlfriend〜</h2></div>
+    <div class="note">親友と恋人。あの日、二人が僕の手をすり抜けて隣同士になった。傷ついてなお「大切な人達だから、いつか笑ってまた話したい」と願う――許すのか、鈍いだけなのか、宙づりのまま。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">抉れた心が カサついた夢を貪る</span><span class="en">My gouged-out heart devours a dried-up dream</span></p>
+        <p class="line"><span class="jp">二度と理想は追わない 二度とあなたを欲しがらない</span><span class="en">I'll never chase what I longed for again, never want you again</span></p>
+        <p class="line"><span class="jp">想いだけが置きざりにされたまま 膝を抱え</span><span class="en">only these feelings left behind, I hold my knees</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Suspended in a soap bubble, submerged</span></p>
+        <p class="line"><span class="jp">静かに眠る いつ覚めるかは 誰も知らない</span><span class="en">and quietly sleep, when I'll wake, no one knows</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp"></span><span class="en">If heaven exists</span></p>
+        <p class="line"><span class="jp">きっと今だろうと思っていた あの日、あいつに会わなければ</span><span class="en">I used to think I was already there — if I hadn't met him that day</span></p>
+        <p class="line"><span class="jp">あの日、君があの場所に 行かなければ⋯運命がこんなにも 憎いなんて</span><span class="en">if you hadn't gone to that place... I never knew fate could be this cruel</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I never could have imagined</span></p>
+        <p class="line"><span class="jp">親友のあいつ 君が僕の手をすり抜け あいつの隣に行った</span><span class="en">my closest friend, you slipped through my hands and went to his side</span></p>
+        <p class="line"><span class="jp">あの日 僕は水中に沈んだ</span><span class="en">that day, I sank beneath the water</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">謝りながら泣いた君 隣で笑っていた君が</span><span class="en">You, crying as you apologized, and him, laughing beside you</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Gently laughing beside me</span></p>
+        <p class="line"><span class="jp">あの日、運命が</span><span class="en">that day, as if fate</span></p>
+        <p class="line"><span class="jp"></span><span class="en">As if fate won't play tricks</span></p>
+        <p class="line"><span class="jp">ただ悲しいだけ</span><span class="en">it's just sad, that's all</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus</span>
+        <p class="line"><span class="jp">いつか笑って 君とあいつと、また話をしたい</span><span class="en">Someday, with a smile, I want to talk with you and him again</span></p>
+        <p class="line"><span class="jp">大切な人達だから 今はまだ胸の奥に</span><span class="en">because you're both dear to me, but for now, deep in my chest</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Still indecisive and unclear</span></p>
+        <p class="line"><span class="jp">涙を流せない 自分に怒りを抱く</span><span class="en">I can't let the tears fall, and I hold anger at myself</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I want to laugh and talk about old times someday.</span></p>
+        <p class="line"><span class="jp">そう願って</span><span class="en">that's my wish</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Suspended in a soap bubble, submerged</span></p>
+        <p class="line"><span class="jp">吐息を吐く</span><span class="en">I breathe out</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">七色の虹 雨上がりの空見上げ 君は笑顔ではしゃいだ</span><span class="en">A seven-colored rainbow, you looked up at the cleared sky and laughed, full of joy</span></p>
+        <p class="line"><span class="jp">君が隣にいた景色は 今でも心に光灯す</span><span class="en">the view with you beside me still lights a flame in my heart</span></p>
+        <p class="line"><span class="jp">天国への行き方を 僕は探し続ける</span><span class="en">the way to heaven, I keep searching for</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge</span>
+        <p class="line"><span class="jp">掠れた声は いつか 泣いて謝った君に</span><span class="en">Will this hoarse voice someday reach you, who cried and apologized</span></p>
+        <p class="line"><span class="jp">透き通る瞳の君に 届くだろうか</span><span class="en">you, with those clear eyes, will it reach you at all</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">この傷が跡形もなく消え 懐かしい思い出に変わり</span><span class="en">When this wound fades without a trace, and turns into a fond memory</span></p>
+        <p class="line"><span class="jp">いつか、僕にも 大切な家族ができたなら</span><span class="en">someday, if even I could have a family of my own</span></p>
+        <p class="line"><span class="jp">君とあいつに 笑顔で会いに行きたい</span><span class="en">then you and him I'd want to go see, with a smile</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I am eagerly waiting.</span></p>
+        <p class="line"><span class="jp">シャボンの中で 夢を見る</span><span class="en">inside the soap bubble, I dream</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s6">
+    <div class="song-head"><div class="song-num">Ⅵ</div><h2>かけがえのない運命の恋</h2></div>
+    <div class="note">彼女の友達を「嫉妬深い」と切り捨てて、決心つかないままプロポーズを先延ばしにした僕。彼女は他の人と結婚した。友達には「犠牲者」と言われても、まだ気付けない。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">優しい彼女 同じ職場 交際が始まり</span><span class="en">A kind girlfriend, same workplace, we started dating</span></p>
+        <p class="line"><span class="jp">Lineは1日5回 他愛のないメール 心地よくて</span><span class="en">texting five times a day, silly little messages, it felt so good</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">初めての デートは緊張で 手に汗かき</span><span class="en">Our first date, so nervous, palms sweating</span></p>
+        <p class="line"><span class="jp">君はむくれた 結婚ほのめかす君 決心つかない僕</span><span class="en">you sulked, you hinted at marriage, I couldn't make up my mind</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">穏やかな雰囲気 心地よい時間 君は女子に言う</span><span class="en">A calm, easy mood, time that felt good, you'd say to the other girls</span></p>
+        <p class="line"><span class="jp">強気な言葉 君の強さが好きだった</span><span class="en">bold, sharp words — I loved how strong you were</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">年頃の彼女 結婚に憧れ</span><span class="en">A girl at the right age, longing to marry</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I seriously considered marriage.</span></p>
+        <p class="line"><span class="jp">出会いから半年 好きで好きで 胸焦がした日々</span><span class="en">Half a year since we met, loving you, loving you, days my heart burned</span></p>
+        <p class="line"><span class="jp">夜も昼も 君を想い 幸せな未来 思い描いていた</span><span class="en">night and day, thinking of you, a happy future I painted in my mind</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">友達から 聞いた噂 君が同僚と話す 結婚への憧れ</span><span class="en">From a friend, a rumor I heard, you talking with a coworker, longing to marry</span></p>
+        <p class="line"><span class="jp">嫉妬深い？いつもの嘘 聞き飽きたよ</span><span class="en">Jealous, am I? The usual lie, I'm sick of hearing it</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">夢見た 君との幸せな未来 少し我が儘な 君が好きだった</span><span class="en">The future I dreamed of, a happy one with you, a little selfish — that's what I loved about you</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">女の子なら 僕よりも</span><span class="en">Any girl, I guess, more than me</span></p>
+        <p class="line"><span class="jp"></span><span class="en">They must have wanted a happy life.</span></p>
+        <p class="line"><span class="jp">僕に好意あると聞いた 君の友達は いつの間にか 退職し</span><span class="en">I heard she liked me — your friend, before I knew it, had quit</span></p>
+        <p class="line"><span class="jp">君は 他の人と結婚</span><span class="en">and you married someone else</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I was left alone.</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">僕の友達は 君を八方美人と言う 偏見で見る人達</span><span class="en">My friends call you a people-pleaser, people full of prejudice</span></p>
+        <p class="line"><span class="jp">いつも周囲は そんな人間ばかり 君だけが いつも僕に 寄り添ってくれた</span><span class="en">everyone around me, always that kind — only you always stayed close to me</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">友達は 僕を犠牲者と言う また嫉妬かよ</span><span class="en">My friends call me the victim — jealous again, huh</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I can't forget you</span></p>
+        <p class="line"><span class="jp">優しい彼女 親にせかされたかも</span><span class="en">My kind girl, maybe her parents pushed her</span></p>
+        <p class="line"><span class="jp">もう少し早く プロポーズすればと 後悔だけが残る</span><span class="en">if only a little sooner I had proposed, only regret remains</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s7">
+    <div class="song-head"><div class="song-num">Ⅶ</div><h2>心だけは、永遠のアラサー</h2></div>
+    <div class="note">30過ぎては天下を取った気分だったのに、50過ぎて頭がまっさらになる。お金より若さが欲しい――先輩が酒を飲んで呟いた「若さは買えない」を、今なら分かる。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Intro-前</span>
+        <p class="line"><span class="jp">何が欲しいか？お金も大事 でも 若さが欲しい</span><span class="en">What do I want? Money matters, sure — but what I really want is my youth</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I don't want a future like this.</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">40過ぎたら 昼寝が必須 記憶力も衰える</span><span class="en">Past forty, a midday nap becomes essential, memory starts to slip</span></p>
+        <p class="line"><span class="jp">50過ぎたら 足腰痛んで 新しい事も 右から左に抜けて 嫌になるよ</span><span class="en">Past fifty, hips and legs begin to ache, new things learned go in one ear and out the other, it gets to you</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">30過ぎて 天下取った気分 怖い者なしの俺</span><span class="en">Past thirty, felt like I owned the world, nothing could touch me</span></p>
+        <p class="line"><span class="jp">50過ぎて 今さっきの事も 声かけられて 頭まっさらになる 参るよ</span><span class="en">Past fifty, something that just happened, someone speaks to me and my mind goes completely blank, I give up</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">いつまでも 若い俺 そんな夢を 見たくなるよ</span><span class="en">Forever young — still me, I catch myself wanting to dream that dream</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">何が欲しいか？お金も大事 でも 若さが欲しい</span><span class="en">What do I want? Money matters, sure — but what I really want is my youth</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I don't want a future like this.</span></p>
+        <p class="line"><span class="jp">限られた時間で 仕事をこなす技量 相手の心情見て 選ぶ 言葉</span><span class="en">The skill to get things done within the time you have, reading the other person's feelings, choosing the right words</span></p>
+        <p class="line"><span class="jp">リスクマネジメント 自然と出来る 若さだけが</span><span class="en">Managing risk, all coming naturally — only youth</span></p>
+        <p class="line"><span class="jp">鍋底に穴空いて 迸るように抜け出る 参ったよ</span><span class="en">like a hole worn through the bottom of a pot, slipping away in a rushing stream, I really give up</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">若い頃 気恥ずかしくても こなせていた 女子との会話</span><span class="en">Back when I was young, even when it felt awkward, I could manage talking to the girls</span></p>
+        <p class="line"><span class="jp">今は パワハラだと 言われそうで 聞き耳立てて 話はスルー 交わされる</span><span class="en">Now I worry it might be called harassment, so I keep my ears open and let the conversation slip right past me</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">年齢重ねて 体力 気力 全てが衰え 孤独が襲う</span><span class="en">As the years pile on, strength and will, everything fades, and loneliness moves in</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">不安になる このままで良いのか 心に問いかける</span><span class="en">I start to worry, is this really okay? I ask myself</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I don't want a future like this.</span></p>
+        <p class="line"><span class="jp">若い頃求めた さり気ない フォロー術</span><span class="en">The kind of quiet support I admired back then, that effortless way of stepping in</span></p>
+        <p class="line"><span class="jp">仲間のミスも 最小限で 抑える先輩を 尊敬していた</span><span class="en">keeping a teammate's mistake to a minimum — that senior who knew just what to do, I looked up to him</span></p>
+        <p class="line"><span class="jp">賢明に 勉強して 追いつきたくて 貪るように 食らいついた</span><span class="en">I studied hard, desperate to catch up, throwing myself into it, hungry for every bit</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">今なら分かる 若さは買えないと 酒飲んで 呟いた先輩の気持ち</span><span class="en">Now I understand — youth is not something you can buy, the feeling behind those words my senior muttered over a drink</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">今日も 明るい部下 俺にはない 瑞々しさ 寂しさが襲う</span><span class="en">My cheerful junior, again today, carrying a freshness I no longer have, and the loneliness hits</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I want to be rejuvenated by technology</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s8">
+    <div class="song-head"><div class="song-num">Ⅷ</div><h2>音外れの歌</h2></div>
+    <div class="note">オールのないヨットを、それでも手で漕ぎ続ける。要領が悪くて、世渡り下手で、辿り着けない海と分かっていても――誰もいないヨットの上で、音外れの歌を口ずさむ。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">なくし物を探し 僕は歩き続けた 砂浜の上 裸足のまま</span><span class="en">Searching for something I'd lost, I kept on walking across the sand, barefoot all the way</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">寂れたヨット 見つからない オール 凪いだ波の上 必死で漕いだ</span><span class="en">A worn-out sailboat, no oars to be found, on the still calm waves I rowed with all I had</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">人は笑う 不器用な手つき 下手な愛想笑い</span><span class="en">People laugh at my clumsy hands, my awkward forced smile</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">声を忘れた ネコのように 背を丸め</span><span class="en">Like a cat that's forgotten its voice, I hunch my back</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I was holding back my tears.</span></p>
+        <p class="line"><span class="jp">容量悪く だけど 懸命に 勉強も仕事も こなしてきた</span><span class="en">Bad at everything, but still, with all my might, school, work, all of it I've managed to get through</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">自由に飛ぶ鳥 青い空から見る 地平線 どんなだろう</span><span class="en">A bird flying free, from the blue sky, the horizon, what would it look like, I wonder</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">ヨット漕ぎ 海の向こう 想像しながら 進み続けた</span><span class="en">I rowed the boat, imagining what lies beyond the sea, and kept pushing on</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">器用だったなら 笑えるのに 不器用だから</span><span class="en">If only I were skillful I could laugh, but I'm clumsy, so</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I give a wry smile.</span></p>
+        <p class="line"><span class="jp">羨ましい 世渡り 上手な 人達横目に 生きるだけ</span><span class="en">I envy them, the ones who make their way through life so well, watching them from the corner of my eye, I just keep living</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">広大な海原 分かる行き先 叶わない 到着地点</span><span class="en">The vast open sea, I know where I'm headed, but I'll never reach that shore</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">頬つたる 温かな雫 拭き取る 僕の指</span><span class="en">Down my cheek a warm drop falls, I wipe it away with my own finger</span></p>
+        <p class="line"><span class="jp">誰もいない ヨット漕ぎ 音外れの歌を 口ずさむ</span><span class="en">All alone, I row the boat, an off-key song I hum to myself</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s9">
+    <div class="song-head"><div class="song-num">Ⅸ</div><h2>いい男の定義</h2></div>
+    <div class="note">同僚の仕事を引き受けて残業する俺。「いい男には仕事の経験が必須」と自分に言い聞かせながら、実は利用されているだけだと、まだ気付いていない。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">同僚の仕事3つ 手伝いを 申し出て</span><span class="en">Three of my coworker's tasks — I offered to help out</span></p>
+        <p class="line"><span class="jp">一番厄介だと 気付く 後の祭り</span><span class="en">then realize it's the worst of them, too late now</span></p>
+        <p class="line"><span class="jp">気が付けば 良いように 利用されているな</span><span class="en">before I knew it, I'm being used, plain and simple</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">同僚は残業なし 俺は 残業</span><span class="en">My coworker, no overtime, me, overtime</span></p>
+        <p class="line"><span class="jp">オンラインゲーム 攻略したいけど 無理だな</span><span class="en">that online game I wanted to beat, but no chance</span></p>
+        <p class="line"><span class="jp">同僚の仕事 引き受けて 残業</span><span class="en">took on his work, more overtime</span></p>
+        <p class="line"><span class="jp">ミーティングでは NO残業宣言</span><span class="en">at the meeting though, he declares "no overtime for me"</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">仕事のノルマは 予定よりも早く達成</span><span class="en">My quota, done ahead of schedule</span></p>
+        <p class="line"><span class="jp">空いた時間は くだらない会話</span><span class="en">the time left over wasted on pointless chatter</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">生きるための ルーチンな仕事 綺麗事言う前に</span><span class="en">The routine work it takes to live, before you talk pretty</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Take care of unpleasant things first</span></p>
+        <p class="line"><span class="jp">こなした後の 会話は弾む 売上は伸びる</span><span class="en">once it's done the talk flows easy, sales go up</span></p>
+        <p class="line"><span class="jp">仕事して もらえる給料 社会の はみ出し者にも ならない</span><span class="en">you work, you get paid, and you don't end up an outcast either</span></p>
+        <p class="line"><span class="jp">文句言う前に こなせば 英雄扱い</span><span class="en">before you complain, just do it, and you're a hero</span></p>
+        <p class="line"><span class="jp">仕事の経験は 人生のスパイス 磨いたら 最高の味になる いい男には 必須だよ</span><span class="en">work experience is the spice of life, polish it and it tastes the best, a must for any good man</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">少しでも楽しようと 頭捻る 同僚たちを 横目に見て</span><span class="en">Trying to slack off, racking their brains — my coworkers, I watch from the side</span></p>
+        <p class="line"><span class="jp">黙々と仕事打ち込む 俺 残業よりも オンラインゲームで 自由を 満喫したいからな</span><span class="en">and bury myself in work, 'cause more than overtime, in that game I want to soak up some freedom</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">結婚したい 女の子に好かれたい 仕事のステータスは そのためにある</span><span class="en">I want to marry, I want girls to like me — career status, it's all for that</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">生きるための ルーチンな仕事 綺麗事言う前に</span><span class="en">The routine work it takes to live, before you talk pretty</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Take care of unpleasant things first</span></p>
+        <p class="line"><span class="jp">ボーナスのため 仕事をする 金がなければ デートも出来ない</span><span class="en">for the bonus I do the work, no money means no dates</span></p>
+        <p class="line"><span class="jp">惨めになるより 利益上げて 高級料理店で プロポーズ 男のプライドだよ</span><span class="en">rather than end up miserable, turn a profit, propose at a fancy restaurant — that's a man's pride</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">仕事なんて 辛い事ばかり 楽しい事もあるけど いい男になるための 修行だから 頑張るわ</span><span class="en">Work, honestly, it's mostly rough, there's good in it too — it's training to become a good man, so I'll push through</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">毎晩の オンラインゲーム 休日の デート</span><span class="en">Every night the online game, days off a date</span></p>
+        <p class="line"><span class="jp">ルーチンだけど 仕事がなかったら 何も出来ない</span><span class="en">it's all routine, but without work I couldn't do any of it</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Work is important.</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s10">
+    <div class="song-head"><div class="song-num">Ⅹ</div><h2>獰猛なリーダー達</h2></div>
+    <div class="note">出された食事を残さず食べる僕を、呆れ顔で見る人達。稀有な食材に舌鼓を打つリーダー達も、パン屋も豆腐屋も、遠い未来で隣合わせの病室で知る――人は皆、人間にしかなれない。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">出された食事 残さず ガツガツ食べる 僕</span><span class="en">The meal set before me, without leaving a scrap, I wolf it all down</span></p>
+        <p class="line"><span class="jp">残したら 勿体ないだろ？呆れ顔で見る人達</span><span class="en">it'd be a waste to leave it, right? People watch me, disgusted</span></p>
+        <p class="line"><span class="jp">テーブルには 何枚もの 残飯の皿 綺麗なのは どっち？</span><span class="en">on their table, plate after plate of leftovers — so whose plate is clean?</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">バイキングで 溢れるほど 皿に盛り 最後は 腹押さえて終了</span><span class="en">At the buffet, piling plates till they overflow, then quitting, hands on their stomachs</span></p>
+        <p class="line"><span class="jp">笑顔で 会計の親子 廃棄される 多くの 食材 料理人も ため息</span><span class="en">a parent and child smiling at the register, so much good food thrown away, the chef just sighs</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Terrible person</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">世界の 多くが 空腹の 日々を送る 一部の 人間だけが</span><span class="en">Much of the world lives its days in hunger, while only a few</span></p>
+        <p class="line"><span class="jp">トップに 立ち 偉そうに 演説する 聞くだけの 価値はあるのか？</span><span class="en">stand at the top and give their pompous speeches — are they even worth hearing?</span></p>
+        <p class="line"><span class="jp"></span><span class="en">All just for show</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus</span>
+        <p class="line"><span class="jp">口寂しい 獰猛な リーダー達 稀有な食材に 舌鼓 打ち</span><span class="en">Mouths never satisfied, these ravenous leaders, on the rarest delicacies they smack their lips</span></p>
+        <p class="line"><span class="jp">モニター越しで 笑顔振りまき 幸せを語る</span><span class="en">through the screen, flashing their smiles, preaching about happiness</span></p>
+        <p class="line"><span class="jp">空腹に満ちた 世界のトップに 夢見て 人に媚び諂い 生きてきたのか</span><span class="en">to a world full of hunger, dreaming of the top, flattering and fawning — is that how they've lived?</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I acknowledge the tremendous effort.</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">優しいだけの 人間は いない 無垢な人は 騙され泣く</span><span class="en">Purely kind, no such person exists — the innocent get fooled and weep</span></p>
+        <p class="line"><span class="jp">気がつけば 僕も 廃棄行き 騙す側の 必死な攻防戦</span><span class="en">before I knew it I was headed for the scrap heap too, the deceivers' desperate back-and-forth</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">パン屋 豆腐屋 技術がモノを言う</span><span class="en">The baker, the tofu maker, skill is what speaks</span></p>
+        <p class="line"><span class="jp">リーダー達は 尊敬の意を表し 心底で 苦笑い</span><span class="en">the leaders make a show of respect but deep down force a bitter smile</span></p>
+        <p class="line"><span class="jp">遠い未来で 隣合わせの 病室で 知る</span><span class="en">in some far future, side by side in hospital beds, they'll learn</span></p>
+        <p class="line"><span class="jp">人は皆 分け隔てなく 人間にしか なれないと</span><span class="en">everyone, without exception, can only ever be human</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Rotting away, just the same.</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">四季折々 凍える 寒さの中でも 温かな 春先でも</span><span class="en">Through every season, in the freezing cold, in the warmth of early spring</span></p>
+        <p class="line"><span class="jp">鳥が囀る前から パン屋も豆腐屋も 仕込みを始める</span><span class="en">before the birds even sing, the baker and the tofu maker begin their day's work</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">高級料理店も 皆 同じ 色眼鏡 捨てて 僕は 生きる</span><span class="en">The finest restaurants, all the same — I cast off my colored lenses and live</span></p>
+        <p class="line"><span class="jp"></span><span class="en">With deep respect.</span></p>
+        <p class="line"><span class="jp">今ある現実を 抱きしめながら</span><span class="en">this reality, here and now, holding it close</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <section class="song" id="s11">
+    <div class="song-head"><div class="song-num">Ⅺ</div><h2>君が魅了する 〜Dangerous Love〜</h2></div>
+    <div class="note">危険だと分かっていながら抗えないほど惹かれた恋。夢の中を歩かされ、閉じ込められたマリオネットのまま、最後には夢から弾き出されて、戻れない場所で後悔だけが残る。</div>
+    <details class="lyrics"><summary>歌詞を開く / Show lyrics</summary><div class="lyric-body">
+      <div class="stanza"><span class="tag">Intro/Pre-chorus</span>
+        <p class="line"><span class="jp">人差し指で 拭った涙</span><span class="en">With my index finger, I wiped away a tear —</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Sweet and melt-in-the-mouth</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 1</span>
+        <p class="line"><span class="jp">プラチナ・ネック 光る君 甘い匂い 拐かされ 夢に溺れる</span><span class="en">Platinum neck, you shine so bright, a sweet scent, and I'm swept away, drowning in a dream</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 2</span>
+        <p class="line"><span class="jp">微笑み 惑わす 君の瞳 ノスタルジック</span><span class="en">That smile, leading me astray, your eyes, nostalgic somehow</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Pre-chorus</span>
+        <p class="line"><span class="jp">催眠かけられ 夢の中 僕は歩く</span><span class="en">Put under a spell, inside a dream, I keep on walking</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 1</span>
+        <p class="line"><span class="jp">溺れる</span><span class="en">Drowning</span></p>
+        <p class="line"><span class="jp"></span><span class="en">Dangerous Love</span></p>
+        <p class="line"><span class="jp">頭の中で 木霊する サイレン かき消される 甘い吐息 君の視線</span><span class="en">Inside my head it echoes — a siren, drowned out by your sweet breath, by your gaze</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Verse 3</span>
+        <p class="line"><span class="jp">1人よがりの Marionette 閉じ込められ 夢の中 君に魅了され 困惑する僕</span><span class="en">A self-indulgent marionette, trapped inside this dream, enchanted by you, and I'm left confused</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 1</span>
+        <p class="line"><span class="jp">ほくそ笑む 友たち いいよ、それでも</span><span class="en">Smirking to themselves, my friends — that's fine, even so</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Chorus 2</span>
+        <p class="line"><span class="jp">1度きりの</span><span class="en">A once-in-a-lifetime,</span></p>
+        <p class="line"><span class="jp"></span><span class="en">A fateful encounter</span></p>
+        <p class="line"><span class="jp">列車に乗り 加速する 鼓動に 息詰まる 愛しい君 僕を 見つめて</span><span class="en">I board the train, picking up speed, my heartbeat takes my breath away, my beloved, looking straight at me</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Bridge 2</span>
+        <p class="line"><span class="jp">なくした物 探しに 飛び出す</span><span class="en">Searching for what I've lost, I run out the door</span></p>
+      </div>
+      <div class="stanza"><span class="tag">Outro</span>
+        <p class="line"><span class="jp">戻れない 君への居場所 なぜ 飛び出したの？なぜ 君はいないの？</span><span class="en">I can't go back to where you are. Why did I run out? Why aren't you here?</span></p>
+        <p class="line"><span class="jp"></span><span class="en">I can't find the answer.</span></p>
+        <p class="line"><span class="jp">甘い匂い 心に燻るのに</span><span class="en">That sweet scent still lingers in my heart.</span></p>
+      </div>
+    </div></details>
+  </section>
+
+  <footer>Harfゴリラ+子鹿 -The Delusional Diary- ｜ 大森カエ</footer>
+</div>
+</body>
+</html>
