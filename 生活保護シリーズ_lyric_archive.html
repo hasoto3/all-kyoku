@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生活保護シリーズ ― 大森カエ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EAE4D6;
+  --paper-2:#E1DACB;
+  --card:#F3EFE4;
+  --ink:#231F1A;
+  --ink-soft:#5B554A;
+  --ink-faint:#8B8375;
+  --stamp:#9C2B22;
+  --stamp-soft:#C1584C;
+  --blue:#3C4E5E;
+  --blue-soft:#6B7C8A;
+  --brass:#9A7A3B;
+  --line:#C7BEA8;
+  --line-strong:#A79C81;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'EB Garamond', serif;
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.4;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,0.015) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(0,0,0,0.02) 0%, transparent 45%);
+  z-index:0;
+}
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px 80px;
+  position:relative;
+  z-index:1;
+}
+
+/* ===== Header ===== */
+header{
+  padding:56px 0 32px;
+  border-bottom:1px solid var(--line-strong);
+  margin-bottom:0;
+}
+.eyebrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  color:var(--blue-soft);
+  text-transform:uppercase;
+  margin:0 0 14px;
+}
+h1{
+  font-family:'Shippori Mincho', serif;
+  font-weight:800;
+  font-size:42px;
+  line-height:1.25;
+  margin:0 0 10px;
+  color:var(--ink);
+  letter-spacing:.02em;
+}
+h1 .en{
+  display:block;
+  font-family:'EB Garamond', serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:17px;
+  color:var(--ink-soft);
+  margin-top:8px;
+  letter-spacing:.01em;
+}
+.lede{
+  font-size:16px;
+  line-height:1.85;
+  color:var(--ink-soft);
+  max-width:640px;
+  margin:20px 0 0;
+}
+.meta-row{
+  display:flex;
+  gap:28px;
+  margin-top:26px;
+  flex-wrap:wrap;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  color:var(--ink-faint);
+}
+.meta-row span b{color:var(--ink-soft); font-weight:500;}
+
+/* ===== Layout ===== */
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:0;
+  margin-top:0;
+  border-left:1px solid var(--line-strong);
+  border-right:1px solid var(--line-strong);
+  border-bottom:1px solid var(--line-strong);
+}
+
+/* ===== Sidebar / ledger ===== */
+.ledger{
+  border-right:1px solid var(--line-strong);
+  padding:0;
+}
+.ledger-part{
+  padding:20px 22px 8px;
+}
+.ledger-part-title{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  color:var(--blue);
+  text-transform:uppercase;
+  margin:0 0 2px;
+}
+.ledger-part-sub{
+  font-family:'Shippori Mincho', serif;
+  font-size:15px;
+  color:var(--ink);
+  margin:0;
+}
+.ledger-list{
+  list-style:none;
+  margin:0;
+  padding:0 0 18px;
+}
+.ledger-item{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  border-top:1px solid var(--line);
+  padding:13px 22px;
+  cursor:pointer;
+  font-family:'Shippori Mincho', serif;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  transition:background .15s ease, color .15s ease;
+}
+.ledger-item:hover{background:var(--card); color:var(--ink);}
+.ledger-item.active{
+  background:var(--card);
+  color:var(--ink);
+  box-shadow:inset 3px 0 0 var(--stamp);
+}
+.ledger-num{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  color:var(--ink-faint);
+  min-width:28px;
+}
+.ledger-item.active .ledger-num{color:var(--stamp);}
+.ledger-status{
+  margin-left:auto;
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px;
+  letter-spacing:.05em;
+  padding:2px 6px;
+  border:1px solid var(--line-strong);
+  color:var(--ink-faint);
+  white-space:nowrap;
+}
+.ledger-status.rejected{color:var(--stamp); border-color:var(--stamp-soft);}
+.ledger-status.accepted{color:var(--blue); border-color:var(--blue-soft);}
+
+/* ===== Document viewer ===== */
+.doc{
+  padding:44px 48px 60px;
+  position:relative;
+  min-height:520px;
+}
+.doc-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:24px;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:18px;
+  margin-bottom:8px;
+}
+.doc-num{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  color:var(--ink-faint);
+  letter-spacing:.06em;
+  margin:0 0 10px;
+}
+.doc-title{
+  font-family:'Shippori Mincho', serif;
+  font-weight:600;
+  font-size:26px;
+  color:var(--ink);
+  margin:0;
+  line-height:1.4;
+}
+.doc-title .en{
+  display:block;
+  font-family:'EB Garamond', serif;
+  font-style:italic;
+  font-size:14px;
+  font-weight:400;
+  color:var(--ink-soft);
+  margin-top:6px;
+}
+.stamp{
+  flex:0 0 auto;
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  border:3px solid var(--stamp);
+  color:var(--stamp);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:rotate(-9deg);
+  font-family:'Shippori Mincho', serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:.06em;
+  opacity:.88;
+  position:relative;
+  writing-mode:vertical-rl;
+}
+.stamp::before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid var(--stamp);
+  border-radius:50%;
+}
+.stamp.accepted{
+  border-color:var(--blue);
+  color:var(--blue);
+}
+.stamp.accepted::before{border-color:var(--blue);}
+.stamp-caption{
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px;
+  color:var(--ink-faint);
+  text-align:center;
+  margin-top:6px;
+  letter-spacing:.04em;
+}
+
+.section{
+  margin-top:34px;
+}
+.section-label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:14px;
+}
+.section-label::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+.lines{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.line{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  padding:7px 0;
+  border-bottom:1px dotted var(--line);
+  align-items:baseline;
+}
+.line:last-child{border-bottom:none;}
+.jp{
+  font-family:'Shippori Mincho', serif;
+  font-size:16.5px;
+  color:var(--ink);
+  letter-spacing:.01em;
+}
+.en{
+  font-family:'EB Garamond', serif;
+  font-size:15px;
+  color:var(--ink-soft);
+  font-style:italic;
+}
+
+.doc-foot{
+  margin-top:48px;
+  padding-top:20px;
+  border-top:1px solid var(--line-strong);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.foot-note{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  color:var(--ink-faint);
+  line-height:1.7;
+  max-width:70%;
+}
+.pager{
+  display:flex;
+  gap:8px;
+}
+.pager button{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  background:none;
+  border:1px solid var(--line-strong);
+  color:var(--ink-soft);
+  padding:8px 14px;
+  cursor:pointer;
+  letter-spacing:.04em;
+}
+.pager button:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
+.pager button:disabled{opacity:.3; cursor:default;}
+
+footer{
+  margin-top:36px;
+  text-align:center;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  color:var(--ink-faint);
+  letter-spacing:.05em;
+}
+
+@media (max-width:800px){
+  .layout{grid-template-columns:1fr;}
+  .ledger{border-right:none; border-bottom:1px solid var(--line-strong);}
+  .doc{padding:32px 22px 44px;}
+  .line{grid-template-columns:1fr; gap:2px;}
+  h1{font-size:30px;}
+  .doc-head{flex-direction:column;}
+  .foot-note{max-width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">大森カエ ― lyric archive</p>
+    <h1>生活保護シリーズ
+      <span class="en">The Public Assistance Series ― nine songs, two case files</span>
+    </h1>
+    <p class="lede">
+      借金に追い詰められ、公的機関に助けを求めても、たらい回しにされる日々。
+      ようやく生活保護を受給してもなお、制度そのものが新たな壁になる ――
+      受給に至るまでの5曲と、受給後の現実を描く4曲、全9曲を収録。
+    </p>
+    <div class="meta-row">
+      <span>収録曲数 <b>9</b></span>
+      <span>第一部 <b>生活保護になるまで（1〜5）</b></span>
+      <span>第二部 <b>生活保護受給、その先（1〜4）</b></span>
+      <span>言語 <b>日本語 / English</b></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="ledger" id="ledger"></nav>
+    <main class="doc" id="doc"></main>
+  </div>
+
+  <footer>大森カエ ― 生活保護シリーズ ― lyric archive, translated with 師匠</footer>
+</div>
+
+<script>
+const SONGS = [{"part": "I", "num": 1, "title": "生活保護になるまで", "sections": [["Verse 1", [["ポストに届く", "In the mailbox"], ["催促状", "A demand notice"], ["節約生活で", "Living on scraps"], ["空腹と戦う日々", "Days fighting hunger"], ["涙が零れ落ちる", "Tears spill over"]]], ["Verse 2", [["債権回収", "Debt collection"], ["執拗に", "Relentless"], ["電話連絡", "The phone keeps ringing"], ["胃が痛み", "Stomach in knots"], ["眠れない", "Can't sleep"], ["投げ出したい現実", "A reality she wants to throw away"]]], ["Pre-chorus", [["もう限界", "At her limit"], ["思い詰め", "Cornered by her own thoughts"], ["不意に見えた", "Suddenly, she sees it"], ["青空に助け求める", "Reaching up to the blue sky for help"]]], ["Chorus 1", [["行き場のない", "Nowhere left to go"], ["苦しみに", "In this suffering"], ["藻掻き続ける", "She keeps struggling"], ["戻れない過去に", "For a past she can't return to"], ["強い後悔が", "Regret burns"], ["熱く滾る", "Fierce and hot"], ["人の言葉に", "Someone's words"], ["乗せられ", "Carried her away"], ["疑わず信じ", "She believed without doubting"], ["全てを失った", "And lost everything"]]], ["Verse 3", [["騙すより", "Better to be deceived"], ["騙される方が良い", "Than to deceive"], ["綺麗事なら", "Pretty words"], ["いくらでも言える", "Come easy"], ["余裕ある人の", "To those with room to spare"], ["常套文句", "Just their usual line"]]], ["Bridge I", [["届く催促状", "The notices keep coming"], ["通帳の残高", "Her bankbook balance"], ["収入予想額", "Her expected income"], ["返済不能の現実", "The reality: she can't repay"]]], ["Chorus 2", [["助けを求め", "Seeking help"], ["足運ぶけど", "She goes there in person"], ["公的機関は他人事", "But the agency treats it as someone else's problem"], ["知恵も情報も", "Advice, information"], ["一般論", "All generic"], ["相談窓口", "The consultation desk"], ["パンフレット", "Just a pamphlet"], ["手順説明なし", "No explanation of what to do"]]], ["Bridge 2", [["納税し", "She paid her taxes"], ["真面目に生き", "Lived an honest life"], ["ただ一度の", "Just once"], ["浮かれ気分で", "Let herself get carried away"], ["全てを失った", "And lost it all"]]], ["Outro", [["公的機関は", "The agency"], ["聞かれなければ", "Unless you ask"], ["教えない", "Won't tell you"], ["答えるのは", "When they do answer"], ["保証しないと", "They add: \"no guarantees\""], ["念押しした上で", "Making sure that's clear"], ["解決を匂わせる", "Then hint at a possible solution"], ["案内先", "A referral"], ["確言は避ける", "Nothing certain"], ["法律の壁", "The wall of the law"], ["ボランティアじゃない", "\"We're not volunteers\""]]]]}, {"part": "I", "num": 2, "title": "生活保護になるまで", "sections": [["Verse 1", [["1日2食", "Two meals a day"], ["間食は贅沢", "A snack is a luxury"], ["シャワーは1日置き", "Shower every other day"], ["光熱費節約", "Cutting the utility bills"]]], ["Verse 2", [["友に奢られ", "Treated by a friend"], ["愛想笑い", "A forced smile"], ["貯金は4桁", "Savings: four digits"], ["保険未加入", "No insurance"], ["不安な日々", "Days of anxiety"]]], ["Pre-chorus", [["健康第一", "Health comes first, they say"], ["いつか倒れる", "Someday she'll collapse"], ["悪夢に魘される", "Haunted by nightmares"]]], ["Chorus 1", [["自転車操業", "Living hand to mouth"], ["借金返済", "Paying down debt"], ["臨時収入は", "Any extra income"], ["利息で消える", "Swallowed by interest"], ["生活費足りず", "Never enough to live on"], ["借り入れは", "The loans"], ["1.5倍に増えた", "Grown to one and a half times"], ["生活保護は", "Welfare, she's told"], ["まだ働ける", "\"You can still work\""], ["貯金もあると", "And \"you still have savings\""], ["窓口で却下され", "Turned away at the counter"], ["音沙汰なし", "No word since"]]], ["Verse 3", [["新しい", "New"], ["服も買えない", "Can't even buy clothes"], ["色褪せ", "Faded"], ["すり減った", "Worn thin"], ["布生地に", "The fabric"], ["視界滲み", "Her vision blurs"], ["嗚咽漏れる", "A sob escapes"]]], ["Bridge I", [["貧窮して", "Destitute"], ["窓口で相談", "She asks at the counter"], ["たらい回し", "Passed from office to office"], ["疲れて帰宅", "Comes home exhausted"], ["解決しない", "Nothing solved"]]], ["Outro", [["助けはない", "No help comes"], ["建前の案内", "Just an official-sounding referral"], ["パンフレット", "A pamphlet"], ["自分で解決", "\"Figure it out yourself\""], ["取り次ぎなし", "No one to pass it on to"], ["見た目は健康", "Looks healthy on the outside"], ["中身はズタボロ", "Torn apart inside"]]]]}, {"part": "I", "num": 3, "title": "生活保護になるまで", "sections": [["Verse 1", [["風邪で", "A cold sets in"], ["夜も咳", "Coughing all night"], ["断眠", "No sleep"], ["薬価高額", "Medicine, too costly"], ["食事調整", "Meals, rationed"]]], ["Verse 2", [["倦怠感", "Bone-tired"], ["休職負荷", "No leave I can take"], ["掛け持ちバイト", "Juggling shifts"], ["死守", "Holding on"], ["不安定歩行", "Unsteady on her feet"]]], ["Pre-chorus", [["バイト勤務中", "Mid-shift"], ["意識消失", "Consciousness gone"], ["緊急搬送", "Rushed in"], ["治療開始", "Treatment begins"]]], ["Chorus 1", [["入院費不安", "Dreading the bill"], ["退院希望", "She asks to leave"], ["医師却下", "The doctor refuses"], ["退院延期", "Discharge, postponed"], ["貯金削除", "Savings, deleted"], ["無収入", "No income"], ["不安が断眠", "Fear, no sleep"], ["看護師の相槌", "The nurse nods along"], ["医師の丁寧な", "The doctor's polite"], ["専門用語", "jargon"], ["曖昧な経過説明", "a vague account of her progress"]]], ["Verse 3", [["退院間近", "Discharge, near"], ["栄養士から説明", "The dietitian explains"], ["3食の食事", "Three meals a day"], ["肺炎の再燃予防", "to keep pneumonia from returning"]]], ["Bridge I", [["通帳2桁", "Two digits left"], ["バイトクビ", "Fired"], ["明日からの", "From tomorrow"], ["収入ゼロ", "Income: zero"]]], ["Chorus 2", [["窓口再相談", "Back at the counter"], ["受給開始", "Benefits begin"], ["来月支給開始", "First payment, next month"], ["バイト代", "What she earns"], ["受給減額対象", "subject to deduction"], ["医師指導", "Doctor's orders"], ["バイト時間", "Her work hours"], ["大幅削減", "slashed"], ["小遣い僅か", "Barely a yen to spare"]]], ["Bridge 2", [["医師助言", "The doctor's advice"], ["個人事情", "Her circumstances"], ["蚊帳の外", "left out of the picture"], ["栄養重視", "\"Focus on nutrition\""], ["古着使い回し", "Same worn clothes, again"]]], ["Outro", [["貯金ゼロ", "Savings: zero"], ["日雇いバイト", "Day labor"], ["ハローワーク", "The job center"], ["窓口相談", "Asking at the counter"], ["今月の督促状", "This month's notice"], ["2通目", "the second"], ["電話に怯える日々", "Days flinching at the phone"], ["生活保護課", "The welfare office"], ["嗚咽漏らし報告", "She reports it, sobbing"], ["緊急措置", "Emergency aid, at last"]]]]}, {"part": "I", "num": 4, "title": "生活保護になるまで", "sections": [["Verse 1", [["日雇いバイト", "Day labor"], ["米代稼ぐ", "Earning rice money"], ["家賃滞納", "Rent overdue"], ["大家は嫌味", "The landlord sneers"], ["雨漏り修理", "A leak to fix"], ["数日後", "A few days later"]]], ["Verse 2", [["日数詰め", "Packing in the days"], ["無理な労働", "Pushing her body too far"], ["咳の再燃", "The cough returns"], ["熱は見ぬふり", "Fever, willfully ignored"], ["米代確保", "Rice money secured"], ["2食生活", "Two meals a day"]]], ["Pre-chorus", [["微熱発汗", "Low fever, cold sweat"], ["意識遠のき", "Vision fading"], ["路上で転倒", "Collapse on the street"], ["2回目の", "The second"], ["緊急搬送", "emergency transport"]]], ["Chorus 1", [["ベッドの上", "On the bed"], ["視界入る", "Comes into view"], ["点滴台", "An IV stand"], ["消えた目眩", "The dizziness, gone"], ["曖昧な記憶", "Hazy memory"], ["督促状", "The payment notice"], ["脳裏よぎる", "flashes through her mind"], ["医師説明", "The doctor explains"], ["2度目の肺炎", "Pneumonia, a second time"], ["バイト禁止令", "Work, forbidden"]]], ["Bridge I", [["生活保護", "Welfare"], ["受給前", "before it starts"], ["無収入", "No income"], ["督促状", "The notice"]]], ["Chorus 2", [["眠れず", "Can't sleep"], ["病棟散策", "Wandering the ward"], ["看護助手", "A care assistant"], ["話し相手", "someone to talk to"], ["生活状況", "Her situation"], ["督促状", "The notice"], ["涙溢れる", "Tears overflow"], ["看護師説明", "The nurse explains"], ["医師診察", "The doctor's exam"]]], ["Bridge 2", [["ケースワーカー", "A caseworker"], ["説明受け", "hears her out"], ["生活保護課", "The welfare office"], ["話し合い", "A meeting"], ["前回入院中", "During her last stay"], ["問題未解決", "the matter, still unresolved"], ["生活保護課", "The welfare office"], ["看護師 沈黙", "The nurse looks away"]]], ["Outro", [["入院費ゼロ", "Hospital fees: zero"], ["治療費不安", "The cost of care, a worry"], ["なくなり", "now gone"], ["熟睡", "Deep sleep, at last"], ["生活費受給日", "The benefit payment day"], ["合わせて", "lined up with it"], ["退院日決定", "Discharge date, set"], ["肺炎歴2回", "Pneumonia: twice on record"], ["既往記録残り", "The history stays on file"], ["医師から謝罪", "The doctor apologizes"]]]]}, {"part": "I", "num": 5, "title": "生活保護受給まで", "sections": [["Verse 1", [["生活保護", "Welfare assistance"], ["受給開始", "the payments begin"], ["督促状通達", "a demand notice is served"], ["生活支給8倍", "eight times her monthly support"], ["返済不能", "impossible to repay"]]], ["Verse 2", [["着信残る", "Missed calls piling up"], ["債権会社", "the collection agency"], ["連日の連絡", "contacting her day after day"], ["体調不良で", "feeling unwell"], ["布団被る", "she pulls the covers over her head"]]], ["Pre-chorus", [["毎月の", "Every month"], ["督促状", "the demand letters"], ["不安な夜", "uneasy nights"]]], ["Chorus 1", [["5桁借入", "A five-figure loan"], ["親の葬儀代", "for her parent's funeral"], ["3年経て", "three years on"], ["1.5倍返済", "and it's grown to one and a half times"], ["減らない負債", "a debt that never shrinks"], ["逼迫する生活", "a life stretched to breaking"], ["生活保護で安堵", "welfare brings a moment of relief"], ["眠れる夜", "nights she can sleep"], ["呼吸整う日常", "days when her breathing steadies"], ["テレビ見て笑顔", "a smile while watching TV"]]], ["Verse 3", [["肺炎歴2回", "Pneumonia, twice in her history"], ["受給費内", "within what the assistance covers"], ["服の購入", "buying clothes"], ["普通の生活", "an ordinary life"]]], ["Bridge 1", [["1度目の入院", "The first hospitalization"], ["生活貧窮", "destitution"], ["生命危機", "a threat to her life"]]], ["Chorus 2", [["消費者金融", "Consumer finance"], ["簡易手続き", "a simple application"], ["1時内で融資", "a loan within the hour"], ["15%利息", "fifteen percent interest"], ["利息返済で", "repaying just the interest"], ["バイト代浸食", "eats away at her part-time pay"], ["元金減らず", "the principal never falls"], ["返済期限に", "by the repayment deadlines"], ["追われる", "she is hounded"]]], ["Bridge 2", [["繋がった命", "A life barely held onto"], ["声上げなければ", "if you don't raise your voice"], ["助けはない", "no help will come"], ["パンフレット", "a pamphlet"], ["窓口たらい回し", "passed from desk to desk"]]], ["Outro", [["必要な支援", "The support that's needed"], ["届かない社会", "a society where it doesn't reach"], ["問題解決", "solving the problem"], ["糸口の多数は", "the thread out, more often than not"], ["第3者の介入", "is the intervention of a third party"]]]]}, {"part": "II", "num": 1, "title": "生活保護受給～家族の心痛～", "sections": [["Verse 1", [["入所施設", "Care facility"], ["インフレ", "Inflation"], ["生活保護費", "Welfare payment"], ["裁判で", "In court"], ["過小支給判定", "Ruled: underpaid"]]], ["Verse 2", [["1000円", "1,000 yen"], ["増額支給", "Increase granted"], ["施設増額費", "Facility fee hike"], ["不足金は", "The shortfall"], ["内職補填", "Covered by side work"]]], ["Pre-chorus", [["制度規制", "System restrictions"], ["受給者", "Recipients"], ["倹約生活", "A life of thrift"]]], ["Chorus 1", [["気軽に受給", "Easy to receive, they say"], ["明快広告", "Bright, clear ads"], ["必要最低限", "Bare minimum"], ["余剰金", "Any surplus"], ["捻出困難", "Impossible to scrape together"], ["1日内職", "A day of side work"], ["賃金5千円", "Five thousand yen"], ["満たず", "Not even that"]]], ["Verse 3", [["申告なし", "Undeclared"], ["現物援助", "Aid in kind"], ["家族の誠意", "A family's sincerity"], ["善悪周知の中", "Knowing right from wrong"], ["心痛める", "The heart aches"]]], ["Bridge I", [["議員バッジ", "Diet member's pin"], ["優美生活", "A life of grace"], ["老いは", "While aging"], ["生活保護", "Lives on welfare"]]], ["Chorus 2", [["現物援助", "Aid in kind"], ["露見", "Discovered"], ["生活費減給", "Benefits cut"], ["ケースワーカー", "The caseworker"], ["苦渋の決断", "A bitter decision"], ["法整備", "Legal reform"], ["遅延招く", "Delayed again"], ["歯がゆい現実", "A maddening reality"]]], ["Bridge 2", [["有権者", "The voters"], ["優先順位", "Priorities"], ["判断能力", "Judgment"], ["欠如", "Lacking"], ["人気優先", "Popularity first"], ["選挙票獲得", "Chasing votes"], ["国民は涙呑む", "The people swallow their tears"]]], ["Outro", [["偉大なる", "So great, so grand"], ["発言力", "Their voice"], ["行動能力", "Their power to act"], ["欠如", "Nowhere to be found"], ["光る月給", "A shining salary"], ["国会答弁", "Diet floor answers"], ["自己防衛", "Self-preservation"], ["完璧守備", "Airtight defense"]]]]}, {"part": "II", "num": 2, "title": "生活保護受給～歩ける認知症～", "sections": [["Verse 1", [["認知機能低下", "Cognitive decline"], ["検査異常なし", "Tests show nothing"], ["境界型", "Borderline"], ["動く認知症", "Dementia that moves"]]], ["Verse 2", [["コンプライアンス", "Compliance"], ["外出希望者", "Wants to go outside"], ["施設限定", "Facility says no"], ["尊厳重視", "Dignity, they claim"]]], ["Pre-chorus", [["若き", "Once young"], ["高額納税者", "A high taxpayer"], ["老いて", "Now old"], ["生活保護受給", "Living on welfare"]]], ["Chorus 1", [["老若男女", "Young and old, all"], ["貧窮リスク", "At risk of poverty"], ["世界情勢", "World affairs"], ["時代が翻弄", "Tossed by the times"], ["望まぬ生活", "A life unwanted"], ["冷徹無人", "Cold, unmanned"], ["世襲", "Inherited"]]], ["Verse 3", [["廃棄不可", "Cannot be discarded"], ["自尊心", "Self-respect"], ["行動制限", "Movement restricted"], ["尊厳優先社会", "A society that claims to prize dignity"]]], ["Bridge I", [["入所施設", "Inside the facility"], ["外出可", "Outings allowed"], ["ストレス限定", "Stress, contained"]]], ["Chorus 2", [["生活安定", "Stability of life"], ["人類共通", "A common human need"], ["脅かす", "Threatened"], ["制度規制", "By system restrictions"], ["微々たる支援", "Support, barely there"], ["拒否制度", "A system that refuses"], ["家族の涙", "A family's tears"]]], ["Bridge 2", [["国民貧窮生活", "A nation living in want"], ["政策要因", "Caused by policy"], ["世代交代", "Generations change"], ["栄光継承", "Glory, inherited"], ["2代目有権者", "Second-generation voters"]]], ["Bridge 2（反復）", [["国民貧窮生活", "A nation living in want"], ["政策要因", "Caused by policy"], ["世代交代", "Generations change"], ["栄光継承", "Glory, inherited"], ["2代目有権者", "Second-generation voters"]]], ["Outro", [["生活保護", "Welfare"], ["長所公開", "Its merits on display"], ["自由奪う", "Freedom, taken"], ["制度条項", "By the fine print of the law"]]]]}, {"part": "II", "num": 3, "title": "生活保護受給～制度の壁～", "sections": [["Verse 1", [["生活保護", "On welfare"], ["内職が小遣い", "Side work, her only allowance"], ["月3千円", "Three thousand yen a month"]]], ["Verse 2", [["歩行可", "Can still walk"], ["記銘力低下", "Memory retention, declining"], ["短期記憶低下", "Short-term memory, fading"]]], ["Pre-chorus", [["長谷川式", "The Hasegawa scale"], ["簡易知能評価", "A quick cognitive test"], ["スケール22点", "Score: 22"]]], ["Chorus 1", [["施設費増額で", "Facility fees go up, so"], ["散歩", "Walks"], ["菓子", "Sweets"], ["TV", "TV"], ["削減", "Cut"], ["クーラーOFF", "Air conditioner, off"], ["軽度熱中症", "Mild heat exhaustion"]]], ["Verse 3", [["生活保護法", "Public Assistance Act"], ["第3条", "Article 3"], ["健康的生活", "A healthy life"], ["維持基準不明", "Standard undefined"]]], ["Bridge I", [["毎月支援不可", "Monthly support: not allowed"], ["差し入れ可", "Gifts: allowed"], ["家族意向", "A family's wishes"], ["禁止令", "Forbidden by decree"]]], ["Chorus 2", [["内職収入", "Her side-work wages"], ["全額", "Every yen of it"], ["施設増額納入", "Paid straight to the facility's hike"], ["家族支援", "A family trying to help"], ["制度禁止条項あり", "Blocked by the rules"], ["生活保護課", "The welfare office"], ["打つ手なし", "Nothing they can do"]]], ["Bridge 2", [["金のバッジ", "A gold pin on the chest"], ["胸飾る", "Worn with pride"], ["有権者", "The voters"], ["月額120万円強", "Over 1.2 million yen a month"], ["将来設計", "Their future, secured"], ["安泰", "Safe and sound"]]], ["Outro", [["施設増額費", "The facility's hike"], ["家族負担", "Falls on the family"], ["制度禁止", "System says no"], ["睡眠障害発生", "Sleep disorder, onset"]]]]}, {"part": "II", "num": 4, "title": "生活保護受給～法整備～", "sections": [["Verse 1", [["生活保護", "Public assistance"], ["ケースワーカー", "The caseworker"], ["本音と建前", "What she feels, what she says"], ["同情と非難", "Sympathy and blame"], ["ストレス増大", "Stress, mounting"]]], ["Verse 2", [["尊厳死守", "Defending dignity"], ["法の壁", "Against the wall of law"], ["崩壊する", "Crumbling"], ["理想像", "The ideal she once held"], ["一職員", "One single worker"]]], ["Pre-chorus", [["疾病", "Illness"], ["経済", "Economics"], ["関連事項", "All tied together"], ["貧窮誘発", "Breeding poverty"]]], ["Chorus 1", [["第一条", "Article One"], ["人望集約", "Trust, concentrated"], ["第二条", "Article Two"], ["目前問題", "The problem right in front of her"], ["着手", "She takes it on"], ["解決期限なし", "No deadline to solve it"]]], ["Verse 3", [["目標掲げ", "Holding up a goal"], ["挑む", "Taking it on"], ["職員", "The worker"], ["周囲同化", "Absorbed by the surroundings"], ["朽ちる", "Decaying"], ["理想郷", "The utopia she imagined"]]], ["Bridge I", [["法整備", "Legal reform"], ["数年経過", "Years go by"], ["やるせない", "Nothing to show for it"], ["ケースワーカー", "The caseworker"], ["成す術なし", "Powerless"]]], ["Chorus 2", [["第三条", "Article Three"], ["演説は", "The speeches"], ["巧み技", "Masterfully crafted"], ["第四条", "Article Four"], ["非難は", "The criticism"], ["仮面対応", "Handled behind a mask"], ["舞台降下", "Step off the stage"], ["優先", "That's the priority"]]], ["Bridge 2", [["生理欲求", "Physiological needs"], ["安全欲求", "Safety needs"], ["達成", "Met"], ["叶わぬ", "But never"], ["承認欲求", "The need to be recognized"]]], ["Outro", [["少額支援", "A little support"], ["家族の希望", "A family's hope"], ["法制度未達", "The law falls short"], ["ケースワーカー", "The caseworker"], ["同情余地", "Room to sympathize"], ["介入不可", "No room to act"]]]]}];
+
+let current = 0;
+
+function partLabel(p){
+  return p === "I" ? "生活保護になるまで" : "生活保護受給、その先";
+}
+
+function renderLedger(){
+  const el = document.getElementById('ledger');
+  el.innerHTML = "";
+  ["I","II"].forEach(part=>{
+    const group = SONGS.map((s,i)=>({s,i})).filter(x=>x.s.part===part);
+    if(!group.length) return;
+
+    const partDiv = document.createElement('div');
+    partDiv.className = 'ledger-part';
+    partDiv.innerHTML = `
+      <p class="ledger-part-title">第${part==="I"?"一":"二"}部 ${part}</p>
+      <p class="ledger-part-sub">${partLabel(part)}</p>
+    `;
+    el.appendChild(partDiv);
+
+    const ul = document.createElement('ul');
+    ul.className = 'ledger-list';
+    group.forEach(({s,i})=>{
+      const li = document.createElement('li');
+      li.className = 'ledger-item' + (i===current ? ' active' : '');
+      const statusClass = part==="I" ? 'rejected' : 'accepted';
+      const statusText = part==="I" ? '却下' : '受理';
+      li.innerHTML = `
+        <span class="ledger-num">${part}-${s.num}</span>
+        <span>${s.title}</span>
+        <span class="ledger-status ${statusClass}">${statusText}</span>
+      `;
+      li.addEventListener('click', ()=>{ current = i; render(); window.scrollTo({top:0, behavior:'smooth'}); });
+      ul.appendChild(li);
+    });
+    el.appendChild(ul);
+  });
+}
+
+function renderDoc(){
+  const s = SONGS[current];
+  const el = document.getElementById('doc');
+  const isPartI = s.part === "I";
+  const stampWord = isPartI ? "却下" : "受理";
+  const stampClass = isPartI ? "" : "accepted";
+  const docNo = `第${s.part}部 — 記録番号 ${s.part}-${String(s.num).padStart(2,'0')}`;
+
+  let sectionsHtml = "";
+  s.sections.forEach(([label, lines])=>{
+    let linesHtml = "";
+    lines.forEach(([jp,en])=>{
+      linesHtml += `<div class="line"><span class="jp">${jp}</span><span class="en">${en}</span></div>`;
+    });
+    sectionsHtml += `
+      <div class="section">
+        <p class="section-label">${label}</p>
+        <div class="lines">${linesHtml}</div>
+      </div>
+    `;
+  });
+
+  el.innerHTML = `
+    <div class="doc-head">
+      <div>
+        <p class="doc-num">${docNo}</p>
+        <h2 class="doc-title">${s.title}
+          <span class="en">${isPartI ? "Before assistance" : "After assistance"} — track ${s.num} of ${isPartI ? 5 : 4}</span>
+        </h2>
+      </div>
+      <div>
+        <div class="stamp ${stampClass}">${stampWord}</div>
+        <p class="stamp-caption">${isPartI ? "welfare office" : "casework record"}</p>
+      </div>
+    </div>
+    ${sectionsHtml}
+    <div class="doc-foot">
+      <p class="foot-note">日本語詞 ／ 大森カエ　英訳 ／ Claude　※ 対訳は逐語訳ではなく、行間の意味を汲んだ意訳です。</p>
+      <div class="pager">
+        <button id="prevBtn">← 前の記録</button>
+        <button id="nextBtn">次の記録 →</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===SONGS.length-1;
+  document.getElementById('prevBtn').addEventListener('click', ()=>{ if(current>0){current--; render(); window.scrollTo({top:0,behavior:'smooth'});} });
+  document.getElementById('nextBtn').addEventListener('click', ()=>{ if(current<SONGS.length-1){current++; render(); window.scrollTo({top:0,behavior:'smooth'});} });
+}
+
+function render(){
+  renderLedger();
+  renderDoc();
+}
+
+render();
+</script>
+</body>
+</html>
