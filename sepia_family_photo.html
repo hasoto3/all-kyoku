@@ -1,0 +1,3653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セピア色の家族写真 〜Unknown facts〜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Noto+Serif+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@300;400&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #e9dfc9;
+  --bg-deep: #ddd0b2;
+  --paper: #f6efdd;
+  --paper-edge: #d8c9a3;
+  --ink: #4a3b2a;
+  --ink-soft: #8a7658;
+  --dim: #a4906c;
+  --en: #8c7a5c;
+  --accent: #7a4a30;
+  --accent-soft: #a67451;
+  --gold: #9c7a3f;
+  --shadow: rgba(74, 55, 30, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(154,120,63,0.10), transparent 60%),
+    radial-gradient(ellipse 90% 60% at 20% 100%, rgba(122,74,48,0.08), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Noto Serif JP", serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.9;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+/* ---------- Header ---------- */
+.masthead {
+  padding: 96px 0 52px;
+  text-align: center;
+  border-bottom: 1px dashed var(--paper-edge);
+  margin-bottom: 8px;
+}
+
+.masthead-eyebrow {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: var(--accent-soft);
+  margin: 0 0 6px;
+  transform: rotate(-1deg);
+}
+
+.masthead-title {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: 0.08em;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+
+.masthead-title-en {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+}
+
+.masthead-note {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--ink-soft);
+  max-width: 440px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ---------- TOC ---------- */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 36px 0 52px;
+  border-bottom: 1px dashed var(--paper-edge);
+}
+
+.toc-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid var(--paper-edge);
+  border-radius: 2px;
+  background: var(--paper);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.toc-link:hover {
+  background: #fff9ea;
+  transform: translateY(-2px);
+}
+
+.toc-no {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Songs ---------- */
+.chapter-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 0 8px;
+}
+
+.chapter-num {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.chapter-label {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+  letter-spacing: 0.08em;
+}
+
+.chapter-span {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+}
+
+.songs {
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+}
+
+.song {
+  display: grid;
+  gap: 30px;
+}
+
+/* Polaroid-style photo marker */
+.photo {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-frame {
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  padding: 14px 14px 20px;
+  box-shadow: 0 10px 24px var(--shadow), 0 2px 6px rgba(74,55,30,0.15);
+  transform: rotate(var(--tilt));
+  width: 220px;
+}
+
+.photo-plate {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.5), transparent 60%),
+    linear-gradient(160deg, #cdb98d 0%, #a9895c 45%, #8a6b45 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    rgba(74,55,30,0.05) 0px,
+    rgba(74,55,30,0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.photo-no {
+  position: relative;
+  z-index: 1;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 26px;
+  color: #f6efdd;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  letter-spacing: 0.05em;
+}
+
+.photo-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: rgba(246,239,221,0.55);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.photo-corner--tl { top: -1px; left: -1px; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.photo-corner--tr { top: -1px; right: -1px; clip-path: polygon(100% 0, 100% 100%, 0 0); }
+.photo-corner--bl { bottom: -1px; left: -1px; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.photo-corner--br { bottom: -1px; right: -1px; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+
+.photo-caption {
+  font-family: "Caveat", cursive;
+  font-size: 17px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+.song-body {
+  max-width: 620px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.stanzas {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.stanza {
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  border-radius: 2px;
+  padding: 22px 24px 24px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+}
+
+.tag {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--paper-edge);
+}
+
+.line { margin-bottom: 12px; }
+.line:last-child { margin-bottom: 0; }
+
+.jp {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-size: 15.5px;
+  color: var(--ink);
+  margin: 0 0 3px;
+  letter-spacing: 0.01em;
+}
+
+.en {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--en);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.en--solo {
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.line--en-only { margin-top: -2px; }
+
+.line--moon {
+  position: relative;
+  padding-left: 4px;
+  border-left: 2px solid rgba(90, 108, 148, 0.35);
+  margin-left: -4px;
+}
+
+.moon-icon {
+  width: 12px;
+  height: 12px;
+  fill: #5a6c94;
+  opacity: 0.75;
+  vertical-align: -1px;
+  margin-right: 6px;
+}
+
+.line--moon .jp {
+  color: var(--ink);
+}
+
+footer.colophon {
+  text-align: center;
+  padding-top: 44px;
+  border-top: 1px dashed var(--paper-edge);
+}
+
+.colophon p {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .masthead { padding: 64px 0 40px; }
+  .photo-frame { width: 180px; }
+  .stanza { padding: 18px 16px 20px; }
+  .jp { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="masthead">
+      <p class="masthead-eyebrow">大森カエ</p>
+      <h1 class="masthead-title">セピア色の家族写真</h1>
+      <p class="masthead-title-en">Unknown facts</p>
+      <p class="masthead-note">笑顔の写真の裏にあった、名もなき日々。<br>曲にはあえてタイトルをつけていません。</p>
+    </header>
+
+    <nav class="toc">
+      <a class="toc-link" href="#track-01"><span class="toc-no">No.01</span></a>
+<a class="toc-link" href="#track-02"><span class="toc-no">No.02</span></a>
+<a class="toc-link" href="#track-03"><span class="toc-no">No.03</span></a>
+<a class="toc-link" href="#track-04"><span class="toc-no">No.04</span></a>
+<a class="toc-link" href="#track-05"><span class="toc-no">No.05</span></a>
+<a class="toc-link" href="#track-06"><span class="toc-no">No.06</span></a>
+<a class="toc-link" href="#track-07"><span class="toc-no">No.07</span></a>
+<a class="toc-link" href="#track-08"><span class="toc-no">No.08</span></a>
+<a class="toc-link" href="#track-09"><span class="toc-no">No.09</span></a>
+<a class="toc-link" href="#track-10"><span class="toc-no">No.10</span></a>
+<a class="toc-link" href="#track-11"><span class="toc-no">No.11</span></a>
+<a class="toc-link" href="#track-12"><span class="toc-no">No.12</span></a>
+<a class="toc-link" href="#track-13"><span class="toc-no">No.13</span></a>
+    </nav>
+
+    <div class="songs">
+      
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 1</span>
+      <span class="chapter-label">第一部</span>
+      <span class="chapter-span">No.01 – 02</span>
+    </div>
+
+    <section class="song" id="track-01">
+      <div class="photo" style="--tilt: -1.6deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 01</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Intro / Pre-chorus</p>
+            <div class="line">
+              <p class="jp">大切な 貴方へ</p>
+              <p class="en">To you, precious one</p>
+            </div>
+<div class="line">
+              <p class="jp">愛をこめて</p>
+              <p class="en">with all my love</p>
+            </div>
+<div class="line">
+              <p class="jp">弱い僕だけど</p>
+              <p class="en">I&#x27;m weak, but</p>
+            </div>
+<div class="line">
+              <p class="jp">いつか笑えるように</p>
+              <p class="en">so that someday we can smile</p>
+            </div>
+<div class="line">
+              <p class="jp">守りたい</p>
+              <p class="en">I want to protect you</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">母が泣き叫び</p>
+              <p class="en">Mother screaming, crying</p>
+            </div>
+<div class="line">
+              <p class="jp">父が怒鳴り</p>
+              <p class="en">Father shouting</p>
+            </div>
+<div class="line">
+              <p class="jp">家中に</p>
+              <p class="en">Through the house</p>
+            </div>
+<div class="line">
+              <p class="jp">乾いた音が</p>
+              <p class="en">a dry, hollow sound</p>
+            </div>
+<div class="line">
+              <p class="jp">鳴り響いた</p>
+              <p class="en">echoed</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">セピア色の</p>
+              <p class="en">A sepia-toned</p>
+            </div>
+<div class="line">
+              <p class="jp">家族写真</p>
+              <p class="en">family photograph</p>
+            </div>
+<div class="line">
+              <p class="jp">優しい</p>
+              <p class="en">gentle</p>
+            </div>
+<div class="line">
+              <p class="jp">笑み浮かべる</p>
+              <p class="en">smiles on their faces</p>
+            </div>
+<div class="line">
+              <p class="jp">母と父</p>
+              <p class="en">mother and father</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">僕は真面目に</p>
+              <p class="en">I stay serious</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は口角上げ</p>
+              <p class="en">my sister lifts the corners of her mouth</p>
+            </div>
+<div class="line">
+              <p class="jp">笑っている</p>
+              <p class="en">smiling</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">優しく</p>
+              <p class="en">Gentle</p>
+            </div>
+<div class="line">
+              <p class="jp">よく笑って</p>
+              <p class="en">always laughing</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">My beloved older sister</p>
+            </div>
+<div class="line">
+              <p class="jp">いつしか</p>
+              <p class="en">but before long</p>
+            </div>
+<div class="line">
+              <p class="jp">甘い匂い</p>
+              <p class="en">a sweet scent</p>
+            </div>
+<div class="line">
+              <p class="jp">纏わりつき</p>
+              <p class="en">clung to her</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の頭に</p>
+              <p class="en">and in my head</p>
+            </div>
+<div class="line">
+              <p class="jp">アラート</p>
+              <p class="en">an alarm</p>
+            </div>
+<div class="line">
+              <p class="jp">鳴り響き（ to sound</p>
+            </div>
+<div class="line">
+              <p class="jp">始めた</p>
+              <p class="en">began</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">不意に</p>
+              <p class="en">Suddenly</p>
+            </div>
+<div class="line">
+              <p class="jp">目が覚め</p>
+              <p class="en">I wake</p>
+            </div>
+<div class="line">
+              <p class="jp">聞こえる</p>
+              <p class="en">I hear it</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の泣き声</p>
+              <p class="en">my sister&#x27;s crying</p>
+            </div>
+<div class="line">
+              <p class="jp">耳塞いだ</p>
+              <p class="en">I covered my ears</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">お早う</p>
+              <p class="en">&quot;Good morning&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">交わす言葉</p>
+              <p class="en">the words we exchange</p>
+            </div>
+<div class="line">
+              <p class="jp">穏やかな朝</p>
+              <p class="en">a calm, quiet morning</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">家に 帰らない姉</p>
+              <p class="en">My sister doesn&#x27;t come home</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">Going to the city at night</p>
+            </div>
+<div class="line">
+              <p class="jp">知らない</p>
+              <p class="en">I don&#x27;t know</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の姿</p>
+              <p class="en">a version of her</p>
+            </div>
+<div class="line">
+              <p class="jp">色薄い</p>
+              <p class="en">pale-tinted</p>
+            </div>
+<div class="line">
+              <p class="jp">リップクリーム</p>
+              <p class="en">lip balm</p>
+            </div>
+<div class="line">
+              <p class="jp">誰もが</p>
+              <p class="en">everyone</p>
+            </div>
+<div class="line">
+              <p class="jp">目を見張る</p>
+              <p class="en">stare</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">泣く僕に</p>
+              <p class="en">At me crying</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は怒り</p>
+              <p class="en">my sister got angry</p>
+            </div>
+<div class="line">
+              <p class="jp">夜の街に</p>
+              <p class="en">and into the night streets</p>
+            </div>
+<div class="line">
+              <p class="jp">消えた</p>
+              <p class="en">she disappeared</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">なぜ</p>
+              <p class="en">Why</p>
+            </div>
+<div class="line">
+              <p class="jp">人は変わるのか</p>
+              <p class="en">do people change?</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">That&#x27;s what</p>
+            </div>
+<div class="line">
+              <p class="jp">知りたかった</p>
+              <p class="en">I wanted to know</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-02">
+      <div class="photo" style="--tilt: 1.2deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 02</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">真夜中</p>
+              <p class="en">In the dead of night</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋から</p>
+              <p class="en">from her room</p>
+            </div>
+<div class="line">
+              <p class="jp">声押し殺し</p>
+              <p class="en">holding back her voice</p>
+            </div>
+<div class="line">
+              <p class="jp">泣いて</p>
+              <p class="en">crying</p>
+            </div>
+<div class="line">
+              <p class="jp">出て来た姉</p>
+              <p class="en">my sister came out</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">よれた</p>
+              <p class="en">Her nightclothes</p>
+            </div>
+<div class="line">
+              <p class="jp">寝間着</p>
+              <p class="en">rumpled</p>
+            </div>
+<div class="line">
+              <p class="jp">胸元押さえ</p>
+              <p class="en">clutching them at her chest</p>
+            </div>
+<div class="line">
+              <p class="jp">僕を</p>
+              <p class="en">she looked</p>
+            </div>
+<div class="line">
+              <p class="jp">見つめた</p>
+              <p class="en">straight at me</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">震える体</p>
+              <p class="en">A trembling body</p>
+            </div>
+<div class="line">
+              <p class="jp">乱れた髪</p>
+              <p class="en">disheveled hair</p>
+            </div>
+<div class="line">
+              <p class="jp">何も言わず</p>
+              <p class="en">without a word</p>
+            </div>
+<div class="line">
+              <p class="jp">立ち去った</p>
+              <p class="en">she walked away</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">酒は魔物</p>
+              <p class="en">&quot;Alcohol is a demon&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">母の口癖</p>
+              <p class="en">Mother&#x27;s usual line</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">The usual words</p>
+            </div>
+<div class="line">
+              <p class="jp">大きな声</p>
+              <p class="en">The usual words</p>
+            </div>
+<div class="line">
+              <p class="jp">張り上げ</p>
+              <p class="en">raising his voice</p>
+            </div>
+<div class="line">
+              <p class="jp">握り拳</p>
+              <p class="en">loud a clenched fist</p>
+            </div>
+<div class="line">
+              <p class="jp">上げる父</p>
+              <p class="en">Father raises it</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">母が泣く</p>
+              <p class="en">Mother crying</p>
+            </div>
+<div class="line">
+              <p class="jp">それが</p>
+              <p class="en">that was</p>
+            </div>
+<div class="line">
+              <p class="jp">姉と僕の</p>
+              <p class="en">the signal</p>
+            </div>
+<div class="line">
+              <p class="jp">避難</p>
+              <p class="en">that told my sister and me</p>
+            </div>
+<div class="line">
+              <p class="jp">知らせる</p>
+              <p class="en">it was time</p>
+            </div>
+<div class="line">
+              <p class="jp">合図</p>
+              <p class="en">to take cover</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">朝には</p>
+              <p class="en">By morning</p>
+            </div>
+<div class="line">
+              <p class="jp">穏やかな会話</p>
+              <p class="en">calm conversation</p>
+            </div>
+<div class="line">
+              <p class="jp">いつもの光景</p>
+              <p class="en">the usual scene</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">涙溜め</p>
+              <p class="en">Eyes welling with tears</p>
+            </div>
+<div class="line">
+              <p class="jp">父を睨む母</p>
+              <p class="en">Mother glaring at Father</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">A marital spat?</p>
+            </div>
+<div class="line">
+              <p class="jp">嫌な</p>
+              <p class="en">a heavy</p>
+            </div>
+<div class="line">
+              <p class="jp">雰囲気</p>
+              <p class="en">ugly air</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">I</p>
+            </div>
+<div class="line">
+              <p class="jp">立ち去り</p>
+              <p class="en">walk away</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋に</p>
+              <p class="en">to my room</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">姉は僕を</p>
+              <p class="en">My sister</p>
+            </div>
+<div class="line">
+              <p class="jp">見つめ</p>
+              <p class="en">looked at me</p>
+            </div>
+<div class="line">
+              <p class="jp">家を後にした</p>
+              <p class="en">and left the house behind</p>
+            </div>
+<div class="line">
+              <p class="jp">何かを</p>
+              <p class="en">as if</p>
+            </div>
+<div class="line">
+              <p class="jp">言いたげに</p>
+              <p class="en">she wanted to say something</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">主をなくした</p>
+              <p class="en">My sister&#x27;s room</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の部屋</p>
+              <p class="en">now without its owner</p>
+            </div>
+<div class="line">
+              <p class="jp">母は</p>
+              <p class="en">Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">何も言わず</p>
+              <p class="en">said nothing</p>
+            </div>
+<div class="line">
+              <p class="jp">夜 泣いていた</p>
+              <p class="en">but at night, she wept</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 2</span>
+      <span class="chapter-label">第二部</span>
+      <span class="chapter-span">No.03 – 05</span>
+    </div>
+
+    <section class="song" id="track-03">
+      <div class="photo" style="--tilt: -0.9deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 03</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">夜になると</p>
+              <p class="en">When night falls</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は泣く</p>
+              <p class="en">my sister cries</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は布団被り</p>
+              <p class="en">I pull the blanket over my head</p>
+            </div>
+<div class="line">
+              <p class="jp">夜明けを待つ</p>
+              <p class="en">and wait for dawn</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">母は何も</p>
+              <p class="en">Mother says</p>
+            </div>
+<div class="line">
+              <p class="jp">言わず</p>
+              <p class="en">nothing at all</p>
+            </div>
+<div class="line">
+              <p class="jp">僕はいつも</p>
+              <p class="en">and I&#x27;m the one</p>
+            </div>
+<div class="line">
+              <p class="jp">怒られた</p>
+              <p class="en">who always gets scolded</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">友達は</p>
+              <p class="en">My friends</p>
+            </div>
+<div class="line">
+              <p class="jp">僕が羨ましい</p>
+              <p class="en">envy me</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の弟で</p>
+              <p class="en">for being her brother</p>
+            </div>
+<div class="line">
+              <p class="jp">そう言った</p>
+              <p class="en">was said.</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">仕草に</p>
+              <p class="en">Caught up</p>
+            </div>
+<div class="line">
+              <p class="jp">魅入られる</p>
+              <p class="en">in the way she moves</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">She is a wonderful woman.</p>
+            </div>
+<div class="line">
+              <p class="jp">時々</p>
+              <p class="en">sometimes</p>
+            </div>
+<div class="line">
+              <p class="jp">姉を見て</p>
+              <p class="en">I look at her</p>
+            </div>
+<div class="line">
+              <p class="jp">胸が高鳴る</p>
+              <p class="en">and my chest pounds</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">Is something</p>
+            </div>
+<div class="line">
+              <p class="jp">異常なのか</p>
+              <p class="en">wrong with me?</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">人当たり良く</p>
+              <p class="en">Everyone says</p>
+            </div>
+<div class="line">
+              <p class="jp">優しいと</p>
+              <p class="en">how kind</p>
+            </div>
+<div class="line">
+              <p class="jp">言われる父</p>
+              <p class="en">how easygoing my father is</p>
+            </div>
+<div class="line">
+              <p class="jp">夜が怖かった</p>
+              <p class="en">but the night terrified me</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">気付けなかった</p>
+              <p class="en">I couldn&#x27;t see it</p>
+            </div>
+<div class="line">
+              <p class="jp">気付きたく</p>
+              <p class="en">I didn&#x27;t want</p>
+            </div>
+<div class="line">
+              <p class="jp">なかった</p>
+              <p class="en">to see it</p>
+            </div>
+<div class="line">
+              <p class="jp">あの頃</p>
+              <p class="en">back then</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">母は</p>
+              <p class="en">Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">姉を怒る</p>
+              <p class="en">gets angry at my sister</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">My older sister isn&#x27;t at fault.</p>
+            </div>
+<div class="line">
+              <p class="jp">理由も</p>
+              <p class="en">not even knowing</p>
+            </div>
+<div class="line">
+              <p class="jp">分からず</p>
+              <p class="en">why</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は母に</p>
+              <p class="en">I got angry</p>
+            </div>
+<div class="line">
+              <p class="jp">怒り</p>
+              <p class="en">at Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は泣いた</p>
+              <p class="en">and my sister cried</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">仄かな</p>
+              <p class="en">A faint</p>
+            </div>
+<div class="line">
+              <p class="jp">甘い匂い</p>
+              <p class="en">sweet scent</p>
+            </div>
+<div class="line">
+              <p class="jp">姉が通る度</p>
+              <p class="en">every time she passed by</p>
+            </div>
+<div class="line">
+              <p class="jp">ドキドキした</p>
+              <p class="en">my heart raced</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">夜 姉は泣く</p>
+              <p class="en">At night my sister cries</p>
+            </div>
+<div class="line">
+              <p class="jp">何かが</p>
+              <p class="en">something</p>
+            </div>
+<div class="line">
+              <p class="jp">ぶつかる</p>
+              <p class="en">crashes</p>
+            </div>
+<div class="line">
+              <p class="jp">物音で</p>
+              <p class="en">the sound</p>
+            </div>
+<div class="line">
+              <p class="jp">目覚めた僕</p>
+              <p class="en">wakes me</p>
+            </div>
+<div class="line">
+              <p class="jp">朝が長い日々</p>
+              <p class="en">days where morning never comes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-04">
+      <div class="photo" style="--tilt: 1.8deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 04</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">姉が僕に</p>
+              <p class="en">My sister</p>
+            </div>
+<div class="line">
+              <p class="jp">呟いた</p>
+              <p class="en">whispered to me</p>
+            </div>
+<div class="line">
+              <p class="jp">この家に</p>
+              <p class="en">&quot;I don&#x27;t want</p>
+            </div>
+<div class="line">
+              <p class="jp">いたくない</p>
+              <p class="en">to stay in this house&quot;</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">撫でられた</p>
+              <p class="en">As she stroked</p>
+            </div>
+<div class="line">
+              <p class="jp">頭に</p>
+              <p class="en">my head</p>
+            </div>
+<div class="line">
+              <p class="jp">一縷の</p>
+              <p class="en">a single thread</p>
+            </div>
+<div class="line">
+              <p class="jp">水が滴る</p>
+              <p class="en">of water dripped down</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">姉の言葉</p>
+              <p class="en">Not understanding</p>
+            </div>
+<div class="line">
+              <p class="jp">意味分からず</p>
+              <p class="en">what my sister meant</p>
+            </div>
+<div class="line">
+              <p class="jp">泣いた僕（ I cried</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">優しい姉</p>
+              <p class="en">My gentle sister</p>
+            </div>
+<div class="line">
+              <p class="jp">胸高鳴る僕</p>
+              <p class="en">my racing heart</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">It was scary.</p>
+            </div>
+<div class="line">
+              <p class="jp">笑顔の父</p>
+              <p class="en">Father, smiling by day</p>
+            </div>
+<div class="line">
+              <p class="jp">夜が来れば</p>
+              <p class="en">but when night came</p>
+            </div>
+<div class="line">
+              <p class="jp">吊り上がる目</p>
+              <p class="en">his eyes narrowed</p>
+            </div>
+<div class="line">
+              <p class="jp">見開き</p>
+              <p class="en">then went wide</p>
+            </div>
+<div class="line">
+              <p class="jp">皆が怯えた</p>
+              <p class="en">and everyone flinched</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">首についた 　赤い痣</p>
+              <p class="en">A red bruise on her neck</p>
+            </div>
+<div class="line">
+              <p class="jp">鏡の前で</p>
+              <p class="en">standing before the mirror</p>
+            </div>
+<div class="line">
+              <p class="jp">泣いた姉</p>
+              <p class="en">my sister cried</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">姉が消えた日</p>
+              <p class="en">The day my sister disappeared</p>
+            </div>
+<div class="line">
+              <p class="jp">家は</p>
+              <p class="en">the house</p>
+            </div>
+<div class="line">
+              <p class="jp">静かだった</p>
+              <p class="en">was quiet</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">夜の街</p>
+              <p class="en">Through the night streets</p>
+            </div>
+<div class="line">
+              <p class="jp">姉を探した</p>
+              <p class="en">I searched for her</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">I missed you.</p>
+            </div>
+<div class="line">
+              <p class="jp">夜風に</p>
+            </div>
+<div class="line">
+              <p class="jp">靡く髪</p>
+              <p class="en">her hair  trailing in the night wind</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は</p>
+              <p class="en">my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">美しく</p>
+              <p class="en">was beautiful</p>
+            </div>
+<div class="line">
+              <p class="jp">どこか</p>
+              <p class="en">and somehow</p>
+            </div>
+<div class="line">
+              <p class="jp">寂しそうで</p>
+              <p class="en">looked so lonely</p>
+            </div>
+<div class="line">
+              <p class="jp">胸詰まった</p>
+              <p class="en">my chest tightened</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">僕に</p>
+              <p class="en">to me</p>
+            </div>
+<div class="line">
+              <p class="jp">変わらないで</p>
+              <p class="en">&quot;Don&#x27;t change&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">そう言った姉</p>
+              <p class="en">that&#x27;s what she said</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">何が起きて</p>
+              <p class="en">What was happening</p>
+            </div>
+<div class="line">
+              <p class="jp">どうなるのか</p>
+              <p class="en">what would become of us</p>
+            </div>
+<div class="line">
+              <p class="jp">不安で</p>
+              <p class="en">anxious,</p>
+            </div>
+<div class="line">
+              <p class="jp">泣いた夜</p>
+              <p class="en">I cried through the night</p>
+            </div>
+<div class="line">
+              <p class="jp">あの日々</p>
+              <p class="en">in those days</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>月は蒼かった</p>
+              <p class="en">the moon hung pale blue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-05">
+      <div class="photo" style="--tilt: -1.3deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 05</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">久しぶりに</p>
+              <p class="en">After so long</p>
+            </div>
+<div class="line">
+              <p class="jp">帰って来た姉</p>
+              <p class="en">my sister came home</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は笑い</p>
+              <p class="en">I smiled</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は</p>
+              <p class="en">but she</p>
+            </div>
+<div class="line">
+              <p class="jp">苦笑い</p>
+              <p class="en">gave a strained, bitter smile</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">怒鳴る父</p>
+              <p class="en">Father shouting</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の手を引き</p>
+              <p class="en">grabbing my sister&#x27;s hand</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋のドア</p>
+              <p class="en">the door to her room</p>
+            </div>
+<div class="line">
+              <p class="jp">開き</p>
+              <p class="en">thrown open</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は怒鳴った</p>
+              <p class="en">I shouted</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">母は父に</p>
+              <p class="en">Mother hurled</p>
+            </div>
+<div class="line">
+              <p class="jp">ゴミ箱</p>
+              <p class="en">a trash can</p>
+            </div>
+<div class="line">
+              <p class="jp">投げつけた</p>
+              <p class="en">at Father</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">泣いた姉</p>
+              <p class="en">My sister cried</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>涙が月に濡れ</p>
+              <p class="en">her tears wet in the moonlight</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">It looks like a beautiful pearl.</p>
+            </div>
+<div class="line">
+              <p class="jp">拳</p>
+              <p class="en">こぶし</p>
+            </div>
+<div class="line">
+              <p class="jp">上げる父</p>
+              <p class="en">Father&#x27;s fist raised</p>
+            </div>
+<div class="line">
+              <p class="jp">庇</p>
+              <p class="en">かば</p>
+            </div>
+<div class="line">
+              <p class="jp">う母</p>
+              <p class="en">Mother shielding her</p>
+            </div>
+<div class="line">
+              <p class="jp">泣きながら</p>
+              <p class="en">crying</p>
+            </div>
+<div class="line">
+              <p class="jp">逃げた夜</p>
+              <p class="en">we fled into the night</p>
+            </div>
+<div class="line">
+              <p class="jp">風は涼しく</p>
+              <p class="en">the wind was cool</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>月は蒼かった</p>
+              <p class="en">the moon hung pale blue</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">飛び込んだ</p>
+              <p class="en">We rushe</p>
+            </div>
+<div class="line">
+              <p class="jp">警察署</p>
+              <p class="en">into the police station</p>
+            </div>
+<div class="line">
+              <p class="jp">母も姉も</p>
+              <p class="en">Mother and my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">声を</p>
+              <p class="en">both</p>
+            </div>
+<div class="line">
+              <p class="jp">失った</p>
+              <p class="en">lost their voices</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">朝を迎え</p>
+              <p class="en">Morning came</p>
+            </div>
+<div class="line">
+              <p class="jp">父は俯き</p>
+              <p class="en">Father hung his head</p>
+            </div>
+<div class="line">
+              <p class="jp">母は</p>
+              <p class="en">and Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">目を逸らした</p>
+              <p class="en">looked away</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">セピア色の写真</p>
+              <p class="en">The sepia-toned photograph</p>
+            </div>
+<div class="line">
+              <p class="jp">人は言う</p>
+              <p class="en">people say</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">You have kind parents.</p>
+            </div>
+<div class="line">
+              <p class="jp">昼が永遠に</p>
+              <p class="en">I prayed</p>
+            </div>
+<div class="line">
+              <p class="jp">続く事を</p>
+              <p class="en">that the daylight</p>
+            </div>
+<div class="line">
+              <p class="jp">願っていた</p>
+              <p class="en">would go on forever</p>
+            </div>
+<div class="line">
+              <p class="jp">神様は</p>
+              <p class="en">God</p>
+            </div>
+<div class="line">
+              <p class="jp">どこにもいない</p>
+              <p class="en">is nowhere</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は知っている</p>
+              <p class="en">I know that now</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">誰にも</p>
+              <p class="en">&quot;Don&#x27;t tell</p>
+            </div>
+<div class="line">
+              <p class="jp">言わないで</p>
+              <p class="en">anyone&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">母が言った</p>
+              <p class="en">Mother said</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">逃げたはずの家</p>
+              <p class="en">The home we were supposed to have escaped</p>
+            </div>
+<div class="line">
+              <p class="jp">戻る先はない</p>
+              <p class="en">there&#x27;s nowhere left to return to</p>
+            </div>
+<div class="line">
+              <p class="jp">母は姉から</p>
+              <p class="en">Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">目を逸らした</p>
+              <p class="en">looked away from my sister</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 3</span>
+      <span class="chapter-label">第三部</span>
+      <span class="chapter-span">No.06 – 07</span>
+    </div>
+
+    <section class="song" id="track-06">
+      <div class="photo" style="--tilt: 0.8deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 06</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">僕と寝る</p>
+              <p class="en">Sleeping with me</p>
+            </div>
+<div class="line">
+              <p class="jp">夜が怖い</p>
+              <p class="en">at night is scary</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の言葉</p>
+              <p class="en">my sister&#x27;s words</p>
+            </div>
+<div class="line">
+              <p class="jp">父の怒りが</p>
+              <p class="en">Father&#x27;s rage</p>
+            </div>
+<div class="line">
+              <p class="jp">僕になり</p>
+              <p class="en">turns onto me</p>
+            </div>
+<div class="line">
+              <p class="jp">増える傷</p>
+              <p class="en">and the wounds keep growing</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">先生が</p>
+              <p class="en">My teacher</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の傷を見て</p>
+              <p class="en">saw my bruises</p>
+            </div>
+<div class="line">
+              <p class="jp">元気ねと</p>
+              <p class="en">and said &quot;you&#x27;re so lively,&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">明るい</p>
+              <p class="en">with a bright,</p>
+            </div>
+<div class="line">
+              <p class="jp">笑顔</p>
+              <p class="en">cheerful smile</p>
+            </div>
+<div class="line">
+              <p class="jp">ツキツキ</p>
+              <p class="en">even though</p>
+            </div>
+<div class="line">
+              <p class="jp">痛むのに</p>
+              <p class="en">it throbs and aches</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">酒は飲まない</p>
+              <p class="en">&quot;I don&#x27;t drink&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">父の口癖</p>
+              <p class="en">Father&#x27;s usual line</p>
+            </div>
+<div class="line">
+              <p class="jp">いつもの言葉</p>
+              <p class="en">the same old words</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">部屋の鍵掛け</p>
+              <p class="en">Locking the door</p>
+            </div>
+<div class="line">
+              <p class="jp">僕と姉は</p>
+              <p class="en">my sister and I</p>
+            </div>
+<div class="line">
+              <p class="jp">眠リにつく</p>
+              <p class="en">drift off to sleep</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">I can&#x27;t sleep soundly.</p>
+            </div>
+<div class="line">
+              <p class="jp">優しい姉</p>
+              <p class="en">my gentle sister&#x27;s</p>
+            </div>
+<div class="line">
+              <p class="jp">綺麗な</p>
+              <p class="en">peaceful</p>
+            </div>
+<div class="line">
+              <p class="jp">寝顔</p>
+              <p class="en">sleeping face</p>
+            </div>
+<div class="line">
+              <p class="jp">伝う涙</p>
+              <p class="en">a tear trailing down</p>
+            </div>
+<div class="line">
+              <p class="jp">そっと</p>
+              <p class="en">I</p>
+            </div>
+<div class="line">
+              <p class="jp">拭った</p>
+              <p class="en">gently wiped it away</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">逃げたい</p>
+              <p class="en">I want to run</p>
+            </div>
+<div class="line">
+              <p class="jp">逃げられない</p>
+              <p class="en">but I can&#x27;t</p>
+            </div>
+<div class="line">
+              <p class="jp">行き場のない</p>
+              <p class="en">nowhere left to go</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の家</p>
+              <p class="en">this house of mine</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">母が吸う</p>
+              <p class="en">The smoke</p>
+            </div>
+<div class="line">
+              <p class="jp">タバコの煙</p>
+              <p class="en">from Mother&#x27;s cigarette</p>
+            </div>
+<div class="line">
+              <p class="jp">臭いに</p>
+              <p class="en">the smell of it</p>
+            </div>
+<div class="line">
+              <p class="jp">気が遠のく</p>
+              <p class="en">makes my head go faint</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">ビール代は</p>
+              <p class="en">&quot;I won&#x27;t give you</p>
+            </div>
+<div class="line">
+              <p class="jp">渡さない</p>
+              <p class="en">money for beer&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">なのに なぜ</p>
+              <p class="en">and yet, why</p>
+            </div>
+<div class="line">
+              <p class="jp">Drinking every night</p>
+              <p class="en">Drinking every night</p>
+            </div>
+<div class="line">
+              <p class="jp">母は</p>
+              <p class="en">Mother,</p>
+            </div>
+<div class="line">
+              <p class="jp">苦しそうに</p>
+              <p class="en">in obvious pain,</p>
+            </div>
+<div class="line">
+              <p class="jp">頭</p>
+              <p class="en">あたま</p>
+            </div>
+<div class="line">
+              <p class="jp">抱え</p>
+              <p class="en">holds her head</p>
+            </div>
+<div class="line">
+              <p class="jp">姉に言う</p>
+              <p class="en">and says it to my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">何も</p>
+              <p class="en">and I</p>
+            </div>
+<div class="line">
+              <p class="jp">言えない僕</p>
+              <p class="en">can&#x27;t say a thing</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">姉に</p>
+              <p class="en">The days</p>
+            </div>
+<div class="line">
+              <p class="jp">ドキドキした</p>
+              <p class="en">my heart raced for my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">日々は薄れ</p>
+              <p class="en">have faded</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">and I&#x27;ve</p>
+            </div>
+<div class="line">
+              <p class="jp">背も伸びた</p>
+              <p class="en">grown taller too</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">力強い　父</p>
+              <p class="en">My father, so strong</p>
+            </div>
+<div class="line">
+              <p class="jp">拳掴み</p>
+              <p class="en">but now I know how</p>
+            </div>
+<div class="line">
+              <p class="jp">振り払う</p>
+              <p class="en">to grab his fist</p>
+            </div>
+<div class="line">
+              <p class="jp">術</p>
+              <p class="en">すべ</p>
+            </div>
+<div class="line">
+              <p class="jp">を知った</p>
+              <p class="en">and shake it off —</p>
+            </div>
+<div class="line">
+              <p class="jp">高校生の日</p>
+              <p class="en">my high school days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-07">
+      <div class="photo" style="--tilt: -1.6deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 07</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">父の怒鳴り声</p>
+              <p class="en">Father&#x27;s shouting</p>
+            </div>
+<div class="line">
+              <p class="jp">響く夜</p>
+              <p class="en">echoes through the night</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">I</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋に</p>
+              <p class="en">carry him</p>
+            </div>
+<div class="line">
+              <p class="jp">父を運ぶ</p>
+              <p class="en">to his room</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">眠る父を見て</p>
+              <p class="en">I watch him fall asleep</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋を出る</p>
+              <p class="en">and leave the room</p>
+            </div>
+<div class="line">
+              <p class="jp">酒は</p>
+              <p class="en">the alcohol</p>
+            </div>
+<div class="line">
+              <p class="jp">トイレに</p>
+              <p class="en">I pour</p>
+            </div>
+<div class="line">
+              <p class="jp">流し込む</p>
+              <p class="en">down the toilet</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">姉は泣いた</p>
+              <p class="en">My sister cried</p>
+            </div>
+<div class="line">
+              <p class="jp">声を殺し</p>
+              <p class="en">stifling her voice</p>
+            </div>
+<div class="line">
+              <p class="jp">肩震わせて</p>
+              <p class="en">shoulders shaking</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">時は過ぎゆく</p>
+              <p class="en">&quot;Time is a living thing,</p>
+            </div>
+<div class="line">
+              <p class="jp">生き物だと</p>
+              <p class="en">it moves on&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">誰かの言葉</p>
+              <p class="en">someone once said</p>
+            </div>
+<div class="line">
+              <p class="jp">The nightmare will end.</p>
+              <p class="en">The nightmare will end.</p>
+            </div>
+<div class="line">
+              <p class="jp">姉が</p>
+              <p class="en">my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">笑顔で</p>
+              <p class="en">with a smile</p>
+            </div>
+<div class="line">
+              <p class="jp">僕に言う</p>
+              <p class="en">says it to me</p>
+            </div>
+<div class="line">
+              <p class="jp">大好きな姉</p>
+              <p class="en">my beloved sister</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の</p>
+              <p class="en">my</p>
+            </div>
+<div class="line">
+              <p class="jp">大切な家族</p>
+              <p class="en">precious family</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">父につけられた</p>
+              <p class="en">The scars</p>
+            </div>
+<div class="line">
+              <p class="jp">傷跡</p>
+              <p class="en">my father left on me</p>
+            </div>
+<div class="line">
+              <p class="jp">僕は</p>
+              <p class="en">I</p>
+            </div>
+<div class="line">
+              <p class="jp">父に</p>
+              <p class="en">show them</p>
+            </div>
+<div class="line">
+              <p class="jp">見せる</p>
+              <p class="en">to him</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">姉の涙</p>
+              <p class="en">My sister&#x27;s tears</p>
+            </div>
+<div class="line">
+              <p class="jp">毎夜の泣き声</p>
+              <p class="en">her crying, night after night</p>
+            </div>
+<div class="line">
+              <p class="jp">過ぎた過去</p>
+              <p class="en">it&#x27;s the past now,</p>
+            </div>
+<div class="line">
+              <p class="jp">なのに</p>
+              <p class="en">and yet</p>
+            </div>
+<div class="line">
+              <p class="jp">耳に残る</p>
+              <p class="en">it still rings in my ears</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">姉を探し</p>
+              <p class="en">Searching for my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">夜の街</p>
+              <p class="en">through the night streets</p>
+            </div>
+<div class="line">
+              <p class="jp">彷徨った日々</p>
+              <p class="en">all those wandering days</p>
+            </div>
+<div class="line">
+              <p class="jp">I didn&#x27;t know the reason.</p>
+              <p class="en">I didn&#x27;t know the reason.</p>
+            </div>
+<div class="line">
+              <p class="jp">酒が</p>
+              <p class="en">&quot;The drink</p>
+            </div>
+<div class="line">
+              <p class="jp">父を変え</p>
+              <p class="en">changed your father,</p>
+            </div>
+<div class="line">
+              <p class="jp">姉に</p>
+              <p class="en">and your sister&#x27;s</p>
+            </div>
+<div class="line">
+              <p class="jp">迷惑をかけた</p>
+              <p class="en">caused us trouble&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">母の</p>
+              <p class="en">Mother&#x27;s</p>
+            </div>
+<div class="line">
+              <p class="jp">言葉</p>
+              <p class="en">words</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">泣き崩れた姉</p>
+              <p class="en">My sister broke down crying</p>
+            </div>
+<div class="line">
+              <p class="jp">かける言葉なく</p>
+              <p class="en">with no words to offer her</p>
+            </div>
+<div class="line">
+              <p class="jp">見つめていた僕</p>
+              <p class="en">I just stood there, watching</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">真実は</p>
+              <p class="en">Where does</p>
+            </div>
+<div class="line">
+              <p class="jp">どこにあるのか</p>
+              <p class="en">the truth even lie?</p>
+            </div>
+<div class="line">
+              <p class="jp">僕には</p>
+              <p class="en">A world</p>
+            </div>
+<div class="line">
+              <p class="jp">分からない世界</p>
+              <p class="en">I can&#x27;t make sense of</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 4</span>
+      <span class="chapter-label">第四部</span>
+      <span class="chapter-span">No.08 – 10</span>
+    </div>
+
+    <section class="song" id="track-08">
+      <div class="photo" style="--tilt: 1.2deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 08</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">父が震えながら</p>
+              <p class="en">Father, trembling,</p>
+            </div>
+<div class="line">
+              <p class="jp">酒を求め</p>
+              <p class="en">demanding drink,</p>
+            </div>
+<div class="line">
+              <p class="jp">怒鳴る　度</p>
+              <p class="en">shouting, again and again</p>
+            </div>
+<div class="line">
+              <p class="jp">僕も怒った</p>
+              <p class="en">and I grew angry too</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">昼の父</p>
+              <p class="en">Father by day</p>
+            </div>
+<div class="line">
+              <p class="jp">夜の父</p>
+              <p class="en">Father by night</p>
+            </div>
+<div class="line">
+              <p class="jp">違う顔</p>
+              <p class="en">two different faces</p>
+            </div>
+<div class="line">
+              <p class="jp">苛つく僕</p>
+              <p class="en">and I, growing irritated</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">父は　おかしくない</p>
+              <p class="en">&quot;There&#x27;s nothing wrong with your father&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">母の言葉</p>
+              <p class="en">Mother&#x27;s words</p>
+            </div>
+<div class="line">
+              <p class="jp">残る違和感</p>
+              <p class="en">a lingering unease stayed with me</p>
+            </div>
+<div class="line">
+              <p class="jp">抗えない僕</p>
+              <p class="en">and I, unable to push back</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">善と悪</p>
+              <p class="en">Good and evil</p>
+            </div>
+<div class="line">
+              <p class="jp">正と悪</p>
+              <p class="en">right and wrong</p>
+            </div>
+<div class="line">
+              <p class="jp">違いはどこ？</p>
+              <p class="en">where&#x27;s the line between them?</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">No one tells you</p>
+            </div>
+<div class="line">
+              <p class="jp">ざわつく胸</p>
+              <p class="en">my chest unsettled</p>
+            </div>
+<div class="line">
+              <p class="jp">木霊する</p>
+              <p class="en">echoing</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の泣き声</p>
+              <p class="en">my sister&#x27;s crying</p>
+            </div>
+<div class="line">
+              <p class="jp">脳裏　掠める</p>
+              <p class="en">flickers through my mind</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋から</p>
+              <p class="en">from her room</p>
+            </div>
+<div class="line">
+              <p class="jp">出て来た</p>
+              <p class="en">she came out —</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の姿</p>
+              <p class="en">the sight of my sister</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">記憶は</p>
+              <p class="en">Memory</p>
+            </div>
+<div class="line">
+              <p class="jp">捏造され</p>
+              <p class="en">gets fabricated</p>
+            </div>
+<div class="line">
+              <p class="jp">風化する</p>
+              <p class="en">and fades away</p>
+            </div>
+<div class="line">
+              <p class="jp">母は言う</p>
+              <p class="en">Mother says so</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は俯</p>
+              <p class="en">うつむ</p>
+            </div>
+<div class="line">
+              <p class="jp">く</p>
+              <p class="en">and my sister lowers her eyes</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">脳裏よぎる</p>
+              <p class="en">It crosses my mind</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>蒼い月</p>
+              <p class="en">the pale blue moon</p>
+            </div>
+<div class="line">
+              <p class="jp">涼しかった風</p>
+              <p class="en">and the cool breeze that night</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">真実と事実</p>
+              <p class="en">Truth and fact</p>
+            </div>
+<div class="line">
+              <p class="jp">違いはどこ？</p>
+              <p class="en">where&#x27;s the line between them?</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">No one tells you.</p>
+            </div>
+<div class="line">
+              <p class="jp">ざわつく胸</p>
+              <p class="en">my chest unsettled</p>
+            </div>
+<div class="line">
+              <p class="jp">泣きながら</p>
+              <p class="en">crying</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋から</p>
+              <p class="en">from her room</p>
+            </div>
+<div class="line">
+              <p class="jp">胸元押さえ</p>
+              <p class="en">pressing a hand to her chest</p>
+            </div>
+<div class="line">
+              <p class="jp">出てきた</p>
+              <p class="en">she came out —</p>
+            </div>
+<div class="line">
+              <p class="jp">後ろ姿の姉</p>
+              <p class="en">my sister&#x27;s back, walking away</p>
+            </div>
+<div class="line">
+              <p class="jp">繰り返す</p>
+              <p class="en">repeating</p>
+            </div>
+<div class="line">
+              <p class="jp">夢の中</p>
+              <p class="en">inside a dream</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">残る傷跡</p>
+              <p class="en">Only the scars</p>
+            </div>
+<div class="line">
+              <p class="jp">目に見える</p>
+              <p class="en">that remain, the ones</p>
+            </div>
+<div class="line">
+              <p class="jp">ものだけが</p>
+              <p class="en">visible to the eye</p>
+            </div>
+<div class="line">
+              <p class="jp">語る歴史</p>
+              <p class="en">are the history that speaks</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">悲しく</p>
+              <p class="en">Sad</p>
+            </div>
+<div class="line">
+              <p class="jp">悔しい</p>
+              <p class="en">and full of regret</p>
+            </div>
+<div class="line">
+              <p class="jp">思い出は</p>
+              <p class="en">these memories</p>
+            </div>
+<div class="line">
+              <p class="jp">いつしか</p>
+              <p class="en">before I know it</p>
+            </div>
+<div class="line">
+              <p class="jp">怒りに変わるのに</p>
+              <p class="en">turn into anger</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-09">
+      <div class="photo" style="--tilt: -0.9deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 09</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">好きな子が</p>
+              <p class="en">A girl I liked</p>
+            </div>
+<div class="line">
+              <p class="jp">現れ</p>
+              <p class="en">appeared</p>
+            </div>
+<div class="line">
+              <p class="jp">浮かれる僕</p>
+              <p class="en">and I was giddy about it</p>
+            </div>
+<div class="line">
+              <p class="jp">姉が怒る</p>
+              <p class="en">my sister got angry</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">私は</p>
+              <p class="en">&quot;I wasn&#x27;t even</p>
+            </div>
+<div class="line">
+              <p class="jp">恋すら</p>
+              <p class="en">allowed</p>
+            </div>
+<div class="line">
+              <p class="jp">許されず</p>
+              <p class="en">to fall in love —</p>
+            </div>
+<div class="line">
+              <p class="jp">我慢したと</p>
+              <p class="en">I had to endure it,&quot; she said</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">いつも</p>
+              <p class="en">Always</p>
+            </div>
+<div class="line">
+              <p class="jp">苦しそうに笑う</p>
+              <p class="en">smiling like it hurt —</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の記憶</p>
+              <p class="en">that&#x27;s how</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">I remember my sister</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">母は姉に言う</p>
+              <p class="en">Mother says to my sister</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">You can be happy</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は</p>
+              <p class="en">my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">母を睨む</p>
+              <p class="en">glares at her</p>
+            </div>
+<div class="line">
+              <p class="jp">理由は</p>
+              <p class="en">the reason why,</p>
+            </div>
+<div class="line">
+              <p class="jp">分からない</p>
+              <p class="en">I don&#x27;t know</p>
+            </div>
+<div class="line">
+              <p class="jp">潤む瞳が</p>
+              <p class="en">but her welling eyes</p>
+            </div>
+<div class="line">
+              <p class="jp">本気なのは</p>
+              <p class="en">were dead serious</p>
+            </div>
+<div class="line">
+              <p class="jp">確実</p>
+              <p class="en">that much was clear</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">恋愛も</p>
+              <p class="en">&quot;I can&#x27;t have</p>
+            </div>
+<div class="line">
+              <p class="jp">結婚も</p>
+              <p class="en">love</p>
+            </div>
+<div class="line">
+              <p class="jp">出来ないと</p>
+              <p class="en">or marriage&quot; —</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は泣いた</p>
+              <p class="en">my sister wept</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">僕以外の男性</p>
+              <p class="en">&quot;Any man but you —</p>
+            </div>
+<div class="line">
+              <p class="jp">触れる度</p>
+              <p class="en">whenever he touches me</p>
+            </div>
+<div class="line">
+              <p class="jp">鳥肌立つ</p>
+              <p class="en">my skin crawls&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は言う</p>
+              <p class="en">my sister says</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">好きな子に触れたい</p>
+              <p class="en">&quot;I want to touch someone I love&quot;</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">Is it my fault?</p>
+            </div>
+<div class="line">
+              <p class="jp">恋は</p>
+              <p class="en">Love</p>
+            </div>
+<div class="line">
+              <p class="jp">自然に</p>
+              <p class="en">grows</p>
+            </div>
+<div class="line">
+              <p class="jp">芽生え</p>
+              <p class="en">naturally,</p>
+            </div>
+<div class="line">
+              <p class="jp">相手に</p>
+              <p class="en">you open your heart</p>
+            </div>
+<div class="line">
+              <p class="jp">心許し</p>
+              <p class="en">to someone</p>
+            </div>
+<div class="line">
+              <p class="jp">幸せになれる</p>
+              <p class="en">and you get to be happ</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">なぜ</p>
+              <p class="en">&quot;Why</p>
+            </div>
+<div class="line">
+              <p class="jp">恋すら出来ないと</p>
+              <p class="en">do you decide</p>
+            </div>
+<div class="line">
+              <p class="jp">決めつけるの？</p>
+              <p class="en">I can&#x27;t even fall in love?&quot;</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">何も怖くない</p>
+              <p class="en">Nothing scares me</p>
+            </div>
+<div class="line">
+              <p class="jp">なのに なぜ</p>
+              <p class="en">so why</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は恋を怖がるの？</p>
+              <p class="en">is my sister so afraid of love?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-10">
+      <div class="photo" style="--tilt: 1.8deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 10</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">姉が言った</p>
+              <p class="en">My sister said,</p>
+            </div>
+<div class="line">
+              <p class="jp">気になる</p>
+              <p class="en">&quot;There&#x27;s a man</p>
+            </div>
+<div class="line">
+              <p class="jp">男性がいる</p>
+              <p class="en">I&#x27;m drawn to —</p>
+            </div>
+<div class="line">
+              <p class="jp">でも 怖い</p>
+              <p class="en">but I&#x27;m scared&quot;</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">仕事で</p>
+              <p class="en">&quot;At work</p>
+            </div>
+<div class="line">
+              <p class="jp">いつも</p>
+              <p class="en">he always</p>
+            </div>
+<div class="line">
+              <p class="jp">気にかけてくれ</p>
+              <p class="en">looks out for me</p>
+            </div>
+<div class="line">
+              <p class="jp">惹かれている</p>
+              <p class="en">and I&#x27;m falling for him&quot;</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">優しくて</p>
+              <p class="en">Gentle,</p>
+            </div>
+<div class="line">
+              <p class="jp">誰もが</p>
+              <p class="en">the kind of woman</p>
+            </div>
+<div class="line">
+              <p class="jp">振り返る姉</p>
+              <p class="en">everyone turns to look at</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">夢にみた</p>
+              <p class="en">The happy love</p>
+            </div>
+<div class="line">
+              <p class="jp">幸せな恋</p>
+              <p class="en">I once dreamed of</p>
+            </div>
+<div class="line">
+              <p class="jp">I had given up.</p>
+              <p class="en">I had given up.</p>
+            </div>
+<div class="line">
+              <p class="jp">夜が怖く</p>
+              <p class="en">the night was frightening,</p>
+            </div>
+<div class="line">
+              <p class="jp">行き場のない家</p>
+              <p class="en">a home with nowhere else to go,</p>
+            </div>
+<div class="line">
+              <p class="jp">それでも</p>
+              <p class="en">and still,</p>
+            </div>
+<div class="line">
+              <p class="jp">選択余地なく</p>
+              <p class="en">with no choice left,</p>
+            </div>
+<div class="line">
+              <p class="jp">戻った日々</p>
+              <p class="en">the days I returned to it</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>蒼い月に</p>
+              <p class="en">I entrusted my tears</p>
+            </div>
+<div class="line">
+              <p class="jp">涙託した</p>
+              <p class="en">to the pale blue moon</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">姉はいつも</p>
+              <p class="en">My sister always</p>
+            </div>
+<div class="line">
+              <p class="jp">僕を 庇い</p>
+              <p class="en">shielded me —</p>
+            </div>
+<div class="line">
+              <p class="jp">足枷に</p>
+              <p class="en">and in doing so</p>
+            </div>
+<div class="line">
+              <p class="jp">繋がれていた</p>
+              <p class="en">she was chained to shackles of her own</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">欲と業</p>
+              <p class="en">Desire and karma,</p>
+            </div>
+<div class="line">
+              <p class="jp">理論と理性</p>
+              <p class="en">logic and reason —</p>
+            </div>
+<div class="line">
+              <p class="jp">人の境は</p>
+              <p class="en">the line between them</p>
+            </div>
+<div class="line">
+              <p class="jp">いつも</p>
+              <p class="en">always</p>
+            </div>
+<div class="line">
+              <p class="jp">曖昧な</p>
+              <p class="en">blurs</p>
+            </div>
+<div class="line">
+              <p class="jp">遊覧船の中</p>
+              <p class="en">aboard some boat adrift</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">友達も</p>
+              <p class="en">Not even my friends</p>
+            </div>
+<div class="line">
+              <p class="jp">知らない</p>
+              <p class="en">know</p>
+            </div>
+<div class="line">
+              <p class="jp">My pain</p>
+              <p class="en">My pain</p>
+            </div>
+<div class="line">
+              <p class="jp">恋より</p>
+              <p class="en">more than love,</p>
+            </div>
+<div class="line">
+              <p class="jp">生きる事に</p>
+              <p class="en">just surviving</p>
+            </div>
+<div class="line">
+              <p class="jp">必死で</p>
+              <p class="en">took everything I had</p>
+            </div>
+<div class="line">
+              <p class="jp">想い寄せる</p>
+              <p class="en">even if a man</p>
+            </div>
+<div class="line">
+              <p class="jp">男性がいても</p>
+              <p class="en">had feelings for me</p>
+            </div>
+<div class="line">
+              <p class="jp">分からず</p>
+              <p class="en">I couldn&#x27;t tell</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">頼らなければ</p>
+              <p class="en">A childhood</p>
+            </div>
+<div class="line">
+              <p class="jp">生きられない</p>
+              <p class="en">where I couldn&#x27;t survive</p>
+            </div>
+<div class="line">
+              <p class="jp">子供時代</p>
+              <p class="en">without depending on someone</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>蒼い月は</p>
+              <p class="en">The pale blue moon</p>
+            </div>
+<div class="line">
+              <p class="jp">優しく</p>
+              <p class="en">is gentle,</p>
+            </div>
+<div class="line">
+              <p class="jp">なのに</p>
+              <p class="en">and yet</p>
+            </div>
+<div class="line">
+              <p class="jp">助けては</p>
+              <p class="en">it never</p>
+            </div>
+<div class="line">
+              <p class="jp">くれない</p>
+              <p class="en">reaches out to help</p>
+            </div>
+<div class="line">
+              <p class="jp">誰一人</p>
+              <p class="en">not a single person</p>
+            </div>
+<div class="line">
+              <p class="jp">気付かず</p>
+              <p class="en">noticed,</p>
+            </div>
+<div class="line">
+              <p class="jp">通り過ぎて</p>
+              <p class="en">they all just</p>
+            </div>
+<div class="line">
+              <p class="jp">行った</p>
+              <p class="en">passed us by</p>
+            </div>
+<div class="line">
+              <p class="jp">僕も</p>
+              <p class="en">and I too</p>
+            </div>
+<div class="line">
+              <p class="jp">気付けなかった</p>
+              <p class="en">couldn&#x27;t see it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 5</span>
+      <span class="chapter-label">第五部</span>
+      <span class="chapter-span">No.11 – 12</span>
+    </div>
+
+    <section class="song" id="track-11">
+      <div class="photo" style="--tilt: -1.3deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 11</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">社会に出て</p>
+              <p class="en">I entered the working world</p>
+            </div>
+<div class="line">
+              <p class="jp">家を後にし</p>
+              <p class="en">left the house behind</p>
+            </div>
+<div class="line">
+              <p class="jp">何年も　経ち</p>
+              <p class="en">years passed</p>
+            </div>
+<div class="line">
+              <p class="jp">父が倒れた</p>
+              <p class="en">and then Father collapsed</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">朝になり</p>
+              <p class="en">Morning came</p>
+            </div>
+<div class="line">
+              <p class="jp">起きない父</p>
+              <p class="en">and Father wouldn&#x27;t wake</p>
+            </div>
+<div class="line">
+              <p class="jp">起こしに行く</p>
+              <p class="en">she went to rouse him</p>
+            </div>
+<div class="line">
+              <p class="jp">母が見た景色</p>
+              <p class="en">the sight Mother saw</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">長い時間</p>
+              <p class="en">An ending</p>
+            </div>
+<div class="line">
+              <p class="jp">願った結末</p>
+              <p class="en">I&#x27;d wished for, for so long —</p>
+            </div>
+<div class="line">
+              <p class="jp">突然の出来事</p>
+              <p class="en">it came without warning</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">何かが途切れる</p>
+              <p class="en">Something snapping</p>
+            </div>
+<div class="line">
+              <p class="jp">そんな感覚</p>
+              <p class="en">that&#x27;s what it felt like</p>
+            </div>
+<div class="line">
+              <p class="jp">Liberation from suffering</p>
+              <p class="en">Liberation from suffering</p>
+            </div>
+<div class="line">
+              <p class="jp">全ては</p>
+              <p class="en">nothing</p>
+            </div>
+<div class="line">
+              <p class="jp">終わらず</p>
+              <p class="en">really ends</p>
+            </div>
+<div class="line">
+              <p class="jp">痕跡（こんせき）は</p>
+              <p class="en">the traces</p>
+            </div>
+<div class="line">
+              <p class="jp">生（せい）の果てまで</p>
+              <p class="en">go on to the very edge of life</p>
+            </div>
+<div class="line">
+              <p class="jp">続くけれど</p>
+              <p class="en">but continue</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">願った</p>
+              <p class="en">I&#x27;d wished for</p>
+            </div>
+<div class="line">
+              <p class="jp">出来事</p>
+              <p class="en">this thing</p>
+            </div>
+<div class="line">
+              <p class="jp">なのに</p>
+              <p class="en">and yet, it happened</p>
+            </div>
+<div class="line">
+              <p class="jp">母は泣いた</p>
+              <p class="en">and still, Mother wept</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">僕に残る</p>
+              <p class="en">The wound</p>
+            </div>
+<div class="line">
+              <p class="jp">浅く抉れた</p>
+              <p class="en">carved shallow</p>
+            </div>
+<div class="line">
+              <p class="jp">傷跡が疼く</p>
+              <p class="en">left in me, still aches</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">泣く母</p>
+              <p class="en">Mother crying</p>
+            </div>
+<div class="line">
+              <p class="jp">怪訝な姉</p>
+              <p class="en">my sister, puzzled</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">There is an invisible wall.</p>
+            </div>
+<div class="line">
+              <p class="jp">僕には</p>
+              <p class="en">I know</p>
+            </div>
+<div class="line">
+              <p class="jp">語らない</p>
+              <p class="en">there&#x27;s a truth here</p>
+            </div>
+<div class="line">
+              <p class="jp">事実が</p>
+              <p class="en">that no one</p>
+            </div>
+<div class="line">
+              <p class="jp">そこにあると</p>
+              <p class="en">will speak to me</p>
+            </div>
+<div class="line">
+              <p class="jp">分かる</p>
+              <p class="en">I know it&#x27;s there</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">真夜中</p>
+              <p class="en">Midnight</p>
+            </div>
+<div class="line">
+              <p class="jp">部屋から</p>
+              <p class="en">from her room,</p>
+            </div>
+<div class="line">
+              <p class="jp">泣きながら</p>
+              <p class="en">crying,</p>
+            </div>
+<div class="line">
+              <p class="jp">出て来た</p>
+              <p class="en">she came out</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の姿</p>
+              <p class="en">that image of my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">蘇る</p>
+              <p class="en">comes back to me</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">誰とも　恋せず</p>
+              <p class="en">Never falling in love with anyone</p>
+            </div>
+<div class="line">
+              <p class="jp">生きる姉</p>
+              <p class="en">that&#x27;s how my sister lives</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の家族に</p>
+              <p class="en">at what&#x27;s left of our family</p>
+            </div>
+<div class="line">
+              <p class="jp">優しく笑み</p>
+              <p class="en">gently smiling</p>
+            </div>
+<div class="line">
+              <p class="jp">泣きそうな</p>
+              <p class="en">her face</p>
+            </div>
+<div class="line">
+              <p class="jp">顔になる</p>
+              <p class="en">on the verge of tears</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="song" id="track-12">
+      <div class="photo" style="--tilt: 0.8deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 12</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">父の葬儀</p>
+              <p class="en">Father&#x27;s funeral</p>
+            </div>
+<div class="line">
+              <p class="jp">響く</p>
+              <p class="en">echoing</p>
+            </div>
+<div class="line">
+              <p class="jp">すすり泣く声</p>
+              <p class="en">the sound of quiet sobs</p>
+            </div>
+<div class="line">
+              <p class="jp">親族 知人</p>
+              <p class="en">relatives, acquaintances</p>
+            </div>
+<div class="line">
+              <p class="jp">悔みの言葉</p>
+              <p class="en">words of condolence</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">口噤（つぐ）　む姉</p>
+              <p class="en">My sister, silent,</p>
+            </div>
+<div class="line">
+              <p class="jp">体調不良</p>
+              <p class="en">lips sealed &quot;not feeling well,&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">経典　不参加</p>
+              <p class="en">absent from the sutra reading</p>
+            </div>
+<div class="line">
+              <p class="jp">憐れむ人々</p>
+              <p class="en">people looking on with pity</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">喪主の僕</p>
+              <p class="en">Me, as chief mourner,</p>
+            </div>
+<div class="line">
+              <p class="jp">発する挨拶</p>
+              <p class="en">delivering the greeting</p>
+            </div>
+<div class="line">
+              <p class="jp">嫌悪 走る</p>
+              <p class="en">a wave of disgust runs through me</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">棺の前</p>
+              <p class="en">Before the coffin</p>
+            </div>
+<div class="line">
+              <p class="jp">経典に耳澄まし</p>
+              <p class="en">listening to the sutra</p>
+            </div>
+<div class="line">
+              <p class="jp">父に問う</p>
+              <p class="en">I ask my father</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">What have you been doing?</p>
+            </div>
+<div class="line">
+              <p class="jp">事実は</p>
+              <p class="en">the truth</p>
+            </div>
+<div class="line">
+              <p class="jp">闇に葬り</p>
+              <p class="en">buried in darkness</p>
+            </div>
+<div class="line">
+              <p class="jp">母は</p>
+              <p class="en">Mother says</p>
+            </div>
+<div class="line">
+              <p class="jp">何もない</p>
+              <p class="en">there&#x27;s nothing more</p>
+            </div>
+<div class="line">
+              <p class="jp">それ以上は</p>
+              <p class="en">push it further</p>
+            </div>
+<div class="line">
+              <p class="jp">怒り 心頭</p>
+              <p class="en">and she seethes with rage</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は</p>
+              <p class="en">my sister</p>
+            </div>
+<div class="line">
+              <p class="jp">顔 伏せ</p>
+              <p class="en">lowers her face</p>
+            </div>
+<div class="line">
+              <p class="jp">眼鏡を掛けた</p>
+              <p class="en">and puts on her glasses</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 3</p>
+            <div class="line">
+              <p class="jp">セピア色の</p>
+              <p class="en">In the sepia-toned</p>
+            </div>
+<div class="line">
+              <p class="jp">家族写真に</p>
+              <p class="en">family photograph</p>
+            </div>
+<div class="line">
+              <p class="jp">映る父</p>
+              <p class="en">my father&#x27;s image</p>
+            </div>
+<div class="line">
+              <p class="jp">刻んだ顔</p>
+              <p class="en">a face carved into it</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 1</p>
+            <div class="line">
+              <p class="jp">野生動物に</p>
+              <p class="en">&quot;He turned into</p>
+            </div>
+<div class="line">
+              <p class="jp">成り果てた父</p>
+              <p class="en">a wild animal&quot;</p>
+            </div>
+<div class="line">
+              <p class="jp">母の口癖</p>
+              <p class="en">Mother&#x27;s old refrain</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 2</p>
+            <div class="line">
+              <p class="jp">毎夜泣き</p>
+              <p class="en">Crying every night,</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の腕しがみつき</p>
+              <p class="en">clinging to my arm</p>
+            </div>
+<div class="line">
+              <p class="jp">眠った姉</p>
+              <p class="en">as she fell asleep — my sister</p>
+            </div>
+<div class="line line--en-only">
+              <p class="en en--solo">What have you been doing?</p>
+            </div>
+<div class="line">
+              <p class="jp">同じ</p>
+              <p class="en">a life</p>
+            </div>
+<div class="line">
+              <p class="jp">速度の人生</p>
+              <p class="en">moving at the same pace</p>
+            </div>
+<div class="line">
+              <p class="jp">傷は</p>
+              <p class="en">the wound</p>
+            </div>
+<div class="line">
+              <p class="jp">癒えず</p>
+              <p class="en">never heals</p>
+            </div>
+<div class="line">
+              <p class="jp">時間を</p>
+              <p class="en">and time</p>
+            </div>
+<div class="line">
+              <p class="jp">刻み続ける</p>
+              <p class="en">just keeps ticking on</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">涙は忘れ</p>
+              <p class="en">Forgetting the tears,</p>
+            </div>
+<div class="line">
+              <p class="jp">樹木に</p>
+              <p class="en">I entrusted</p>
+            </div>
+<div class="line">
+              <p class="jp">委ねた過去</p>
+              <p class="en">the past to the trees</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">父の形見は</p>
+              <p class="en">My father&#x27;s keepsakes</p>
+            </div>
+<div class="line">
+              <p class="jp">ゴミ箱へ</p>
+              <p class="en">into the trash</p>
+            </div>
+<div class="line">
+              <p class="jp">塵ひとつ</p>
+              <p class="en">not a single speck</p>
+            </div>
+<div class="line">
+              <p class="jp">残さず</p>
+              <p class="en">left behind</p>
+            </div>
+<div class="line">
+              <p class="jp">全て</p>
+              <p class="en">all of it</p>
+            </div>
+<div class="line">
+              <p class="jp">燃やした</p>
+              <p class="en">burned</p>
+            </div>
+<div class="line line--moon">
+              <p class="jp"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5a9 9 0 1 0 5 15.9 7.2 7.2 0 0 1-5-15.9z"/></svg>蒼い月夜</p>
+              <p class="en">under a pale blue moonlit night</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は髪を削ぎ</p>
+              <p class="en">my sister cut her hair short</p>
+            </div>
+<div class="line">
+              <p class="jp">度のない</p>
+              <p class="en">and put on</p>
+            </div>
+<div class="line">
+              <p class="jp">眼鏡かけた</p>
+              <p class="en">glasses with no prescription at all</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-header">
+      <span class="chapter-num">Vol. 6</span>
+      <span class="chapter-label">第六部</span>
+      <span class="chapter-span">No.13</span>
+    </div>
+
+    <section class="song" id="track-13">
+      <div class="photo" style="--tilt: -1.6deg;">
+        <div class="photo-frame">
+          <div class="photo-plate">
+            <span class="photo-no">No. 13</span>
+            <span class="photo-corner photo-corner--tl"></span>
+            <span class="photo-corner photo-corner--tr"></span>
+            <span class="photo-corner photo-corner--bl"></span>
+            <span class="photo-corner photo-corner--br"></span>
+          </div>
+          <p class="photo-caption">seldom developed &mdash; 家族アルバムより</p>
+        </div>
+      </div>
+      <div class="song-body">
+        <div class="stanzas">
+          
+          <div class="stanza">
+            <p class="tag">Verse 1</p>
+            <div class="line">
+              <p class="jp">遺産相続</p>
+              <p class="en">Inheritance</p>
+            </div>
+<div class="line">
+              <p class="jp">手続きに</p>
+              <p class="en">procedures —</p>
+            </div>
+<div class="line">
+              <p class="jp">姉と母と僕</p>
+              <p class="en">my sister, my mother, and I</p>
+            </div>
+<div class="line">
+              <p class="jp">歩く足は重く</p>
+              <p class="en">our steps heavy</p>
+            </div>
+<div class="line">
+              <p class="jp">跛行（はこう）</p>
+              <p class="en">limping along</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Verse 2</p>
+            <div class="line">
+              <p class="jp">どこまでも</p>
+              <p class="en">No matter how far,</p>
+            </div>
+<div class="line">
+              <p class="jp">付き纏う</p>
+              <p class="en">it clings to me —</p>
+            </div>
+<div class="line">
+              <p class="jp">父との繋がり</p>
+              <p class="en">this bond with my father</p>
+            </div>
+<div class="line">
+              <p class="jp">吐き気 覚える</p>
+              <p class="en">it makes me feel sick</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Pre-chorus</p>
+            <div class="line">
+              <p class="jp">家族のため</p>
+              <p class="en">&quot;For the family&#x27;s sake,</p>
+            </div>
+<div class="line">
+              <p class="jp">資産形成</p>
+              <p class="en">I built our wealth&quot; —</p>
+            </div>
+<div class="line">
+              <p class="jp">父の口癖</p>
+              <p class="en">Father&#x27;s old refrain</p>
+            </div>
+<div class="line">
+              <p class="jp">親族は 羨望（せんぼう）relatives</p>
+            </div>
+<div class="line">
+              <p class="jp">集まった</p>
+              <p class="en">gathered around us</p>
+            </div>
+<div class="line">
+              <p class="jp">寄せた</p>
+              <p class="en">with envy</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Chorus 1</p>
+            <div class="line">
+              <p class="jp">遺産は8桁</p>
+              <p class="en">An eight-figure inheritance</p>
+            </div>
+<div class="line">
+              <p class="jp">母の 眼光</p>
+              <p class="en">Mother&#x27;s sharp gaze</p>
+            </div>
+<div class="line">
+              <p class="jp">闇夜を照らす</p>
+              <p class="en">lighting up the dark night</p>
+            </div>
+<div class="line">
+              <p class="jp">Are you that happy?</p>
+              <p class="en">Are you that happy?</p>
+            </div>
+<div class="line">
+              <p class="jp">あの頃</p>
+              <p class="en">back then</p>
+            </div>
+<div class="line">
+              <p class="jp">聞こえた</p>
+              <p class="en">I could hear it —</p>
+            </div>
+<div class="line">
+              <p class="jp">姉の</p>
+              <p class="en">my sister&#x27;s</p>
+            </div>
+<div class="line">
+              <p class="jp">泣き声</p>
+              <p class="en">crying</p>
+            </div>
+<div class="line">
+              <p class="jp">怒りで</p>
+              <p class="en">and with rage</p>
+            </div>
+<div class="line">
+              <p class="jp">心 震えた僕</p>
+              <p class="en">my heart trembled</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Bridge 2</p>
+            <div class="line">
+              <p class="jp">母は</p>
+              <p class="en">Mother</p>
+            </div>
+<div class="line">
+              <p class="jp">廊下に立ち</p>
+              <p class="en">would stand in the hallway</p>
+            </div>
+<div class="line">
+              <p class="jp">時々 聞いていた</p>
+              <p class="en">and sometimes, listen</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Outro</p>
+            <div class="line">
+              <p class="jp">夜が怖かった</p>
+              <p class="en">The night was frightening —</p>
+            </div>
+<div class="line">
+              <p class="jp">僕の思い出</p>
+              <p class="en">that&#x27;s my memory of it</p>
+            </div>
+<div class="line">
+              <p class="jp">姉は口噤（つぐ）み</p>
+              <p class="en">my sister falls silent,</p>
+            </div>
+<div class="line">
+              <p class="jp">涙 浮かべる</p>
+              <p class="en">tears welling up</p>
+            </div>
+<div class="line">
+              <p class="jp">幸せを</p>
+              <p class="en">Mother, who once pictured</p>
+            </div>
+<div class="line">
+              <p class="jp">思い描いた母</p>
+              <p class="en">a happy family</p>
+            </div>
+<div class="line">
+              <p class="jp">刻まれた</p>
+              <p class="en">my father&#x27;s face</p>
+            </div>
+<div class="line">
+              <p class="jp">父の顔</p>
+              <p class="en">carved into it all</p>
+            </div>
+<div class="line">
+              <p class="jp">全ては</p>
+              <p class="en">everything —</p>
+            </div>
+<div class="line">
+              <p class="jp">セピア色の</p>
+              <p class="en">only the sepia-toned</p>
+            </div>
+<div class="line">
+              <p class="jp">家族写真が知る</p>
+              <p class="en">family photograph knows</p>
+            </div>
+          </div>
+
+          <div class="stanza">
+            <p class="tag">Interlude</p>
+            <div class="line">
+              <p class="jp">いつか</p>
+              <p class="en">Someday</p>
+            </div>
+<div class="line">
+              <p class="jp">夜は明ける</p>
+              <p class="en">the night will break into dawn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <footer class="colophon">
+      <p>大森カエ &mdash; セピア色の家族写真 〜Unknown facts〜</p>
+    </footer>
+
+  </div>
+</body>
+</html>
