@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名もなき胸のつかえ 〜Chain of Silence〜</title>
+<style>
+  :root{
+    --pink-1:#ffe3ea;
+    --pink-2:#ffd0cf;
+    --orange-1:#ffe8d6;
+    --orange-2:#ffcfa8;
+    --wine:#5b3247;
+    --wine-soft:#7a4a5f;
+    --gold:#d99a6c;
+    --white-veil: rgba(255,255,255,0.55);
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:
+      radial-gradient(ellipse at 20% 0%, var(--pink-1) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, var(--orange-1) 0%, transparent 50%),
+      linear-gradient(160deg, #fff6f2 0%, #ffe6e6 30%, #ffe0cf 65%, #fff1e6 100%);
+    background-attachment: fixed;
+    color: var(--wine);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* floating bubbles */
+  .bubble-field{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    overflow:hidden;
+  }
+  .bubble{
+    position:absolute;
+    bottom:-10%;
+    border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), rgba(255,214,214,0.15) 70%);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4) inset;
+    opacity:0.55;
+    animation: rise linear infinite;
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) translateX(0) scale(1); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.4; }
+    100%{ transform: translateY(-115vh) translateX(var(--drift, 30px)) scale(1.15); opacity:0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .bubble{ animation: none; display:none; }
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6vh 6vw 14vh;
+  }
+
+  header.masthead{
+    text-align:center;
+    padding: 6vh 0 8vh;
+  }
+
+  .eyebrow{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  h1.title{
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 0.6rem;
+    color: var(--wine);
+  }
+
+  .title-en{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--wine-soft);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+  }
+
+  .lede{
+    max-width: 46ch;
+    margin: 2rem auto 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.92rem;
+    line-height: 2;
+    color: var(--wine-soft);
+    letter-spacing: 0.03em;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 0.8rem;
+    margin: 5vh 0;
+    opacity: 0.6;
+  }
+  .divider .dot{
+    width:5px; height:5px; border-radius:50%;
+    background: var(--gold);
+  }
+  .divider .line{
+    width: 60px; height:1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  nav.toc{
+    background: var(--white-veil);
+    backdrop-filter: blur(6px);
+    border-radius: 18px;
+    padding: 2rem 2rem;
+    margin-bottom: 8vh;
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    counter-reset: song;
+  }
+  nav.toc li{
+    counter-increment: song;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(91,50,71,0.1);
+    display:flex;
+    align-items:baseline;
+    gap: 1rem;
+  }
+  nav.toc li:last-child{ border-bottom:none; }
+  nav.toc li::before{
+    content: "0" counter(song);
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.85rem;
+    flex-shrink:0;
+  }
+  nav.toc a{
+    color: var(--wine);
+    text-decoration:none;
+    font-size: 1rem;
+  }
+  nav.toc a:hover{ color: var(--gold); }
+  nav.toc .sub{
+    display:block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--wine-soft);
+    opacity:0.75;
+    margin-top: 0.15rem;
+  }
+
+  section.song{
+    margin-bottom: 14vh;
+    scroll-margin-top: 3rem;
+  }
+
+  .song-head{
+    text-align:center;
+    margin-bottom: 5vh;
+  }
+  .song-num{
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1rem;
+    display:block;
+    margin-bottom: 0.6rem;
+  }
+  .song-title-jp{
+    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    font-weight: 600;
+    margin: 0;
+    color: var(--wine);
+  }
+  .song-title-en{
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: var(--wine-soft);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .stanza-grid{
+    display: grid;
+    gap: 3.2rem;
+  }
+
+  .stanza-label{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.15em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+    text-align:center;
+  }
+
+  .line-pair{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    text-align:center;
+    margin-bottom: 0.85rem;
+  }
+  .line-pair:last-child{ margin-bottom:0; }
+
+  .jp{
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--wine);
+  }
+  .en{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--wine-soft);
+    opacity: 0.85;
+  }
+
+  footer{
+    text-align:center;
+    margin-top: 10vh;
+    padding-top: 4vh;
+    border-top: 1px solid rgba(91,50,71,0.15);
+  }
+  footer .artist{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--wine-soft);
+    text-transform: uppercase;
+  }
+  footer .note{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--wine-soft);
+    opacity:0.6;
+    margin-top: 0.6rem;
+  }
+
+  @media (max-width: 600px){
+    .wrap{ padding: 4vh 5vw 10vh; }
+    nav.toc{ padding: 1.4rem 1.2rem; }
+    section.song{ margin-bottom: 10vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bubble-field" id="bubbleField"></div>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Lyric Collection</div>
+    <h1 class="title">名もなき胸のつかえ<br><span class="title-en">〜 Chain of Silence 〜</span></h1>
+    <p class="lede">
+      誰にも言えなかったこと、名前のつかない痛み。<br>
+      静かに沈んでいたものが、言葉になって浮かび上がる。
+    </p>
+  </header>
+
+  <nav class="toc" aria-label="収録曲">
+    <ol>
+      <li><a href="#song1">天使達の残酷な言葉<span class="sub">— Even if it hurts —</span></a></li>
+      <li><a href="#song2">ケロイドの裏側<span class="sub">— 愚者達へ —</span></a></li>
+      <li><a href="#song3">愛玩の子供<span class="sub">— Cute bisque doll —</span></a></li>
+      <li><a href="#song4">僕は、悪魔の血族<span class="sub">— Child of the Full Moon —</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- SONG I -->
+  <section class="song" id="song1">
+    <div class="song-head">
+      <span class="song-num">I</span>
+      <h2 class="song-title-jp">天使達の残酷な言葉</h2>
+      <div class="song-title-en">— Even if it hurts —</div>
+    </div>
+    <div class="stanza-grid">
+
+      <div>
+        <div class="stanza-label">Verse 1</div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">冗談のつもりで</div><div class="en">Meant as nothing more than a joke</div></div>
+        <div class="line-pair"><div class="jp">何気なく言われた言葉に</div><div class="en">Words thrown without a second thought</div></div>
+        <div class="line-pair"><div class="jp">大人になった今も　傷つくのは何故？</div><div class="en">Why do they still cut so deep, even now that I've grown?</div></div>
+        <div class="line-pair"><div class="jp">心の奥に棘を刺したまま</div><div class="en">A thorn left lodged deep inside my heart</div></div>
+        <div class="line-pair"><div class="jp">毎日が音もなく過ぎてゆく</div><div class="en">As every day slips past in silence</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 2</div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">言葉を発した人間の</div><div class="en">The words that person always said</div></div>
+        <div class="line-pair"><div class="jp">いつもの台詞が氷になり</div><div class="en">Turned cold as ice within me</div></div>
+        <div class="line-pair"><div class="jp">誰かの人生を</div><div class="en">Painting someone's entire life</div></div>
+        <div class="line-pair"><div class="jp">ダーク色に塗り替える</div><div class="en">In shades of dark and grey</div></div>
+        <div class="line-pair"><div class="jp">心の奥で涙を拭いながら</div><div class="en">Wiping tears somewhere deep inside</div></div>
+        <div class="line-pair"><div class="jp">朝陽の訪れを待ち侘びる</div><div class="en">I wait and ache for morning light</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Pre-Chorus</div>
+        <div class="line-pair"><div class="jp">傷つき</div><div class="en">Wounded</div></div>
+        <div class="line-pair"><div class="jp">足を止めても</div><div class="en">Even when I can no longer move</div></div>
+        <div class="line-pair"><div class="jp">川のしぶきのように</div><div class="en">Like river spray</div></div>
+        <div class="line-pair"><div class="jp">目に染み込む</div><div class="en">They seep into my eyes</div></div>
+        <div class="line-pair"><div class="jp">心を突き刺し続ける</div><div class="en">Piercing through my heart again and again</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">子供達は覚えていない</div><div class="en">The children don't remember</div></div>
+        <div class="line-pair"><div class="jp">残酷な言葉を投げかけた事</div><div class="en">The cruelty they threw like stones</div></div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">子供達は冗談で</div><div class="en">The children laughed it off</div></div>
+        <div class="line-pair"><div class="jp">人の心を打ち破っていく</div><div class="en">Shattering someone's heart wide open</div></div>
+        <div class="line-pair"><div class="jp">スパイク効かせたシューズで</div><div class="en">With their spiked and careless shoes</div></div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">天使の顔をした小悪魔達</div><div class="en">Little devils wearing angels' faces</div></div>
+        <div class="line-pair"><div class="jp">赦されるはずのない罪を</div><div class="en">Committing sins that should never be forgiven</div></div>
+        <div class="line-pair"><div class="jp">今日も</div><div class="en">Even today</div></div>
+        <div class="line-pair"><div class="jp">世界のどこかで犯している</div><div class="en">Somewhere in this world</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 3</div>
+        <div class="line-pair"><div class="jp">大人になって</div><div class="en">As they grow older</div></div>
+        <div class="line-pair"><div class="jp">後悔する人はいるのか？</div><div class="en">Does anyone ever feel regret?</div></div>
+        <div class="line-pair"><div class="jp">軌跡も経歴も</div><div class="en">Neither the damage left behind, nor the past</div></div>
+        <div class="line-pair"><div class="jp">覚えていないTeenagers</div><div class="en">Teenagers who remember nothing</div></div>
+        <div class="line-pair"><div class="jp">いつか</div><div class="en">If someday</div></div>
+        <div class="line-pair"><div class="jp">誰かを傷つけ</div><div class="en">You realize the wound you left in someone</div></div>
+        <div class="line-pair"><div class="jp">犯した罪に気づいたなら</div><div class="en">And the sin that you committed</div></div>
+        <div class="line-pair"><div class="jp">赦してもらえるのか？</div><div class="en">Will you ever be forgiven?</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Bridge</div>
+        <div class="line-pair"><div class="jp">今　僕は</div><div class="en">Even now, I find myself</div></div>
+        <div class="line-pair"><div class="jp">そんな傷に</div><div class="en">Clinging to those scars</div></div>
+        <div class="line-pair"><div class="jp">いつまでも縋りつく</div><div class="en">Unable to let go</div></div>
+        <div class="line-pair"><div class="jp">未来は捨てて</div><div class="en">But I'm leaving that behind</div></div>
+        <div class="line-pair"><div class="jp">虹かかった空の向こうへ進む</div><div class="en">Walking toward the sky beyond the rainbow</div></div>
+        <div class="line-pair"><div class="jp">他愛のない言葉で</div><div class="en">Because I know</div></div>
+        <div class="line-pair"><div class="jp">人生を犠牲にする事は</div><div class="en">To sacrifice a life</div></div>
+        <div class="line-pair"><div class="jp">無意味だと知っているから</div><div class="en">Over words that meant nothing at all, is a waste I refuse to carry</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">子供達は覚えていない</div><div class="en">The children don't remember</div></div>
+        <div class="line-pair"><div class="jp">残酷な言葉を投げかけた事</div><div class="en">The cruelty they threw like stones</div></div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">子供達は冗談で</div><div class="en">The children laughed it off</div></div>
+        <div class="line-pair"><div class="jp">人の心を打ち破っていく</div><div class="en">Shattering someone's heart wide open</div></div>
+        <div class="line-pair"><div class="jp">スパイク効かせたシューズで</div><div class="en">With their spiked and careless shoes</div></div>
+        <div class="line-pair"><div class="jp">Teenagers</div></div>
+        <div class="line-pair"><div class="jp">天使の顔をした小悪魔達</div><div class="en">Little devils wearing angels' faces</div></div>
+        <div class="line-pair"><div class="jp">赦されるはずのない罪を</div><div class="en">Committing sins that should never be forgiven</div></div>
+        <div class="line-pair"><div class="jp">今日も</div><div class="en">Even today</div></div>
+        <div class="line-pair"><div class="jp">世界のどこかで犯している</div><div class="en">Somewhere in this world</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Outro</div>
+        <div class="line-pair"><div class="jp">残酷な心に</div><div class="en">Deep inside a merciless heart</div></div>
+        <div class="line-pair"><div class="jp">赤いアメニジウムが</div><div class="en">Red amenizium</div></div>
+        <div class="line-pair"><div class="jp">煌めき揺れる</div><div class="en">Shimmers and sways</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+
+  <!-- SONG II -->
+  <section class="song" id="song2">
+    <div class="song-head">
+      <span class="song-num">II</span>
+      <h2 class="song-title-jp">ケロイドの裏側</h2>
+      <div class="song-title-en">— 愚者達へ —</div>
+    </div>
+    <div class="stanza-grid">
+
+      <div>
+        <div class="stanza-label">Verse 1</div>
+        <div class="line-pair"><div class="jp">格好つけて</div><div class="en">Dressing up sharp</div></div>
+        <div class="line-pair"><div class="jp">身だしなみ整えても</div><div class="en">keeping up appearances</div></div>
+        <div class="line-pair"><div class="jp">性根は変わらない</div><div class="en">the core never changes</div></div>
+        <div class="line-pair"><div class="jp">冷たい奴だと</div><div class="en">"He's cold," they whisper</div></div>
+        <div class="line-pair"><div class="jp">あいつの噂が流れる</div><div class="en">rumors drift like smoke</div></div>
+        <div class="line-pair"><div class="jp">真実を知ろうとしない</div><div class="en">No one seeks the truth</div></div>
+        <div class="line-pair"><div class="jp">愚者達の戯言、嫉妬</div><div class="en">just the fools' babble, just envy</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 2</div>
+        <div class="line-pair"><div class="jp">見た目に惑わされ</div><div class="en">Misled by appearances</div></div>
+        <div class="line-pair"><div class="jp">噂を信じる者達</div><div class="en">they swallow every rumor</div></div>
+        <div class="line-pair"><div class="jp">愚かだと気付けない</div><div class="en">blind to their own foolishness</div></div>
+        <div class="line-pair"><div class="jp">そんな奴らの視線は</div><div class="en">Those stares that follow</div></div>
+        <div class="line-pair"><div class="jp">気付かないフリして</div><div class="en">he pretends not to notice</div></div>
+        <div class="line-pair"><div class="jp">雪に溶かして消し去る</div><div class="en">melts them away into the snow</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Pre-Chorus</div>
+        <div class="line-pair"><div class="jp">真実を隠すベールは</div><div class="en">The veil that hides the truth</div></div>
+        <div class="line-pair"><div class="jp">嫉妬と羨望から生まれ</div><div class="en">is woven from envy and longing</div></div>
+        <div class="line-pair"><div class="jp">噂に惑わされた</div><div class="en">bewildered by rumors</div></div>
+        <div class="line-pair"><div class="jp">ドール人形が狂い咲く</div><div class="en">the doll blooms in madness</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">優しさだけが</div><div class="en">Only kindness</div></div>
+        <div class="line-pair"><div class="jp">バラの棘に囚われ</div><div class="en">is trapped in the rose's thorns</div></div>
+        <div class="line-pair"><div class="jp">サソリの毒だけが</div><div class="en">and only the scorpion's venom</div></div>
+        <div class="line-pair"><div class="jp">心に突き刺さる</div><div class="en">pierces the heart</div></div>
+        <div class="line-pair"><div class="jp">身体を這い回っても</div><div class="en">Even as it crawls through his body</div></div>
+        <div class="line-pair"><div class="jp">大衆なんて そんなものだと</div><div class="en">he laughs, That's all the masses are</div></div>
+        <div class="line-pair"><div class="jp">あいつは笑う</div><div class="en">He laughs</div></div>
+        <div class="line-pair"><div class="jp">心に残ったケロイドが</div><div class="en">The keloid scar etched into his heart</div></div>
+        <div class="line-pair"><div class="jp">死ぬまで消えない跡を残しても</div><div class="en">leaves a mark that will not fade until he dies</div></div>
+        <div class="line-pair"><div class="jp">あいつは 愛想笑いで出迎える</div><div class="en">still, he greets them with a practiced smile</div></div>
+        <div class="line-pair"><div class="jp">大衆に向かって 今日も</div><div class="en">facing the crowd, again today</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 3</div>
+        <div class="line-pair"><div class="jp">人目を気にして</div><div class="en">Watching others' eyes</div></div>
+        <div class="line-pair"><div class="jp">自分を偽り続け</div><div class="en">forever wearing a mask</div></div>
+        <div class="line-pair"><div class="jp">消えゆく人の灯火は</div><div class="en">the fading flame of a soul</div></div>
+        <div class="line-pair"><div class="jp">永遠(とわ)の悲しみを落とす</div><div class="en">casts an eternal shadow of grief</div></div>
+        <div class="line-pair"><div class="jp">アンニュイな日々の中</div><div class="en">In these languid, hollow days</div></div>
+        <div class="line-pair"><div class="jp">欲望に蝕まれた者達に</div><div class="en">preyed upon by those consumed by desire</div></div>
+        <div class="line-pair"><div class="jp">狩られた犠牲者</div><div class="en">just another hunted victim</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Bridge</div>
+        <div class="line-pair"><div class="jp">真相を突き止めようとせず</div><div class="en">Never seeking the truth</div></div>
+        <div class="line-pair"><div class="jp">真実に気付かない愚者達は</div><div class="en">the fools who cannot see it</div></div>
+        <div class="line-pair"><div class="jp">今日もアスファルトの上</div><div class="en">keep dancing on the asphalt today</div></div>
+        <div class="line-pair"><div class="jp">息切らしながら 踊り続ける</div><div class="en">breathless, yet they never stop</div></div>
+        <div class="line-pair"><div class="jp">しとやかに</div><div class="en">Gracefully</div></div>
+        <div class="line-pair"><div class="jp">華やかな衣装を身に纏い</div><div class="en">draped in brilliant costumes</div></div>
+        <div class="line-pair"><div class="jp">優美に舞いながら</div><div class="en">gliding through the air</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Outro</div>
+        <div class="line-pair"><div class="jp">噂を流す者は</div><div class="en">Those who spread the rumors</div></div>
+        <div class="line-pair"><div class="jp">闇に気付かず</div><div class="en">never see the darkness</div></div>
+        <div class="line-pair"><div class="jp">噂に呑み込まれ</div><div class="en">swallowing them whole</div></div>
+        <div class="line-pair"><div class="jp">朽ちていく事を知らない</div><div class="en">never knowing they are rotting away</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+
+  <!-- SONG III -->
+  <section class="song" id="song3">
+    <div class="song-head">
+      <span class="song-num">III</span>
+      <h2 class="song-title-jp">愛玩の子供</h2>
+      <div class="song-title-en">— Cute bisque doll —</div>
+    </div>
+    <div class="stanza-grid">
+
+      <div>
+        <div class="stanza-label">Verse 1</div>
+        <div class="line-pair"><div class="jp">生ぬるい風に　鉄の匂いが交じる</div><div class="en">A lukewarm wind carries the scent of iron</div></div>
+        <div class="line-pair"><div class="jp">傷も　痕もない</div><div class="en">No wounds, no scars remain</div></div>
+        <div class="line-pair"><div class="jp">記憶だけが　覚えている</div><div class="en">Only memory still remembers</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 2</div>
+        <div class="line-pair"><div class="jp">大事な物を　置いてきた事に</div><div class="en">I left something precious behind</div></div>
+        <div class="line-pair"><div class="jp">気付いたけれど</div><div class="en">I've known it all along</div></div>
+        <div class="line-pair"><div class="jp">場所が　見つからない</div><div class="en">But I cannot find the place</div></div>
+        <div class="line-pair"><div class="jp">サイレンが鳴る</div><div class="en">The sirens are calling</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Pre-Chorus</div>
+        <div class="line-pair"><div class="jp">深紅の口紅　紫のシャドー</div><div class="en">Crimson lips, violet-shadowed eyes</div></div>
+        <div class="line-pair"><div class="jp">鋭い視線に涙が溢れる</div><div class="en">Those piercing eyes overflow with tears</div></div>
+        <div class="line-pair"><div class="jp">思い出すなと　ビスクドールが言う</div><div class="en">Don't remember, the bisque doll whispers</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">胸の内に浮かぶ</div><div class="en">Rising within my chest</div></div>
+        <div class="line-pair"><div class="jp">孤島に眠る深い泉</div><div class="en">A deep spring sleeping on an island alone</div></div>
+        <div class="line-pair"><div class="jp">木の箱に</div><div class="en">Locked inside a wooden box</div></div>
+        <div class="line-pair"><div class="jp">錆びついた鉄の鎖が</div><div class="en">Rusted iron chains</div></div>
+        <div class="line-pair"><div class="jp">幾重にも絡み</div><div class="en">Coiled and tangled, layer upon layer</div></div>
+        <div class="line-pair"><div class="jp">無数の鍵が掛かる</div><div class="en">Countless locks hold it shut</div></div>
+        <div class="line-pair"><div class="jp">長い眠りから覚めない</div><div class="en">Never waking from its long, long sleep</div></div>
+        <div class="line-pair"><div class="jp">ガラスの瞳</div><div class="en">Glass eyes, unblinking</div></div>
+        <div class="line-pair"><div class="jp">ビスクドール</div><div class="en">The bisque doll</div></div>
+        <div class="line-pair"><div class="jp">愛され　慈しまれた</div><div class="en">Loved and tenderly cherished</div></div>
+        <div class="line-pair"><div class="jp">悲劇の子供</div><div class="en">A child born for tragedy</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 3</div>
+        <div class="line-pair"><div class="jp">肌に触れる　冷たい風</div><div class="en">Cold wind brushes against my skin</div></div>
+        <div class="line-pair"><div class="jp">待ち続けるのに</div><div class="en">I kept on waiting</div></div>
+        <div class="line-pair"><div class="jp">来なかった人</div><div class="en">For someone who never came</div></div>
+        <div class="line-pair"><div class="jp">悲しく寂しくて</div><div class="en">So sad, so utterly alone</div></div>
+        <div class="line-pair"><div class="jp">夜の闇の中</div><div class="en">In the deep dark of night</div></div>
+        <div class="line-pair"><div class="jp">見知らぬ大人に</div><div class="en">A stranger held me</div></div>
+        <div class="line-pair"><div class="jp">抱きしめられ　泣いた</div><div class="en">And I wept in their arms</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Bridge</div>
+        <div class="line-pair"><div class="jp">僕は誰かを待ち続けていた</div><div class="en">I have always been waiting for someone</div></div>
+        <div class="line-pair"><div class="jp">思い出すな　箱は開くな</div><div class="en">Don't remember. Don't open the box</div></div>
+        <div class="line-pair"><div class="jp">泉が大きくうねり</div><div class="en">The spring surges and swells</div></div>
+        <div class="line-pair"><div class="jp">ビスクドールが泣く</div><div class="en">The bisque doll weeps</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">優しい顔の女性</div><div class="en">A woman with a gentle face</div></div>
+        <div class="line-pair"><div class="jp">昔どこかで見た記憶</div><div class="en">A memory of somewhere, long ago</div></div>
+        <div class="line-pair"><div class="jp">思い出せない</div><div class="en">I cannot recall</div></div>
+        <div class="line-pair"><div class="jp">幾重にも絡み</div><div class="en">Coiled and tangled, layer upon layer</div></div>
+        <div class="line-pair"><div class="jp">無数の鍵を掛けた</div><div class="en">I locked it with countless keys</div></div>
+        <div class="line-pair"><div class="jp">長い眠りから覚めない</div><div class="en">Never waking from its long, long sleep</div></div>
+        <div class="line-pair"><div class="jp">ガラスの瞳</div><div class="en">Glass eyes, unblinking</div></div>
+        <div class="line-pair"><div class="jp">ビスクドールが</div><div class="en">The bisque doll</div></div>
+        <div class="line-pair"><div class="jp">薄笑いで、鋭い視線を放ち</div><div class="en">With a faint smile, casting that piercing gaze</div></div>
+        <div class="line-pair"><div class="jp">むせび泣く</div><div class="en">Sobbing without a sound</div></div>
+        <div class="line-pair"><div class="jp">悲劇の子供</div><div class="en">A child born for tragedy</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Outro</div>
+        <div class="line-pair"><div class="jp">失くした過去は　泉の底で眠る</div><div class="en">The lost past sleeps at the bottom of the spring</div></div>
+        <div class="line-pair"><div class="jp">ビスクドールが</div><div class="en">The bisque doll says</div></div>
+        <div class="line-pair"><div class="jp">記憶はなくしたままでいい</div><div class="en">Let the memories stay forgotten</div></div>
+        <div class="line-pair"><div class="jp">今という時空で　安堵の世界で</div><div class="en">In this moment, in this world of peace</div></div>
+        <div class="line-pair"><div class="jp">生きろと言う</div><div class="en">Just live</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+
+  <!-- SONG IV -->
+  <section class="song" id="song4">
+    <div class="song-head">
+      <span class="song-num">IV</span>
+      <h2 class="song-title-jp">僕は、悪魔の血族</h2>
+      <div class="song-title-en">— Child of the Full Moon —</div>
+    </div>
+    <div class="stanza-grid">
+
+      <div>
+        <div class="stanza-label">Intro / Pre-chorus</div>
+        <div class="line-pair"><div class="jp">誰かを悲しませ</div><div class="en">Causing someone sorrow</div></div>
+        <div class="line-pair"><div class="jp">僕は　素知らぬ顔で</div><div class="en">I wear a face that knows nothing</div></div>
+        <div class="line-pair"><div class="jp">今を生きるのか</div><div class="en">and live on through this moment?</div></div>
+        <div class="line-pair"><div class="jp">I wish I was clean</div></div>
+        <div class="line-pair"><div class="jp">僕には分からない</div><div class="en">I just don't know</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 1</div>
+        <div class="line-pair"><div class="jp">誰も気づかない　僕の居場所</div><div class="en">No one notices the place where I belong</div></div>
+        <div class="line-pair"><div class="jp">誰も聞けない　僕の声</div><div class="en">No one can hear my voice</div></div>
+        <div class="line-pair"><div class="jp">人に知られないよう</div><div class="en">So that no one finds me out</div></div>
+        <div class="line-pair"><div class="jp">僕は　人の後をついていく</div><div class="en">I follow behind other people</div></div>
+        <div class="line-pair"><div class="jp">誰も見ない　獣道に入る　僕の姿</div><div class="en">Into the beast trail, where no one looks, there I go</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 2</div>
+        <div class="line-pair"><div class="jp">僕は　生きる</div><div class="en">I am alive</div></div>
+        <div class="line-pair"><div class="jp">掌に浮かぶ</div><div class="en">Rising in my palm</div></div>
+        <div class="line-pair"><div class="jp">青く細い血脈</div><div class="en">thin blue veins</div></div>
+        <div class="line-pair"><div class="jp">拍動は　いつかcleanになる？</div><div class="en">Will this pulse turn clean someday?</div></div>
+        <div class="line-pair"><div class="jp">汚れた血族に生まれた</div><div class="en">Born into a tainted bloodline</div></div>
+        <div class="line-pair"><div class="jp">僕に　何の価値があるの？</div><div class="en">what worth could there be in me?</div></div>
+        <div class="line-pair"><div class="jp">目から溢れる水を</div><div class="en">The water spilling from my eyes</div></div>
+        <div class="line-pair"><div class="jp">僕が両手で掬い</div><div class="en">I scoop up in both hands</div></div>
+        <div class="line-pair"><div class="jp">満月の子供が</div><div class="en">and the child of the full moon</div></div>
+        <div class="line-pair"><div class="jp">口を開け舐める</div><div class="en">opens its mouth and laps it up</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Pre-chorus</div>
+        <div class="line-pair"><div class="jp">僕の体に這う血管は</div><div class="en">The veins crawling across my body</div></div>
+        <div class="line-pair"><div class="jp">汚れた悪魔の血族のもの</div><div class="en">belong to a tainted demon's line</div></div>
+        <div class="line-pair"><div class="jp">望んだわけじゃない</div><div class="en">I never wished for this</div></div>
+        <div class="line-pair"><div class="jp">天使のようにもなれない</div><div class="en">I can never become like an angel</div></div>
+        <div class="line-pair"><div class="jp">嘘も誤魔化しもした</div><div class="en">I've lied, I've covered things up</div></div>
+        <div class="line-pair"><div class="jp">綺麗な心には戻れない</div><div class="en">I can't go back to a clean heart</div></div>
+        <div class="line-pair"><div class="jp">二度と…</div><div class="en">Never again…</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">誰かを苦しませ</div><div class="en">Making someone suffer</div></div>
+        <div class="line-pair"><div class="jp">僕は　気付けず</div><div class="en">I never noticing</div></div>
+        <div class="line-pair"><div class="jp">呼吸を繰り返すのか</div><div class="en">just keep on breathing?</div></div>
+        <div class="line-pair"><div class="jp">Why do we have to live?</div></div>
+        <div class="line-pair"><div class="jp">辛いだけの今</div><div class="en">A present that is only pain</div></div>
+        <div class="line-pair"><div class="jp">誰もが言う</div><div class="en">Everyone says</div></div>
+        <div class="line-pair"><div class="jp">それが人生だと</div><div class="en">That's life</div></div>
+        <div class="line-pair"><div class="jp">生きないと駄目だと</div><div class="en">You have to live</div></div>
+        <div class="line-pair"><div class="jp">なぜ？</div><div class="en">Why?</div></div>
+        <div class="line-pair"><div class="jp">理由は</div><div class="en">The reason</div></div>
+        <div class="line-pair"><div class="jp">満月の子どもが知っている</div><div class="en">the child of the full moon knows it</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Verse 3</div>
+        <div class="line-pair"><div class="jp">緑色の海</div><div class="en">A green sea</div></div>
+        <div class="line-pair"><div class="jp">海岸通りを歩く</div><div class="en">I walk the road along the shore</div></div>
+        <div class="line-pair"><div class="jp">痛む足</div><div class="en">Aching feet</div></div>
+        <div class="line-pair"><div class="jp">休む場所はない</div><div class="en">There's no place to rest</div></div>
+        <div class="line-pair"><div class="jp">汚れた血管の臭いが鼻につく</div><div class="en">The reek of tainted veins clings in my nose</div></div>
+        <div class="line-pair"><div class="jp">天使になれないから</div><div class="en">Is it because I can't become an angel</div></div>
+        <div class="line-pair"><div class="jp">僕は苦しいの？</div><div class="en">that I'm in such pain?</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Bridge</div>
+        <div class="line-pair"><div class="jp">満月の夜</div><div class="en">On the night of the full moon</div></div>
+        <div class="line-pair"><div class="jp">僕は</div><div class="en">I</div></div>
+        <div class="line-pair"><div class="jp">細く温かい</div><div class="en">look at the thin, warm</div></div>
+        <div class="line-pair"><div class="jp">浮き出た</div><div class="en">risen-to-the-surface</div></div>
+        <div class="line-pair"><div class="jp">青い血脈を見て</div><div class="en">blue veins</div></div>
+        <div class="line-pair"><div class="jp">声を押し殺して泣く</div><div class="en">and weep, choking down my voice</div></div>
+        <div class="line-pair"><div class="jp">誰にも見せない</div><div class="en">I show it to no one</div></div>
+        <div class="line-pair"><div class="jp">満月の子どもは</div><div class="en">The child of the full moon</div></div>
+        <div class="line-pair"><div class="jp">僕の泣き顔が</div><div class="en">says that it loves</div></div>
+        <div class="line-pair"><div class="jp">好きと言う</div><div class="en">my crying face</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Chorus</div>
+        <div class="line-pair"><div class="jp">誰かを傷つけ</div><div class="en">Hurting someone</div></div>
+        <div class="line-pair"><div class="jp">僕は　笑顔で</div><div class="en">I, with a smile</div></div>
+        <div class="line-pair"><div class="jp">今を生きるのか</div><div class="en">live on through this moment?</div></div>
+        <div class="line-pair"><div class="jp">I wish I was clean</div></div>
+        <div class="line-pair"><div class="jp">僕は罪を犯しているのか</div><div class="en">Am I committing a sin?</div></div>
+        <div class="line-pair"><div class="jp">苦しい人生</div><div class="en">A life of suffering</div></div>
+        <div class="line-pair"><div class="jp">誰もが言う</div><div class="en">Everyone says</div></div>
+        <div class="line-pair"><div class="jp">それが人生だ、と</div><div class="en">That's life</div></div>
+        <div class="line-pair"><div class="jp">生きろ、と</div><div class="en">Live on</div></div>
+        <div class="line-pair"><div class="jp">満月の子どもが</div><div class="en">and the child of the full moon</div></div>
+        <div class="line-pair"><div class="jp">僕を抱きしめる</div><div class="en">holds me close</div></div>
+        <div class="line-pair"><div class="jp">優しく</div><div class="en">so gently</div></div>
+      </div>
+
+      <div>
+        <div class="stanza-label">Outro</div>
+        <div class="line-pair"><div class="jp">生きている意味はあるのか</div><div class="en">Is there any meaning in being alive?</div></div>
+        <div class="line-pair"><div class="jp">僕は掌広げて</div><div class="en">I spread my palms wide</div></div>
+        <div class="line-pair"><div class="jp">泣きながら問う</div><div class="en">and ask, weeping</div></div>
+        <div class="line-pair"><div class="jp">望んだわけじゃない</div><div class="en">I never wished for this</div></div>
+        <div class="line-pair"><div class="jp">罪を犯した血族でもない</div><div class="en">Nor am I a bloodline that sinned</div></div>
+        <div class="line-pair"><div class="jp">血管の臭いに</div><div class="en">Even when the reek of my veins</div></div>
+        <div class="line-pair"><div class="jp">胸締めつけられても</div><div class="en">squeezes tight around my chest</div></div>
+        <div class="line-pair"><div class="jp">汚い血はいつかcleanになると</div><div class="en">Your dirty blood will turn clean one day</div></div>
+        <div class="line-pair"><div class="jp">満月の子どもが微笑む</div><div class="en">the child of the full moon smiles</div></div>
+        <div class="line-pair"><div class="jp">Blue blood is crawling all over my body</div></div>
+        <div class="line-pair"><div class="jp">なのに　心が叫ぶ</div><div class="en">And yet, my heart cries out</div></div>
+        <div class="line-pair"><div class="jp">今を未来を</div><div class="en">this moment, and the future</div></div>
+        <div class="line-pair"><div class="jp">生きたい、と</div><div class="en">I want to live</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="artist">大森カエ 〜 Omori Kae</div>
+    <div class="note">Ep. 名もなき胸のつかえ 〜Chain of Silence〜</div>
+  </footer>
+
+</div>
+
+<script>
+  // gently generate rising bubbles
+  const field = document.getElementById('bubbleField');
+  const bubbleCount = 22;
+  for(let i=0;i<bubbleCount;i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 6 + Math.random()*26;
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.left = Math.random()*100 + 'vw';
+    const duration = 14 + Math.random()*16;
+    b.style.animationDuration = duration + 's';
+    b.style.animationDelay = (Math.random()*duration*-1) + 's';
+    b.style.setProperty('--drift', (Math.random()*80 - 40) + 'px');
+    field.appendChild(b);
+  }
+</script>
+
+</body>
+</html>
